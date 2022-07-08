@@ -1,0 +1,30 @@
+<ion-content>
+<div class="ion-padding">
+  
+  <div class="language_header size_18 red medium" style="margin-top: 30px;">
+   Choose Language / भाषा चुनें 
+  </div>
+
+  <ion-list lines="none">
+    <ion-radio-group (ionChange)="select_lang($event)">
+      <ion-item *ngFor="let x of model.lang_data">
+        <ion-label>{{x.translate}} <br> <span>{{x.language}}</span></ion-label>
+        <ion-radio slot="start" id="language_{{x.id}}" (ngModel)="model.language" value="{{x.language_code}}" (ionChange)="radioGroupChange($event)"></ion-radio>
+      </ion-item>
+    </ion-radio-group>   
+  </ion-list>  
+
+</div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>    
+    <div class="app_button">
+		 <button class="app_btn" *ngIf="!model.search" (click)="next()">{{next_btn}}</button>
+    <button class="app_btn" *ngIf="model.search"><ion-spinner class="current_location_sppiner"></ion-spinner></button>
+      <!-- <ion-router-link href="mobile-number">
+       
+      </ion-router-link> -->
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,57 @@
+<center class="current_location_spinner_position" id="edit_location_spinner"><ion-spinner class="current_location_sppiner"></ion-spinner></center>
+<ion-content class="current_location_page_show">
+ 
+<div class="map edit">
+  <ion-buttons class="back_button_menu_bar" slot="end" *ngIf="pageName != '/home' ">
+    <ion-back-button defaultHref="home"></ion-back-button>
+  </ion-buttons>
+  <a (click)="close_btn()">
+    <img src="assets/images/close_btn.svg" class="close_btn">
+  </a>
+ <!--  <img src="assets/images/map.svg"> -->
+</div>
+<div #map id="map"></div>
+<div class="ion-padding">
+  <div class="map-icon">
+    <img src="assets/images/location_red.svg">
+  </div>
+  <div class="map_desc">
+    <div class="size_18">
+      {{location_data.colony_name}}
+    </div>
+    <div class="regular size_12">
+      <!-- {{location_data.colony_name}},<br> -->
+      <!-- {{location_data.city}}, {{location_data.state}} {{location_data.postalCode}}, {{location_data.country}} -->
+    </div>
+    <br>
+    <div class="map_input">
+      <ion-item lines="none" style="display: none;">
+        <ion-label position="stacked" class="size_10 regular" style="color: #DADADA;">{{model.key_text1}} / {{model.key_text2}} / {{model.key_text3}} NO.</ion-label>
+        <ion-input value="{{location_data.house_no}}" class="size_12 regular" id="edit_house_no"></ion-input>
+        <hr class="input_line">
+      </ion-item>
+      <br>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="size_10 regular" style="color: #DADADA;">{{model.key_text4}}</ion-label>
+        <ion-input class="size_12 regular" value="{{location_data.landmark}}" id="edit_landmark"></ion-input>
+        <hr class="input_line">
+      </ion-item>
+      <ion-item lines="none"> 
+        <ion-label position="stacked" class="size_10 regular" style="color: #DADADA;">{{ model.key_text11 }}</ion-label>
+        <ion-input class="size_12 regular" value="{{ model.address_type }}" id="save_as"></ion-input>
+        <hr class="input_line">
+      </ion-item>
+    </div>
+  </div>
+</div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>    
+    <div class="app_button">
+	  <button class="app_btn" (click)="update()" *ngIf="!model.search">{{model.key_text8}}</button>
+    <button class="app_btn"  *ngIf="model.search"><ion-spinner class="current_location_sppiner"></ion-spinner></button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

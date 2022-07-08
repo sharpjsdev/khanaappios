@@ -1,0 +1,74 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "call-number": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-browsertab": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "IOS_FIREBASE_MESSAGING_VERSION": "~> 7.4.0",
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service",
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-sms-receive": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PACKAGE_NAME": "com.food.forAll"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.food.forAll"
+    }
+  }
+}

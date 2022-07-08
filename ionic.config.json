@@ -1,0 +1,10 @@
+{
+  "name": "khanaa",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

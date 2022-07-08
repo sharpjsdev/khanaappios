@@ -1,0 +1,94 @@
+
+<ion-content>
+	<div class="big_header">
+		
+		<div class="ion-padding">
+			
+			<div class="title light poiret">
+					
+						<ion-buttons class="back_button_menu_bar" slot="end" *ngIf="pageName != '/home' ">
+							<ion-back-button defaultHref="home"></ion-back-button>
+						</ion-buttons>
+					
+					
+						{{model.key_text1}}
+					
+			</div>
+			<div class="big_header_bottom regular size_18">
+				{{ model.key_text8 }} {{ volunteer_data.username }}, {{model.key_text2}} 
+			</div>
+		</div>
+	</div>
+  
+	<div class="ion-padding">
+		<div class="register_volunteer app_input_text center_input">
+		  	<img src="assets/images/shop.png">
+		  <input type="text" placeholder="{{model.key_text9}}" id="shop_name" value="{{volunteer_data.shop_stall_name}}">
+		  <span class="error_msg_shop_name">{{model.key_text16}}</span>        
+		</div>  
+		<div class="register_volunteer app_input_text custom_timer_div">
+			<img src="assets/images/wall-clock.png" id="clock_image">
+			<label class="grey" style="margin-left: 28px;">{{model.key_text11}}</label>
+			<ion-row>
+				<ion-col size="3" class="mt-12">
+					<label class="grey">{{model.key_text14}}</label>
+				</ion-col>
+				<ion-col size="2"  class="mt-12">
+					<label class="grey">-</label>
+				</ion-col>
+				<ion-col size="7">
+
+					<!-- <input type="text" id="from_time" (click)="from()" value="{{fromTime}}"> -->
+
+					<ion-datetime displayFormat="hh:mm A"  id="from_time" value="{{from_Time}}"  name="from_time" placeholder="select from time" (ionChange)="from($event)"  ></ion-datetime>
+
+					<span class="error_msg_from_time">{{model.key_text16}}</span>   
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="3"  class="mt-12">
+					<label class="grey">{{model.key_text15}}</label>
+				</ion-col>
+				<ion-col size="2"  class="mt-12">
+					<label class="grey">-</label>
+				</ion-col>
+				<ion-col size="7">
+					<!-- <ion-button (click)="to()">from</ion-button> -->
+					<!-- <input type="text"id="to_time" (click)="to()" value="{{toTime}}"> -->
+					<ion-datetime displayFormat="hh:mm A"  id="to_time" value="{{to_Time}}" placeholder="select to time"  name="toTime" (ionChange)="to($event)"  ></ion-datetime>
+					<span class="error_msg_to_time">{{model.key_text16}}</span>  
+				</ion-col>
+			</ion-row>
+		</div>
+
+		<div class="register_volunteer app_input_text center_input">
+		  <img src="assets/images/food_location_icon.svg">
+		  <input type="text" value="{{volunteer_data.colony_name}}" id="shop_location" placeholder="{{model.key_text10}}" (click)="presentConfirm()">   
+		  <span class="error_msg_shop_location">{{model.key_text17}}</span> 
+		</div> 
+
+		<div class="vfd_location" style="margin: 13px 23px;" *ngIf="volunteer_data || volunteer_data != null">
+			<img src="assets/images/location_black.svg" *ngIf="model.is_address">
+			<div class="vfd_address regular green">
+			  {{volunteer_data.colony_name}}
+			</div>
+		</div> 
+	</div>
+  </ion-content> 
+  
+  <ion-footer> 
+    <ion-toolbar>     
+      <div class="app_button">
+        <span (click)="register()" *ngIf="!model.search" id="v_register">
+          <button class="app_btn">{{model.key_text6}}</button>
+        </span> 
+		<span (click)="register()" *ngIf="!model.search" id="v_update">
+          <button class="app_btn">{{model.key_text7}}</button>
+        </span><button class="app_btn" style="padding:10px" *ngIf="model.search"><ion-spinner class="current_location_sppiner"></ion-spinner></button>
+		
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+  
+  
+  

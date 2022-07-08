@@ -1,0 +1,78 @@
+
+<app-captcha></app-captcha>
+<ion-content>
+<div class="ion-padding theme_width"> 
+  <div class="search_food_bg custome_search_css">
+    <div class="search_single">
+      <div class="start_number left_padding">
+        <div class="s_number">1.</div>
+        <div class="heading">{{model.key_text1}} <span class="star"> *</span>:</div> 
+      </div>      
+      <div class="search_food_buttons">
+        <div class="btn-group">
+          <button class="grey regular btn1 receiver_error_border" id="g_food_1" (click)="food_type(1)">{{model.key_text2}}.</button>
+          <button class="grey regular btn1 receiver_error_border" id="g_food_2" (click)="food_type(2)">{{model.key_text3}}.</button>
+          <button class="grey regular btn1 receiver_error_border" id="g_food_3" (click)="food_type(3)">{{model.key_text13}}</button>
+        </div>
+      </div>
+      <span class="receiver_food_type-error-text">{{model.key_text16}}</span>  
+    </div>
+
+    <div class="search_single">
+      <ion-row>
+        <ion-col size="6" class="custom_left left_padding" style="padding-left: 12px;margin-top:10px">
+          <div class="s_number">2.</div>
+          <div class="heading">{{model.key_text5}}<span class="star"> *</span></div>            
+        </ion-col>
+        <ion-col size="1" class="center" style="margin-top:10px">
+          :
+        </ion-col>
+        <ion-col size="5" class="custom_right">
+          <div class="how_food">
+            <input type="button" class="minus" onclick="getFoodDecrementValue()" value="-" />
+            <input type="text" class="food_value" name="quantity" value="1" maxlength="2" max="10" size="1" id="get_food_number" disabled/>
+            <input type="button" class="plus" onclick="getFoodIncrementValue()" value="+" />
+          </div>
+        </ion-col>
+      </ion-row>
+      <span class="number-error-text">{{model.key_text16}}</span> 
+    </div></div>   
+</div>
+
+</ion-content>
+<div class="app_button" >
+  <ion-router-link (click)="search_food()">
+    <button class="app_btn" *ngIf="!model.search">{{model.key_text7}}</button>
+  </ion-router-link>
+  <button class="app_btn" style="padding:10px" *ngIf="model.search"><ion-spinner class="current_location_sppiner"></ion-spinner></button>
+</div>
+<ion-footer>
+  <ion-toolbar>
+	
+	
+    <br>
+    <ion-segment value="home" color="transparent">
+      <ion-segment-button value="home" [routerLink]="['/home']">
+        <img src="assets/images/red_footer_home.svg">
+        <!--<ion-img src="assets/images/grey_footer_home.svg"></ion-img>-->
+        <ion-label class="size_12 medium" color="tertiary">{{model.key_text8}}</ion-label>    
+      </ion-segment-button>
+      <ion-segment-button value="activity" [routerLink]="['/activity-normal']">
+        <!--<ion-img src="assets/images/red_footer_activity.svg"></ion-img>-->
+        <img src="assets/images/grey_footer_activity.svg">
+        <ion-label class="size_12 medium">{{model.key_text9}}</ion-label>    
+      </ion-segment-button>
+      <ion-segment-button value="volunteer" *ngIf="model.is_volunteer== 1 " [routerLink]="['/volunteer-detail']">
+        <!--<ion-img src="assets/images/red_footer_volunteer.svg"></ion-img>-->
+        <img src="assets/images/grey_footer_volunteer.svg">
+        <ion-label class="size_12 medium">{{model.key_text10}}</ion-label>    
+      </ion-segment-button>
+    </ion-segment>      
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+  
+

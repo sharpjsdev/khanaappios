@@ -1,0 +1,95 @@
+
+<app-captcha></app-captcha>
+<ion-content>
+<div class="ion-padding theme_width"> 
+  <div class="search_food_bg" style="min-height: 370px;">
+    <div class="">
+      <!-- <span id="error" style="color:red;display:none;margin-left: 1rem;">Please Select food type.</span> -->
+	    <div class="start_number left_padding green">
+        <div class="size_16 medium big_heading">{{model.key_text1}}</div>
+        <div class="checkbox">
+          <input type="checkbox" id="vegcheckbox" name="" value="veg" (change)="showCount($event)" >
+          <label for="vegcheckbox" class="green"><span>{{model.key_text2}}</span></label>
+       </div>
+      </div>   
+      <ion-row id="veg" style="display: none;">
+        <ion-col size="6" class="custom_left left_padding" style="padding-left: 12px;margin-top:10px">
+          <!-- <div class="s_number">2.</div> -->
+          <div>{{model.key_text6}}</div>
+        </ion-col>
+        <ion-col size="1" class="center vertical_col" style="margin-top:10px">
+          :
+        </ion-col>
+        <ion-col size="5" class="custom_right">
+          <div class="how_food">
+            <input type="button" class="minus" onclick="decrementValue2()" value="-" />
+            <input type="text" class="food_value" name="quantity" value="1" maxlength="2" max="10" size="1" id="number2" disabled/>
+            <input type="button" class="plus" onclick="incrementValue2()" value="+" />
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <br>
+      <div class="start_number left_padding green">
+        <div class="checkbox">
+          <input type="checkbox" id="non-vegcheckbox" value="nonveg" (change)="showCount2($event)">
+          <label for="non-vegcheckbox" class="green"><span>{{model.key_text3}} </span></label>
+       </div>
+        <!-- <input style="margin-right: 6px;" type="checkbox" id="non-vegcheckbox" value="nonveg" (change)="showCount2($event)">   -->
+      </div>
+      
+      <ion-row id="nonveg" style="display: none;">
+        <ion-col size="6" class="custom_left left_padding" style="padding-left: 12px;margin-top:10px">
+          <!-- <div class="s_number">2.</div> -->
+          <div>{{model.key_text6}}</div>
+        </ion-col>
+        <ion-col size="1" class="center vertical_col" style="margin-top:10px">
+          :
+        </ion-col>
+        <ion-col size="5" class="custom_right">
+          <div class="how_food">
+            <input type="button" class="minus" onclick="decrementValue3()" value="-" />
+            <input type="text" class="food_value" name="quantity" value="1" maxlength="2" max="10" size="1" id="non-veg" disabled/>
+            <input type="button" class="plus" onclick="incrementValue3()" value="+" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>   
+</div>
+
+</ion-content>
+<div class="app_button">
+  <button class="app_btn" (click)="review()" *ngIf="!model.search">{{model.key_text7}}</button>
+  <button class="app_btn" *ngIf="model.search"><ion-spinner class="current_location_sppiner"></ion-spinner></button>
+  </div>
+<ion-footer>
+  <ion-toolbar>    
+    
+    <br>
+    <ion-segment value="home" color="transparent">
+      <ion-segment-button value="home" [routerLink]="['/home']">
+        <img src="assets/images/red_footer_home.svg">
+        <!--<ion-img src="assets/images/grey_footer_home.svg"></ion-img>-->
+        <ion-label class="size_12 medium" color="tertiary">{{model.key_text8}}</ion-label>    
+      </ion-segment-button>
+      <ion-segment-button value="activity" [routerLink]="['/activity-normal']">
+        <!--<ion-img src="assets/images/red_footer_activity.svg"></ion-img>-->
+        <img src="assets/images/grey_footer_activity.svg">
+        <ion-label class="size_12 medium">{{model.key_text9}}</ion-label>    
+      </ion-segment-button>
+      <ion-segment-button value="volunteer" *ngIf="model.is_volunteer== 1 " [routerLink]="['/volunteer-detail']">
+        <!--<ion-img src="assets/images/red_footer_volunteer.svg"></ion-img>-->
+        <img src="assets/images/grey_footer_volunteer.svg">
+        <ion-label class="size_12 medium">{{model.key_text10}}</ion-label>    
+      </ion-segment-button>
+    </ion-segment>      
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+  
+

@@ -1,0 +1,41 @@
+<center style="position: absolute;display: none;z-index:999;margin-left:45%;" class="current_location_spinner_position" id="view_location_spinner"><ion-spinner class="current_location_sppiner"></ion-spinner></center>
+<ion-content>
+
+  <div class="ion-padding">
+    <ion-buttons class="back_button_menu_bar" slot="end" *ngIf="pageName != '/home' ">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <div class="single_page_title medium size_18">{{model.key_page_name}}</div>
+  </div>
+
+  <div class="ion-padding">
+    <div  class="t" *ngFor="let x of model.data" id="add_{{x.id}}"> 
+    <div class="medium green size_16 capital">{{ x.adress_type }}</div>  
+    <div class="saved address regular">
+      {{ x.colony_name }}
+    </div>
+ 
+    <div class="blank_buttons">
+      <a routerLink="/saved-addresses-edit/{{x.id}}" class="blank_btn size_12 medium">{{model.key_text1}}</a>
+      <a class="blank_btn size_12 medium" (click)="remove(x.id)">{{model.key_text2}}</a>
+    </div>
+    <br><br>
+    <hr class="app_divider"></div>
+	<div class="no_adress">{{model.key_text6}}</div>
+    <br><br>
+    <div class="add_btn">
+      <a routerLink="/saved-addresses-add">
+        <img src="assets/images/icon_add.svg">
+      </a>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>    
+    <div class="app_button">
+        <button class="app_btn" (click)="saveChanges()">{{model.key_text4}}</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
