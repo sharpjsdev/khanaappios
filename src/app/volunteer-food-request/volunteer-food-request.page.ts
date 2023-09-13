@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AlertController , ModalController } from '@ionic/angular';
 import { VolunteerFoodRequestContentPage } from '../modal/volunteer-food-request-content/volunteer-food-request-content.page';
 import { ErrorMsgService } from '../error-msg.service';
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
+
 declare var $:any;
 @Component({
   selector: 'app-volunteer-food-request',
@@ -25,11 +27,21 @@ export class VolunteerFoodRequestPage implements OnInit {
     private router: Router,
     private fetch: FetchService,
     private storage : StorageService,
+    private diagnostic: Diagnostic,
   ) { }
 
   ngOnInit() {
   }
+
   ionViewDidEnter(){
+    this.diagnostic.isLocationAvailable().then(resp =>{
+      if(!resp){
+        this.router.navigate(['/home']);
+      }
+    }).catch((error: any) => {
+      this.router.navigate(['/home']);
+    });
+
     var lang_code = JSON.parse(localStorage.getItem('lang'));
    // this.fetch.getKeyText(lang_code).subscribe(res => {
     let res = this.storage.getScope();	

@@ -1,11 +1,11 @@
-import { Component, OnInit, Input  } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModalController, AlertController  } from '@ionic/angular';
 import { HomeContentPage } from '../modal/home-content/home-content.page';
 import { StorageService } from '../storage.service';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { FetchService } from '../fetch.service';
-
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
 
 import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx';  
 declare var FCMPlugin: any;
@@ -28,7 +28,9 @@ options : GeolocationOptions;
 	private storage : StorageService,
 	private platform: Platform,
 	private geolocation: Geolocation,
-	private fetch: FetchService
+	private fetch: FetchService,
+		private diagnostic: Diagnostic,
+		private alertCtrl:AlertController,
   ) { 
 	this.platform.backButton.subscribeWithPriority(10, () => {
 		this.router.navigate(['/home']);
@@ -51,8 +53,32 @@ options : GeolocationOptions;
 		
 	  
   }
+
+	async presentAlertAuth() {
+		let confirm1 = await  this.alertCtrl.create({
+			header: 'Location',
+			backdropDismiss: false,
+			message: "Please enable location services on your device to enhance your experience. Your device's location services are currently turned off, which may limit access to certain features. To enable them, Go to Settings > Privacy > Location Services.",
+			buttons: [
+			  {
+				text: 'Ok',
+				handler: () => {
+				}
+			  }
+			]
+		  });
+		  await confirm1.present();
+	}
   
   ionViewWillEnter(){
+  	this.diagnostic.isLocationAvailable().then(resp =>{
+  		if(!resp){
+  			this.presentAlertAuth();
+  		}
+  	}).catch((error: any) => {
+  		this.presentAlertAuth();
+  	});
+
 	localStorage.removeItem('receiver_food_type'); 
 	localStorage.removeItem('number_of_person'); 
 	localStorage.removeItem('set_confirm_location_route'); 

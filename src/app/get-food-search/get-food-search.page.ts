@@ -11,6 +11,7 @@ import { Location } from "@angular/common";
 import { AlertController } from '@ionic/angular';
 import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
 declare var $:any;
 declare var google: any;
 
@@ -40,7 +41,8 @@ export class GetFoodSearchPage implements OnInit {
 	private storage: StorageService,
 	public alertController: AlertController,
 	private platform: Platform,
-	private location: Location
+	private location: Location,
+	private diagnostic: Diagnostic
   ) {
 	this.platform.backButton.subscribeWithPriority(10, () => {
 		this.location.back();
@@ -51,8 +53,17 @@ export class GetFoodSearchPage implements OnInit {
 	
 	
   }
+
   ionViewWillEnter(){
-	  this.model.search = false;
+  	this.diagnostic.isLocationAvailable().then(resp =>{
+  		if(!resp){
+  			this.router.navigate(['/home']);
+  		}
+  	}).catch((error: any) => {
+  		this.router.navigate(['/home']);
+  	});
+    
+	this.model.search = false;
 	this.model.is_volunteer = 0;
 	if(localStorage.getItem('volunteer_approve') != null){
 		this.model.is_volunteer = localStorage.getItem('volunteer_approve');

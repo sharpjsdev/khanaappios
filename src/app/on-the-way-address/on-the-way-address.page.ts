@@ -8,6 +8,8 @@ import { FetchService } from '../fetch.service';
 import { StorageService } from '../storage.service';
 import { Platform } from '@ionic/angular';
 import { Location } from "@angular/common";
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
+
 declare var google: any;
 declare var $: any;
 @Component({
@@ -51,10 +53,11 @@ export class OnTheWayAddressPage implements OnInit {
     private zone: NgZone,
     private storage : StorageService,
     public router : Router,
-    public route : ActivatedRoute
+    public route : ActivatedRoute,
+    private diagnostic: Diagnostic
   ) {
     this.platform.backButton.subscribeWithPriority(10, () => {
-      this.location.back();
+      this.location_back();
      
     });
     this.sources = [];
@@ -63,13 +66,20 @@ export class OnTheWayAddressPage implements OnInit {
       start: '',
       end : ''
     };
-   }
+  }
 
   ngOnInit() {
   this.type = this.route.snapshot.params['id'];
   }
  ionViewWillEnter(){
-
+  this.diagnostic.isLocationAvailable().then(resp =>{
+      if(!resp){
+        this.router.navigate(['/home']);
+      }
+    }).catch((error: any) => {
+      this.router.navigate(['/home']);
+    });
+    
   var lang_code = JSON.parse(localStorage.getItem('lang'));
   this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
 	this.fetch.get_user_locations(this.model.user_id).subscribe(res => {
@@ -148,7 +158,7 @@ export class OnTheWayAddressPage implements OnInit {
     this.sources = [];
     this.autocomplete.start = item;
     localStorage.setItem('temp_start_address',this.autocomplete.start)
-    this.location.back();
+    this.location_back();
     this.geo = item;
     //this.geoCode(this.geo,'start');//convert Address to lat and long
   }
@@ -156,17 +166,17 @@ export class OnTheWayAddressPage implements OnInit {
     this.destination = [];
     this.autocomplete.end = item;
     localStorage.setItem('temp_end_address',this.autocomplete.end)
-    this.location.back();
+    this.location_back();
     this.geo = item;
     //this.geoCode(this.geo,'end');//convert Address to lat and long
   }
   saveAdd(add){
     if(this.type == 1){
       localStorage.setItem('temp_start_address',add)
-    this.location.back();
+    this.location_back();
     }else{
       localStorage.setItem('temp_end_address',add)
-    this.location.back();
+    this.location_back();
     }
     
   }
@@ -194,7 +204,7 @@ export class OnTheWayAddressPage implements OnInit {
         var start_address = autocomplete.getPlace();
         this.autocomplete.start = start_address.formatted_address;
         localStorage.setItem('temp_start_address',this.autocomplete.start)
-        this.location.back();
+        this.location_back();
       })
 
     // if ( this.autocomplete.start == '') {
@@ -248,7 +258,7 @@ export class OnTheWayAddressPage implements OnInit {
         var end_address = autocomplete.getPlace();
         this.autocomplete.end = end_address.formatted_address;
         localStorage.setItem('temp_end_address',this.autocomplete.end)
-        this.location.back();
+        this.location_back();
          //console.log(place);
     
         })
@@ -282,10 +292,23 @@ export class OnTheWayAddressPage implements OnInit {
   getYourLocation(){
     if(this.type == 1){
       localStorage.setItem('temp_start_address',this.curr_address);
-    this.location.back();
+    this.location_back();
     }else{
       localStorage.setItem('temp_end_address',this.curr_address);
-    this.location.back();
+    this.location_back();
     }
   }  
+  location_back(){
+    console.log();
+    if(this.type == 1){
+      var temp_address = localStorage.getItem("temp_start_address");
+    }else{
+      var temp_address = localStorage.getItem("temp_end_address");
+    }
+    if (temp_address && temp_address!='undefined') {
+      this.location.back();
+    }else{
+      return false;
+    }
+  }
 }

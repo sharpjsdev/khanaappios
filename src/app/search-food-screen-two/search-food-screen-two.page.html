@@ -1,7 +1,7 @@
 
 <app-captcha></app-captcha>
-<ion-content style="display: flex;flex-direction: column;height: 100%;">
-<div class="ion-padding theme_width my_custome_theme_width">
+<ion-content style="display: flex;flex-direction: column;height: 100%;" >
+<div class="ion-padding theme_width my_custome_theme_width" *ngIf="search_type==''">
   <div class="big_content_new noto_medium size_18">
   </div>
   <div class="horizontal_center">
@@ -18,9 +18,13 @@
   </div>
 </div>
 
+<div *ngIf="search_type!=''">
+<ion-img src="../assets/images/loader.gif" style="height: 100px;text-align: center;margin-top: 50%;"></ion-img>
+<h5 class="size_15 regular green center">{{model.key_text1}}</h5>
+</div>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="search_type==''">
 	<ion-toolbar>    
 		<ion-segment color="transparent" value="home">
 			<ion-segment-button value="home" [routerLink]="['/home']">
@@ -41,7 +45,3 @@
 		</ion-segment>      
 	</ion-toolbar>
 </ion-footer>
-
-
-  
-

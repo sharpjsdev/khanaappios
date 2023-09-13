@@ -4,6 +4,7 @@ import { FetchService } from '../fetch.service';
 import { StorageService } from '../storage.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
 
 declare var $: any;
 
@@ -14,7 +15,7 @@ declare var $: any;
 })
 export class SavedAddressesPage implements OnInit {
 model:any={};
-  constructor(private storage:StorageService, private http: HttpClient,private route: ActivatedRoute,private router: Router,private fetch: FetchService,private platform: Platform) {
+  constructor(private storage:StorageService, private http: HttpClient,private route: ActivatedRoute,private router: Router,private fetch: FetchService,private platform: Platform,public diagnostic: Diagnostic) {
 	this.platform.backButton.subscribeWithPriority(10, () => {
 		this.router.navigate(['/home']);
 	});
@@ -23,6 +24,15 @@ model:any={};
    ngOnInit() {
    }
   ionViewWillEnter(){
+
+  	this.diagnostic.isLocationAvailable().then(resp =>{
+      if(!resp){
+        this.router.navigate(['/home']);
+      }
+    }).catch((error: any) => {
+      this.router.navigate(['/home']);
+    });
+
 	$(".t").hide();
 	$("#view_location_spinner").show();
 	this.model.key_page_name = 'Saved Addresses';

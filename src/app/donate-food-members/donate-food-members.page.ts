@@ -5,6 +5,8 @@ import { StorageService } from '../storage.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ErrorMsgService } from '../error-msg.service';
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
+
 declare var $:any;
 
 @Component({
@@ -23,13 +25,24 @@ notification:any=[];
 	private router: Router,
 	private fetch: FetchService,
 	private storage : StorageService,
-	public alertController: AlertController
+	public alertController: AlertController,
+	private diagnostic: Diagnostic
   ) { }
 
   ngOnInit() {
 	this.model.search = false;
   }
+
   ionViewWillEnter(){
+
+    this.diagnostic.isLocationAvailable().then(resp =>{
+  		if(!resp){
+  			this.router.navigate(['/home']);
+  		}
+  	}).catch((error: any) => {
+  		this.router.navigate(['/home']);
+  	});
+
 	this.app_user = JSON.parse(localStorage.getItem('user_id'));
 	this.model.is_volunteer = 0;
 	if(localStorage.getItem('volunteer_approve') != null){

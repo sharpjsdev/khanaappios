@@ -9,6 +9,8 @@ import { AlertController , ModalController } from '@ionic/angular';
 import { CommonSearchScreenPage } from '../common-search-screen/common-search-screen.page';
 import { OnTheWayPage } from '../modal/on-the-way/on-the-way.page';
 import { OntheWayMsgPage } from '../modal/onthe-way-msg/onthe-way-msg.page';
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
+
 declare var google: any;
 @Component({
   selector: 'app-search-food-screen-two',
@@ -24,6 +26,7 @@ export class SearchFoodScreenTwoPage implements OnInit {
   location_data: any;
   data : any= [];
   ontheway_data: any;
+  search_type: string = '';
   options : GeolocationOptions;
   geoencoderOptions: NativeGeocoderOptions = {
     useLocale: true,
@@ -34,13 +37,22 @@ export class SearchFoodScreenTwoPage implements OnInit {
     private fetch: FetchService,
     private storage: StorageService,
     public alertController: AlertController,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private diagnostic: Diagnostic
   ) { }
 
   ngOnInit() {
     
   }
   ionViewWillEnter(){
+    this.diagnostic.isLocationAvailable().then(resp =>{
+      if(!resp){
+        this.router.navigate(['/home']);
+      }
+    }).catch((error: any) => {
+      this.router.navigate(['/home']);
+    });
+        
     this.model.click = false;
     this.model.postalCode = 0;
     this.model.is_volunteer = 0;
@@ -63,8 +75,16 @@ export class SearchFoodScreenTwoPage implements OnInit {
 				this.model.key_text6 = item6[lang_code];
 			let item7 = res.find(i => i.key_text === 'VOLUNTEER');
       this.model.key_text7 = item7[lang_code];
-        this.geoCode(localStorage.getItem('nearby_lat'),localStorage.getItem('nearby_lng'));
-        
+         this.geoCode(localStorage.getItem('nearby_lat'),localStorage.getItem('nearby_lng'));
+         
+         if(this.search_type == 'nearby'){
+          let item1 = res.find(i => i.key_text === 'GET_SEARCH_PAGE_NEAR_1');
+              this.model.key_text8 = item1[lang_code];
+          }
+          if(this.search_type == 'ontheway'){
+            let item1 = res.find(i => i.key_text === 'GET_SEARCH_PAGE_ONTHEWAY_1');
+              this.model.key_text8 = item1[lang_code];
+          }
         
     }
     async searchingModel(type) {
@@ -112,16 +132,23 @@ export class SearchFoodScreenTwoPage implements OnInit {
     }
     openModalCurrentLocation() {
       this.model.click = true;
+      this.search_type = 'nearby';
       setTimeout(() => {
       var self = this;
       self.model.click = false;
         localStorage.setItem('set_confirm_location_route', JSON.stringify('get-food-search'));
-          self.searchingModel('nearby');
-          self.location_data = JSON.parse(self.model.my_data);
-          if(self.model.my_data!='' || self.model.my_data!='undefined'){
+          // self.searchingModel('nearby');
+          
+          console.log(self.model,"akshay qqqqqqqq 0000000000");
+          
+          console.log(self.model.my_data,'------------123');
+          if(self.model.my_data){
+            console.log('yup')
+            self.location_data = JSON.parse(self.model.my_data);
           let data = JSON.stringify({'app_user_id' : self.model.user_id,'food_type' : localStorage.getItem('receiver_food_type'), 'no_of_person' : localStorage.getItem('number_of_person'), 'latitude' : self.model.Lat, 'longitude' : self.model.Lng, 'colony_name' : self.model.colony_name, 'city' : self.model.city, 'state' : self.model.state, 'country' : self.model.country, 'postal_code' : self.model.postalCode});
           self.fetch.receiver_food_details(data).subscribe(res => {
-            self.closeModal();
+            // self.closeModal();
+            self.search_type = '';
             if(res.data != null && res.data.total_food_for != 0){
               self.data = res;
               self.router.navigate(['/get-food-nearest-donors',JSON.stringify(self.data),self.model.Lat,self.model.Lng,self.model.user_id,res.data.id,self.model.my_data,'0']);
@@ -134,7 +161,8 @@ export class SearchFoodScreenTwoPage implements OnInit {
               		self.model.no_of_person = localStorage.getItem('number_of_person');
           })
         }else{
-          self.closeModal();
+          // self.closeModal();
+          this.search_type = '';
         }
         }, 3000);
       }
@@ -152,10 +180,9 @@ export class SearchFoodScreenTwoPage implements OnInit {
           modal.onDidDismiss().then((dataReturned) => {
             console.log('data sdafadf',dataReturned);
             if (dataReturned !== null && dataReturned.data.length != 0) {
-             
-              this.searchingModel('ontheway');
-              
-              this.dataReturned = dataReturned.data;
+		// this.searchingModel('ontheway');
+              this.search_type = 'ontheway';
+	      this.dataReturned = dataReturned.data;
               //alert('Modal Sent Data :'+ dataReturned);
           console.log(this.dataReturned);
           if(this.dataReturned.length>0){
@@ -165,7 +192,8 @@ export class SearchFoodScreenTwoPage implements OnInit {
              if(this.ontheway_data.length>0){
               	let data = JSON.stringify({startLat:this.ontheway_data[0].startLat,startLng:this.ontheway_data[0].startLng,endLat:this.ontheway_data[0].endLat,endLng:this.ontheway_data[0].endLng,city:this.ontheway_data[0].city,choice:"receiver",'app_user_id' : this.model.user_id,'food_type' : localStorage.getItem('receiver_food_type'), 'no_of_person' : localStorage.getItem('number_of_person')});
                  		this.fetch.get_waypoints(data).subscribe(res => {
-                    this.closeModal();
+                    // this.closeModal();
+                    this.search_type = 'ontheway';
               			this.model.search = false;
               			if(res.data != null && res.data.total_food_for != 0){
               				this.data = res;

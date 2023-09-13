@@ -13,6 +13,7 @@ import { PickupSuccessModalPage } from './modal/pickup-success-modal/pickup-succ
 import { SimplePushNotificationPage } from './modal/simple-push-notification/simple-push-notification.page';
 import { JsonpClientBackend } from '@angular/common/http';
 import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
+
 declare var FCMPlugin: any;
 @Component({
   selector: 'app-root',
@@ -34,7 +35,7 @@ isLanguageChanged: boolean;
     private fetch: FetchService,
     private storage : StorageService,
     private modalController : ModalController,
-    private fcm : FCM
+    private fcm : FCM,
   ) {
     
     var self = this;
@@ -46,7 +47,7 @@ isLanguageChanged: boolean;
     this.model.fromNotification = false;
     
     this.pushSetup();
-    
+
     
      document.addEventListener('deviceready',() => {
       
