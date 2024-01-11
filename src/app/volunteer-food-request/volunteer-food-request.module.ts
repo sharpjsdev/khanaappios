@@ -8,12 +8,15 @@ import { VolunteerFoodRequestPageRoutingModule } from './volunteer-food-request-
 
 import { VolunteerFoodRequestPage } from './volunteer-food-request.page';
 import { CaptchaComponent } from '../captcha/captcha.component';
+import { FooterPageModule } from "../footer/footer.module";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    VolunteerFoodRequestPageRoutingModule
+    VolunteerFoodRequestPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [VolunteerFoodRequestPage,CaptchaComponent]
 })

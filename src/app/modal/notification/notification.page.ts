@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchService } from '../../fetch.service';
 import { StorageService } from '../../storage.service';
+import { Router } from '@angular/router';
+import { NotificationCountService } from '../../notification-count.service';
+
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.page.html',
@@ -8,10 +11,15 @@ import { StorageService } from '../../storage.service';
 })
 export class NotificationPage implements OnInit {
   model:any={};
-  notifications:any=[]; 
+  notifications:any=[];
+  notifications_admin: any = []; 
+  selectedAll: boolean = false;
+
   constructor( 
 	private fetch: FetchService,
-  private storage: StorageService) { }
+  private storage: StorageService,
+  private router: Router,
+  private NotificationCount:NotificationCountService) { }
 
   ngOnInit() {
     this.model.is_volunteer = 0;
@@ -70,14 +78,52 @@ export class NotificationPage implements OnInit {
     });
     this.fetch.get_notification(this.model.user_id).subscribe(res => {
       this.notifications = res['data'];
-      
+      this.notifications_admin = res['notifications'];
     });
   }
   async closeModal() {
-    this.fetch.read_notification(this.model.user_id).subscribe(res => {
+    // this.fetch.read_notification(this.model.user_id).subscribe(res => {
       
+    // });
+  } 
+  notification(id,index){
+    let data = {
+      user_id: this.model.user_id,
+      notification: [id],
+      notification_admin: []
+    }
+    if (index > -1) {
+      this.notifications.splice(index, 1); 
+    }
+    let tot = this.notifications.length + this.notifications_admin.length;
+    this.NotificationCount.updateData(tot);
+    this.fetch.read_notification_by_id(data).subscribe(res => {
       
     });
-  } 
+  }
+
+  notification_admin(id,index){
+    let data = {
+      user_id: this.model.user_id,
+      notification: [],
+      notification_admin: [id]
+    }
+    if (index > -1) {
+      this.notifications_admin.splice(index, 1); 
+    }
+    let tot = this.notifications.length + this.notifications_admin.length;
+    
+    this.NotificationCount.updateData(tot);
+    this.fetch.read_notification_by_id(data).subscribe(res => {
+      
+    });
+  }
+
+  markAllAsRead(){
+    this.NotificationCount.updateData(0);
+    this.fetch.read_notification(this.model.user_id).subscribe(res => {
+      this.router.navigate(['/home']);
+    });
+  }  
 
 }

@@ -7,7 +7,7 @@ export const environment = {
   base_url: 'https://khana.app/api/api/',
   image_url : 'https://khana.app/',
   //phone_no : '08069038801'
-  phone_no : '08069010173'
+  phone_no : '08045889184'
 };
 
 /*

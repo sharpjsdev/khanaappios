@@ -17,6 +17,7 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { DatePipe } from '@angular/common';
 import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +40,8 @@ import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
   DatePipe,
   Diagnostic,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FCM
+    FCM,
+    Network
   ],
   bootstrap: [AppComponent]
 })

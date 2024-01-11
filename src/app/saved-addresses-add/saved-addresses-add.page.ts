@@ -139,13 +139,16 @@ export class SavedAddressesAddPage implements OnInit {
 }
   lastLatLng(marker){
     google.maps.event.addListener(marker, 'dragend', () =>{
-		
         this.model.LastLat= marker.position.lat();
 		this.model.LastLng= marker.position.lng();
 		this.showAddress(this.model.LastLat,this.model.LastLng);
     });
   }
-
+  lastLatLng2(marker){
+        this.model.LastLat= marker.position.lat();
+		this.model.LastLng= marker.position.lng();
+	    this.showAddress(this.model.LastLat,this.model.LastLng);
+  }
   showAddress(lat, lon){
 	
 	var self = this;
@@ -342,6 +345,6 @@ export class SavedAddressesAddPage implements OnInit {
     google.maps.event.addListener(this.marker, 'click', () => {
     infoWindow.open(this.map, this.marker);
     });
-	this.lastLatLng(this.marker);
+	this.lastLatLng2(this.marker);
 }
 }

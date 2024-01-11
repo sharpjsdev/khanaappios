@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PincodeErrorComponentComponent } from './pincode-error-component/pincode-error-component.component';
 
 const routes: Routes = [
   // {
@@ -304,7 +305,11 @@ const routes: Routes = [
   {
     path: 'screen-after-volunteer-not-found/:id/:id2',
     loadChildren: () => import('./screen-after-volunteer-not-found/screen-after-volunteer-not-found.module').then( m => m.ScreenAfterVolunteerNotFoundPageModule)
-  }
+  },
+  {
+    path: 'pincode-error-component',
+    component: PincodeErrorComponentComponent
+ }
   
 
  

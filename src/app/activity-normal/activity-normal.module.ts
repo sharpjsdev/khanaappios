@@ -10,13 +10,16 @@ import { ActivityNormalPage } from './activity-normal.page';
 
 import { PipesModule } from '../pipes/pipes.module';
 import { CaptchaComponent } from '../captcha/captcha.component';
+import { FooterPageModule } from "../footer/footer.module";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
 	PipesModule,
-    ActivityNormalPageRoutingModule
+    ActivityNormalPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [ActivityNormalPage,CaptchaComponent]
 })

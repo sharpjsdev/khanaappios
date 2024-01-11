@@ -11,9 +11,12 @@ import { PushNotificationPage } from './modal/push-notification/push-notificatio
 import { DeliverFoodVolunteerPage } from './modal/deliver-food-volunteer/deliver-food-volunteer.page';
 import { PickupSuccessModalPage } from './modal/pickup-success-modal/pickup-success-modal.page';
 import { SimplePushNotificationPage } from './modal/simple-push-notification/simple-push-notification.page';
+import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx';
 import { JsonpClientBackend } from '@angular/common/http';
 import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
+import { Network } from '@ionic-native/network/ngx';
 
+declare var google: any;
 declare var FCMPlugin: any;
 @Component({
   selector: 'app-root',
@@ -21,13 +24,16 @@ declare var FCMPlugin: any;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  options : GeolocationOptions;
 model:any={};
 user_id:any;
+pincode;
 isLanguageChanged: boolean;
 
   public selectedIndex = 0;
   public appPages = [];
   constructor(
+    private geolocation: Geolocation,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -36,6 +42,7 @@ isLanguageChanged: boolean;
     private storage : StorageService,
     private modalController : ModalController,
     private fcm : FCM,
+    private network: Network
   ) {
     
     var self = this;
@@ -52,7 +59,6 @@ isLanguageChanged: boolean;
      document.addEventListener('deviceready',() => {
       
      
-       
         // FCMPlugin.getToken((token: any) => {
         //   alert(token);
         //   localStorage.setItem('device_token', JSON.stringify(token));
@@ -191,6 +197,7 @@ isLanguageChanged: boolean;
     if (!this.platform.is('cordova')) {
       return;
     }
+   
     let token = await this.fcm.getToken();
     //alert(token);
     localStorage.setItem('device_token', JSON.stringify(token));
@@ -211,8 +218,8 @@ isLanguageChanged: boolean;
         var self = this;
         if (payload.wasTapped) 
           {
-            
             var jd = JSON.parse(payload.message);
+            
             if(jd.check_val == '1' ){
               self.showNotification(jd.body,jd.my_array,jd.donor_details,jd.request_id);
             }else if(jd.check_val == '2' ){
@@ -227,6 +234,7 @@ isLanguageChanged: boolean;
             //alert("Received in foreground");
              var jd = JSON.parse(payload.message);
             //;
+            
             if(jd.check_val == '1' ){
               this.showNotification(payload.body,jd.my_array,jd.donor_details,jd.request_id);
             }else if(jd.check_val == '2' ){
@@ -246,47 +254,151 @@ isLanguageChanged: boolean;
 
    
 
-   let pushPayload = await this.fcm.getInitialPushPayload();
-    console.log(pushPayload);
-    //alert(this.model.fromNotification);
-    if(!this.model.fromNotification){
-      console.log((localStorage.getItem('isotpverified')));
-      if(JSON.parse(localStorage.getItem('user_registerd')) != null){
-        this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-        this.router.navigate(['/home']);
-        //this.navCtrl.navigateBack(['/home']);
-      }else if((localStorage.getItem('user_id')) != undefined  && localStorage.getItem('isotpverified') == '1'){
-        if(JSON.parse(localStorage.getItem('user_id')) != null){
-          this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-          this.router.navigate(['/register-as-volunteer']);
+  //  let pushPayload = await this.fcm.getInitialPushPayload();
+  //   console.log(pushPayload);
+
+  this.fcm.getInitialPushPayload().then( data => {
+      if(data) {
+        if(data.wasTapped) {
+             // we know the user launched the app by clicking on the notification
+
+             // data here contains the data object we defined earlier so you can do whatever you want with the data like navigate to a specific page etc.
+             
+             var jd = JSON.parse(data.message);
+            
+            if(jd.check_val == '1' ){
+              this.showNotification(jd.body,jd.my_array,jd.donor_details,jd.request_id);
+            }else if(jd.check_val == '2' ){
+              this.showFoodDeliverPopupToVolunteer(jd.my_array);
+            }else if(jd.check_val == '3' ){
+              this.showFoodDeliverPopupToDonor(jd.my_array);
+            }
         }
-        
-        //this.navCtrl.navigateBack(['/register-as-volunteer']);
-      }else if(localStorage.getItem('isotpverified') == '0'){
-        this.router.navigate(['/otp']);
-      }else{
-        this.router.navigate(['/language']);
       }
-  }
+    })  
+    //alert(this.model.fromNotification);
+    
+
+    
+      if(!this.model.fromNotification){
+        console.log((localStorage.getItem('isotpverified')));
+        if(JSON.parse(localStorage.getItem('user_registerd')) != null){
+          this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
+          this.router.navigate(['/home']);
+          //this.navCtrl.navigateBack(['/home']);
+        }else if((localStorage.getItem('user_id')) != undefined  && localStorage.getItem('isotpverified') == '1'){
+          if(JSON.parse(localStorage.getItem('user_id')) != null){
+            this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
+            this.router.navigate(['/register-as-volunteer']);
+          }
+          
+          //this.navCtrl.navigateBack(['/register-as-volunteer']);
+        }else if(localStorage.getItem('isotpverified') == '0'){
+          this.router.navigate(['/otp']);
+        }else{
+          this.router.navigate(['/language']);
+        }
+    }
+  
   } 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
 	  this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();
+
+      var self = this;
+      self.options = {
+      enableHighAccuracy: false,
+      };
+      self.geolocation.getCurrentPosition(self.options).then((resp) => {
+       console.log('inside');
+       self.model.lat = resp.coords.latitude;
+       self.model.lon = resp.coords.longitude;
+       
+       self.showAddress(self.model.lat, self.model.lon);
+     
+     }); 
       
     });
     this.checkVolunteer();
     //alert('dsd');
     
   }
+
+  showAddress(lat, lon){
+    var self = this;
+    let latLng = new google.maps.LatLng(lat, lon);
+    let geocoder = new google.maps.Geocoder();
+    
+    geocoder.geocode({ 'latLng': latLng }, (results, status) => {
+  
+      console.log("all results",results);
+      self.pincode = results[0].address_components[5].short_name;
+      
+      this.model.colony_name = results[0].formatted_address;
+      console.log(this.model.colony_name);
+      
+      results[0].address_components.forEach(function(val,i){
+        
+        if (val.types[0] == "locality"){
+          
+          self.model.city = val.long_name;
+        }
+        if (val.types[0] == "administrative_area_level_1"){
+          
+          self.model.state = val.long_name;
+        } 
+        if (val.types[0] == "country"){
+          
+          self.model.country = val.long_name;
+        }
+        if (val.types[0] == "postal_code"){
+          
+          self.model.postalCode = val.long_name;
+
+          
+         
+          console.log(self.model.postalCode+"postalCode");
+        }   
+    
+        });
+        
+        setTimeout(()=>{
+          console.log(self.model.postalCode,"--")
+          if(self.model.postalCode){
+            self.closeModal(self.model.postalCode);
+          }
+        },1000)
+    });
+  }
+
+  async closeModal(code) {
+    
+    localStorage.setItem('pincode',code.toString());
+   if(this.user_id ){
+        console.log(this.user_id+code,'user-id');
+          var datap={
+            pincode:code 
+          };   
+        console.log("posted data"+datap); 
+        this.fetch.check_pincode(datap).subscribe(res=>{
+        console.log(res,"check_pincode");
+            if (res.success== true){
+              this.router.navigate(['/pincode-error-component']);
+              localStorage.setItem('success','true');
+            } 
+      });
+   }
+}
+
   ngOnInit() {
     
     var self = this;
     var lang_code = JSON.parse(localStorage.getItem('lang'));
       const path = window.location.pathname.split('folder/')[1];
     
-	//console.log("app.component"); 
+	  //console.log("app.component"); 
 
  
     if (path !== undefined) {

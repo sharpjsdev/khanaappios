@@ -15,10 +15,12 @@ declare var $: any;
   styleUrls: ['./on-the-way.page.scss'],
 })
 export class OnTheWayPage implements OnInit {
+  allpoints;
+  pointarr=[];
   sources;
   destination;
   autocomplete:any={};
-
+  data;
   latitude: number = 0;
   longitude: number = 0;
   geo: any;
@@ -287,7 +289,15 @@ export class OnTheWayPage implements OnInit {
     // alert("lat: " + this.latitude + ", long: " + this.longitude);
    });
    
- }
+ }  
+
+ getLiText(point) {
+  let  lat = point.lat(),
+       lng = point.lng();
+return {lat: lat, lng:lng}
+}
+
+
 
  showRoutes(){
   
@@ -313,6 +323,34 @@ export class OnTheWayPage implements OnInit {
           if (status === "OK") {
            
             this.directionsRenderer.setDirections(response);
+
+            if (response.routes && response.routes.length > 0) {
+
+              console.log("this is response:",response);
+              
+              var routes = response.routes;
+              for (var j = 0; j < routes.length; j++) {
+                  var points = routes[j].overview_path;
+                  // var ul = document.getElementById("vertex");
+                  for (var i = 0; i < points.length; i++) {
+                      // var li = document.createElement('li');
+                      // li.innerHTML = this.getLiText(points[i]);
+                      var result = this.getLiText(points[i]);
+                      
+                      // ul.appendChild(li);
+                    //  this.resultarr.push(result.lat,result.lng);
+                     this.allpoints = new google.maps.LatLng(result.lat,result.lng);
+                    this.pointarr.push(this.allpoints)
+                     console.log(this.allpoints);
+                     this.model.allpoints = this.allpoints;
+                     this.model.pointarr = this.pointarr;
+                     this.model.alllatlng = result;
+                      
+                  }
+              }
+            }
+
+
             this.directionsRenderer.setMap(this.map);
             var startLocation = new Object();
             var endLocation = new Object();

@@ -3,3 +3,16 @@
     color:red;
     margin-left: 8px;
 }
+ion-toggle {
+    --background: rgb(179, 179, 179);
+    --background-checked: #7be0da;
+  
+    --handle-background: white;
+    --handle-background-checked: #419B95;
+  }
+.delete-account {
+    padding: 15px;
+    font-size: 18px;
+    color: #419b95;
+    cursor: pointer;
+}

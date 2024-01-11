@@ -58,6 +58,12 @@
       "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
       "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
       "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.food.forAll"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.food.forAll"
     }
   },
   "dependent_plugins": {

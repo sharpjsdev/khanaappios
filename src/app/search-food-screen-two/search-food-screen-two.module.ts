@@ -9,13 +9,16 @@ import { SearchFoodScreenTwoPageRoutingModule } from './search-food-screen-two-r
 import { SearchFoodScreenTwoPage } from './search-food-screen-two.page';
 
 import { CaptchaComponent } from './../captcha/captcha.component';
+import { FooterPageModule } from "../footer/footer.module";
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchFoodScreenTwoPageRoutingModule
+    SearchFoodScreenTwoPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [SearchFoodScreenTwoPage , CaptchaComponent]
 })

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError,timeout } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,throwError } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -118,6 +118,9 @@ export class FetchService {
 	nearest_donors(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'nearest_donors',data);
 	}
+	check_pincode(data): Observable<any> { 
+		return this.http.post(environment.base_url + 'check_pincode',data);
+	}
 	distanceAndTime(slat, slon, dlat, dlon, mode): Observable<any> { 
 	let headers = new HttpHeaders();
 		  headers.set('Authorization', 'Basic'); 
@@ -177,11 +180,26 @@ export class FetchService {
 	volunteer_cancel_requested_food(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'cancel-receive-food',data);
 	}
+	getAllRowWithoutWhere(model): Observable<any> { 
+		return this.http.post(environment.base_url + 'getAllRowWithoutWhere',model);
+	}
+	getTestimonialByLanguage(model): Observable<any> { 
+		return this.http.post(environment.base_url + 'get-testimonial-by-lang',model);
+	}
+	deleteMyAccount(model): Observable<any> { 
+		return this.http.post(environment.base_url + 'delete-my-account',model);
+	}
+	notify(data): Observable<any> { 
+		return this.http.post(environment.base_url + 'notify',data);
+	}
 	req_list(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'food-request',data);
 	}
 	v_edit(id): Observable<any> { 
 		return this.http.get(environment.base_url + 'volunteer_edit/'+id);
+	}
+	get_waiting_food(): Observable<any> { 
+		return this.http.get(environment.base_url + 'get_waiting_food');
 	}
 	cancel_all_request(id):Observable<any> {
 		return this.http.get(environment.base_url + 'cancel_all_request/'+id);
@@ -216,8 +234,8 @@ export class FetchService {
 	total_blessings(id): Observable<any> { 
 		return this.http.get(environment.base_url + 'total_blessings/'+id);
 	}
-	food_quality_weekly(id): Observable<any> { 
-		return this.http.get(environment.base_url + 'weekly_food_quality/'+id);
+	food_quality_weekly(data): Observable<any> { 
+		return this.http.post(environment.base_url + 'weekly_food_quality', data);
 	}
 	weekly_packaging(id): Observable<any> { 
 		return this.http.get(environment.base_url + 'weekly_packaging/'+id);
@@ -297,6 +315,12 @@ export class FetchService {
 	get_volunteer_waypoints_new(data): Observable<any> {
 		return this.http.post(environment.base_url + 'get_volunteer_waypoints_new',data);
 	}
+	alert_volunteer_on_true(data): Observable<any> {
+		return this.http.post(environment.base_url + 'alert_volunteer_on_true',data);
+	}
+    store_food_for_waiting(data): Observable<any> {
+		return this.http.post(environment.base_url + 'store_food_for_waiting',data);
+	}
 	get_volunteer_waypoints_by_condition(data): Observable<any> {
 		return this.http.post(environment.base_url + 'get_volunteer_waypoints_by_condition',data);
 	}
@@ -338,7 +362,8 @@ export class FetchService {
 	}
 	convert_to_pickup_request(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'convert_to_pickup_request',data);
-	}convert_to_pickup_request_no_volunteer(data): Observable<any> { 
+	}
+	convert_to_pickup_request_no_volunteer(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'convert_to_pickup_request_no_volunteer',data);
 	}
 	donate_later_food(data): Observable<any> { 
@@ -412,5 +437,22 @@ export class FetchService {
 	}
 	updateDeviceToken(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'update_device_token',data);
+	}
+	checkDeviceId(data): Observable<any> { 
+		return this.http.post(environment.base_url + 'check_unique_login',data);
+	}
+	detectSlowNetwork(): Observable<any> { 
+		return this.http.get(environment.base_url + 'language').pipe(
+			timeout(1000), // 5000 milliseconds (5 seconds) timeout
+			catchError(error => {
+			  
+			  alert("You have slow internet connection");
+			  return throwError(error);
+			})
+		  );
+	}
+	read_notification_by_id(data): Observable<any> { 
+		return this.http.post(environment.base_url + 'read_notification_by_id',data);
+
 	}
 }

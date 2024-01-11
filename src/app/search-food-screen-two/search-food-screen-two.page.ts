@@ -18,6 +18,8 @@ declare var google: any;
   styleUrls: ['./search-food-screen-two.page.scss'],
 })
 export class SearchFoodScreenTwoPage implements OnInit {
+  div1;
+  div2;
   model:any={};
   notification:any=[];
   dataReturned: any;
@@ -126,10 +128,11 @@ export class SearchFoodScreenTwoPage implements OnInit {
     }
 
 
-    async closeModal() {
-      const onClosedData: string = '';
-      await this.modalController.dismiss(onClosedData);
-    }
+      async closeModal() {
+        const onClosedData: string = '';
+        await this.modalController.dismiss(onClosedData);
+      }
+
     openModalCurrentLocation() {
       this.model.click = true;
       this.search_type = 'nearby';
@@ -197,9 +200,33 @@ export class SearchFoodScreenTwoPage implements OnInit {
               			this.model.search = false;
               			if(res.data != null && res.data.total_food_for != 0){
               				this.data = res;
+                      console.log("donar data",this.data);
+                      
+
+
+console.log("donar lat long:",this.data.data.latitude, this.data.data.longitude);
+console.log("start latlong:",this.ontheway_data[0].startLat,this.ontheway_data[0].startLng);
+console.log("end latlong:", this.ontheway_data[0].endLat,this.ontheway_data[0].endLng);
+
+
+var position = new google.maps.LatLng(this.data.data.latitude, this.data.data.longitude); 
+console.log("path all points:",this.ontheway_data[0].pointarr);
+console.log("position:", position);
+
+const volcheck = google.maps.geometry.poly.isLocationOnEdge(position, new google.maps.Polyline({path:this.ontheway_data[0].pointarr }), 0.0080)
+console.log("donar available:",volcheck);
+
+          
+
+                   if(volcheck === true){
                       //this.router.navigate(['/get-food-nearest-donors',JSON.stringify(this.data),this.location_data.latitude,this.location_data.longitude,this.model.user_id,res.data.id,JSON.stringify(this.location_data)]);
                       this.router.navigate(['/get-food-nearest-donors',JSON.stringify(this.data),this.ontheway_data[0].startLat,this.ontheway_data[0].startLng,this.model.user_id,res.data.id,JSON.stringify(this.ontheway_data),'1']);
-              			}else{
+              			}else{            				
+                      
+                    this.data = {'success' : true, 'data' : null};
+                    this.emptyMessage('ontheway',this.ontheway_data,this.model.user_id);
+                  }
+                  }else{
               				this.data = {'success' : true, 'data' : null};
                       this.emptyMessage('ontheway',this.ontheway_data,this.model.user_id);
               			}
@@ -210,14 +237,7 @@ export class SearchFoodScreenTwoPage implements OnInit {
               		 })
               }
 
-
-            // this.location_data = null;
           }
-          // let data = JSON.stringify({'app_user_id' : this.model.user_id,'latitude' : this.location_data.latitude, 'longitude' : this.location_data.longitude, 'colony_name' : this.location_data.colony_name, 'city' : this.location_data.city, 'state' : this.location_data.state, 'country' : this.location_data.country, 'postal_code' : this.location_data.postalCode});
-          // this.fetch.recomended_distance(data).subscribe(res => {
-          // 	this.model.recommended_distance = res.data;
-          // });
-      
             }
           });
       

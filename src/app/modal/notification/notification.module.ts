@@ -8,12 +8,15 @@ import { NotificationPageRoutingModule } from './notification-routing.module';
 
 import { NotificationPage } from './notification.page';
 import { CaptchaComponent } from '../../captcha/captcha.component';
+import { FooterPageModule } from "../../footer/footer.module";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotificationPageRoutingModule
+    NotificationPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [NotificationPage,CaptchaComponent]
 })

@@ -1,0 +1,40 @@
+<ion-content>
+  <ion-toolbar>
+	<ion-grid [fixed]="true">
+		<ion-row>
+			<ion-col (click)="changeCurrentUrl('home')" [ngClass]="(activetab == 'home') ? 'active-col' : ''">
+				<img [src]="src.home"><br>
+			<ion-label class="size_12 medium" [ngClass]="(activetab == 'home') ? 'active-tab' : ''">{{model.key_text5}}</ion-label>
+			</ion-col>
+		  <ion-col (click)="changeCurrentUrl('activity-normal')" [ngClass]="(activetab == 'activity') ? 'active-col' : ''">
+			<img [src]="src.activity"><br>
+			<ion-label class="size_12 medium" [ngClass]="(activetab == 'activity') ? 'active-tab' : ''">{{model.key_text6}}</ion-label>
+		  </ion-col>
+		  <ion-col [ngClass]="(activetab == 'volunteer') ? 'active-col' : ''" *ngIf="model.is_volunteer== 1" (click)="changeCurrentUrl('volunteer-detail')">
+			<img [src]="src.volunteer"><br>
+			<ion-label class="size_12 medium" [ngClass]="(activetab == 'volunteer') ? 'active-tab' : ''">{{model.key_text7}}</ion-label>  
+		</ion-col>
+		  
+		</ion-row>
+	  </ion-grid>
+	<!-- <ion-buttons slot="start">
+		<ion-button  value="activity" >
+			</ion-button>
+		  <ion-button >
+			 
+		</ion-button>
+	</ion-buttons> -->
+	  
+		<!-- <ion-segment color="transparent" value="home">
+			<ion-segment-button >
+			  
+			</ion-segment-button>
+			<ion-segment-button>
+			      
+			</ion-segment-button>
+			<ion-segment-button >
+				 
+			</ion-segment-button>
+		</ion-segment>       -->
+	</ion-toolbar>
+</ion-content>

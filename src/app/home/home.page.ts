@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { FetchService } from '../fetch.service';
 import { Diagnostic } from "@ionic-native/diagnostic/ngx";
+import { BrowserTab } from '@ionic-native/browser-tab/ngx';
 
 import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx';  
 declare var FCMPlugin: any;
@@ -29,8 +30,9 @@ options : GeolocationOptions;
 	private platform: Platform,
 	private geolocation: Geolocation,
 	private fetch: FetchService,
-		private diagnostic: Diagnostic,
-		private alertCtrl:AlertController,
+	private diagnostic: Diagnostic,
+	private alertCtrl:AlertController,
+	private browserTab: BrowserTab,
   ) { 
 	this.platform.backButton.subscribeWithPriority(10, () => {
 		this.router.navigate(['/home']);
@@ -39,6 +41,9 @@ options : GeolocationOptions;
   }
 
   ngOnInit() { 
+	this.fetch.detectSlowNetwork().subscribe(res => {
+		
+	  });
 	let platform = '';
 	document.addEventListener('deviceready', () => {
 		platform = device.platform;
@@ -71,13 +76,7 @@ options : GeolocationOptions;
 	}
   
   ionViewWillEnter(){
-  	this.diagnostic.isLocationAvailable().then(resp =>{
-  		if(!resp){
-  			this.presentAlertAuth();
-  		}
-  	}).catch((error: any) => {
-  		this.presentAlertAuth();
-  	});
+  	
 
 	localStorage.removeItem('receiver_food_type'); 
 	localStorage.removeItem('number_of_person'); 
@@ -115,6 +114,17 @@ options : GeolocationOptions;
 	});
   }
 	ionViewDidEnter(){
+		
+			this.diagnostic.isLocationAvailable().then(resp =>{
+				
+				if(!resp){
+					this.presentAlertAuth();
+				}
+			}).catch((error: any) => {
+				
+				this.presentAlertAuth();
+			});
+	
 
 		localStorage.removeItem('temp_start_address');
 		localStorage.removeItem('temp_end_address');
@@ -187,6 +197,7 @@ options : GeolocationOptions;
   }
  
   go_to_volunteer(){
+	// this.browserTab.openUrl('http://maps.google.com/maps?q=loc:23.179300+75.784912');
 	this.router.navigate(['/volunteer-food-request']);  
   }
 }

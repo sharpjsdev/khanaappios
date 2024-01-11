@@ -30,6 +30,20 @@
     </div> 
     <span class="error" id="foodtype">{{model.key_valid}}</span>  
   </div>
+  <div>
+    <!-- <ion-item>
+      <ion-label>CURRENT UPDATE</ion-label>
+      <ion-toggle  [(ngModel)]="app_noti" (ionChange)="appNotifications(app_noti)"></ion-toggle>
+    </ion-item> -->
+  
+    <ion-item>
+      <ion-label>{{model.other_admin}}</ion-label>
+      <ion-toggle  [(ngModel)]="update_noti" (ionChange)="adminNotifications(update_noti)"></ion-toggle>
+    </ion-item>
+  </div>
+  <div class="delete-account">
+    <ion-label (click)="deleteAccount()"><ion-icon name="trash-outline"></ion-icon> {{model.key_text13}}</ion-label>
+  </div>
 
 </ion-content>
 <ion-footer>

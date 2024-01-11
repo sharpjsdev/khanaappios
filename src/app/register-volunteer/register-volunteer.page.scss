@@ -17,14 +17,33 @@
     color:red;
     display: none;
 }
+.mt3{
+    margin-top: 3px !important;
+}
 ion-toggle {
     --background-checked: #ffc9c1;
 }
 .error_msg_from_time{
     color:red;
     display: none;
+    text-align: center;
+    position: relative;
+    top: 5px;
 }
 .error_msg_to_time{
     color:red;
     display: none;
+    text-align: center;
+    position: relative;
+    top: -5px;
+}
+#t_time{
+    position: absolute;
+    left: 52px;
+    bottom: -8px;
+}
+#t_time1{
+    position: absolute;
+    left: 52px;
+    bottom: -8px;
 }

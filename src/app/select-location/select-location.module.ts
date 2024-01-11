@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SelectLocationPageRoutingModule } from './select-location-routing.module';
 
 import { SelectLocationPage } from './select-location.page';
+import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SelectLocationPageRoutingModule
+    SelectLocationPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [SelectLocationPage]
 })

@@ -127,8 +127,10 @@ export class RegisterVolunteerPage implements OnInit {
 				this.model.is_address = true;
 				this.model.volunteer_id = res.data.id;
 				var time_split = res.data.working_hour.split("-");
-				this.from_Time = time_split[0];
-				this.to_Time = time_split[1];
+				if(res.data.working_hour){
+					this.from_Time = time_split[0];
+					this.to_Time = time_split[1];
+				}
 				
 				this.model.app_status = res.data.app_status == 1 ? true : false;
 			});
@@ -281,7 +283,6 @@ export class RegisterVolunteerPage implements OnInit {
     return await modal.present();
   }
   
- 
   async presentAlert() {
 		const alert = await this.alertController.create({
 			cssClass: 'my-custom-class',
@@ -290,6 +291,7 @@ export class RegisterVolunteerPage implements OnInit {
 		});
 		await alert.present();
   }
+
   async msgAlert(msg) {
 	const alert = await this.alertController.create({
 		cssClass: 'my-custom-class',
@@ -301,56 +303,41 @@ export class RegisterVolunteerPage implements OnInit {
   from(event){
 
 	this.from_Time = new Date(event.target.value);
+	
+	$('.error_msg_from_time').css('display','none');
+	$('#ft').removeClass('error_border');
 
     this.from_Time = this.formatAMPM(this.from_Time);
-
+    $("#t_time").hide();
     console.log(this.from_Time);
 
-    // this.datePicker.show({
-    //   date: new Date(),
-    //   mode: 'time',
-    //   androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT,
-    //   okText:"Save Time",
-    //   nowText:"Set Now"
-    // }).then(
-    //   time => {
-    //     this.fromTime = this.formatAMPM(time);
-    //   },
-    //   err => console.log('Error occurred while getting time: '+ JSON.stringify(err))
-    // );
   } 
   to(event){
 
 	this.to_Time = new Date(event.target.value);
-
+	
+	$('.error_msg_to_time').css('display','none');
+	
+	$('#tt').removeClass('error_border');
     this.to_Time = this.formatAMPM(this.to_Time);
-
+	$("#t_time1").hide();
     console.log(this.to_Time);
-
-    // this.datePicker.show({
-    //   date: new Date(),
-    //   mode: 'time',
-    //   androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT,
-    //   okText:"Save Time",
-    //   nowText:"Set Now"
-    // }).then(
-    //   time => {
-    //     this.toTime =  this.formatAMPM(time);
-    //   },
-    //   err => console.log('Error occurred while getting time: '+ JSON.stringify(err))
-    // );
 
   }
   
   formatAMPM(date) {
     var hours = date.getHours();
     var minutes = date.getMinutes();
-    var ampm = hours >= 12 ? 'pm' : 'am';
+    var ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? '0'+minutes : minutes;
     var strTime = hours + ':' + minutes + ' ' + ampm;
     return strTime;
+  }
+  nameChange(){
+	$('#shop_name').removeClass('error_border');
+	$('.error_msg_shop_name').css('display','none');
   }
 
   register(){
@@ -362,9 +349,9 @@ export class RegisterVolunteerPage implements OnInit {
 	if(shop_name == '' && this.from_Time == '' && this.to_Time == ''){
 		this.model.search = false;
 		
-		$('#shop_name').addClass('error_border');
-		$('#from_time').addClass('error_border');
-		$('#to_time').addClass('error_border');
+	    $('#shop_name').addClass('error_border');
+		$('#ft').addClass('error_border');
+		 $('#tt').addClass('error_border');
 		$('.error_msg_from_time').css('display','block');
 		$('.error_msg_to_time').css('display','block');
 		$('.error_msg_shop_name').css('display','block');
@@ -373,8 +360,9 @@ export class RegisterVolunteerPage implements OnInit {
 	else if(shop_name == ''){
 		this.model.search = false;
 		$('#shop_name').addClass('error_border');
-		$('#from_time').removeClass('error_border');
-		$('#to_time').removeClass('error_border');
+		$('#ft').removeClass('error_border');
+		$('#tt').removeClass('error_border');
+		
 		$('.error_msg_from_time').css('display','none');
 		$('.error_msg_to_time').css('display','none');
 		$('.error_msg_shop_name').css('display','block');
@@ -382,8 +370,8 @@ export class RegisterVolunteerPage implements OnInit {
 	}else if(this.from_Time == ''){
 		this.model.search = false;
 		$('#shop_name').removeClass('error_border');
-		$('#from_time').addClass('error_border');
-		$('#to_time').removeClass('error_border');
+		$('#ft').addClass('error_border');
+		$('#tt').removeClass('error_border');
 		$('.error_msg_from_time').css('display','block');
 		$('.error_msg_to_time').css('display','none');
 		$('.error_msg_shop_name').css('display','none');
@@ -391,8 +379,8 @@ export class RegisterVolunteerPage implements OnInit {
 	}else if(this.to_Time == ''){
 		this.model.search = false;
 		$('#shop_name').removeClass('error_border');
-		$('#from_time').removeClass('error_border');
-		$('#to_time').addClass('error_border');
+		$('#ft').removeClass('error_border');
+		$('#tt').addClass('error_border');
 		$('.error_msg_from_time').css('display','none');
 		$('.error_msg_to_time').css('display','block');
 		$('.error_msg_shop_name').css('display','none');
@@ -400,8 +388,8 @@ export class RegisterVolunteerPage implements OnInit {
 		// this.presentAlert();
 		this.model.search = false;
 		$('#shop_name').removeClass('error_border');
-		$('#from_time').removeClass('error_border');
-		$('#totime').removeClass('error_border');
+		$('#ft').removeClass('error_border');
+		$('#tt').removeClass('error_border');
 		$('.error_msg_from_time').css('display','none');
 		$('.error_msg_to_time').css('display','none');
 		$('.error_msg_shop_name').css('display','none');
@@ -411,8 +399,8 @@ export class RegisterVolunteerPage implements OnInit {
 	else{
 		
 		$('#shop_name').removeClass('error_border');
-		$('#from_time').removeClass('error_border');
-		$('#totime').removeClass('error_border');
+		$('#ft').removeClass('error_border');
+		$('#tt').removeClass('error_border');
 		$('.error_msg_from_time').css('display','none');
 		$('.error_msg_to_time').css('display','none');
 		$('.error_msg_shop_name').css('display','none');
@@ -462,6 +450,8 @@ export class RegisterVolunteerPage implements OnInit {
   
 	modal.onDidDismiss().then((dataReturned) => {
 	  this.openModalCurrentLocation();
+	  $('#shop_location').removeClass('error_border');
+	  $('.error_msg_shop_location').css('display','none');
 	});
   
 	return await modal.present();

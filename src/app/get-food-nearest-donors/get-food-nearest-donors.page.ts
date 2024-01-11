@@ -7,6 +7,7 @@ import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ion
 import { NotificationPage } from '../modal/notification/notification.page';
 import { ModalController } from '@ionic/angular';
 import { RejectGetFoodRequestPage } from '../modal/reject-get-food-request/reject-get-food-request.page';
+import { ErrorMsgService } from '../error-msg.service';
 declare var google: any;
 declare var $: any;
 
@@ -31,6 +32,7 @@ polylines = [];
 no_of_person: any;
 additional_msg_1 : any = "";
 additional_msg_2 : any = "";
+	disableButton: boolean = false;
   constructor(
 	public modalController: ModalController,
 	private http: HttpClient,
@@ -39,6 +41,7 @@ additional_msg_2 : any = "";
 	private fetch: FetchService,
 	private storage: StorageService,
 	private geolocation: Geolocation,
+	public errorMsg: ErrorMsgService,
   ) { }
 
   ngOnInit() {
@@ -92,6 +95,8 @@ additional_msg_2 : any = "";
 			this.model.key_text15 = item15[lang_code];
 		let item16 = res.find(i => i.key_text === 'GET_FOOD_MSG_5');
 			this.model.key_text16 = item16[lang_code];
+		let item17 = res.find(i => i.key_text === 'FOOD_ALREADY_DONATED_TO_OTHER_DONEES');
+			this.model.key_text17 = item17[lang_code];	
 	//});
 	var data = this.route.snapshot.params['data'];
 	var data2 = this.route.snapshot.params['data2'];
@@ -322,10 +327,11 @@ additional_msg_2 : any = "";
 		return await modal.present();
 	  } 
 	rejectRequest(){
+		this.disableButton = true;
 		this.openRejectModel();
 	}
 	acceptRequest(){
-		
+		this.disableButton = true;
 		this.model.search = true;
 		this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
 		let data;
@@ -342,6 +348,9 @@ additional_msg_2 : any = "";
 		  this.model.search = false;
 		  localStorage.setItem('res.receiver_food_id',res.receiver_food_id);
 		  this.router.navigate(['/get-food-nearest-donors-two-duplicate',this.model.add_id,this.model.r_lat,this.model.r_lon,this.model.r_id,this.model.mode,this.model.d_food_type,res.receiver_food_id]);
+		  }else{
+			this.errorMsg.showModal(this.model.key_text17);
+			this.router.navigate(['/home']);
 		  }
 		}); 
 	}

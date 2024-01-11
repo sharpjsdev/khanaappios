@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { GetFoodSearchWithAddressPageRoutingModule } from './get-food-search-with-address-routing.module';
 
 import { GetFoodSearchWithAddressPage } from './get-food-search-with-address.page';
+import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GetFoodSearchWithAddressPageRoutingModule
+    GetFoodSearchWithAddressPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [GetFoodSearchWithAddressPage]
 })

@@ -15,6 +15,15 @@ declare var $: any;
 })
 export class ProfilePage implements OnInit {
 
+	app_noti;
+	update_noti;
+	
+	notidata={
+		id: "",
+		admin_notification: 0,
+		app_notification: 0
+	}
+
 model:any={};
   constructor(private storage:StorageService, private http: HttpClient,private route: ActivatedRoute,private router: Router,private fetch: FetchService,public alertController: AlertController,private platform: Platform,public datepipe: DatePipe,) { 
 	this.platform.backButton.subscribeWithPriority(10, () => {
@@ -24,6 +33,56 @@ model:any={};
 
   ngOnInit() {
 	this.model.search = false;
+  }
+
+  appNotifications(app_noti){
+	// console.log("$event.detail.checked:",$event.detail.checked);
+	// console.log("$event.detail.value:",$event.detail.value);
+	// console.log("$event",$event);	
+	var id = JSON.stringify(this.model.user_id);
+	
+	if(app_noti == true){
+		this.notidata.app_notification = 0,
+		this.notidata.id = 	id
+	
+	this.fetch.notify(this.notidata).subscribe(res => {
+		console.log("this is notification response",res);
+		
+		})
+	}else{
+		this.notidata.app_notification = 1,
+		this.notidata.id = 	id
+
+		this.fetch.notify(this.notidata).subscribe(res => {
+			console.log("this is notification response",res);
+			
+			})
+	}
+  }
+
+  adminNotifications(update_noti){
+	// console.log("admin $event.detail.checked:",$event.detail.checked);
+	// console.log("admin $event.detail.value:",$event.detail.value);
+	// console.log("admin $event",$event);
+	var id = JSON.stringify(this.model.user_id);
+	
+	if(update_noti == true){
+		this.notidata.admin_notification = 0,
+		this.notidata.id = 	id
+	
+	this.fetch.notify(this.notidata).subscribe(res => {
+		console.log("this is notification response",res);
+		
+		})
+	}else{
+		this.notidata.admin_notification = 1,
+		this.notidata.id = 	id
+
+		this.fetch.notify(this.notidata).subscribe(res => {
+			console.log("this is notification response",res);
+			
+			})
+	}
   }
 
   ionViewWillEnter(){
@@ -64,10 +123,30 @@ model:any={};
 			this.model.succ_msg = item10[lang_code];
 		let item11 = res.find(i => i.key_text === 'OKAY');
 			this.model.okay = item11[lang_code];
+		let item12 = res.find(i => i.key_text === 'OTHER_ADMIN');
+			this.model.other_admin = item12[lang_code];
+		let item23 = res.find(i => i.key_text === 'CANCEL');
+			this.model.key_text23 = item23[lang_code];	
+		let item13 = res.find(i => i.key_text === 'DELETE_MY_ACCOUNT');
+			this.model.key_text13 = item13[lang_code];
+		let item14 = res.find(i => i.key_text === 'DELETE_MY_ACCOUNT_CONFIRM');
+			this.model.key_text14 = item14[lang_code];	
 	//});
 	this.model.user_id = JSON.parse(localStorage.getItem('user_registerd'));
 	let data = JSON.stringify({'id': this.model.user_id});
 	this.fetch.profile(data).subscribe(res => {
+		this.notidata.admin_notification = res['admin_notification'];
+		if(this.notidata.admin_notification == 1){
+            this.update_noti =false;
+		}else{
+			this.update_noti =true;
+		} 
+		this.notidata.app_notification = res['app_notification'];
+		if(this.notidata.app_notification == 1){
+            this.app_noti =false;
+		}else{
+			this.app_noti =true;
+		}
 		this.model.username = res['username'];
 		this.model.dob = res['dob'];
 		this.model.food_type = res['type_of_food_you_prefer'];
@@ -132,5 +211,31 @@ model:any={};
 		});
 	}
   }
+  async deleteAccount(){
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class custom_alert_1',
+	  message: this.model.key_text14,
+      buttons: [
+        {
+          text: this.model.key_text23,
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: this.model.okay,
+          handler: () => {
+			let data = { id : JSON.parse(localStorage.getItem('user_registerd')) }
+			this.fetch.deleteMyAccount(data).subscribe(async (resp) => {
+				localStorage.clear();	
+				this.router.navigate(['/language']);
+			})
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
 }

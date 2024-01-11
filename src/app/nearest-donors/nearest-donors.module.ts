@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { NearestDonorsPageRoutingModule } from './nearest-donors-routing.module';
 
 import { NearestDonorsPage } from './nearest-donors.page';
+import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NearestDonorsPageRoutingModule
+    NearestDonorsPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [NearestDonorsPage]
 })

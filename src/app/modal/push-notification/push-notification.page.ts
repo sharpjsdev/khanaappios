@@ -51,6 +51,8 @@ export class PushNotificationPage implements OnInit {
       this.model.key_text6 = item6[lang_code];
     let item7 = res.find(i => i.key_text === 'FOOD_ALLOTED_TO_OTHER_VOLUNTEER');
       this.model.key_text7 = item7[lang_code];
+    let item8 = res.find(i => i.key_text === 'FOOD_REQUIREMENT_OVER');
+      this.model.key_text8 = item8[lang_code];
   }
 
   acceptRequest(){
@@ -67,13 +69,15 @@ export class PushNotificationPage implements OnInit {
       }
     })
 
-  }
+  } 
 
   async showAlert(msg){
     if(msg == 'Food accepted'){
       msg = this.model.key_text5
     }else if(msg == 'Food alloted to other volunteer'){
       msg = this.model.key_text7
+    }else if(msg == 'Food requirement is over'){
+      msg = this.model.key_text8
     }else{
       msg = this.model.key_text6
     }

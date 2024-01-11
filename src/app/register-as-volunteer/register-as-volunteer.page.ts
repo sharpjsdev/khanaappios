@@ -5,8 +5,9 @@ import { DatePipe } from '@angular/common';
 import { ModalController } from '@ionic/angular';
 import { TermsConditionsPage } from '../modal/terms-conditions/terms-conditions.page';
 import { ErrorMsgService } from '../error-msg.service';
+import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx';
 declare var $: any;
-
+declare var google: any;
 @Component({
   selector: 'app-register-as-volunteer',
   templateUrl: './register-as-volunteer.page.html',
@@ -17,13 +18,65 @@ model:any={};
 app_title:any;
 page_key1:any;
 page_key2:any;
+options : GeolocationOptions;
+pincode;
+user_pincode;
 
-
-  constructor(private errorMsg:ErrorMsgService,private storage:StorageService,private fetch: FetchService,public datepipe: DatePipe,public modalController: ModalController) { }
+  constructor( private geolocation: Geolocation,private errorMsg:ErrorMsgService,private storage:StorageService,private fetch: FetchService,public datepipe: DatePipe,public modalController: ModalController) { }
 
   ngOnInit() {
 	this.model.accept = false;
+	var self = this;
+    self.options = {
+    enableHighAccuracy: false,
+    };
+    self.geolocation.getCurrentPosition(self.options).then((resp) => {
+     self.model.lat = resp.coords.latitude;
+     self.model.lon = resp.coords.longitude;
+     
+      self.showAddress(self.model.lat, self.model.lon);
+   
+   }); 
+  }
+
+  showAddress(lat, lon){
+	var self = this;
+	let latLng = new google.maps.LatLng(lat, lon);
+	let geocoder = new google.maps.Geocoder();
 	
+	geocoder.geocode({ 'latLng': latLng }, (results, status) => {
+  
+	  // console.log("all results",results);
+	  this.pincode = results[0].address_components[5].short_name;
+	  this.model.colony_name = results[0].formatted_address;
+	  //console.log(this.model.colony_name);
+	  
+	  results[0].address_components.forEach(function(val,i){
+		
+		if (val.types[0] == "locality"){
+		  
+		  self.model.city = val.long_name;
+		}
+		if (val.types[0] == "administrative_area_level_1"){
+		  
+		  self.model.state = val.long_name;
+		} 
+		if (val.types[0] == "country"){
+		  
+		  self.model.country = val.long_name;
+		}
+		if (val.types[0] == "postal_code"){
+		  
+		  self.model.postalCode = val.long_name;
+		}   
+	
+		});
+		setTimeout(()=>{
+		  if(self.model.postalCode){
+		   this.user_pincode=self.model.postalCode;
+		  }
+		},1000)
+	});
   }
 
   ionViewWillEnter(){
@@ -130,7 +183,11 @@ page_key2:any;
 	var username = $('.input_username').val();
 	var dob = $('.input_dob').val();
 	var food_type = this.model.food_val;
-
+	var pincode = this.user_pincode;
+	// console.log("pincode",pincode)
+	if(!pincode){
+		pincode = localStorage.getItem('pincode');
+	}
 	if(username == ""){
 		this.errorMsg.showModal(this.model.username_req);
 	}else if(dob == ""){
@@ -140,7 +197,7 @@ page_key2:any;
 	}
 	else{
 		var user_id = JSON.parse(localStorage.getItem('user_id'));
-		let data = JSON.stringify({'id' : user_id, 'username' : username, 'dob' : dob, 'food_type' : food_type});
+		let data = JSON.stringify({'id' : user_id, 'username' : username, 'dob' : dob, 'food_type' : food_type,'pincode':pincode});
 		this.fetch.registerUser(data).subscribe(res => {
 			if(res.success == true){
 				this.openTermsAndConditions();

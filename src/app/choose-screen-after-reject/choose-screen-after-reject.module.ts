@@ -8,12 +8,15 @@ import { ChooseScreenAfterRejectPageRoutingModule } from './choose-screen-after-
 
 import { ChooseScreenAfterRejectPage } from './choose-screen-after-reject.page';
 import { CaptchaComponent } from './../captcha/captcha.component';
+import { FooterPageModule } from "../footer/footer.module";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ChooseScreenAfterRejectPageRoutingModule
+    ChooseScreenAfterRejectPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [ChooseScreenAfterRejectPage,CaptchaComponent]
 })

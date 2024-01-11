@@ -89,6 +89,8 @@ export class GetFoodSearchPage implements OnInit {
 		enableHighAccuracy: false,
 		};
 	  this.geolocation.getCurrentPosition(this.options).then((resp) => {
+		const donar = localStorage.getItem('set_confirm_location_route')
+		
 		this.model.currLat = resp.coords.latitude;
 		this.model.currLng = resp.coords.longitude;
 		var self = this;

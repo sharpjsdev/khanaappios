@@ -16,10 +16,4 @@
   </div> 
 </ion-content> 
 
-<ion-footer>
-  <ion-toolbar>    
-    <div class="app_button">      
-        <button type="btn" (click)="AssignFood()" class="app_btn">Assign Food</button>      
-    </div>
-  </ion-toolbar>
-</ion-footer>
+<app-footer [currentRoute]="'/assign-food'"></app-footer>

@@ -10,6 +10,7 @@ import {
   ModalController, 
   NavParams 
   } from '@ionic/angular';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-current-location-content',
@@ -22,6 +23,8 @@ export class CurrentLocationContentPage implements OnInit {
 sources;
 destination;
 geo: any;
+longitude;
+latitude;
 autocomplete:any={};
 service = new google.maps.places.AutocompleteService();
 directionsService = new google.maps.DirectionsService();
@@ -90,11 +93,25 @@ map: any;
 	if(this.model.confirm_route == null){
 		this.model.confirm_route = 'donate-food';
 	}
-	console.log(this.model.confirm_route);
+
 	this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
 	this.fetch.get_user_locations(this.model.user_id).subscribe(res => {
 		if(res['success'] == true){
 		  this.saved_address = res['data'];
+       
+        let geocoder = new google.maps.Geocoder();
+        var address = this.model.colony_name
+        
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            const latitude = results.geometry.location.lat();
+            const longitude = results.geometry.location.lng();
+            this.model.lat = latitude;
+            this.model.lon = longitude;
+          }
+        });
+      
+
 		}
 	});
 }
@@ -144,7 +161,11 @@ addMarker2(lat, lng){
     google.maps.event.addListener(this.marker, 'click', () => {
     infoWindow.open(this.map, this.marker);
     });
-	this.lastLatLng(this.marker);
+    this.model.LastLat= lat;
+    this.model.LastLng= lng;
+    this.model.lat = this.model.LastLat;
+	  this.model.lon = this.model.LastLng;
+	//this.lastLatLng(this.marker);
 }
 lastLatLng(marker){
     google.maps.event.addListener(marker, 'dragend', () =>{ 
@@ -235,9 +256,13 @@ confirm_location(){
         var autocomplete = new google.maps.places.Autocomplete(input, options);
         autocomplete.addListener("place_changed", () => {
         var start_address = autocomplete.getPlace();
+        const latitude = start_address.geometry.location.lat();
+    const longitude = start_address.geometry.location.lng();
+    this.model.lat= latitude;
+    this.model.lon = longitude;
+        
         this.autocomplete.start = start_address.formatted_address;
         this.geoCode(this.autocomplete.start,'start');
-         //console.log(place);
     
         })
     
@@ -250,7 +275,6 @@ confirm_location(){
   }
   //convert Address string to lat and long
   geoCode(address:any,path) {
-    console.log(address);
     let geocoder = new google.maps.Geocoder();
     
     geocoder.geocode({ 'address': address }, (results, status) => {

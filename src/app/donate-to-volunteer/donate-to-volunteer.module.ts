@@ -8,12 +8,15 @@ import { DonateToVolunteerPageRoutingModule } from './donate-to-volunteer-routin
 
 import { DonateToVolunteerPage } from './donate-to-volunteer.page';
 import { CaptchaComponent } from '../captcha/captcha.component';
+import { FooterPageModule } from "../footer/footer.module";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DonateToVolunteerPageRoutingModule
+    DonateToVolunteerPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [DonateToVolunteerPage,CaptchaComponent]
 })

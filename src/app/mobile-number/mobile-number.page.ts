@@ -84,11 +84,12 @@ okay:any;
 	if(this.model.mobile_no.length == 10){
 		let token = localStorage.getItem('device_token');
 		var lang_code = JSON.parse(localStorage.getItem('lang'));
+		var unique_id = JSON.parse(localStorage.getItem('unique_id'));
 		let platform = '';
 		document.addEventListener('deviceready', () => {
 			platform = device.platform;
 		});
-		let data = JSON.stringify({'mobile_no':this.model.mobile_no,'device_token':token,'platform':platform,'language' : lang_code});
+		let data = JSON.stringify({'mobile_no':this.model.mobile_no,'device_token':token,'platform':platform,'language' : lang_code,'unique_id':unique_id});
 		
 		this.fetch.createUser(data).subscribe(res => {
 			if(res['success'] == true){

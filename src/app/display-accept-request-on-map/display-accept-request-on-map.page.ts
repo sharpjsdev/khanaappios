@@ -205,8 +205,8 @@ export class DisplayAcceptRequestOnMapPage implements OnInit {
                   res.routes.forEach(function(rou, index) {
             console.log("distance of route " +index+": " , rou.legs[0].distance.value);
             console.log("duration of route " +index+": " , rou.legs[0].duration.value);
-            if (rou.legs[0].distance.value < shortest) shortest = rou.legs[0].distance.value  ;
-            if (rou.legs[0].duration.value < fastest) fastest = rou.legs[0].duration.value  ;
+            if (rou.legs[0].distance.value < shortest) shortest = rou.legs[0].distance.value;
+            if (rou.legs[0].duration.value < fastest) fastest = rou.legs[0].duration.value;
                   })
             var polylineOptions = {
               strokeColor: res.routes[i].legs[0].duration.value == fastest? "#22A7F0":res.routes[i].legs[0].distance.value == shortest?"#585858":"#585858",

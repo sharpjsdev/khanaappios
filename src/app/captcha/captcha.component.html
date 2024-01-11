@@ -11,8 +11,12 @@
       </ion-buttons>
       <!--<ion-title>home</ion-title>-->
       <ion-buttons slot="end" routerLink="/notification">
-        <span  id="black_spot" style="display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;
-        top: -3px;right: 3px;text-align: center;"></span>      
+        <!-- <span  id="black_spot" style="display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;
+        top: -3px;right: 3px;text-align: center;">
+        {{ this.notification.length + this.notifications_admin.length }}</span>  -->
+        <span *ngIf="this.notificationCount!== 0" id="black_spot" style="position: absolute;background-color: #000;border-radius: 50%;color: #fff;font-size: 13px;
+        top: -3px;right: 0px;text-align: center;padding: 0px 3px;">
+        {{ this.notificationCount }}</span> 
           <img src="assets/images/icon_notification.svg">
       </ion-buttons>
       

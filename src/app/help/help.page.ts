@@ -35,7 +35,6 @@ model:any={};
 	this.fetch.help_video(lang_code).subscribe(res => {
 		$('#help_spinner').css('display', 'none');
 		$('#help_list').css('display', 'block');
-		console.log(res);
 		this.model.data = res;
 	});
   }

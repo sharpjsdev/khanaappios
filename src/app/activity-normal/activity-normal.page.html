@@ -41,7 +41,7 @@
 					{{i+1}}.
 				</ion-col>
 				<ion-col size="6" style="padding: 0; padding-right: 10px;" routerLink="/get-food-nearest-donors-two-duplicate/{{x.donate_food_id}}/{{model.recLat}}/{{model.recLng}}/{{x.app_user_id}}/{{model.mode}}/{{x.food_type}}/{{x.id}}">
-					{{ x.username }} {{x.food_type | foodType}}. {{model.key_text12}} {{x.no_of_person}} {{model.key_text13}}
+					 {{x.food_type | foodType}}. {{model.key_text12}} {{x.no_of_person}} {{model.key_text13}}
 				</ion-col>			  
 				<ion-col size="2" style="padding: 0;" >
 					<div class="grey_font right">{{x.updated_at | date:'shortTime'}}</div> 
@@ -84,7 +84,7 @@
 				{{i+1}}.
 			</ion-col>
 			<ion-col size="6" style="padding: 0;" >
-				1.{{ x.username }} {{x.food_type | foodType}}. {{model.key_text12}} {{x.no_of_person}} {{model.key_text13}}
+				 {{x.food_type | foodType}}. {{model.key_text12}} {{x.no_of_person}} {{model.key_text13}}
 			</ion-col>		  
 			<ion-col size="2" style="padding: 0;" >
 				<div class="grey_font right">{{x.updated_at | date:'shortTime'}}</div> 
@@ -100,7 +100,10 @@
 			</ion-row>  		
 		</div>
     </div>
-   
+</div>
+</div>
+<div class="ion-padding theme_width" style="margin-top: 5%;">
+	<div class="activity_graph custom_new_graph">
     <form class="form" id="myForm">     
       <div class="switch-field" (change)="state()">
         <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
@@ -123,17 +126,24 @@
         </div>
       </div>
     </div>
+</div>
+</div>
+<div  [ngClass]="graphstate === 'week' ? '' : 'none'">
 	<div id="food_quality" ></div>
+</div>
+<div [ngClass]="graphstate === 'month' ? '' : 'none'">
+	<div id="quality" ></div>
+</div>
 		
-	<div class="total_box">
+	<!-- <div class="total_box">
 		<div class="graph_total">
 			<div class="graph_total_single size_12">
 				{{model.key_text14}} -&nbsp;&nbsp;&nbsp;<span class="green">{{model.quality_rating}}</span>
 			</div>
 		</div>
-    </div>
+    </div> -->
 		
-	<div id="packaging" ></div>
+	<!-- <div id="packaging" ></div>
 		
 	<div class="total_box">
 		<div class="graph_total">
@@ -141,9 +151,9 @@
 				{{model.key_text14}} -&nbsp;&nbsp;&nbsp;<span class="green">{{model.packaging_rating}}</span>
 			</div>
 		</div>
-    </div>
+    </div> -->
 	
-	<div id="behaviour" ></div>
+	<!-- <div id="behaviour" ></div>
 	
     <div class="total_box">
 		<div class="graph_total">
@@ -151,11 +161,8 @@
 				{{model.key_text14}} -&nbsp;&nbsp;&nbsp;<span class="green">{{model.behaviour_rating}}</span>
 			</div>
 		</div>
-    </div>
+    </div> -->
 
-  </div>
-
-</div>
 
 
 <ion-slides class="swipe_msg" [options]="slideOpts">
@@ -195,24 +202,4 @@
 <center class="current_location_spinner_position" id="activity_normal_spinner"><ion-spinner class="current_location_sppiner"></ion-spinner></center>
 </ion-content> 
 
-<ion-footer>
-	<ion-toolbar>     
-		<ion-segment color="transparent" value="activity">
-			<ion-segment-button value="home" [routerLink]="['/home']">
-				<!--<img src="assets/images/red_footer_home.svg">-->
-				<ion-img src="assets/images/grey_footer_home.svg"></ion-img>
-				<ion-label class="size_12 medium">{{model.key_text5}}</ion-label>    
-			</ion-segment-button>
-			<ion-segment-button value="activity">
-				<ion-img src="assets/images/red_footer_activity.svg"></ion-img>
-				<!--<img src="assets/images/grey_footer_activity.svg">-->
-				<ion-label class="size_12 medium" color="tertiary">{{model.key_text6}}</ion-label>    
-			</ion-segment-button>        
-			<ion-segment-button value="volunteer" *ngIf="model.is_volunteer== 1 " [routerLink]="['/volunteer-detail']">            
-				<!--<ion-img src="assets/images/red_footer_volunteer.svg"></ion-img>-->
-				<img src="assets/images/grey_footer_volunteer.svg">
-				<ion-label class="size_12 medium" >{{model.key_text7}}</ion-label>                
-			</ion-segment-button>        
-		</ion-segment>      
-	</ion-toolbar>
-</ion-footer>
+<app-footer [currentRoute]="'/activity-normal'"></app-footer>

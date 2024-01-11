@@ -8,6 +8,7 @@ import { VolunteerDetailPageRoutingModule } from './volunteer-detail-routing.mod
 import { PipesModule } from '../pipes/pipes.module';
 import { VolunteerDetailPage } from './volunteer-detail.page';
 import { CaptchaComponent } from './../captcha/captcha.component';
+import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { CaptchaComponent } from './../captcha/captcha.component';
     IonicModule,
     PipesModule,
     Ng2GoogleChartsModule,
-    VolunteerDetailPageRoutingModule
+    VolunteerDetailPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [VolunteerDetailPage,CaptchaComponent]
 })

@@ -8,12 +8,15 @@ import { DonateFoodMembersPageRoutingModule } from './donate-food-members-routin
 
 import { DonateFoodMembersPage } from './donate-food-members.page';
 import { CaptchaComponent } from '../captcha/captcha.component';
+import { FooterPageModule } from "../footer/footer.module";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DonateFoodMembersPageRoutingModule
+    DonateFoodMembersPageRoutingModule,
+    FooterPageModule
   ],
   declarations: [DonateFoodMembersPage,CaptchaComponent]
 })

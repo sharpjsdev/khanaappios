@@ -6,7 +6,7 @@
 	<div id="my_custom_on" style="margin-top: 18px;">
 		<input type="text" id="my_test" (keyup)="updateSources()" placeholder="{{model.key_text2}}"> <ion-icon *ngIf="autocomplete.start" (click)="blank('start')" class="cross_on_the" name="close-outline"></ion-icon>
 	  </div>
-	  <ion-button shape="round" class="address_button" *ngFor="let add of saved_address;" (click)="addMarker2(add.latitude, add.longitude)" fill="outline">{{add.adress_type}}</ion-button>
+	  <ion-button shape="round" id="saved" class="address_button" *ngFor="let add of saved_address;" (click)="addMarker2(add.latitude, add.longitude)" fill="outline">{{add.adress_type}}</ion-button>
 	<div #map id="map"></div> 
 	<div class="ion-padding">
     <div class="map-icon">
