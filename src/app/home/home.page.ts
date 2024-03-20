@@ -23,6 +23,7 @@ model:any={};
 options : GeolocationOptions;
   dataReturned: any;
 	user_id: any;
+	foo_lang: string;
   constructor(
     public modalController: ModalController,
 	private router: Router,
@@ -44,6 +45,7 @@ options : GeolocationOptions;
 	this.fetch.detectSlowNetwork().subscribe(res => {
 		
 	  });
+	  this.foo_lang = JSON.parse(localStorage.getItem('lang'));
 	let platform = '';
 	document.addEventListener('deviceready', () => {
 		platform = device.platform;
@@ -77,7 +79,7 @@ options : GeolocationOptions;
   
   ionViewWillEnter(){
   	
-
+	this.foo_lang = JSON.parse(localStorage.getItem('lang'));
 	localStorage.removeItem('receiver_food_type'); 
 	localStorage.removeItem('number_of_person'); 
 	localStorage.removeItem('set_confirm_location_route'); 
@@ -114,7 +116,7 @@ options : GeolocationOptions;
 	});
   }
 	ionViewDidEnter(){
-		
+		this.foo_lang = JSON.parse(localStorage.getItem('lang'));
 			this.diagnostic.isLocationAvailable().then(resp =>{
 				
 				if(!resp){

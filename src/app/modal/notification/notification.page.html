@@ -11,7 +11,7 @@
             </ion-item>
           </ion-col> -->
           <ion-col>
-            <ion-button fill="clear" class="ion-no-padding" (click)="markAllAsRead()" lines="none">Mark all as read</ion-button>
+            <ion-button fill="clear" class="ion-no-padding" (click)="markAllAsRead()" lines="none">{{ model.key_text16 }}</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -43,7 +43,11 @@
           </span>
         </p>
         <p  *ngFor="let x of notifications_admin; index as i" style="padding:0px 10px; border-bottom:1px solid #ccc;color:#e8604c;" >
-          <span>
+          <span *ngIf="x.message=='YOUR_DONATION_IS_EXPIRED'">
+            {{ model.key_text17 }}
+            <ion-icon (click)="notification_admin(x.id,i)" name="eye-outline"></ion-icon>
+          </span>
+          <span *ngIf="x.message!=='YOUR_DONATION_IS_EXPIRED'">
             {{ x.message }}
             <ion-icon (click)="notification_admin(x.id,i)" name="eye-outline"></ion-icon>
           </span>

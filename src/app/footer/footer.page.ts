@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,OnChanges } from '@angular/core';
 import { FetchService } from '../fetch.service';
 import { StorageService } from '../storage.service';
 import { Router } from '@angular/router';
@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   templateUrl: './footer.page.html',
   styleUrls: ['./footer.page.scss'],
 })
-export class FooterPage implements OnInit {
+export class FooterPage implements OnInit,OnChanges {
   @Input() currentRoute: string;
-
+  @Input() foo_lang: string;
   model: any = {};
   activetab: string = '';
   src: any = {
@@ -77,5 +77,40 @@ export class FooterPage implements OnInit {
     if(route!==this.currentRoute){
       this.router.navigate(['/'+route]);
     }
+  }
+
+  ngOnChanges(){
+    this.changeCurrentUrl(this.currentRoute);
+    let data = { model: "QuotesModel",lang_code : JSON.parse(localStorage.getItem('lang')) }
+    this.fetch.getTestimonialByLanguage(data).subscribe(async (resp) => {
+			if (resp) {
+				var quote = resp.data
+				this.model.quotes = quote
+				for (var j = 0; j < quote.length; j++) {
+					var quote1 = quote[j];
+				}
+			}
+		});
+
+    
+		
+		localStorage.removeItem('temp_start_address');
+		localStorage.removeItem('temp_end_address');
+		this.model.is_volunteer = localStorage.getItem('volunteer_approve');
+
+    this.model.key_text5 = "Home";
+		this.model.key_text6 = "Activity";
+		this.model.key_text7 = "Volunteer";
+
+    var lang_code = JSON.parse(localStorage.getItem('lang'));
+    let res = this.storage.getScope();
+    let item5 = res.find(i => i.key_text === 'HOME');
+		this.model.key_text5 = item5[lang_code];
+		let item6 = res.find(i => i.key_text === 'ACTIVITY');
+		this.model.key_text6 = item6[lang_code];
+		let item7 = res.find(i => i.key_text === 'VOLUNTEER');
+		this.model.key_text7 = item7[lang_code];
+		let item8 = res.find(i => i.key_text === 'VOLUNTEER_FOOD_REQUEST');
+		this.model.key_text8 = item8[lang_code];
   }
 }

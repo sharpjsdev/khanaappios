@@ -106,7 +106,7 @@ okay:any;
     return await modal.present();
   }
   check_otp(value){
-	if(value == JSON.parse(localStorage.getItem('otp')) || value == 1234){
+	if(value == JSON.parse(localStorage.getItem('otp'))){
 		localStorage.setItem('isotpverified', '1');
 		$('#right_otp').css('display','block');
 		$('#wrong_otp').css('display','none');
@@ -124,7 +124,7 @@ okay:any;
   next(){
 	  
 	var check_otp = $('#check_otp').val();
-	if(check_otp == JSON.parse(localStorage.getItem('otp')) || check_otp == 1234){
+	if(check_otp == JSON.parse(localStorage.getItem('otp'))){
 		localStorage.removeItem('otp'); 
 		$('#check_otp').val('');
 		this.model.value = '';
