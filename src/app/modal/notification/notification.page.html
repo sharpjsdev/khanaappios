@@ -42,7 +42,7 @@
             <ion-icon (click)="notification(x.id,i)" name="eye-outline"></ion-icon>
           </span>
         </p>
-        <p  *ngFor="let x of notifications_admin; index as i" style="padding:0px 10px; border-bottom:1px solid #ccc;color:#e8604c;" >
+        <p  *ngFor="let x of notifications_admin;index as i" style="padding:0px 10px; border-bottom:1px solid #ccc;color:#e8604c;" >
           <span *ngIf="x.message=='YOUR_DONATION_IS_EXPIRED'">
             {{ model.key_text17 }}
             <ion-icon (click)="notification_admin(x.id,i)" name="eye-outline"></ion-icon>
@@ -57,5 +57,10 @@
         </p>
     </div>
   </div>
-</ion-content> 
+  <!-- <div class="ion-text-center markasreadbtn">
+    <button (click)="markAsRead()" class="app_btn" style="padding:10px" *ngIf="notifications.length !== 0 || notifications_admin.length !== 0">Mark as read</button>
+  </div>
+  [checked]="selectedAll"
+-->
+</ion-content>
 <app-footer [currentRoute]="'/notification'"></app-footer>

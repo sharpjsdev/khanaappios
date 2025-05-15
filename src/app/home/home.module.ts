@@ -8,9 +8,9 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { CaptchaComponent } from '../captcha/captcha.component';
-import { FooterPageModule } from "../footer/footer.module";
-
+import { FooterPageModule } from '../footer/footer.module';
 @NgModule({
+  declarations: [HomePage,CaptchaComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -18,6 +18,5 @@ import { FooterPageModule } from "../footer/footer.module";
     HomePageRoutingModule,
     FooterPageModule
   ],
-  declarations: [HomePage,CaptchaComponent]
 })
 export class HomePageModule {}

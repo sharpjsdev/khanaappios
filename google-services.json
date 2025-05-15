@@ -3,7 +3,7 @@
     "project_number": "687743681878",
     "firebase_url": "https://khanaapp-ed066.firebaseio.com",
     "project_id": "khanaapp-ed066",
-    "storage_bucket": "khanaapp-ed066.appspot.com"
+    "storage_bucket": "khanaapp-ed066.firebasestorage.app"
   },
   "client": [
     {
@@ -13,12 +13,7 @@
           "package_name": "com.food.forAll"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "687743681878-njepgbpp75b0b6ll3cjdvc99d0tn472f.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyB6UcTvdIgcprSrXLnCCjP6I_3sH4JLgUA"
@@ -26,12 +21,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "687743681878-njepgbpp75b0b6ll3cjdvc99d0tn472f.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

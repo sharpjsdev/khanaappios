@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"current_location_page_show\">\n  <!-- <div class=\"map current_location\">\n\t\t<img src=\"assets/images/close_btn.svg\" style=\"float:right;margin-right:20px;\" (click)=\"closeModal()\">\n\t</div> -->\n  <div id=\"my_custom_on\">\n    <ion-buttons class=\"back_button_menu_bar\" slot=\"end\" (click)=\"closeModal()\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <input type=\"text\" id=\"my_test\" (keyup)=\"updateSources()\" placeholder=\"{{model.key_text2}}\"> <ion-icon *ngIf=\"autocomplete.start\" (click)=\"blank('start')\" class=\"cross_on_the\" name=\"close-outline\"></ion-icon>\n    <input type=\"text\" id=\"my_test2\" (keyup)=\"updateDestinations()\" placeholder=\"{{model.key_text3}} \"> <ion-icon *ngIf=\"autocomplete.end\" (click)=\"blank('end')\" class=\"cross_cross_2\" name=\"close-outline\"></ion-icon>\n  </div>\n  \n  <!-- <ion-searchbar [(ngModel)]=\"autocomplete.start\" placeholder=\"choose starting point\" [showCancelButton]=\"true\"   (ionInput)=\"updateSources()\" (ionCancel)=\"dismissSource()\"></ion-searchbar>\n    <ion-list style=\"position: absolute;z-index: 999;\">\n      <ion-item *ngFor=\"let item of sources\" tappable   (click)=\"chooseSource(item)\">\n        {{ item }}\n      </ion-item>\n    </ion-list>\n    <ion-searchbar style=\"margin-bottom:20px;\" [(ngModel)]=\"autocomplete.end\" placeholder=\"choose destination \" [showCancelButton]=\"true\"   (ionInput)=\"updateDestinations()\" (ionCancel)=\"dismissDestination()\"></ion-searchbar>\n    <ion-list style=\"position: absolute;z-index: 999;\">\n      <ion-item *ngFor=\"let item of destination\" tappable   (click)=\"chooseDestination(item)\">\n        {{ item }}\n      </ion-item>\n    </ion-list> -->\n\t<!-- <div class=\"map current_location\">\n\t\t<img src=\"assets/images/close_btn.svg\" class=\"close_btn\" (click)=\"closeModal()\">\n\t</div> -->\n\t<div #map id=\"map\"></div> \n  <div class=\"\" style=\"margin-left:10px;\" *ngIf=\"time_c\">\n    <p class=\"regular medium size_14 green\">{{time_c}} <span class=\"grey size_14\">({{distance_c}})</span></p>\n  </div>\n</ion-content>\n<ion-footer class=\"current_location_page_show\" > \n    <ion-toolbar>    \n\t\t<div class=\"app_button\" *ngIf=\"model.startLat && model.startLng && model.endLat && model.endLng\">\n\t\t\t<span (click)=\"current_location()\">\n\t\t\t\t<button class=\"app_btn\">{{model.key_text1}}</button>\n\t\t\t</span>\n\t\t\t<!--  <button class=\"app_btn\" (click)=\"confirm_location()\">Confirm Location</button> -->\n\t\t</div>\n    </ion-toolbar>\n</ion-footer>\n  ");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"current_location_page_show\">\n  <!-- <div class=\"map current_location\">\n\t\t<img src=\"assets/images/close_btn.svg\" style=\"float:right;margin-right:20px;\" (click)=\"closeModal()\">\n\t</div> -->\n  <div id=\"my_custom_on\">\n    <input type=\"text\" id=\"my_test\" (keyup)=\"updateSources()\" placeholder=\"{{model.key_text2}}\"> <ion-icon *ngIf=\"autocomplete.start\" (click)=\"blank('start')\" class=\"cross_on_the\" name=\"close-outline\"></ion-icon>\n    <input type=\"text\" id=\"my_test2\" (keyup)=\"updateDestinations()\" placeholder=\"{{model.key_text3}} \"> <ion-icon *ngIf=\"autocomplete.end\" (click)=\"blank('end')\" class=\"cross_cross_2\" name=\"close-outline\"></ion-icon>\n  </div>\n  \n  <!-- <ion-searchbar [(ngModel)]=\"autocomplete.start\" placeholder=\"choose starting point\" [showCancelButton]=\"true\"   (ionInput)=\"updateSources()\" (ionCancel)=\"dismissSource()\"></ion-searchbar>\n    <ion-list style=\"position: absolute;z-index: 999;\">\n      <ion-item *ngFor=\"let item of sources\" tappable   (click)=\"chooseSource(item)\">\n        {{ item }}\n      </ion-item>\n    </ion-list>\n    <ion-searchbar style=\"margin-bottom:20px;\" [(ngModel)]=\"autocomplete.end\" placeholder=\"choose destination \" [showCancelButton]=\"true\"   (ionInput)=\"updateDestinations()\" (ionCancel)=\"dismissDestination()\"></ion-searchbar>\n    <ion-list style=\"position: absolute;z-index: 999;\">\n      <ion-item *ngFor=\"let item of destination\" tappable   (click)=\"chooseDestination(item)\">\n        {{ item }}\n      </ion-item>\n    </ion-list> -->\n\t<!-- <div class=\"map current_location\">\n\t\t<img src=\"assets/images/close_btn.svg\" class=\"close_btn\" (click)=\"closeModal()\">\n\t</div> -->\n\t<div #map id=\"map\"></div> \n  <div class=\"\" style=\"margin-left:10px;\" *ngIf=\"time_c\">\n    <p class=\"regular medium size_14 green\">{{time_c}} <span class=\"grey size_14\">({{distance_c}})</span></p>\n  </div>\n</ion-content>\n<ion-footer class=\"current_location_page_show\" > \n    <ion-toolbar>    \n\t\t<div class=\"app_button\" *ngIf=\"model.startLat && model.startLng && model.endLat && model.endLng\">\n\t\t\t<span (click)=\"current_location()\">\n\t\t\t\t<button class=\"app_btn\">{{model.key_text1}}</button>\n\t\t\t</span>\n\t\t\t<!--  <button class=\"app_btn\" (click)=\"confirm_location()\">Confirm Location</button> -->\n\t\t</div>\n    </ion-toolbar>\n</ion-footer>\n  ");
 
 /***/ }),
 
@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#map {\n  width: 100%;\n  height: 350px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL29uLXRoZS13YXkucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGFBQUE7QUFDSiIsImZpbGUiOiJvbi10aGUtd2F5LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNtYXAge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMzUwcHg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("#map {\n  width: 100%;\n  height: 350px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxvbi10aGUtd2F5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7RUFDQSxhQUFBO0FBQ0oiLCJmaWxlIjoib24tdGhlLXdheS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWFwIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDM1MHB4O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -174,32 +174,6 @@ let OnTheWayPage = class OnTheWayPage {
             this.geoCode(this.autocomplete.start, 'start');
             //console.log(place);
         });
-        // var options = {
-        //   //language: 'en-GB',
-        //   types: ['(Ujjain)'],
-        //   componentRestrictions: { country: "in" }
-        // }
-        // var input = $('.address-search');
-        // var d = new google.maps.places.Autocomplete(input[0],options);
-        // console.log(input[0]);
-        // this.sources.push(d);
-        // let me = this;
-        //   this.service.getPlacePredictions({
-        //   input: this.autocomplete.start,
-        //   types: [this.model.currnet_city_name],
-        //   componentRestrictions: {
-        //     country: 'in'
-        //   }
-        // }, (predictions, status) => {
-        // me.sources = [];
-        // me.zone.run(() => {
-        //   if (predictions != null) {
-        //       predictions.forEach((prediction) => {
-        //         me.sources.push(prediction.description);
-        //       });
-        //     }
-        //   });
-        // });
     }
     updateDestinations() {
         var center = { lat: this.model.LastLat, lng: this.model.LastLng };
@@ -225,26 +199,6 @@ let OnTheWayPage = class OnTheWayPage {
             this.geoCode(this.autocomplete.end, 'end');
             //console.log(place);
         });
-        // if ( this.autocomplete.end == '') {
-        //  this.destination = [];
-        // return;
-        // }
-        //   let me = this;
-        //     this.service.getPlacePredictions({
-        //     input: this.autocomplete.end,
-        //     componentRestrictions: {
-        //       country: 'in'
-        //     }
-        //   }, (predictions, status) => {
-        //   me.destination = [];
-        //   me.zone.run(() => {
-        //     if (predictions != null) {
-        //         predictions.forEach((prediction) => {
-        //           me.destination.push(prediction.description);
-        //         });
-        //       }
-        //     });
-        //   });
     }
     //convert Address string to lat and long
     geoCode(address, path) {
@@ -270,15 +224,15 @@ let OnTheWayPage = class OnTheWayPage {
             if (path == 'start') {
                 this.model.startLat = results[0].geometry.location.lat();
                 this.model.startLng = results[0].geometry.location.lng();
-                console.log(this.model.startLat);
-                console.log(this.model.startLng);
+                console.log("startLat:", this.model.startLat);
+                console.log("startLng:", this.model.startLng);
                 this.showRoutes();
             }
             if (path == 'end') {
                 this.model.endLat = results[0].geometry.location.lat();
                 this.model.endLng = results[0].geometry.location.lng();
-                console.log(this.model.endLat);
-                console.log(this.model.endLng);
+                console.log("endLat:", this.model.endLat);
+                console.log("endLng:", this.model.endLng);
                 this.showRoutes();
             }
             // alert("lat: " + this.latitude + ", long: " + this.longitude);

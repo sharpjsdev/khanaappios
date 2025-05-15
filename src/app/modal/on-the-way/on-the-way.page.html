@@ -3,9 +3,6 @@
 		<img src="assets/images/close_btn.svg" style="float:right;margin-right:20px;" (click)="closeModal()">
 	</div> -->
   <div id="my_custom_on">
-    <ion-buttons class="back_button_menu_bar" slot="end" (click)="closeModal()">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
     <input type="text" id="my_test" (keyup)="updateSources()" placeholder="{{model.key_text2}}"> <ion-icon *ngIf="autocomplete.start" (click)="blank('start')" class="cross_on_the" name="close-outline"></ion-icon>
     <input type="text" id="my_test2" (keyup)="updateDestinations()" placeholder="{{model.key_text3}} "> <ion-icon *ngIf="autocomplete.end" (click)="blank('end')" class="cross_cross_2" name="close-outline"></ion-icon>
   </div>

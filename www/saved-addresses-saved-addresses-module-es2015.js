@@ -69,8 +69,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../storage.service */ "qkCY");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
-/* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "mtRb");
-
 
 
 
@@ -81,14 +79,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SavedAddressesPage = class SavedAddressesPage {
-    constructor(storage, http, route, router, fetch, platform, diagnostic) {
+    constructor(storage, http, route, router, fetch, platform) {
         this.storage = storage;
         this.http = http;
         this.route = route;
         this.router = router;
         this.fetch = fetch;
         this.platform = platform;
-        this.diagnostic = diagnostic;
         this.model = {};
         this.platform.backButton.subscribeWithPriority(10, () => {
             this.router.navigate(['/home']);
@@ -97,13 +94,6 @@ let SavedAddressesPage = class SavedAddressesPage {
     ngOnInit() {
     }
     ionViewWillEnter() {
-        this.diagnostic.isLocationAvailable().then(resp => {
-            if (!resp) {
-                this.router.navigate(['/home']);
-            }
-        }).catch((error) => {
-            this.router.navigate(['/home']);
-        });
         $(".t").hide();
         $("#view_location_spinner").show();
         this.model.key_page_name = 'Saved Addresses';
@@ -152,8 +142,7 @@ SavedAddressesPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] },
     { type: _fetch_service__WEBPACK_IMPORTED_MODULE_5__["FetchService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Platform"] },
-    { type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_9__["Diagnostic"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Platform"] }
 ];
 SavedAddressesPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -176,7 +165,7 @@ SavedAddressesPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".no_adress {\n  color: #80808085;\n  text-align: center;\n}\n\n#map {\n  width: 100%;\n  height: 66%;\n  margin-top: 18px;\n}\n\n.current_location_sppiner {\n  --color:#419B95;\n}\n\n.current_location_spinner_position {\n  margin-top: 250px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NhdmVkLWFkZHJlc3Nlcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDQyxnQkFBQTtFQUNHLGtCQUFBO0FBQUo7O0FBRUE7RUFDSSxXQUFBO0VBQ0EsV0FBQTtFQUNILGdCQUFBO0FBQ0Q7O0FBQ0E7RUFDQyxlQUFBO0FBRUQ7O0FBQUE7RUFDQyxpQkFBQTtBQUdEIiwiZmlsZSI6InNhdmVkLWFkZHJlc3Nlcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5ub19hZHJlc3N7XG5cdGNvbG9yOiAjODA4MDgwODU7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuI21hcCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiA2NiU7XG5cdG1hcmdpbi10b3A6IDE4cHg7XG59XG4uY3VycmVudF9sb2NhdGlvbl9zcHBpbmVye1xuXHQtLWNvbG9yOiM0MTlCOTU7XG59XG4uY3VycmVudF9sb2NhdGlvbl9zcGlubmVyX3Bvc2l0aW9ue1xuXHRtYXJnaW4tdG9wOjI1MHB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".no_adress {\n  color: #80808085;\n  text-align: center;\n}\n\n#map {\n  width: 100%;\n  height: 66%;\n  margin-top: 18px;\n}\n\n.current_location_sppiner {\n  --color:#419B95;\n}\n\n.current_location_spinner_position {\n  margin-top: 250px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXHNhdmVkLWFkZHJlc3Nlcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDQyxnQkFBQTtFQUNHLGtCQUFBO0FBQUo7O0FBRUE7RUFDSSxXQUFBO0VBQ0EsV0FBQTtFQUNILGdCQUFBO0FBQ0Q7O0FBQ0E7RUFDQyxlQUFBO0FBRUQ7O0FBQUE7RUFDQyxpQkFBQTtBQUdEIiwiZmlsZSI6InNhdmVkLWFkZHJlc3Nlcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5ub19hZHJlc3N7XG5cdGNvbG9yOiAjODA4MDgwODU7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuI21hcCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiA2NiU7XG5cdG1hcmdpbi10b3A6IDE4cHg7XG59XG4uY3VycmVudF9sb2NhdGlvbl9zcHBpbmVye1xuXHQtLWNvbG9yOiM0MTlCOTU7XG59XG4uY3VycmVudF9sb2NhdGlvbl9zcGlubmVyX3Bvc2l0aW9ue1xuXHRtYXJnaW4tdG9wOjI1MHB4O1xufSJdfQ== */");
 
 /***/ }),
 

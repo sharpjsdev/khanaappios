@@ -177,9 +177,6 @@ a:hover {
     height: 100% !important;
     border-radius: 0 !important;
 }
-.cancel_allot_food_popup.sc-ion-modal-ios-h{
-    top: 5%  !important;;
-}
 .my_volunteer_completed_modal .modal-wrapper{
     height: 65% !important;
 }
@@ -351,6 +348,11 @@ input {
     padding: 0px 0px 71px 0px;
     //padding: 0px 0px 80px 0px;
 }
+
+.quote_msg {
+    padding: 5px;
+    text-align: center;
+}
 .my_custome_theme_width{
     display: flex;
     flex-direction: column;
@@ -386,9 +388,9 @@ ion-segment-button {
     text-transform: capitalize;
     width: 33.33%;
 }
-ion-segment-button.ios.in-segment.in-segment-color.segment-button-has-label.segment-button-has-label-only.segment-button-checked.segment-button-layout-icon-top.ion-activatable.ion-activatable-instant.ion-focusable.hydrated ion-label.size_12.medium.sc-ion-label-ios-h.sc-ion-label-ios-s.ios.hydrated {
-    color: #E8604C;
-}
+// ion-segment-button.ios.in-segment.in-segment-color.segment-button-has-label.segment-button-has-label-only.segment-button-checked.segment-button-layout-icon-top.ion-activatable.ion-activatable-instant.ion-focusable.hydrated ion-label.size_12.medium.sc-ion-label-ios-h.sc-ion-label-ios-s.ios.hydrated {
+//     color: #E8604C;
+// }
 ion-label.size_12.medium.sc-ion-label-ios-h.sc-ion-label-ios-s.ios.hydrated {
     color: #A3A2A2;
 }
@@ -426,10 +428,10 @@ ion-menu-button {
 ion-header ion-buttons.buttons-last-slot.sc-ion-buttons-md-h.sc-ion-buttons-md-s.md.hydrated {
     margin-right: 0px;
 }
-ion-toolbar {
-    margin-top: -12px;
-    margin-bottom: -13px;
-}
+// ion-toolbar {
+//     margin-top: -12px;
+//     margin-bottom: -13px;
+// }
 ion-list-header {
     border-bottom: 1px solid #e8604c;
     color: #e8604c;
@@ -586,22 +588,14 @@ hr.donor_single_line {
 }
 
 .custom_otp_modal .modal-wrapper.ion-overlay-wrapper.sc-ion-modal-md {
-    height: 25% !important;
+    height: 25%;
     position: absolute !important;
     width: 100%;
     bottom: 0 !important;
     border-radius: 40px 40px 0px 0px;
 }
-.custom_otp_modal .modal-wrapper {
-    height: 25% !important;
-    position: absolute !important;
-    width: 100%;
-    bottom: 0 !important;
-    border-radius: 40px 40px 0px 0px;
-}
-
 .dynamic_model_css .modal-wrapper {
-    height: 55% !important;
+    height: 35% !important;
 }
 // .empty_message_height .modal-wrapper{
 //     height: 40% !important; 
@@ -736,12 +730,12 @@ hr.donor_single_line {
   .food_value {
     width: 32px;
     text-align: center;
-    color: #014747 !important;
+    color: #419B95 !important;
   }
   .distance_value {
     width: 32px;
     text-align: center;
-    color: #014747 !important;
+    color: #419B95 !important;
   }
   .food_location {
     position: relative;
@@ -920,9 +914,6 @@ textarea.native-textarea.sc-ion-textarea-md {
     width: 100%;
     bottom: 0 !important;
     border-radius: 40px 40px 0px 0px;
-}
-.custom_feedback_modal.sc-ion-modal-ios-h{
-    top:5% !important;
 }
 .volunteer_info {
     background: #F7F6F4;
@@ -1354,14 +1345,14 @@ ion-segment.volunteer-graph-tab ion-segment-button{
 .cross_on_the{
     font-size: 25px;
     position: absolute;
-    top: 64px;
+    top: 16px;
     color: gray;
     right: 12px;
 }
 .cross_cross_2{
     font-size: 25px;
     position: absolute;
-    top: 113px;
+    top: 68px;
     color: gray;
     right: 12px;
 }

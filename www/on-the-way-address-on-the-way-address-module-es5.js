@@ -1,13 +1,13 @@
 (function () {
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 
-  function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
 
-  function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["on-the-way-address-on-the-way-address-module"], {
     /***/
@@ -46,7 +46,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "ion-header {\n  padding-top: 32px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL29uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQUNKIiwiZmlsZSI6Im9uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVye1xuICAgIHBhZGRpbmctdG9wOiAzMnB4O1xufSJdfQ== */";
+      __webpack_exports__["default"] = "ion-header {\n  padding-top: 32px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXG9uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQUNKIiwiZmlsZSI6Im9uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVye1xuICAgIHBhZGRpbmctdG9wOiAzMnB4O1xufSJdfQ== */";
       /***/
     },
 
@@ -214,15 +214,9 @@
       var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
       /*! @angular/common */
       "ofXK");
-      /* harmony import */
-
-
-      var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-      /*! @ionic-native/diagnostic/ngx */
-      "mtRb");
 
       var OnTheWayAddressPage = /*#__PURE__*/function () {
-        function OnTheWayAddressPage(geolocation, nativeGeocoder, alertController, http, fetch, platform, location, zone, storage, router, route, diagnostic) {
+        function OnTheWayAddressPage(geolocation, nativeGeocoder, alertController, http, fetch, platform, location, zone, storage, router, route) {
           var _this = this;
 
           _classCallCheck(this, OnTheWayAddressPage);
@@ -238,7 +232,6 @@
           this.storage = storage;
           this.router = router;
           this.route = route;
-          this.diagnostic = diagnostic;
           this.autocomplete = {};
           this.req_data = [];
           this.latitude = 0;
@@ -267,7 +260,7 @@
           };
         }
 
-        _createClass(OnTheWayAddressPage, [{
+        return _createClass(OnTheWayAddressPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.type = this.route.snapshot.params['id'];
@@ -277,13 +270,6 @@
           value: function ionViewWillEnter() {
             var _this2 = this;
 
-            this.diagnostic.isLocationAvailable().then(function (resp) {
-              if (!resp) {
-                _this2.router.navigate(['/home']);
-              }
-            })["catch"](function (error) {
-              _this2.router.navigate(['/home']);
-            });
             var lang_code = JSON.parse(localStorage.getItem('lang'));
             this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
             this.fetch.get_user_locations(this.model.user_id).subscribe(function (res) {
@@ -533,8 +519,6 @@
             }
           }
         }]);
-
-        return OnTheWayAddressPage;
       }();
 
       OnTheWayAddressPage.ctorParameters = function () {
@@ -560,8 +544,6 @@
           type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]
-        }, {
-          type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_12__["Diagnostic"]
         }];
       };
 

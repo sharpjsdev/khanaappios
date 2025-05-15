@@ -9,15 +9,14 @@ import { ChooseDonateOptionPageRoutingModule } from './choose-donate-option-rout
 import { ChooseDonateOptionPage } from './choose-donate-option.page';
 import { CaptchaComponent } from '../captcha/captcha.component';
 import { FooterPageModule } from "../footer/footer.module";
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ChooseDonateOptionPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [ChooseDonateOptionPage,CaptchaComponent]
+    declarations: [ChooseDonateOptionPage, CaptchaComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ChooseDonateOptionPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class ChooseDonateOptionPageModule {}

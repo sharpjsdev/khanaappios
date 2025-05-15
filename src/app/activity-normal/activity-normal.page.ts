@@ -222,7 +222,7 @@ slideOpts = {
 			let item42 = res.find(i => i.key_text === 'SUN');
 				this.model.key_text42= item42[lang_code];	
 			let item43 = res.find(i => i.key_text === 'WEEK');
-				this.model.key_text43= item43[lang_code];	
+				this.model.key_text43= item43[lang_code];
 		//});
 	
 	this.weekly_donation_graph();
@@ -383,8 +383,6 @@ slideOpts = {
 						
 					});
 				});
-			
-			
           }
         }
       ]
@@ -435,8 +433,6 @@ slideOpts = {
 						$('#add_location_spinner').hide();
 					});
 				});
-			
-			
           }
         }
       ]
@@ -591,6 +587,100 @@ slideOpts = {
 // 	});
 // 	setTimeout(function(){ myChart.reflow(); }, 1000);
 //   }
+//   packagingPieChart(e, g, b) {
+//    let myChart = HighCharts.chart('packaging', {
+//       chart: {
+//         type: 'pie',
+// 		backgroundColor: '#F7F6F4',
+// 		plotBackgroundColor: '#F7F6F4',
+// 		plotBorderWidth: null,
+// 		plotShadow: false,
+// 		height:300
+//       },
+// 	  title: {
+//         text: this.model.key_text27
+//       },
+// 	 credits: {
+// 			enabled: false
+// 		},
+//       plotOptions: {
+//         pie: {
+//           allowPointSelect: true,
+//           cursor: 'pointer',
+//           dataLabels: {
+//             enabled: true,
+//             format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+//           }
+//         }
+//       },
+//       series: [{
+//         name: '',
+// 		type: undefined,
+//         data: [{
+//           name: this.model.key_text29,
+//           y: e,
+// 		  color: "#32CD32"
+//         }, {
+//           name: this.model.key_text30,
+//           y: g,
+// 		   color: "orange"
+//         }, {
+//           name: this.model.key_text31,
+//           y: b,
+// 		   color: "red"
+//         }]
+//       }]
+//     });
+// 	setTimeout(function(){ myChart.reflow(); }, 1000);
+//   }
+//   behaviourPieChart(e, g, b) {
+// let myChart = HighCharts.chart('behaviour', {
+//       chart: {
+//         type: 'pie',
+// 		backgroundColor: '#F7F6F4',
+// 		plotBackgroundColor: '#F7F6F4',
+// 		plotBorderWidth: null,
+// 		plotShadow: false,
+// 		height:300
+//       },
+// 	  title: {
+//         text: this.model.key_text28
+//       },
+// 	 credits: {
+// 			enabled: false
+// 		},
+//       plotOptions: {
+//         pie: {
+//           allowPointSelect: true,
+//           cursor: 'pointer',
+//           dataLabels: {
+//             enabled: true,
+//             format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+//           }
+//         }
+//       },
+//       series: [{
+//         name: '',
+// 		type: undefined,
+//         data: [{
+//           name: this.model.key_text29,
+//           y: e,
+// 		  color: "#32CD32"
+//         }, {
+//           name: this.model.key_text30,
+//           y: g,
+// 		   color: "orange"
+//         }, {
+//           name: this.model.key_text31,
+//           y: b,
+// 		   color: "red"
+//         }]
+//       }]
+//     });
+// 	setTimeout(function(){ myChart.reflow(); }, 1000);
+//   }
+
+
 checkday(alldata){
 	var monday =[];
 	var tuesday =[];
@@ -715,7 +805,7 @@ checkday(alldata){
 	
    }
 
-   graph_weekly_food_quality(){
+  graph_weekly_food_quality(){
 	//.log('yes inside column chart')
 	 //  console.log('this is dataatta',this.foodweeklydata);
 	   
@@ -866,7 +956,7 @@ checkday(alldata){
 		 })
 	setTimeout(function(){ myChart.reflow(); }, 1000);
   }
-  formatDate(date){
+   formatDate(date){
     var dd = date.getDate();
     var mm = date.getMonth()+1;
     var yyyy = date.getFullYear();
@@ -875,8 +965,7 @@ checkday(alldata){
     date = {date: mm+'-'+dd+'-'+yyyy};
     return date
  }
-
- getMonthData(){
+  getMonthData(){
 	var monthdata = this.foodweeklydata.monthdata
 	var result1 =[];
 	var week4 =[];
@@ -1017,6 +1106,7 @@ checkday(alldata){
     return{weekr4: sumweek4, weekr3:sumweek3, weekr2:sumweek2, weekr1:sumweek1};
 	
   }
+ 
   graph_monthly_food_quality(){
 	
 	var monthdata = this.getMonthData();
@@ -1128,8 +1218,7 @@ var Average ={
 	  })
  setTimeout(function(){ myChart.reflow(); }, 1000);
 }
-  
-  
+
  
   state(){
 	
@@ -1188,7 +1277,7 @@ var Average ={
 		}else if(this.model.bad_cnt > this.model.excellent_cnt && this.model.bad_cnt > this.model.good_cnt){
 			this.model.packaging_rating = this.model.key_text31;
 		}
-		// this.packagingPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
+		//this.packagingPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
 	});
 	this.fetch.weekly_behaviour(this.model.user_id).subscribe(res => {
 		this.model.excellent_cnt = res['excellent']['cnt'];
@@ -1201,7 +1290,7 @@ var Average ={
 		}else if(this.model.bad_cnt > this.model.excellent_cnt && this.model.bad_cnt > this.model.good_cnt){
 			this.model.behaviour_rating = this.model.key_text31;
 		}
-		// this.behaviourPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
+	//	this.behaviourPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
 	});  
   }
   
@@ -1222,8 +1311,8 @@ var Average ={
 			this.model.quality_rating = this.model.key_text31;
 		}
 		this.graph_weekly_food_quality();
-		this.graph_monthly_food_quality();
-		// this.pie_chart_food_quality(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
+	this.graph_monthly_food_quality();
+	//	this.pie_chart_food_quality(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
 	});
 	this.fetch.monthly_packaging(this.model.user_id).subscribe(res => {
 		this.model.excellent_cnt = res['excellent']['cnt'];
@@ -1236,7 +1325,7 @@ var Average ={
 		}else if(this.model.bad_cnt > this.model.excellent_cnt && this.model.bad_cnt > this.model.good_cnt){
 			this.model.packaging_rating = this.model.key_text31;
 		}
-		// this.packagingPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
+		//this.packagingPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
 	});
 	this.fetch.monthly_behaviour(this.model.user_id).subscribe(res => {
 		this.model.excellent_cnt = res['excellent']['cnt'];
@@ -1249,7 +1338,8 @@ var Average ={
 		}else if(this.model.bad_cnt > this.model.excellent_cnt && this.model.bad_cnt > this.model.good_cnt){
 			this.model.behaviour_rating = this.model.key_text31;
 		}
-		// this.behaviourPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
+	//	this.behaviourPieChart(this.model.excellent_cnt, this.model.good_cnt, this.model.bad_cnt);
+	
 	});   
   }
    

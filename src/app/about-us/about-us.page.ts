@@ -21,9 +21,9 @@ export class AboutUsPage implements OnInit {
     
   }
   ionViewWillEnter() {
-    // setTimeout(()=>{
-    //   $('.current_location_spinner_position').hide();
-    // },10000);
+    setTimeout(()=>{
+      $('.current_location_spinner_position').hide();
+    },10000);
     this.model.image_url = environment.image_url;
   }
 

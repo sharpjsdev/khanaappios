@@ -1,5 +1,18 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "/b2v":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modal/error-msg-modal/error-msg-modal.page.html ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"modal_content\">\n  <div class=\"ion-padding\">  \n    <a (click)=\"closeModal()\">\n      <img src=\"assets/images/close_btn.svg\" class=\"close_btn\">\n    </a>\n    <div class=\"modal_inner\">\n      <div class=\"medium size_14 green center\" style=\"max-width: 195px; width: 100%; margin: 0 auto; margin-top: 25px;\">\n        <span >{{ msg }} </span>\n      </div>\n    </div>\n\n  </div> \n</ion-content> ");
+
+/***/ }),
+
 /***/ 0:
 /*!***************************!*\
   !*** multi ./src/main.ts ***!
@@ -7,7 +20,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ewayitsolutions/Desktop/khanna-app-updated/src/main.ts */"zUnb");
+module.exports = __webpack_require__(/*! F:\khana\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -144,6 +157,19 @@ SimplePushNotificationPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decora
 
 /***/ }),
 
+/***/ "7bR5":
+/*!*****************************************************************!*\
+  !*** ./src/app/modal/error-msg-modal/error-msg-modal.page.scss ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJlcnJvci1tc2ctbW9kYWwucGFnZS5zY3NzIn0= */");
+
+/***/ }),
+
 /***/ "AytR":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -162,6 +188,7 @@ const environment = {
     base_url: 'https://khana.app/api/api/',
     image_url: 'https://khana.app/',
     //phone_no : '08069038801'
+    //phone_no : '08069010173'
     phone_no: '08045889184'
 };
 /*
@@ -278,6 +305,58 @@ DeliverFoodVolunteerPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
 
 /***/ }),
 
+/***/ "ElZd":
+/*!**************************************!*\
+  !*** ./src/app/error-msg.service.ts ***!
+  \**************************************/
+/*! exports provided: ErrorMsgService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorMsgService", function() { return ErrorMsgService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _modal_error_msg_modal_error_msg_modal_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal/error-msg-modal/error-msg-modal.page */ "HQjg");
+
+
+
+
+let ErrorMsgService = class ErrorMsgService {
+    constructor(modalController) {
+        this.modalController = modalController;
+    }
+    showModal(msg) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            return new Promise((resolve) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                const modal = yield this.modalController.create({
+                    component: _modal_error_msg_modal_error_msg_modal_page__WEBPACK_IMPORTED_MODULE_3__["ErrorMsgModalPage"],
+                    cssClass: 'error_modal_css',
+                    componentProps: {
+                        "msg": msg,
+                    }
+                });
+                modal.onDidDismiss().then((dataReturned) => {
+                });
+                return yield modal.present();
+            }));
+        });
+    }
+};
+ErrorMsgService.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+];
+ErrorMsgService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ErrorMsgService);
+
+
+
+/***/ }),
+
 /***/ "GNQA":
 /*!********************************************************************************!*\
   !*** ./src/app/pincode-error-component/pincode-error-component.component.scss ***!
@@ -287,7 +366,68 @@ DeliverFoodVolunteerPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".ion-padding {\n  padding: 84px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3BpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBQTtBQUNKIiwiZmlsZSI6InBpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlvbi1wYWRkaW5nIHtcclxuICAgIHBhZGRpbmc6IDg0cHg7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".ion-padding {\n  padding: 84px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXHBpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBQTtBQUNKIiwiZmlsZSI6InBpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlvbi1wYWRkaW5nIHtcclxuICAgIHBhZGRpbmc6IDg0cHg7XHJcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "HQjg":
+/*!***************************************************************!*\
+  !*** ./src/app/modal/error-msg-modal/error-msg-modal.page.ts ***!
+  \***************************************************************/
+/*! exports provided: ErrorMsgModalPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorMsgModalPage", function() { return ErrorMsgModalPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_error_msg_modal_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./error-msg-modal.page.html */ "/b2v");
+/* harmony import */ var _error_msg_modal_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./error-msg-modal.page.scss */ "7bR5");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _fetch_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../fetch.service */ "RPep");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+
+
+
+
+
+
+
+let ErrorMsgModalPage = class ErrorMsgModalPage {
+    constructor(modalController, navParams, router, fetch) {
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.router = router;
+        this.fetch = fetch;
+    }
+    ngOnInit() {
+    }
+    closeModal() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const onClosedData = "Wrapped Up!";
+            yield this.modalController.dismiss(onClosedData);
+        });
+    }
+};
+ErrorMsgModalPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavParams"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _fetch_service__WEBPACK_IMPORTED_MODULE_5__["FetchService"] }
+];
+ErrorMsgModalPage.propDecorators = {
+    msg: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }]
+};
+ErrorMsgModalPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-error-msg-modal',
+        template: _raw_loader_error_msg_modal_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_error_msg_modal_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    })
+], ErrorMsgModalPage);
+
+
 
 /***/ }),
 
@@ -330,10 +470,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../environments/environment */ "AytR");
-
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../environments/environment */ "AytR");
 
 
 
@@ -343,115 +481,115 @@ __webpack_require__.r(__webpack_exports__);
 let FetchService = class FetchService {
     constructor(http) {
         this.http = http;
-        this.isLanguageChanged = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](false);
+        this.isLanguageChanged = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
     }
     getLanguage() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'language');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'language');
     }
     getKeyText(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'key_text/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'key_text/' + id);
     }
     getAboutUsPageCOntent(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get-about-us-content-by-lang/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get-about-us-content-by-lang/' + id);
     }
     createUser(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'create_user', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'create_user', data);
     }
     resendOTP(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'resend_otp', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'resend_otp', data);
     }
     registerUser(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'register_user', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'register_user', data);
     }
     profile(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'user_profile', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'user_profile', data);
     }
     get_location(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_long', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_long', data);
     }
     help_video(lang_code) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'help_video/' + lang_code);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'help_video/' + lang_code);
     }
     add_location(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'add_location', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'add_location', data);
     }
     get_user_locations(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_location/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_location/' + id);
     }
     get_lat_lon(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_location/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_location/' + id);
     }
     updateLocation(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'edit_location', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'edit_location', data);
     }
     remove_location(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'remove_location/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'remove_location/' + id);
     }
     getUserLocationForDonation(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_user_loaction/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_user_loaction/' + id);
     }
     donate_food_location(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food', data);
     }
     donate_food_details(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_details', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_details', data);
     }
     reviewFood(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'review_food/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'review_food/' + id);
     }
     update_food_details(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_food_details', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_food_details', data);
     }
     pending_donation(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'pending_donation/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'pending_donation/' + id);
     }
     my_alloted_donation(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_alloted_donation/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_alloted_donation/' + id);
     }
     my_food_request(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_food_request/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_food_request/' + id);
     }
     my_alloted_request(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_alloted_request/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_alloted_request/' + id);
     }
     receiver_food_details(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'receiver_food_details', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'receiver_food_details', data);
     }
     accept_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'accept_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'accept_food', data);
     }
     accept_food_request(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'accept_food_request', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'accept_food_request', data);
     }
     cancel_accept_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_accept_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_accept_food', data);
     }
     cancel_requested_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_requested_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_requested_food', data);
     }
     cancel_alloted_request(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_alloted_request', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_alloted_request', data);
     }
     get_food_cancel_alloted_request(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_food_cancel_alloted_request', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_food_cancel_alloted_request', data);
     }
     get_reasons(lang_code) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_reasons/' + lang_code);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_reasons/' + lang_code);
     }
     get_terms_conditions(lang_code) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_terms_conditions/' + lang_code);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_terms_conditions/' + lang_code);
     }
     volunteer_get_terms_conditions(lang_code) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_get_terms_conditions/' + lang_code);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_get_terms_conditions/' + lang_code);
     }
     receiver_details(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'receiver_data/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'receiver_data/' + id);
     }
     nearest_donors(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'nearest_donors', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'nearest_donors', data);
     }
     check_pincode(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'check_pincode', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'check_pincode', data);
     }
     distanceAndTime(slat, slon, dlat, dlon, mode) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
@@ -465,323 +603,316 @@ let FetchService = class FetchService {
         });
     }
     showTimeAndDistance(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_time_distance', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_time_distance', data);
     }
     get_donor_food_detail(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donar_food_detail/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donar_food_detail/' + id);
     }
     get_volunteer_detail(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_detail/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_detail/' + id);
     }
     pickup_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'food_pickup', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'food_pickup', data);
     }
     pickup_food_for_get(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'food_pickup_for_get', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'food_pickup_for_get', data);
     }
     feedback(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'feedback', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'feedback', data);
     }
     feedback_donor(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'feedback_donor', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'feedback_donor', data);
     }
     register_volunteer(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'register_volunteer', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'register_volunteer', data);
     }
     volunteer_request(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'request-food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'request-food', data);
     }
     get_request(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_request/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_request/' + id);
     }
     my_ontheway_food(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_ontheway_food/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_ontheway_food/' + id);
     }
     my_waiting_request(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_waiting_request/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_waiting_request/' + id);
     }
     my_completed_food(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_completed_food/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_completed_food/' + id);
     }
     volunteer_receive_requested_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'receive-food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'receive-food', data);
     }
     volunteer_received_cancel_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel-alloted-food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel-alloted-food', data);
     }
     volunteer_cancel_requested_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel-receive-food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel-receive-food', data);
     }
     getAllRowWithoutWhere(model) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'getAllRowWithoutWhere', model);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'getAllRowWithoutWhere', model);
     }
     getTestimonialByLanguage(model) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get-testimonial-by-lang', model);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get-testimonial-by-lang', model);
     }
     deleteMyAccount(model) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'delete-my-account', model);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'delete-my-account', model);
     }
     notify(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'notify', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'notify', data);
     }
     req_list(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'food-request', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'food-request', data);
     }
     v_edit(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_edit/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_edit/' + id);
     }
     get_waiting_food() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_waiting_food');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_waiting_food');
     }
     cancel_all_request(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_all_request/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_all_request/' + id);
     }
     v_check(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_check/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_check/' + id);
     }
     update_volunteer(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_volunteer', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_volunteer', data);
     }
     get_user_city(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'user_city/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'user_city/' + id);
     }
     get_top_donors(city) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'top_donors/' + city);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'top_donors/' + city);
     }
     show_feedback(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_feedback/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_feedback/' + id);
     }
     weekly_donation_graph(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donation_graph_weekly/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donation_graph_weekly/' + id);
     }
     monthly_donation_graph(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donation_graph_monthly/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donation_graph_monthly/' + id);
     }
     blessings_this_week(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'blessing_this_week/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'blessing_this_week/' + id);
     }
     blessings_this_month(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'blessing_this_month/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'blessing_this_month/' + id);
     }
     total_blessings(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'total_blessings/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'total_blessings/' + id);
     }
     food_quality_weekly(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_food_quality', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_food_quality', data);
     }
     weekly_packaging(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_packaging/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_packaging/' + id);
     }
     weekly_behaviour(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_behaviour/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_behaviour/' + id);
     }
     monthly_food_quality(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_food_quality/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_food_quality/' + id);
     }
     monthly_packaging(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_packaging/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_packaging/' + id);
     }
     monthly_behaviour(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_behaviour/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_behaviour/' + id);
     }
     weekly_volunteer_req(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_volunteer_req/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_volunteer_req/' + id);
     }
     monthly_volunteer_req(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_volunteer_req/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_volunteer_req/' + id);
     }
     volunteer_blessings_this_week(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_blessing_this_week/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_blessing_this_week/' + id);
     }
     volunteer_blessings_this_month(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_blessing_this_month/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_blessing_this_month/' + id);
     }
     volunteer_total_blessings(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_total_blessings/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_total_blessings/' + id);
     }
     volunteer_city(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_city/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_city/' + id);
     }
     top_volunteers(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'top_volunteers/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'top_volunteers/' + id);
     }
     twilio_token() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'twilio_token_generate');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'twilio_token_generate');
     }
     get_registered_user_data(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_user_detail/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_user_detail/' + id);
     }
     collect_food_noti_to_donor(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'collect_food_notification', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'collect_food_notification', data);
     }
     get_notification(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_notification/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_notification/' + id);
     }
     read_notification(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'read_notification/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'read_notification/' + id);
     }
     get_available_food(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_available_food/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_available_food/' + id);
     }
     cancel_donation_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_donation_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_donation_food', data);
     }
     cancel_alloted_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_alloted_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_alloted_food', data);
     }
     change_app_status(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'change_app_status', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'change_app_status', data);
     }
     notify_donar(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'notify_donar', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'notify_donar', data);
     }
     notify_donar_donate(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'notify_donar_donate', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'notify_donar_donate', data);
     }
     get_waypoints(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_waypoints', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_waypoints', data);
     }
     get_volunteer_waypoints(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_waypoints', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_waypoints', data);
     }
     get_volunteer_waypoints_new(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_waypoints_new', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_waypoints_new', data);
     }
     alert_volunteer_on_true(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'alert_volunteer_on_true', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'alert_volunteer_on_true', data);
     }
     store_food_for_waiting(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'store_food_for_waiting', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'store_food_for_waiting', data);
     }
     get_volunteer_waypoints_by_condition(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_waypoints_by_condition', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_waypoints_by_condition', data);
     }
     save_contact_us(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'save_contact_us', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'save_contact_us', data);
     }
     recomended_distance(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'recomended_distance', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'recomended_distance', data);
     }
     donate_food_to_volunteer(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_to_volunteer', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_to_volunteer', data);
     }
     active_donation(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'active_donation', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'active_donation', data);
     }
     add_call_detail(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'add_call_detail', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'add_call_detail', data);
     }
     get_received_food(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_received_food/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_received_food/' + id);
     }
     donate_food_location_new(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_new', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_new', data);
     }
     donate_food_details_new(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_details_new', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_details_new', data);
     }
     update_food_details_new(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_food_details_new', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_food_details_new', data);
     }
     test(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'test', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'test', data);
     }
     volunterr_accept_request(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunterr_accept_request', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunterr_accept_request', data);
     }
     checkVolunteerAcceptRequest(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunterr_accept_request_result', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunterr_accept_request_result', data);
     }
     convert_to_pickup_request(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'convert_to_pickup_request', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'convert_to_pickup_request', data);
     }
     convert_to_pickup_request_no_volunteer(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'convert_to_pickup_request_no_volunteer', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'convert_to_pickup_request_no_volunteer', data);
     }
     donate_later_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_later_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_later_food', data);
     }
     donate_later_food_no_volunteer(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_later_food_no_volunteer', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_later_food_no_volunteer', data);
     }
     reject_food_request_by_donee(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'reject_food_request_by_donee', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'reject_food_request_by_donee', data);
     }
     donee_accept_food(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donee_accept_food', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donee_accept_food', data);
     }
     get_donate_food(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_donate_food/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_donate_food/' + id);
     }
     volunteer_graph_today(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_today/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_today/' + id);
     }
     volunteer_graph_weekly(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_weekly/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_weekly/' + id);
     }
     volunteer_graph_monthly(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_monthly/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_monthly/' + id);
     }
     volunteer_graph_yearly(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_yearly/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_yearly/' + id);
     }
     count_today_donation_fullfiled(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_today_donation_fullfiled/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_today_donation_fullfiled/' + id);
     }
     count_yearly_donation_fullfiled(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_yearly_donation_fullfiled/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_yearly_donation_fullfiled/' + id);
     }
     count_monthly_donation_fullfiled(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_monthly_donation_fullfiled/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_monthly_donation_fullfiled/' + id);
     }
     count_weekly_donation_fullfiled(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_weekly_donation_fullfiled/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_weekly_donation_fullfiled/' + id);
     }
     volunteer_graph_today_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_today_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_today_accepted/' + id);
     }
     volunteer_graph_weekly_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_weekly_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_weekly_accepted/' + id);
     }
     volunteer_graph_monthly_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_monthly_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_monthly_accepted/' + id);
     }
     volunteer_graph_yearly_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_yearly_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_yearly_accepted/' + id);
     }
     count_yearly_donation_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_yearly_donation_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_yearly_donation_accepted/' + id);
     }
     count_today_donation_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_today_donation_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_today_donation_accepted/' + id);
     }
     count_monthly_donation_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_monthly_donation_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_monthly_donation_accepted/' + id);
     }
     count_weekly_donation_accepted(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_weekly_donation_accepted/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_weekly_donation_accepted/' + id);
     }
     show_feedback_by_id(id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_feedback_by_id/' + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_feedback_by_id/' + id);
     }
     updateLanguage(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_language', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_language', data);
     }
     updateDeviceToken(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_device_token', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_device_token', data);
     }
     checkDeviceId(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'check_unique_login', data);
-    }
-    detectSlowNetwork() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'language').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["timeout"])(1000), // 5000 milliseconds (5 seconds) timeout
-        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => {
-            alert("You have slow internet connection");
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error);
-        }));
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'check_unique_login', data);
     }
     read_notification_by_id(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'read_notification_by_id', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'read_notification_by_id', data);
     }
 };
 FetchService.ctorParameters = () => [
@@ -822,8 +953,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_pickup_success_modal_pickup_success_modal_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modal/pickup-success-modal/pickup-success-modal.page */ "uFyy");
 /* harmony import */ var _modal_simple_push_notification_simple_push_notification_page__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modal/simple-push-notification/simple-push-notification.page */ "4kW0");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "Bfh1");
-/* harmony import */ var cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! cordova-plugin-fcm-with-dependecy-updated/ionic/ngx */ "lOSq");
-/* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/network/ngx */ "kwrG");
+/* harmony import */ var _error_msg_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./error-msg.service */ "ElZd");
+/* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/device/ngx */ "xS7M");
+/* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "mtRb");
+/* harmony import */ var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/firebase-x/ngx */ "E9qw");
+
+
+
 
 
 
@@ -843,8 +979,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor(geolocation, platform, splashScreen, statusBar, router, fetch, storage, modalController, fcm, network) {
+    constructor(firebase, geolocation, alertController, device, errorMsg, platform, splashScreen, statusBar, router, fetch, storage, modalController, diagnostic) {
+        this.firebase = firebase;
         this.geolocation = geolocation;
+        this.alertController = alertController;
+        this.device = device;
+        this.errorMsg = errorMsg;
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
@@ -852,226 +992,16 @@ let AppComponent = class AppComponent {
         this.fetch = fetch;
         this.storage = storage;
         this.modalController = modalController;
-        this.fcm = fcm;
-        this.network = network;
+        this.diagnostic = diagnostic;
         this.model = {};
+        this.volunteer_data = [];
+        //directionsService = new google.maps.DirectionsService();
+        // directionsRenderer = new google.maps.DirectionsRenderer({
+        //   suppressMarkers: true,
+        // });
+        this.pointarr = [];
         this.selectedIndex = 0;
         this.appPages = [];
-        var self = this;
-        setInterval(function () {
-            self.checkVolunteer();
-            self.checkLoginUser();
-        }, 1000); //run this thang every 2 seconds
-        this.model.fromNotification = false;
-        this.pushSetup();
-        document.addEventListener('deviceready', () => {
-            // FCMPlugin.getToken((token: any) => {
-            //   alert(token);
-            //   localStorage.setItem('device_token', JSON.stringify(token));
-            //   });
-            // FCMPlugin.onNotification((data: any) => {
-            // this.model.fromNotification = true;
-            // var self = this;
-            // if (data.wasTapped) 
-            //   {
-            //     var jd = JSON.parse(data.message);
-            //     if(jd.check_val == '1' ){
-            //       self.showNotification(jd.body,jd.my_array,jd.donor_details,jd.request_id);
-            //     }else if(jd.check_val == '2' ){
-            //       self.showFoodDeliverPopupToVolunteer(jd.my_array);
-            //     }else if(jd.check_val == '3' ){
-            //       self.showFoodDeliverPopupToDonor(jd.my_array);
-            //     }
-            //     // Notification was received on device tray and tapped by the user.
-            //   } else {
-            //     //alert("Received in foreground");
-            //      var jd = JSON.parse(data.message);
-            //     //;
-            //     if(jd.check_val == '1' ){
-            //       this.showNotification(data.body,jd.my_array,jd.donor_details,jd.request_id);
-            //     }else if(jd.check_val == '2' ){
-            //       this.showFoodDeliverPopupToVolunteer(jd.my_array);
-            //     }else if(jd.check_val == '3' ){
-            //       this.showFoodDeliverPopupToDonor(jd.my_array);
-            //     }else{
-            //       this.showAlert(data.body);
-            //     }
-            //   }
-            // },(success:any)=>{
-            //   if(!this.model.fromNotification){
-            //           if(JSON.parse(localStorage.getItem('user_registerd')) != null){
-            //             this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-            //             this.router.navigate(['/home']);
-            //             //this.navCtrl.navigateBack(['/home']);
-            //           }else if((localStorage.getItem('user_id')) != undefined && localStorage.getItem('isotpverified') == '1'){
-            //             if(JSON.parse(localStorage.getItem('user_id')) != null){
-            //               this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-            //               this.router.navigate(['/register-as-volunteer']);
-            //             }
-            //             //this.navCtrl.navigateBack(['/register-as-volunteer']);
-            //           }else if(localStorage.getItem('isotpverified') == '0'){
-            //             this.router.navigate(['/otp']);
-            //           }else{
-            //             this.router.navigate(['/language']);
-            //           }
-            //       }
-            // },(error:any)=>{
-            // });
-        });
-        //   if(!this.model.fromNotification){
-        //     console.log((localStorage.getItem('isotpverified')));
-        //     if(JSON.parse(localStorage.getItem('user_registerd')) != null){
-        //       this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-        //       this.router.navigate(['/home']);
-        //       //this.navCtrl.navigateBack(['/home']);
-        //     }else if((localStorage.getItem('user_id')) != undefined  && localStorage.getItem('isotpverified') == '1'){
-        //       if(JSON.parse(localStorage.getItem('user_id')) != null){
-        //         this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-        //         this.router.navigate(['/register-as-volunteer']);
-        //       }
-        //       //this.navCtrl.navigateBack(['/register-as-volunteer']);
-        //     }else if(localStorage.getItem('isotpverified') == '0'){
-        //       this.router.navigate(['/otp']);
-        //     }else{
-        //       this.router.navigate(['/language']);
-        //     }
-        // }
-        this.fetch.isLanguageChanged.subscribe(value => {
-            this.isLanguageChanged = value;
-            var lang_code = JSON.parse(localStorage.getItem('lang'));
-            this.fetch.getKeyText(lang_code).subscribe(rs => {
-                this.storage.setScope(rs);
-                let res = this.storage.getScope();
-                let item1 = res.find(i => i.key_text === 'REGISTER_AS_VOLUNTEER');
-                this.model.key_text1 = item1[lang_code];
-                let item2 = res.find(i => i.key_text === 'SIDEBAR_QUOTE1');
-                this.model.key_text2 = item2[lang_code];
-                let item3 = res.find(i => i.key_text === 'PROFILE');
-                this.model.key_text3 = item3[lang_code];
-                let item4 = res.find(i => i.key_text === 'SIDEBAR_QUOTE2');
-                this.model.key_text4 = item4[lang_code];
-                let item5 = res.find(i => i.key_text === 'SAVED_ADDRESSES');
-                this.model.key_text5 = item5[lang_code];
-                let item6 = res.find(i => i.key_text === 'YOUR_PREVIOUSLY_SAVED_ADDRESSES');
-                this.model.key_text6 = item6[lang_code];
-                let item7 = res.find(i => i.key_text === 'CHOOSE_LANGUAGE');
-                this.model.key_text7 = item7[lang_code];
-                let item8 = res.find(i => i.key_text === 'SIDEBAR_QUOTE3');
-                this.model.key_text8 = item8[lang_code];
-                let item9 = res.find(i => i.key_text === 'HELP');
-                this.model.key_text9 = item9[lang_code];
-                let item10 = res.find(i => i.key_text === 'SIDEBAR_QUOTE4');
-                this.model.key_text10 = item10[lang_code];
-                let item11 = res.find(i => i.key_text === 'ABOUT_US');
-                this.model.key_text11 = item11[lang_code];
-                let item12 = res.find(i => i.key_text === 'SIDEBAR_QUOTE5');
-                this.model.key_text12 = item12[lang_code];
-                let item13 = res.find(i => i.key_text === 'SHOW_IN_BETWEEN');
-                this.model.key_text13 = item13[lang_code];
-                let item14 = res.find(i => i.key_text === 'LOGOUT');
-                this.model.key_text14 = item14[lang_code];
-            });
-        });
-        this.initializeApp();
-    }
-    pushSetup() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            yield this.platform.ready();
-            if (!this.platform.is('cordova')) {
-                return;
-            }
-            let token = yield this.fcm.getToken();
-            //alert(token);
-            localStorage.setItem('device_token', JSON.stringify(token));
-            console.log('Subscribing to token updates');
-            this.fcm.onTokenRefresh().subscribe((newToken) => {
-                //this.token = newToken;
-                console.log(newToken);
-                localStorage.setItem('device_token', JSON.stringify(newToken));
-            });
-            console.log('Subscribing to new notifications');
-            this.fcm.onNotification().subscribe((payload) => {
-                //alert('in');
-                //this.pushPayload = payload;
-                console.log(payload);
-                this.model.fromNotification = true;
-                var self = this;
-                if (payload.wasTapped) {
-                    var jd = JSON.parse(payload.message);
-                    if (jd.check_val == '1') {
-                        self.showNotification(jd.body, jd.my_array, jd.donor_details, jd.request_id);
-                    }
-                    else if (jd.check_val == '2') {
-                        self.showFoodDeliverPopupToVolunteer(jd.my_array);
-                    }
-                    else if (jd.check_val == '3') {
-                        self.showFoodDeliverPopupToDonor(jd.my_array);
-                    }
-                    // Notification was received on device tray and tapped by the user.
-                }
-                else {
-                    //alert("Received in foreground");
-                    var jd = JSON.parse(payload.message);
-                    //;
-                    if (jd.check_val == '1') {
-                        this.showNotification(payload.body, jd.my_array, jd.donor_details, jd.request_id);
-                    }
-                    else if (jd.check_val == '2') {
-                        this.showFoodDeliverPopupToVolunteer(jd.my_array);
-                    }
-                    else if (jd.check_val == '3') {
-                        this.showFoodDeliverPopupToDonor(jd.my_array);
-                    }
-                    else {
-                        this.showAlert(payload.body);
-                    }
-                }
-            });
-            let hasPermission = yield this.fcm.requestPushPermission();
-            console.log(hasPermission);
-            //  let pushPayload = await this.fcm.getInitialPushPayload();
-            //   console.log(pushPayload);
-            this.fcm.getInitialPushPayload().then(data => {
-                if (data) {
-                    if (data.wasTapped) {
-                        // we know the user launched the app by clicking on the notification
-                        // data here contains the data object we defined earlier so you can do whatever you want with the data like navigate to a specific page etc.
-                        var jd = JSON.parse(data.message);
-                        if (jd.check_val == '1') {
-                            this.showNotification(jd.body, jd.my_array, jd.donor_details, jd.request_id);
-                        }
-                        else if (jd.check_val == '2') {
-                            this.showFoodDeliverPopupToVolunteer(jd.my_array);
-                        }
-                        else if (jd.check_val == '3') {
-                            this.showFoodDeliverPopupToDonor(jd.my_array);
-                        }
-                    }
-                }
-            });
-            //alert(this.model.fromNotification);
-            if (!this.model.fromNotification) {
-                console.log((localStorage.getItem('isotpverified')));
-                if (JSON.parse(localStorage.getItem('user_registerd')) != null) {
-                    this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-                    this.router.navigate(['/home']);
-                    //this.navCtrl.navigateBack(['/home']);
-                }
-                else if ((localStorage.getItem('user_id')) != undefined && localStorage.getItem('isotpverified') == '1') {
-                    if (JSON.parse(localStorage.getItem('user_id')) != null) {
-                        this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-                        this.router.navigate(['/register-as-volunteer']);
-                    }
-                    //this.navCtrl.navigateBack(['/register-as-volunteer']);
-                }
-                else if (localStorage.getItem('isotpverified') == '0') {
-                    this.router.navigate(['/otp']);
-                }
-                else {
-                    this.router.navigate(['/language']);
-                }
-            }
-        });
     }
     initializeApp() {
         this.platform.ready().then(() => {
@@ -1088,6 +1018,31 @@ let AppComponent = class AppComponent {
                 self.model.lon = resp.coords.longitude;
                 self.showAddress(self.model.lat, self.model.lon);
             });
+            const permissions = cordova.plugins.permissions;
+            console.log(permissions);
+            if (!permissions || !permissions.POST_NOTIFICATIONS) {
+                console.warn("Permissions plugin or POST_NOTIFICATIONS not available.");
+                return;
+            }
+            // First check if permission is already granted
+            permissions.checkPermission(permissions.POST_NOTIFICATIONS, (status) => {
+                if (!status.hasPermission) {
+                    // Now request it
+                    permissions.requestPermission(permissions.POST_NOTIFICATIONS, (result) => {
+                        if (result.hasPermission) {
+                            console.log("Notification permission granted.");
+                        }
+                        else {
+                            console.warn("Notification permission denied.");
+                        }
+                    }, (error) => {
+                        console.error("Permission request failed:", error);
+                    });
+                }
+                else {
+                    console.log("Notification permission already granted.");
+                }
+            });
         });
         this.checkVolunteer();
         //alert('dsd');
@@ -1098,7 +1053,7 @@ let AppComponent = class AppComponent {
         let geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'latLng': latLng }, (results, status) => {
             console.log("all results", results);
-            self.pincode = results[0].address_components[5].short_name;
+            this.pincode = results[0].address_components[5].short_name;
             this.model.colony_name = results[0].formatted_address;
             console.log(this.model.colony_name);
             results[0].address_components.forEach(function (val, i) {
@@ -1126,6 +1081,7 @@ let AppComponent = class AppComponent {
     }
     closeModal(code) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            console.log('inside close', code);
             localStorage.setItem('pincode', code.toString());
             if (this.user_id) {
                 console.log(this.user_id + code, 'user-id');
@@ -1143,7 +1099,217 @@ let AppComponent = class AppComponent {
             }
         });
     }
+    // async showPincodeAlert() {
+    //   const modal = await this.modalController.create({
+    //   component: PincodeErrorMessageComponent,
+    //   cssClass: 'custom_current_location_modal notification-modal',
+    //   backdropDismiss : false,
+    //   componentProps: {
+    //   }
+    //   });  
+    //   modal.onDidDismiss().then((dataReturned) => {
+    //   });
+    //   return await modal.present();
+    // } 
+    // async showPincodeAlert(msg) {
+    //   const alert = await this.alertController.create({
+    //     cssClass: "my-custom-class custom_alert_1",
+    //     message: msg,
+    //     buttons: [
+    //       {
+    //         text: this.model.key_text17,
+    //         role: "cancel",
+    //         cssClass: "secondary",
+    //         handler: () => {
+    //           //this.router.navigate(['/home']);
+    //         },
+    //       },
+    //     ],
+    //   });
+    //   await alert.present();
+    // }
     ngOnInit() {
+        this.initializeApp();
+        console.log("UPDATED...");
+        this.user_id = JSON.parse(localStorage.getItem('user_id'));
+        this.platform.ready().then(() => {
+            // this.success = JSON.parse(localStorage.getItem('success'));
+            //  if((this.user_id != '')&& ( this.success=='true')){
+            //   this.router.navigate(['/pincode-error-component']);
+            //  }
+            this.getDevice();
+            var self = this;
+            setInterval(function () {
+                self.checkVolunteer();
+                self.checkLoginUser();
+                if (localStorage.getItem('user_id') != null) {
+                    self.checkUserUniqueId();
+                }
+            }, 1000); //run this thang every 1 seconds
+            this.model.fromNotification = false;
+            //  document.addEventListener('deviceready',() => {
+            //   FCMPlugin.getToken((token: any) => {
+            // 	  // alert(token)
+            //     localStorage.setItem('device_token', JSON.stringify(token));
+            //     // while(this.res.success == true){
+            //     //   this.showvolnoti(this.res)
+            //     // }
+            //     });
+            // // if(localStorage.getItem('check_notification') == 'true'){
+            // // }
+            //   });
+            document.addEventListener("deviceready", () => {
+                console.log("Device is ready...");
+                const permissions = cordova.plugins.permissions;
+                console.log(permissions);
+                if (!permissions || !permissions.POST_NOTIFICATIONS) {
+                    console.warn("Permissions plugin or POST_NOTIFICATIONS not available.");
+                    return;
+                }
+                // First check if permission is already granted
+                permissions.checkPermission(permissions.POST_NOTIFICATIONS, (status) => {
+                    if (!status.hasPermission) {
+                        // Now request it
+                        permissions.requestPermission(permissions.POST_NOTIFICATIONS, (result) => {
+                            if (result.hasPermission) {
+                                console.log("Notification permission granted.");
+                            }
+                            else {
+                                console.warn("Notification permission denied.");
+                            }
+                        }, (error) => {
+                            console.error("Permission request failed:", error);
+                        });
+                    }
+                    else {
+                        console.log("Notification permission already granted.");
+                    }
+                });
+                // FCMPlugin.getToken((token: any) => {
+                //   localStorage.setItem("device_token", JSON.stringify(token));
+                // });
+                this.firebase.getToken().then(token => localStorage.setItem("device_token", JSON.stringify(token)));
+                FCMPlugin.onNotification((data) => {
+                    console.log("Push received:", data);
+                    this.model.fromNotification = true;
+                    var self = this;
+                    console.log(data);
+                    if (data.wasTapped) {
+                        const jd = JSON.parse(data.message);
+                        if (jd.check_val == "1") {
+                            self.showNotification(jd.body, jd.my_array, jd.donor_details, jd.request_id);
+                        }
+                        else if (jd.check_val == "2") {
+                            self.showFoodDeliverPopupToVolunteer(jd.my_array);
+                        }
+                        else if (jd.check_val == "3") {
+                            self.showFoodDeliverPopupToDonor(jd.my_array);
+                        }
+                        // Notification was received on device tray and tapped by the user.
+                    }
+                    else {
+                        const jd = JSON.parse(data.message);
+                        //;
+                        if (jd.check_val == "1") {
+                            this.showNotification(data.body, jd.my_array, jd.donor_details, jd.request_id);
+                        }
+                        else if (jd.check_val == "2") {
+                            this.showFoodDeliverPopupToVolunteer(jd.my_array);
+                        }
+                        else if (jd.check_val == "3") {
+                            this.showFoodDeliverPopupToDonor(jd.my_array);
+                        }
+                        else {
+                            this.showAlert(data.body);
+                        }
+                    }
+                }, (success) => {
+                    if (!this.model.fromNotification) {
+                        if (JSON.parse(localStorage.getItem("user_registerd")) != null) {
+                            this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem("lang")));
+                            // console.log(this.fetch.isLanguageChanged,'kijioppo');
+                            this.router.navigate(["/home"]);
+                            //this.navCtrl.navigateBack(['/home']);
+                        }
+                        else if (JSON.parse(localStorage.getItem("user_id")) != null &&
+                            localStorage.getItem("isotpverified") == "1") {
+                            this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem("lang")));
+                            this.router.navigate(["/register-as-volunteer"]);
+                            //this.navCtrl.navigateBack(['/register-as-volunteer']);
+                        }
+                        else if (localStorage.getItem("isotpverified") == "0") {
+                            this.router.navigate(["/otp"]);
+                        }
+                        else {
+                            this.router.navigate(["/language"]);
+                        }
+                    }
+                }, (error) => { });
+            });
+            if (!this.model.fromNotification) {
+                console.log((localStorage.getItem('isotpverified')));
+                if (JSON.parse(localStorage.getItem('user_registerd')) != null) {
+                    this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
+                    this.router.navigate(['/home']);
+                    //this.navCtrl.navigateBack(['/home']);
+                }
+                else if ((localStorage.getItem('user_id')) != undefined && localStorage.getItem('isotpverified') == '1') {
+                    if (JSON.parse(localStorage.getItem('user_id')) != null) {
+                        this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
+                        this.router.navigate(['/register-as-volunteer']);
+                    }
+                    //this.navCtrl.navigateBack(['/register-as-volunteer']);
+                }
+                else if (localStorage.getItem('isotpverified') == '0') {
+                    this.router.navigate(['/otp']);
+                }
+                else {
+                    this.router.navigate(['/language']);
+                }
+            }
+            this.fetch.isLanguageChanged.subscribe(value => {
+                this.isLanguageChanged = value;
+                var lang_code = JSON.parse(localStorage.getItem('lang'));
+                this.fetch.getKeyText(lang_code).subscribe(rs => {
+                    this.storage.setScope(rs);
+                    let res = this.storage.getScope();
+                    let item1 = res.find(i => i.key_text === 'REGISTER_AS_VOLUNTEER');
+                    this.model.key_text1 = item1[lang_code];
+                    let item2 = res.find(i => i.key_text === 'SIDEBAR_QUOTE1');
+                    this.model.key_text2 = item2[lang_code];
+                    let item3 = res.find(i => i.key_text === 'PROFILE');
+                    this.model.key_text3 = item3[lang_code];
+                    let item4 = res.find(i => i.key_text === 'SIDEBAR_QUOTE2');
+                    this.model.key_text4 = item4[lang_code];
+                    let item5 = res.find(i => i.key_text === 'SAVED_ADDRESSES');
+                    this.model.key_text5 = item5[lang_code];
+                    let item6 = res.find(i => i.key_text === 'YOUR_PREVIOUSLY_SAVED_ADDRESSES');
+                    this.model.key_text6 = item6[lang_code];
+                    let item7 = res.find(i => i.key_text === 'CHOOSE_LANGUAGE');
+                    this.model.key_text7 = item7[lang_code];
+                    let item8 = res.find(i => i.key_text === 'SIDEBAR_QUOTE3');
+                    this.model.key_text8 = item8[lang_code];
+                    let item9 = res.find(i => i.key_text === 'HELP');
+                    this.model.key_text9 = item9[lang_code];
+                    let item10 = res.find(i => i.key_text === 'SIDEBAR_QUOTE4');
+                    this.model.key_text10 = item10[lang_code];
+                    let item11 = res.find(i => i.key_text === 'ABOUT_US');
+                    this.model.key_text11 = item11[lang_code];
+                    let item12 = res.find(i => i.key_text === 'SIDEBAR_QUOTE5');
+                    this.model.key_text12 = item12[lang_code];
+                    let item13 = res.find(i => i.key_text === 'SHOW_IN_BETWEEN');
+                    this.model.key_text13 = item13[lang_code];
+                    let item14 = res.find(i => i.key_text === 'LOGOUT');
+                    this.model.key_text14 = item14[lang_code];
+                    let item15 = res.find(i => i.key_text === 'MULTI_LOGIN_ERROR_TEXT');
+                    this.model.key_text15 = item15[lang_code];
+                    let item16 = res.find(i => i.key_text === 'SORRY_NOT_AVAILABLE_IN_YOUR_AREA');
+                    this.model.key4 = item16[lang_code];
+                    let item17 = res.find(i => i.key_text === 'OKAY');
+                    this.model.key_text17 = item17[lang_code];
+                });
+            });
+        });
         var self = this;
         var lang_code = JSON.parse(localStorage.getItem('lang'));
         const path = window.location.pathname.split('folder/')[1];
@@ -1152,11 +1318,22 @@ let AppComponent = class AppComponent {
             this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
         }
     }
+    // checkwaiting(){
+    //   this.user_id = JSON.parse(localStorage.getItem('user_registerd'));
+    //   if(this.user_id){
+    //     this.fetch.v_check(this.user_id).subscribe(res => {
+    //       if(res.success == true){
+    //         this.showvolnoti(res)
+    //       }
+    //     });
+    //   }
+    // }
     checkVolunteer() {
         this.user_id = JSON.parse(localStorage.getItem('user_registerd'));
         if (this.user_id) {
             this.fetch.v_check(this.user_id).subscribe(res => {
                 if (res.success == true) {
+                    this.res = res;
                     if (res.status == 1) {
                         localStorage.setItem('volunteer_approve', '1');
                     }
@@ -1170,6 +1347,83 @@ let AppComponent = class AppComponent {
             });
         }
     }
+    // checkposition(vol, pathpoints) {
+    //   var position = new google.maps.LatLng(vol.lat, vol.lng);
+    //   var res = google.maps.geometry.poly.isLocationOnEdge(
+    //     position,
+    //     new google.maps.Polyline({ path: pathpoints }),
+    //     0.0030
+    //   );
+    //   return { res, vol };
+    // }
+    // getLiText(point) {
+    //   let lat = point.lat(),
+    //     lng = point.lng();
+    //   return { lat: lat, lng: lng };
+    // }
+    //  showvolnoti(verify){
+    //     this.fetch.v_edit(verify.data).subscribe(res => {
+    //       console.log("showvolnoti:",res);
+    //       var element = {
+    //            lat: res.data.latitude,
+    //            lng: res.data.longitude
+    //       }
+    //       this.fetch.get_waiting_food().subscribe(res => {
+    //             //  var start = {
+    //             //       lat: res.data.startLat,
+    //             //       lng: res.data.startLng
+    //             //  }
+    //             //  console.log("ye apna wala start:",start);
+    //             //  var end = {
+    //             //       lat: res.data.endLat,
+    //             //       lng: res.data.endLng
+    //             //  }
+    //            //  console.log("ye apna wala end:",end);
+    //       this.directionsService.route(
+    //         {
+    //           origin: "Tower Chowk, Freeganj, Madhav Nagar, Ujjain, Madhya Pradesh 456010, India",
+    //           destination: "5Q4P+PQ3, Sanwer Rd, Nanakheda, Mahakal Vanijya, Ujjain, Madhya Pradesh 456010, India",
+    //           //   waypoints: waypts,
+    //           optimizeWaypoints: true,
+    //           travelMode: google.maps.TravelMode.DRIVING,
+    //         },
+    //         (response, status) => {
+    //           if (status === "OK") {
+    //             this.directionsRenderer.setDirections(response);
+    //             /////////////////////////////
+    //             if (response.routes && response.routes.length > 0) {
+    //               console.log("this is response of path:", response);
+    //               var routes = response.routes;
+    //               for (var j = 0; j < routes.length; j++) {
+    //                 var points = routes[j].overview_path;
+    //                 // var ul = document.getElementById("vertex");
+    //                 for (var i = 0; i < points.length; i++) {
+    //                   // var li = document.createElement('li');
+    //                   // li.innerHTML = this.getLiText(points[i]);
+    //                   var result = this.getLiText(points[i]);
+    //                   console.log("path all latlong:", result);
+    //                   // ul.appendChild(li);
+    //                   //  this.resultarr.push(result.lat,result.lng);
+    //                   this.allpoints = new google.maps.LatLng(
+    //                     result.lat,
+    //                     result.lng
+    //                   );
+    //                   console.log("this.allpoints:",this.allpoints);
+    //                   this.pointarr.push(this.allpoints);
+    //                   console.log(this.pointarr);
+    //                 }
+    //               }
+    //             }
+    //       var check = this.checkposition(element, this.pointarr);
+    //            console.log("check:",check);
+    //             if (check.res = true){
+    //               this.showFoodDeliverPopupToVolunteer("donar is waiting for food");
+    //             }
+    //           }
+    //     });
+    //     })
+    //     })
+    // }
     checkLoginUser() {
         if (localStorage.getItem('user_id') != undefined) {
             if (JSON.parse(localStorage.getItem('user_id')) != null) {
@@ -1188,6 +1442,7 @@ let AppComponent = class AppComponent {
     }
     logout() {
         localStorage.clear();
+        this.getDevice();
         this.router.navigate(['/language']);
     }
     side_bar_route(route) {
@@ -1203,7 +1458,8 @@ let AppComponent = class AppComponent {
                     "array": array,
                     "donor_details": donor_details,
                     "request_id": request_id,
-                    "message": msg
+                    "message": msg,
+                    "click_action": "FCM_PLUGIN_ACTIVITY"
                 }
             });
             modal.onDidDismiss().then((dataReturned) => {
@@ -1243,6 +1499,7 @@ let AppComponent = class AppComponent {
     }
     showAlert(msg) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            console.log(msg, 'msg');
             const modal = yield this.modalController.create({
                 component: _modal_simple_push_notification_simple_push_notification_page__WEBPACK_IMPORTED_MODULE_13__["SimplePushNotificationPage"],
                 cssClass: 'custom_current_location_modal notification-modal',
@@ -1256,9 +1513,34 @@ let AppComponent = class AppComponent {
             return yield modal.present();
         });
     }
+    //get Unique_id
+    getDevice() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.platform.ready().then(() => {
+                const uuid = this.device.uuid;
+                //  alert("id"+uuid);
+                localStorage.setItem('unique_id', JSON.stringify(uuid));
+            });
+        });
+    }
+    checkUserUniqueId() {
+        var user_id = JSON.parse(localStorage.getItem('user_id'));
+        var unique_id = JSON.parse(localStorage.getItem('unique_id'));
+        let data = JSON.stringify({ 'user_id': user_id, 'unique_id': unique_id });
+        this.fetch.checkDeviceId(data).subscribe(res => {
+            if (res.success == false) {
+                this.errorMsg.showModal(this.model.key_text15);
+                this.logout();
+            }
+        });
+    }
 };
 AppComponent.ctorParameters = () => [
+    { type: _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_18__["FirebaseX"] },
     { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_14__["Geolocation"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
+    { type: _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__["Device"] },
+    { type: _error_msg_service__WEBPACK_IMPORTED_MODULE_15__["ErrorMsgService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
     { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"] },
     { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"] },
@@ -1266,8 +1548,7 @@ AppComponent.ctorParameters = () => [
     { type: _fetch_service__WEBPACK_IMPORTED_MODULE_8__["FetchService"] },
     { type: _storage_service__WEBPACK_IMPORTED_MODULE_9__["StorageService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] },
-    { type: cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_15__["FCM"] },
-    { type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_16__["Network"] }
+    { type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_17__["Diagnostic"] }
 ];
 AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -1303,7 +1584,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list id=\"inbox-list\" style=\"margin: 0px 30px;\">\n          <ion-list-header class=\"medium size_18 custom_header\">More</ion-list-header>          \n\n          <!--<ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n              <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n              <ion-label>{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>-->\n        </ion-list>\n\n        <div class=\"custom_menubar\">\n\t\t\t<ion-list class=\"custom_menu\" style=\"margin-top: -40px !important; margin-bottom:12px;\">\n\t\t\t\t<ion-menu-toggle>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/register-volunteer']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_1.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text1}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text2}}</div>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/profile']\" >\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_2.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text3}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text4}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/saved-addresses',user_id]\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_3.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text5}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text6}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/choose-language']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_4.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text7}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text8}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/help']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_5.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text9}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text10}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/about-us']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text11}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text12}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t  \n\t\t\t\t\t <ion-item class=\"item-icon-left menu_item\" menu-close  (click)=\"logout()\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text14}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text14}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>  \n\t\t\t\t</ion-menu-toggle>\t\t\t\n\t\t\t</ion-list>\n        </div>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n    <ion-split-pane contentId=\"main-content\">\n        <ion-menu contentId=\"main-content\" type=\"overlay\">\n            <ion-content>\n                <ion-list id=\"inbox-list\" style=\"margin: 0px 30px;\">\n                    <ion-list-header class=\"medium size_18 custom_header\">More</ion-list-header>\n\n                    <!--<ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n              <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n              <ion-label>{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>-->\n                </ion-list>\n\n                <div class=\"custom_menubar\">\n                    <ion-list class=\"custom_menu\" style=\"margin-top: -40px !important; margin-bottom:12px;\">\n                        <ion-menu-toggle>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/register-volunteer']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_1.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text1}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text2}}</div>\n\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/profile']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_2.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text3}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text4}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/saved-addresses',user_id]\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_3.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text5}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text6}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/choose-language']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_4.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text7}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text8}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/help']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_5.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text9}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text10}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/about-us']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text11}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text12}}</div>\n                                </div>\n                            </ion-item>\n\n                            <ion-item class=\"item-icon-left menu_item\" menu-close (click)=\"logout()\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text14}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text14}}</div>\n                                </div>\n                            </ion-item>\n                        </ion-menu-toggle>\n                    </ion-list>\n                </div>\n            </ion-content>\n        </ion-menu>\n        <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n    </ion-split-pane>\n</ion-app>");
 
 /***/ }),
 
@@ -1425,8 +1706,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/date-picker/ngx */ "ya1t");
 /* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "mtRb");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! cordova-plugin-fcm-with-dependecy-updated/ionic/ngx */ "lOSq");
-/* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/network/ngx */ "kwrG");
+/* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/device/ngx */ "xS7M");
+/* harmony import */ var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/firebase-x/ngx */ "E9qw");
 
 
 
@@ -1445,6 +1726,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 
 
 let AppModule = class AppModule {
@@ -1462,6 +1744,8 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         ],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
+            _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_19__["FirebaseX"],
+            _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_18__["Device"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_10__["SocialSharing"],
             _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_15__["DatePicker"],
@@ -1471,8 +1755,6 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _angular_common__WEBPACK_IMPORTED_MODULE_17__["DatePipe"],
             _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_16__["Diagnostic"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
-            cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_18__["FCM"],
-            _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_19__["Network"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
     })
@@ -1543,7 +1825,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"modal_content\">\n  <div class=\"ion-padding\">  \n    <img (click)=\"closeModal()\" src=\"assets/images/close_btn.svg\" class=\"close_btn\">\n  \n    <div class=\"modal_inner\">\n      <br>\n      \n      <div class=\"medium size_16 green center\" style=\"max-width: 300px; width: 100%; margin: 0 auto;\">\n        {{msg}}\n      </div>\n      <br>\n      <br>\n      <div class=\"app_button\">\n          <button class=\"app_btn\" (click)=\"closeModal()\">{{ model.key_text1 }}</button>\n      </div>\n    </div>\n\n  </div>\n</ion-content> ");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"modal_content\">\n    <div class=\"ion-padding\">\n        <img (click)=\"closeModal()\" src=\"assets/images/close_btn.svg\" class=\"close_btn\">\n\n        <div class=\"modal_inner\">\n            <br>\n\n            <div class=\"medium size_16 green center\" style=\"max-width: 300px; width: 100%; margin: 0 auto;\">\n                {{ msg }}\n            </div>\n            <br>\n            <br>\n            <div class=\"app_button\">\n                <button class=\"app_btn\" (click)=\"closeModal()\">{{ model.key_text1 }}</button>\n            </div>\n        </div>\n\n    </div>\n</ion-content>");
 
 /***/ }),
 
@@ -1933,29 +2215,6 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ "p9Ra":
-/*!************************************************************************************************************************************!*\
-  !*** ./node_modules/cordova-plugin-fcm-with-dependecy-updated/ionic/ngx/node_modules/@angular/core/fesm2015 lazy namespace object ***!
-  \************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncaught exception popping up in devtools
-	return Promise.resolve().then(function() {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = "p9Ra";
-
-/***/ }),
-
 /***/ "qkCY":
 /*!************************************!*\
   !*** ./src/app/storage.service.ts ***!
@@ -2119,11 +2378,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    // {
-    //   path: '',
-    //   redirectTo: 'language',
-    //   pathMatch: 'full'
-    // },
+    {
+        path: '',
+        redirectTo: 'language',
+        pathMatch: 'full'
+    },
     {
         path: 'splash',
         loadChildren: () => __webpack_require__.e(/*! import() | splash-splash-module */ "splash-splash-module").then(__webpack_require__.bind(null, /*! ./splash/splash.module */ "eYMH")).then(m => m.SplashPageModule)
@@ -2134,7 +2393,7 @@ const routes = [
     },
     {
         path: 'mobile-number',
-        loadChildren: () => Promise.all(/*! import() | mobile-number-mobile-number-module */[__webpack_require__.e("common"), __webpack_require__.e("mobile-number-mobile-number-module")]).then(__webpack_require__.bind(null, /*! ./mobile-number/mobile-number.module */ "WmCV")).then(m => m.MobileNumberPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | mobile-number-mobile-number-module */ "mobile-number-mobile-number-module").then(__webpack_require__.bind(null, /*! ./mobile-number/mobile-number.module */ "WmCV")).then(m => m.MobileNumberPageModule)
     },
     {
         path: 'otp',
@@ -2154,7 +2413,7 @@ const routes = [
     },
     {
         path: 'register-as-volunteer',
-        loadChildren: () => Promise.all(/*! import() | register-as-volunteer-register-as-volunteer-module */[__webpack_require__.e("default~modal-terms-conditions-terms-conditions-module~register-as-volunteer-register-as-volunteer-m~dc236ab8"), __webpack_require__.e("common"), __webpack_require__.e("register-as-volunteer-register-as-volunteer-module")]).then(__webpack_require__.bind(null, /*! ./register-as-volunteer/register-as-volunteer.module */ "M26G")).then(m => m.RegisterAsVolunteerPageModule)
+        loadChildren: () => Promise.all(/*! import() | register-as-volunteer-register-as-volunteer-module */[__webpack_require__.e("default~modal-terms-conditions-terms-conditions-module~register-as-volunteer-register-as-volunteer-m~dc236ab8"), __webpack_require__.e("register-as-volunteer-register-as-volunteer-module")]).then(__webpack_require__.bind(null, /*! ./register-as-volunteer/register-as-volunteer.module */ "M26G")).then(m => m.RegisterAsVolunteerPageModule)
     },
     {
         path: 'register-volunteer',
@@ -2172,11 +2431,11 @@ const routes = [
     },
     {
         path: 'saved-addresses-edit/:id',
-        loadChildren: () => Promise.all(/*! import() | saved-addresses-edit-saved-addresses-edit-module */[__webpack_require__.e("common"), __webpack_require__.e("saved-addresses-edit-saved-addresses-edit-module")]).then(__webpack_require__.bind(null, /*! ./saved-addresses-edit/saved-addresses-edit.module */ "krGk")).then(m => m.SavedAddressesEditPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | saved-addresses-edit-saved-addresses-edit-module */ "saved-addresses-edit-saved-addresses-edit-module").then(__webpack_require__.bind(null, /*! ./saved-addresses-edit/saved-addresses-edit.module */ "krGk")).then(m => m.SavedAddressesEditPageModule)
     },
     {
         path: 'saved-addresses-add',
-        loadChildren: () => Promise.all(/*! import() | saved-addresses-add-saved-addresses-add-module */[__webpack_require__.e("common"), __webpack_require__.e("saved-addresses-add-saved-addresses-add-module")]).then(__webpack_require__.bind(null, /*! ./saved-addresses-add/saved-addresses-add.module */ "2rwE")).then(m => m.SavedAddressesAddPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | saved-addresses-add-saved-addresses-add-module */ "saved-addresses-add-saved-addresses-add-module").then(__webpack_require__.bind(null, /*! ./saved-addresses-add/saved-addresses-add.module */ "2rwE")).then(m => m.SavedAddressesAddPageModule)
     },
     {
         path: 'filter-content',
@@ -2212,7 +2471,7 @@ const routes = [
     },
     {
         path: 'donate-food-members',
-        loadChildren: () => Promise.all(/*! import() | donate-food-members-donate-food-members-module */[__webpack_require__.e("common"), __webpack_require__.e("donate-food-members-donate-food-members-module")]).then(__webpack_require__.bind(null, /*! ./donate-food-members/donate-food-members.module */ "vV63")).then(m => m.DonateFoodMembersPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | donate-food-members-donate-food-members-module */ "donate-food-members-donate-food-members-module").then(__webpack_require__.bind(null, /*! ./donate-food-members/donate-food-members.module */ "vV63")).then(m => m.DonateFoodMembersPageModule)
     },
     {
         path: 'donate-food-review/:id/:id2',
@@ -2236,7 +2495,7 @@ const routes = [
     },
     {
         path: 'get-food-nearest-donors/:data/:r_lat/:r_lon/:r_id/:id/:data2/:t',
-        loadChildren: () => Promise.all(/*! import() | get-food-nearest-donors-get-food-nearest-donors-module */[__webpack_require__.e("default~get-food-nearest-donors-get-food-nearest-donors-module~modal-onthe-way-msg-onthe-way-msg-mod~d2e0387c"), __webpack_require__.e("common"), __webpack_require__.e("get-food-nearest-donors-get-food-nearest-donors-module")]).then(__webpack_require__.bind(null, /*! ./get-food-nearest-donors/get-food-nearest-donors.module */ "M/g4")).then(m => m.GetFoodNearestDonorsPageModule)
+        loadChildren: () => Promise.all(/*! import() | get-food-nearest-donors-get-food-nearest-donors-module */[__webpack_require__.e("default~get-food-nearest-donors-get-food-nearest-donors-module~modal-onthe-way-msg-onthe-way-msg-mod~d2e0387c"), __webpack_require__.e("get-food-nearest-donors-get-food-nearest-donors-module")]).then(__webpack_require__.bind(null, /*! ./get-food-nearest-donors/get-food-nearest-donors.module */ "M/g4")).then(m => m.GetFoodNearestDonorsPageModule)
     },
     {
         path: 'get-food-nearest-donors-two/:id/:lat/:lon/:r_id/:mode/:food_type/:getfoodid',
@@ -2396,7 +2655,7 @@ const routes = [
     },
     {
         path: 'error-msg-modal',
-        loadChildren: () => Promise.all(/*! import() | modal-error-msg-modal-error-msg-modal-module */[__webpack_require__.e("common"), __webpack_require__.e("modal-error-msg-modal-error-msg-modal-module")]).then(__webpack_require__.bind(null, /*! ./modal/error-msg-modal/error-msg-modal.module */ "Beh4")).then(m => m.ErrorMsgModalPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | modal-error-msg-modal-error-msg-modal-module */ "modal-error-msg-modal-error-msg-modal-module").then(__webpack_require__.bind(null, /*! ./modal/error-msg-modal/error-msg-modal.module */ "Beh4")).then(m => m.ErrorMsgModalPageModule)
     },
     {
         path: 'simple-push-notification',
@@ -2425,6 +2684,10 @@ const routes = [
     {
         path: 'pincode-error-component',
         component: _pincode_error_component_pincode_error_component_component__WEBPACK_IMPORTED_MODULE_3__["PincodeErrorComponentComponent"]
+    },
+    {
+        path: 'footer',
+        loadChildren: () => __webpack_require__.e(/*! import() | footer-footer-module */ "footer-footer-module").then(__webpack_require__.bind(null, /*! ./footer/footer.module */ "PpLr")).then(m => m.FooterPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -2451,7 +2714,7 @@ AppRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJFQUFBO0FBQ0Y7O0FBRUE7RUFDRSxvQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBQUNGOztBQUVBO0VBQ0UsZUFBQTtBQUNGOztBQUVBO0VBQ0UsbUJBQUE7QUFDRjs7QUFFQTs7RUFFRSxrQkFBQTtBQUNGOztBQUVBO0VBQ0UsMkRBQUE7QUFDRjs7QUFFQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUVBLGdCQUFBO0FBQUY7O0FBR0E7RUFDRSxlQUFBO0VBRUEsbUJBQUE7RUFFQSxjQUFBO0VBRUEsZ0JBQUE7QUFIRjs7QUFNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQUhGOztBQU1BO0VBQ0Usc0RBQUE7QUFIRjs7QUFNQTtFQUNFLCtCQUFBO0FBSEY7O0FBTUE7RUFDRSxjQUFBO0FBSEY7O0FBTUE7RUFDRSxnQkFBQTtBQUhGOztBQU1BO0VBQ0Usc0JBQUE7QUFIRjs7QUFNQTtFQUNFLG1CQUFBO0FBSEY7O0FBTUE7RUFDRSxpQkFBQTtFQUNBLG1CQUFBO0FBSEY7O0FBTUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUFIRjs7QUFNQTtFQUNFLCtCQUFBO0FBSEY7O0FBTUE7RUFDRSxlQUFBO0VBQ0EsY0FBQTtBQUhGOztBQU1BO0VBQ0Usa0JBQUE7QUFIRjs7QUFNQTs7RUFFRSxrQkFBQTtFQUNBLG1CQUFBO0FBSEY7O0FBTUE7RUFDRSxrQkFBQTtBQUhGOztBQU1BO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBRUEsb0NBQUE7QUFKRjs7QUFPQTtFQUNFLGlDQUFBO0FBSkYiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLW1lbnUgaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6IHZhcigtLWlvbi1pdGVtLWJhY2tncm91bmQsIHZhcigtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yLCAjZmZmKSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiA4cHg7XG4gIC0tcGFkZGluZy1lbmQ6IDhweDtcbiAgLS1wYWRkaW5nLXRvcDogMjBweDtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3Qge1xuICBwYWRkaW5nOiAyMHB4IDA7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1ub3RlIHtcbiAgbWFyZ2luLWJvdHRvbTogMzBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2luYm94LWxpc3Qge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgdmFyKC0taW9uLWNvbG9yLXN0ZXAtMTUwLCAjZDdkOGRhKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBmb250LXNpemU6IDIycHg7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG5cbiAgbWluLWhlaWdodDogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAxNnB4O1xuXG4gIG1hcmdpbi1ib3R0b206IDE4cHg7XG5cbiAgY29sb3I6ICM3NTc1NzU7XG5cbiAgbWluLWhlaWdodDogMjZweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDEwcHg7XG4gIC0tcGFkZGluZy1lbmQ6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWJhY2tncm91bmQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiKSwgMC4xNCk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBjb2xvcjogIzYxNmU3ZTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWxhYmVsIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwIDAgMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbGluZS1oZWlnaHQ6IDI0cHg7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTZweDtcbiAgLS1wYWRkaW5nLWVuZDogMTZweDtcbiAgLS1taW4taGVpZ2h0OiA1MHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBmb250LXNpemU6IDI0cHg7XG4gIGNvbG9yOiAjNzM4NDlhO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxNnB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxNnB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1ub3RlIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBmb250LXNpemU6IDE2cHg7XG5cbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1tZWRpdW0tc2hhZGUpO1xufVxuXG5pb24taXRlbS5zZWxlY3RlZCB7XG4gIC0tY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkVBQUE7QUFDRjs7QUFFQTtFQUNFLG9CQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLHNCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxlQUFBO0FBQ0Y7O0FBRUE7RUFDRSxtQkFBQTtBQUNGOztBQUVBOztFQUVFLGtCQUFBO0FBQ0Y7O0FBRUE7RUFDRSwyREFBQTtBQUNGOztBQUVBO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0VBRUEsZ0JBQUE7QUFBRjs7QUFHQTtFQUNFLGVBQUE7RUFFQSxtQkFBQTtFQUVBLGNBQUE7RUFFQSxnQkFBQTtBQUhGOztBQU1BO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0FBSEY7O0FBTUE7RUFDRSxzREFBQTtBQUhGOztBQU1BO0VBQ0UsK0JBQUE7QUFIRjs7QUFNQTtFQUNFLGNBQUE7QUFIRjs7QUFNQTtFQUNFLGdCQUFBO0FBSEY7O0FBTUE7RUFDRSxzQkFBQTtBQUhGOztBQU1BO0VBQ0UsbUJBQUE7QUFIRjs7QUFNQTtFQUNFLGlCQUFBO0VBQ0EsbUJBQUE7QUFIRjs7QUFNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQUhGOztBQU1BO0VBQ0UsK0JBQUE7QUFIRjs7QUFNQTtFQUNFLGVBQUE7RUFDQSxjQUFBO0FBSEY7O0FBTUE7RUFDRSxrQkFBQTtBQUhGOztBQU1BOztFQUVFLGtCQUFBO0VBQ0EsbUJBQUE7QUFIRjs7QUFNQTtFQUNFLGtCQUFBO0FBSEY7O0FBTUE7RUFDRSxxQkFBQTtFQUNBLGVBQUE7RUFFQSxvQ0FBQTtBQUpGOztBQU9BO0VBQ0UsaUNBQUE7QUFKRiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tbWVudSBpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWl0ZW0tYmFja2dyb3VuZCwgdmFyKC0taW9uLWJhY2tncm91bmQtY29sb3IsICNmZmYpKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctc3RhcnQ6IDhweDtcbiAgLS1wYWRkaW5nLWVuZDogOHB4O1xuICAtLXBhZGRpbmctdG9wOiAyMHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiAzMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3Itc3RlcC0xNTAsICNkN2Q4ZGEpO1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMjJweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcblxuICBtaW4taGVpZ2h0OiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNsYWJlbHMtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBmb250LXNpemU6IDE2cHg7XG5cbiAgbWFyZ2luLWJvdHRvbTogMThweDtcblxuICBjb2xvcjogIzc1NzU3NTtcblxuICBtaW4taGVpZ2h0OiAyNnB4O1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTBweDtcbiAgLS1wYWRkaW5nLWVuZDogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbS5zZWxlY3RlZCB7XG4gIC0tYmFja2dyb3VuZDogcmdiYSh2YXIoLS1pb24tY29sb3ItcHJpbWFyeS1yZ2IpLCAwLjE0KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSBpb24taWNvbiB7XG4gIGNvbG9yOiAjNjE2ZTdlO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSBpb24tbGFiZWwge1xuICBmb250LXdlaWdodDogNTAwO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3Qge1xuICBwYWRkaW5nOiAyMHB4IDAgMCAwO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBsaW5lLWhlaWdodDogMjRweDtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAxNnB4O1xuICAtLXBhZGRpbmctZW5kOiAxNnB4O1xuICAtLW1pbi1oZWlnaHQ6IDUwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbS5zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMjRweDtcbiAgY29sb3I6ICM3Mzg0OWE7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdCNsYWJlbHMtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBwYWRkaW5nLWxlZnQ6IDE2cHg7XG4gIHBhZGRpbmctcmlnaHQ6IDE2cHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIG1hcmdpbi1ib3R0b206IDhweDtcbn1cblxuaW9uLW5vdGUge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGZvbnQtc2l6ZTogMTZweDtcblxuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLW1lZGl1bS1zaGFkZSk7XG59XG5cbmlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1jb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufSJdfQ== */");
 
 /***/ }),
 

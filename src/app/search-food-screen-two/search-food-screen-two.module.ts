@@ -11,15 +11,14 @@ import { SearchFoodScreenTwoPage } from './search-food-screen-two.page';
 import { CaptchaComponent } from './../captcha/captcha.component';
 import { FooterPageModule } from "../footer/footer.module";
 
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SearchFoodScreenTwoPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [SearchFoodScreenTwoPage , CaptchaComponent]
+    declarations: [SearchFoodScreenTwoPage, CaptchaComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        SearchFoodScreenTwoPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class SearchFoodScreenTwoPageModule {}

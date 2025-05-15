@@ -444,10 +444,10 @@ export class GetFoodNearestDonorsTwoDuplicatePage implements OnInit {
     await alert.present();
   }
   openMap(){
-    let destination = this.model.latitude + '+' + this.model.longitude;
+    let destination = this.model.latitude + ',' + this.model.longitude;
     //window.open('maps://?q=' + destination, '_system');
     if(this.platform.is('ios')){
-      this.browserTab.openUrl('http://maps.google.com/maps?q=loc:' + destination);
+      window.open('maps://?q=' + destination, '_system');
     } else {
       let label = encodeURI('My Label');
       window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');

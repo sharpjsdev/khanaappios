@@ -1,13 +1,13 @@
 (function () {
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 
-  function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
 
-  function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["show-in-between-show-in-between-module"], {
     /***/
@@ -135,14 +135,12 @@
           this.data$ = this.dataSubject.asObservable();
         }
 
-        _createClass(NotificationCountService, [{
+        return _createClass(NotificationCountService, [{
           key: "updateData",
           value: function updateData(newData) {
             this.dataSubject.next(newData);
           }
         }]);
-
-        return NotificationCountService;
       }();
 
       NotificationCountService.ctorParameters = function () {
@@ -171,7 +169,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "#map {\n  width: 100%;\n  height: 285px;\n}\n\n.show_in_between_tab {\n  display: flex;\n}\n\n.show_in_between_tab ion-item {\n  width: 50%;\n}\n\n.show_in_between_tab input {\n  margin-inline-end: 15px;\n}\n\n.ion-padding {\n  padding-bottom: 0px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Nob3ctaW4tYmV0d2Vlbi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0VBQ0EsYUFBQTtBQUNKOztBQUNBO0VBQ0ksYUFBQTtBQUVKOztBQUFBO0VBQ0ksVUFBQTtBQUdKOztBQURBO0VBQ0ksdUJBQUE7QUFJSjs7QUFGQTtFQUNJLDhCQUFBO0FBS0oiLCJmaWxlIjoic2hvdy1pbi1iZXR3ZWVuLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNtYXAge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMjg1cHg7XG59XG4uc2hvd19pbl9iZXR3ZWVuX3RhYiB7XG4gICAgZGlzcGxheTogZmxleDtcbn1cbi5zaG93X2luX2JldHdlZW5fdGFiIGlvbi1pdGVtIHtcbiAgICB3aWR0aDogNTAlO1xufVxuLnNob3dfaW5fYmV0d2Vlbl90YWIgaW5wdXQge1xuICAgIG1hcmdpbi1pbmxpbmUtZW5kOiAxNXB4O1xufVxuLmlvbi1wYWRkaW5ne1xuICAgIHBhZGRpbmctYm90dG9tOiAwcHggIWltcG9ydGFudDtcbn1cbiJdfQ== */";
+      __webpack_exports__["default"] = "#map {\n  width: 100%;\n  height: 285px;\n}\n\n.show_in_between_tab {\n  display: flex;\n}\n\n.show_in_between_tab ion-item {\n  width: 50%;\n}\n\n.show_in_between_tab input {\n  margin-inline-end: 15px;\n}\n\n.ion-padding {\n  padding-bottom: 0px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXHNob3ctaW4tYmV0d2Vlbi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0VBQ0EsYUFBQTtBQUNKOztBQUNBO0VBQ0ksYUFBQTtBQUVKOztBQUFBO0VBQ0ksVUFBQTtBQUdKOztBQURBO0VBQ0ksdUJBQUE7QUFJSjs7QUFGQTtFQUNJLDhCQUFBO0FBS0oiLCJmaWxlIjoic2hvdy1pbi1iZXR3ZWVuLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNtYXAge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMjg1cHg7XG59XG4uc2hvd19pbl9iZXR3ZWVuX3RhYiB7XG4gICAgZGlzcGxheTogZmxleDtcbn1cbi5zaG93X2luX2JldHdlZW5fdGFiIGlvbi1pdGVtIHtcbiAgICB3aWR0aDogNTAlO1xufVxuLnNob3dfaW5fYmV0d2Vlbl90YWIgaW5wdXQge1xuICAgIG1hcmdpbi1pbmxpbmUtZW5kOiAxNXB4O1xufVxuLmlvbi1wYWRkaW5ne1xuICAgIHBhZGRpbmctYm90dG9tOiAwcHggIWltcG9ydGFudDtcbn1cbiJdfQ== */";
       /***/
     },
 
@@ -396,7 +394,7 @@
           };
         }
 
-        _createClass(ShowInBetweenPage, [{
+        return _createClass(ShowInBetweenPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.model.user_id = JSON.parse(localStorage.getItem('user_registerd'));
@@ -742,8 +740,6 @@
             });
           }
         }]);
-
-        return ShowInBetweenPage;
       }();
 
       ShowInBetweenPage.ctorParameters = function () {
@@ -866,7 +862,7 @@
           this.notifications_admin = [];
         }
 
-        _createClass(CaptchaComponent, [{
+        return _createClass(CaptchaComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             var _this6 = this;
@@ -895,8 +891,6 @@
             //  });
           }
         }]);
-
-        return CaptchaComponent;
       }();
 
       CaptchaComponent.ctorParameters = function () {
@@ -933,7 +927,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n<ion-header class=\"ion-no-border ion-padding\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button>\n          <img src=\"assets/images/icon_menu.svg\">\n        </ion-menu-button>\n        <ion-buttons slot=\"end\" *ngIf=\"pageName != '/home' \">\n          <ion-back-button defaultHref=\"home\"></ion-back-button>\n       </ion-buttons>\n      </ion-buttons>\n      <!--<ion-title>home</ion-title>-->\n      <ion-buttons slot=\"end\" routerLink=\"/notification\">\n        <!-- <span  id=\"black_spot\" style=\"display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;\n        top: -3px;right: 3px;text-align: center;\">\n        {{ this.notification.length + this.notifications_admin.length }}</span>  -->\n        <span *ngIf=\"this.notificationCount!== 0\" id=\"black_spot\" style=\"position: absolute;background-color: #000;border-radius: 50%;color: #fff;font-size: 13px;\n        top: -3px;right: 0px;text-align: center;padding: 0px 3px;\">\n        {{ this.notificationCount }}</span> \n          <img src=\"assets/images/icon_notification.svg\">\n      </ion-buttons>\n      \n     \n      \n    </ion-toolbar>\n  </ion-header>";
+      __webpack_exports__["default"] = "\n<ion-header class=\"ion-no-border ion-padding\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button>\n          <img src=\"assets/images/icon_menu.svg\">\n        </ion-menu-button>\n        <ion-buttons slot=\"end\" *ngIf=\"pageName != '/home' \">\n          <ion-back-button defaultHref=\"home\"></ion-back-button>\n       </ion-buttons>\n      </ion-buttons>\n      <!--<ion-title>home</ion-title>-->\n      <ion-buttons slot=\"end\" routerLink=\"/notification\">\n        <!-- <span  id=\"black_spot\" style=\"display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;\n        top: -3px;right: 3px;text-align: center;\">\n        {{ this.notification.length + this.notifications_admin.length }}</span>  -->\n        <span *ngIf=\"this.notificationCount!== 0\" id=\"black_spot\" style=\"position: absolute;background-color: #000;border-radius: 50%;color: #fff;font-size: 13px;\n        top: -3px;right: 0px;text-align: center;padding: 0px 3px;\">\n        {{ this.notificationCount }}</span> \n          <img src=\"assets/images/icon_notification.svg\">\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>";
       /***/
     },
 

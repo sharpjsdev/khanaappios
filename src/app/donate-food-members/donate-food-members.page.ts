@@ -33,15 +33,38 @@ notification:any=[];
 	this.model.search = false;
   }
 
-  ionViewWillEnter(){
+  async presentAlert() {
+	let confirm1 = await  this.alertController.create({
+		header: 'Location',
+		message: "For a better experience, turn on device location, which uses Google\'s location service. ✓",
+		backdropDismiss: false,
+		buttons: [
+		  {
+			text: 'cancel',
+			role: 'Cancel',
+			handler: () => {
 
-    this.diagnostic.isLocationAvailable().then(resp =>{
-  		if(!resp){
-  			this.router.navigate(['/home']);
-  		}
-  	}).catch((error: any) => {
-  		this.router.navigate(['/home']);
-  	});
+			}
+		  },
+		  {
+			text: 'Ok',
+			handler: () => {
+			  this.diagnostic.switchToLocationSettings();
+			}
+		  }
+		]
+	  });
+	  await confirm1.present();
+	}
+
+  ionViewWillEnter(){
+	this.diagnostic.isLocationEnabled().then(resp =>{
+		if(!resp){
+			this.presentAlert();
+		}
+	}).catch((error: any) => {
+		this.presentAlert();
+	});
 
 	this.app_user = JSON.parse(localStorage.getItem('user_id'));
 	this.model.is_volunteer = 0;

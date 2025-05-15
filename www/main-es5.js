@@ -1,17 +1,37 @@
 (function () {
-  function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == typeof h && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(typeof e + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+  function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == typeof h && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(typeof e + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 
-  function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
 
-  function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
+    /***/
+    "/b2v":
+    /*!*******************************************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modal/error-msg-modal/error-msg-modal.page.html ***!
+      \*******************************************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function _b2v(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<ion-content class=\"modal_content\">\n  <div class=\"ion-padding\">  \n    <a (click)=\"closeModal()\">\n      <img src=\"assets/images/close_btn.svg\" class=\"close_btn\">\n    </a>\n    <div class=\"modal_inner\">\n      <div class=\"medium size_14 green center\" style=\"max-width: 195px; width: 100%; margin: 0 auto; margin-top: 25px;\">\n        <span >{{ msg }} </span>\n      </div>\n    </div>\n\n  </div> \n</ion-content> ";
+      /***/
+    },
+
     /***/
     0:
     /*!***************************!*\
@@ -23,7 +43,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /Users/ewayitsolutions/Desktop/khanna-app-updated/src/main.ts */
+      /*! F:\khana\src\main.ts */
       "zUnb");
       /***/
     },
@@ -101,7 +121,7 @@
           this.model = {};
         }
 
-        _createClass(DynamicMsgPage, [{
+        return _createClass(DynamicMsgPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.model.key_text1 = "okay";
@@ -132,8 +152,6 @@
             }));
           }
         }]);
-
-        return DynamicMsgPage;
       }();
 
       DynamicMsgPage.ctorParameters = function () {
@@ -233,7 +251,7 @@
           this.model = {};
         }
 
-        _createClass(SimplePushNotificationPage, [{
+        return _createClass(SimplePushNotificationPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.model.key_text1 = "okay";
@@ -264,8 +282,6 @@
             }));
           }
         }]);
-
-        return SimplePushNotificationPage;
       }();
 
       SimplePushNotificationPage.ctorParameters = function () {
@@ -288,6 +304,26 @@
         template: _raw_loader_simple_push_notification_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
         styles: [_simple_push_notification_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
       })], SimplePushNotificationPage);
+      /***/
+    },
+
+    /***/
+    "7bR5":
+    /*!*****************************************************************!*\
+      !*** ./src/app/modal/error-msg-modal/error-msg-modal.page.scss ***!
+      \*****************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function bR5(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJlcnJvci1tc2ctbW9kYWwucGFnZS5zY3NzIn0= */";
       /***/
     },
 
@@ -319,6 +355,7 @@
         base_url: 'https://khana.app/api/api/',
         image_url: 'https://khana.app/',
         //phone_no : '08069038801'
+        //phone_no : '08069010173'
         phone_no: '08045889184'
       };
       /*
@@ -434,7 +471,7 @@
           this.details = {};
         }
 
-        _createClass(DeliverFoodVolunteerPage, [{
+        return _createClass(DeliverFoodVolunteerPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.details = JSON.stringify(this.array);
@@ -507,8 +544,6 @@
             }));
           }
         }]);
-
-        return DeliverFoodVolunteerPage;
       }();
 
       DeliverFoodVolunteerPage.ctorParameters = function () {
@@ -539,6 +574,120 @@
     },
 
     /***/
+    "ElZd":
+    /*!**************************************!*\
+      !*** ./src/app/error-msg.service.ts ***!
+      \**************************************/
+
+    /*! exports provided: ErrorMsgService */
+
+    /***/
+    function ElZd(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ErrorMsgService", function () {
+        return ErrorMsgService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "mrSG");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic/angular */
+      "TEn/");
+      /* harmony import */
+
+
+      var _modal_error_msg_modal_error_msg_modal_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ./modal/error-msg-modal/error-msg-modal.page */
+      "HQjg");
+
+      var ErrorMsgService = /*#__PURE__*/function () {
+        function ErrorMsgService(modalController) {
+          _classCallCheck(this, ErrorMsgService);
+
+          this.modalController = modalController;
+        }
+
+        return _createClass(ErrorMsgService, [{
+          key: "showModal",
+          value: function showModal(msg) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+              var _this = this;
+
+              return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+                while (1) switch (_context6.prev = _context6.next) {
+                  case 0:
+                    return _context6.abrupt("return", new Promise(function (resolve) {
+                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+                        var modal;
+                        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+                          while (1) switch (_context5.prev = _context5.next) {
+                            case 0:
+                              _context5.next = 2;
+                              return this.modalController.create({
+                                component: _modal_error_msg_modal_error_msg_modal_page__WEBPACK_IMPORTED_MODULE_3__["ErrorMsgModalPage"],
+                                cssClass: 'error_modal_css',
+                                componentProps: {
+                                  "msg": msg
+                                }
+                              });
+
+                            case 2:
+                              modal = _context5.sent;
+                              modal.onDidDismiss().then(function (dataReturned) {});
+                              _context5.next = 6;
+                              return modal.present();
+
+                            case 6:
+                              return _context5.abrupt("return", _context5.sent);
+
+                            case 7:
+                            case "end":
+                              return _context5.stop();
+                          }
+                        }, _callee5, this);
+                      }));
+                    }));
+
+                  case 1:
+                  case "end":
+                    return _context6.stop();
+                }
+              }, _callee6);
+            }));
+          }
+        }]);
+      }();
+
+      ErrorMsgService.ctorParameters = function () {
+        return [{
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+        }];
+      };
+
+      ErrorMsgService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+      })], ErrorMsgService);
+      /***/
+    },
+
+    /***/
     "GNQA":
     /*!********************************************************************************!*\
       !*** ./src/app/pincode-error-component/pincode-error-component.component.scss ***!
@@ -554,7 +703,129 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = ".ion-padding {\n  padding: 84px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3BpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBQTtBQUNKIiwiZmlsZSI6InBpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlvbi1wYWRkaW5nIHtcclxuICAgIHBhZGRpbmc6IDg0cHg7XHJcbn0iXX0= */";
+      __webpack_exports__["default"] = ".ion-padding {\n  padding: 84px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXHBpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBQTtBQUNKIiwiZmlsZSI6InBpbmNvZGUtZXJyb3ItY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlvbi1wYWRkaW5nIHtcclxuICAgIHBhZGRpbmc6IDg0cHg7XHJcbn0iXX0= */";
+      /***/
+    },
+
+    /***/
+    "HQjg":
+    /*!***************************************************************!*\
+      !*** ./src/app/modal/error-msg-modal/error-msg-modal.page.ts ***!
+      \***************************************************************/
+
+    /*! exports provided: ErrorMsgModalPage */
+
+    /***/
+    function HQjg(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ErrorMsgModalPage", function () {
+        return ErrorMsgModalPage;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "mrSG");
+      /* harmony import */
+
+
+      var _raw_loader_error_msg_modal_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! raw-loader!./error-msg-modal.page.html */
+      "/b2v");
+      /* harmony import */
+
+
+      var _error_msg_modal_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./error-msg-modal.page.scss */
+      "7bR5");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/router */
+      "tyNb");
+      /* harmony import */
+
+
+      var _fetch_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! ../../fetch.service */
+      "RPep");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @ionic/angular */
+      "TEn/");
+
+      var ErrorMsgModalPage = /*#__PURE__*/function () {
+        function ErrorMsgModalPage(modalController, navParams, router, fetch) {
+          _classCallCheck(this, ErrorMsgModalPage);
+
+          this.modalController = modalController;
+          this.navParams = navParams;
+          this.router = router;
+          this.fetch = fetch;
+        }
+
+        return _createClass(ErrorMsgModalPage, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {}
+        }, {
+          key: "closeModal",
+          value: function closeModal() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+              var onClosedData;
+              return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+                while (1) switch (_context7.prev = _context7.next) {
+                  case 0:
+                    onClosedData = "Wrapped Up!";
+                    _context7.next = 3;
+                    return this.modalController.dismiss(onClosedData);
+
+                  case 3:
+                  case "end":
+                    return _context7.stop();
+                }
+              }, _callee7, this);
+            }));
+          }
+        }]);
+      }();
+
+      ErrorMsgModalPage.ctorParameters = function () {
+        return [{
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavParams"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+        }, {
+          type: _fetch_service__WEBPACK_IMPORTED_MODULE_5__["FetchService"]
+        }];
+      };
+
+      ErrorMsgModalPage.propDecorators = {
+        msg: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+        }]
+      };
+      ErrorMsgModalPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-error-msg-modal',
+        template: _raw_loader_error_msg_modal_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_error_msg_modal_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+      })], ErrorMsgModalPage);
       /***/
     },
 
@@ -638,19 +909,13 @@
       /* harmony import */
 
 
-      var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! rxjs/operators */
-      "kU1M");
-      /* harmony import */
-
-
-      var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! rxjs */
       "qCKp");
       /* harmony import */
 
 
-      var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! ../environments/environment */
       "AytR");
 
@@ -659,188 +924,188 @@
           _classCallCheck(this, FetchService);
 
           this.http = http;
-          this.isLanguageChanged = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](false);
+          this.isLanguageChanged = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
         }
 
-        _createClass(FetchService, [{
+        return _createClass(FetchService, [{
           key: "getLanguage",
           value: function getLanguage() {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'language');
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'language');
           }
         }, {
           key: "getKeyText",
           value: function getKeyText(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'key_text/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'key_text/' + id);
           }
         }, {
           key: "getAboutUsPageCOntent",
           value: function getAboutUsPageCOntent(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get-about-us-content-by-lang/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get-about-us-content-by-lang/' + id);
           }
         }, {
           key: "createUser",
           value: function createUser(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'create_user', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'create_user', data);
           }
         }, {
           key: "resendOTP",
           value: function resendOTP(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'resend_otp', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'resend_otp', data);
           }
         }, {
           key: "registerUser",
           value: function registerUser(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'register_user', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'register_user', data);
           }
         }, {
           key: "profile",
           value: function profile(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'user_profile', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'user_profile', data);
           }
         }, {
           key: "get_location",
           value: function get_location(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_long', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_long', data);
           }
         }, {
           key: "help_video",
           value: function help_video(lang_code) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'help_video/' + lang_code);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'help_video/' + lang_code);
           }
         }, {
           key: "add_location",
           value: function add_location(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'add_location', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'add_location', data);
           }
         }, {
           key: "get_user_locations",
           value: function get_user_locations(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_location/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_location/' + id);
           }
         }, {
           key: "get_lat_lon",
           value: function get_lat_lon(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_location/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_location/' + id);
           }
         }, {
           key: "updateLocation",
           value: function updateLocation(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'edit_location', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'edit_location', data);
           }
         }, {
           key: "remove_location",
           value: function remove_location(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'remove_location/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'remove_location/' + id);
           }
         }, {
           key: "getUserLocationForDonation",
           value: function getUserLocationForDonation(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_user_loaction/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_user_loaction/' + id);
           }
         }, {
           key: "donate_food_location",
           value: function donate_food_location(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food', data);
           }
         }, {
           key: "donate_food_details",
           value: function donate_food_details(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_details', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_details', data);
           }
         }, {
           key: "reviewFood",
           value: function reviewFood(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'review_food/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'review_food/' + id);
           }
         }, {
           key: "update_food_details",
           value: function update_food_details(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_food_details', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_food_details', data);
           }
         }, {
           key: "pending_donation",
           value: function pending_donation(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'pending_donation/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'pending_donation/' + id);
           }
         }, {
           key: "my_alloted_donation",
           value: function my_alloted_donation(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_alloted_donation/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_alloted_donation/' + id);
           }
         }, {
           key: "my_food_request",
           value: function my_food_request(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_food_request/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_food_request/' + id);
           }
         }, {
           key: "my_alloted_request",
           value: function my_alloted_request(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_alloted_request/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_alloted_request/' + id);
           }
         }, {
           key: "receiver_food_details",
           value: function receiver_food_details(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'receiver_food_details', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'receiver_food_details', data);
           }
         }, {
           key: "accept_food",
           value: function accept_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'accept_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'accept_food', data);
           }
         }, {
           key: "accept_food_request",
           value: function accept_food_request(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'accept_food_request', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'accept_food_request', data);
           }
         }, {
           key: "cancel_accept_food",
           value: function cancel_accept_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_accept_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_accept_food', data);
           }
         }, {
           key: "cancel_requested_food",
           value: function cancel_requested_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_requested_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_requested_food', data);
           }
         }, {
           key: "cancel_alloted_request",
           value: function cancel_alloted_request(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_alloted_request', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_alloted_request', data);
           }
         }, {
           key: "get_food_cancel_alloted_request",
           value: function get_food_cancel_alloted_request(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_food_cancel_alloted_request', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_food_cancel_alloted_request', data);
           }
         }, {
           key: "get_reasons",
           value: function get_reasons(lang_code) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_reasons/' + lang_code);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_reasons/' + lang_code);
           }
         }, {
           key: "get_terms_conditions",
           value: function get_terms_conditions(lang_code) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_terms_conditions/' + lang_code);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_terms_conditions/' + lang_code);
           }
         }, {
           key: "volunteer_get_terms_conditions",
           value: function volunteer_get_terms_conditions(lang_code) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_get_terms_conditions/' + lang_code);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_get_terms_conditions/' + lang_code);
           }
         }, {
           key: "receiver_details",
           value: function receiver_details(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'receiver_data/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'receiver_data/' + id);
           }
         }, {
           key: "nearest_donors",
           value: function nearest_donors(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'nearest_donors', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'nearest_donors', data);
           }
         }, {
           key: "check_pincode",
           value: function check_pincode(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'check_pincode', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'check_pincode', data);
           }
         }, {
           key: "distanceAndTime",
@@ -858,535 +1123,524 @@
         }, {
           key: "showTimeAndDistance",
           value: function showTimeAndDistance(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_time_distance', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_time_distance', data);
           }
         }, {
           key: "get_donor_food_detail",
           value: function get_donor_food_detail(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donar_food_detail/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donar_food_detail/' + id);
           }
         }, {
           key: "get_volunteer_detail",
           value: function get_volunteer_detail(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_detail/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_detail/' + id);
           }
         }, {
           key: "pickup_food",
           value: function pickup_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'food_pickup', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'food_pickup', data);
           }
         }, {
           key: "pickup_food_for_get",
           value: function pickup_food_for_get(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'food_pickup_for_get', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'food_pickup_for_get', data);
           }
         }, {
           key: "feedback",
           value: function feedback(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'feedback', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'feedback', data);
           }
         }, {
           key: "feedback_donor",
           value: function feedback_donor(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'feedback_donor', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'feedback_donor', data);
           }
         }, {
           key: "register_volunteer",
           value: function register_volunteer(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'register_volunteer', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'register_volunteer', data);
           }
         }, {
           key: "volunteer_request",
           value: function volunteer_request(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'request-food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'request-food', data);
           }
         }, {
           key: "get_request",
           value: function get_request(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_request/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_request/' + id);
           }
         }, {
           key: "my_ontheway_food",
           value: function my_ontheway_food(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_ontheway_food/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_ontheway_food/' + id);
           }
         }, {
           key: "my_waiting_request",
           value: function my_waiting_request(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_waiting_request/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_waiting_request/' + id);
           }
         }, {
           key: "my_completed_food",
           value: function my_completed_food(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'my_completed_food/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'my_completed_food/' + id);
           }
         }, {
           key: "volunteer_receive_requested_food",
           value: function volunteer_receive_requested_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'receive-food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'receive-food', data);
           }
         }, {
           key: "volunteer_received_cancel_food",
           value: function volunteer_received_cancel_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel-alloted-food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel-alloted-food', data);
           }
         }, {
           key: "volunteer_cancel_requested_food",
           value: function volunteer_cancel_requested_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel-receive-food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel-receive-food', data);
           }
         }, {
           key: "getAllRowWithoutWhere",
           value: function getAllRowWithoutWhere(model) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'getAllRowWithoutWhere', model);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'getAllRowWithoutWhere', model);
           }
         }, {
           key: "getTestimonialByLanguage",
           value: function getTestimonialByLanguage(model) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get-testimonial-by-lang', model);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get-testimonial-by-lang', model);
           }
         }, {
           key: "deleteMyAccount",
           value: function deleteMyAccount(model) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'delete-my-account', model);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'delete-my-account', model);
           }
         }, {
           key: "notify",
           value: function notify(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'notify', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'notify', data);
           }
         }, {
           key: "req_list",
           value: function req_list(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'food-request', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'food-request', data);
           }
         }, {
           key: "v_edit",
           value: function v_edit(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_edit/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_edit/' + id);
           }
         }, {
           key: "get_waiting_food",
           value: function get_waiting_food() {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_waiting_food');
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_waiting_food');
           }
         }, {
           key: "cancel_all_request",
           value: function cancel_all_request(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_all_request/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_all_request/' + id);
           }
         }, {
           key: "v_check",
           value: function v_check(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_check/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_check/' + id);
           }
         }, {
           key: "update_volunteer",
           value: function update_volunteer(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_volunteer', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_volunteer', data);
           }
         }, {
           key: "get_user_city",
           value: function get_user_city(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'user_city/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'user_city/' + id);
           }
         }, {
           key: "get_top_donors",
           value: function get_top_donors(city) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'top_donors/' + city);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'top_donors/' + city);
           }
         }, {
           key: "show_feedback",
           value: function show_feedback(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_feedback/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_feedback/' + id);
           }
         }, {
           key: "weekly_donation_graph",
           value: function weekly_donation_graph(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donation_graph_weekly/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donation_graph_weekly/' + id);
           }
         }, {
           key: "monthly_donation_graph",
           value: function monthly_donation_graph(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donation_graph_monthly/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donation_graph_monthly/' + id);
           }
         }, {
           key: "blessings_this_week",
           value: function blessings_this_week(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'blessing_this_week/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'blessing_this_week/' + id);
           }
         }, {
           key: "blessings_this_month",
           value: function blessings_this_month(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'blessing_this_month/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'blessing_this_month/' + id);
           }
         }, {
           key: "total_blessings",
           value: function total_blessings(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'total_blessings/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'total_blessings/' + id);
           }
         }, {
           key: "food_quality_weekly",
           value: function food_quality_weekly(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_food_quality', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_food_quality', data);
           }
         }, {
           key: "weekly_packaging",
           value: function weekly_packaging(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_packaging/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_packaging/' + id);
           }
         }, {
           key: "weekly_behaviour",
           value: function weekly_behaviour(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_behaviour/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_behaviour/' + id);
           }
         }, {
           key: "monthly_food_quality",
           value: function monthly_food_quality(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_food_quality/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_food_quality/' + id);
           }
         }, {
           key: "monthly_packaging",
           value: function monthly_packaging(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_packaging/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_packaging/' + id);
           }
         }, {
           key: "monthly_behaviour",
           value: function monthly_behaviour(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_behaviour/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_behaviour/' + id);
           }
         }, {
           key: "weekly_volunteer_req",
           value: function weekly_volunteer_req(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'weekly_volunteer_req/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'weekly_volunteer_req/' + id);
           }
         }, {
           key: "monthly_volunteer_req",
           value: function monthly_volunteer_req(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'monthly_volunteer_req/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'monthly_volunteer_req/' + id);
           }
         }, {
           key: "volunteer_blessings_this_week",
           value: function volunteer_blessings_this_week(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_blessing_this_week/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_blessing_this_week/' + id);
           }
         }, {
           key: "volunteer_blessings_this_month",
           value: function volunteer_blessings_this_month(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_blessing_this_month/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_blessing_this_month/' + id);
           }
         }, {
           key: "volunteer_total_blessings",
           value: function volunteer_total_blessings(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_total_blessings/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_total_blessings/' + id);
           }
         }, {
           key: "volunteer_city",
           value: function volunteer_city(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_city/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_city/' + id);
           }
         }, {
           key: "top_volunteers",
           value: function top_volunteers(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'top_volunteers/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'top_volunteers/' + id);
           }
         }, {
           key: "twilio_token",
           value: function twilio_token() {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'twilio_token_generate');
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'twilio_token_generate');
           }
         }, {
           key: "get_registered_user_data",
           value: function get_registered_user_data(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_user_detail/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_user_detail/' + id);
           }
         }, {
           key: "collect_food_noti_to_donor",
           value: function collect_food_noti_to_donor(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'collect_food_notification', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'collect_food_notification', data);
           }
         }, {
           key: "get_notification",
           value: function get_notification(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_notification/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_notification/' + id);
           }
         }, {
           key: "read_notification",
           value: function read_notification(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'read_notification/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'read_notification/' + id);
           }
         }, {
           key: "get_available_food",
           value: function get_available_food(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_available_food/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_available_food/' + id);
           }
         }, {
           key: "cancel_donation_food",
           value: function cancel_donation_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_donation_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_donation_food', data);
           }
         }, {
           key: "cancel_alloted_food",
           value: function cancel_alloted_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'cancel_alloted_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'cancel_alloted_food', data);
           }
         }, {
           key: "change_app_status",
           value: function change_app_status(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'change_app_status', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'change_app_status', data);
           }
         }, {
           key: "notify_donar",
           value: function notify_donar(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'notify_donar', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'notify_donar', data);
           }
         }, {
           key: "notify_donar_donate",
           value: function notify_donar_donate(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'notify_donar_donate', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'notify_donar_donate', data);
           }
         }, {
           key: "get_waypoints",
           value: function get_waypoints(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_waypoints', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_waypoints', data);
           }
         }, {
           key: "get_volunteer_waypoints",
           value: function get_volunteer_waypoints(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_waypoints', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_waypoints', data);
           }
         }, {
           key: "get_volunteer_waypoints_new",
           value: function get_volunteer_waypoints_new(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_waypoints_new', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_waypoints_new', data);
           }
         }, {
           key: "alert_volunteer_on_true",
           value: function alert_volunteer_on_true(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'alert_volunteer_on_true', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'alert_volunteer_on_true', data);
           }
         }, {
           key: "store_food_for_waiting",
           value: function store_food_for_waiting(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'store_food_for_waiting', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'store_food_for_waiting', data);
           }
         }, {
           key: "get_volunteer_waypoints_by_condition",
           value: function get_volunteer_waypoints_by_condition(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_volunteer_waypoints_by_condition', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_volunteer_waypoints_by_condition', data);
           }
         }, {
           key: "save_contact_us",
           value: function save_contact_us(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'save_contact_us', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'save_contact_us', data);
           }
         }, {
           key: "recomended_distance",
           value: function recomended_distance(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'recomended_distance', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'recomended_distance', data);
           }
         }, {
           key: "donate_food_to_volunteer",
           value: function donate_food_to_volunteer(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_to_volunteer', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_to_volunteer', data);
           }
         }, {
           key: "active_donation",
           value: function active_donation(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'active_donation', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'active_donation', data);
           }
         }, {
           key: "add_call_detail",
           value: function add_call_detail(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'add_call_detail', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'add_call_detail', data);
           }
         }, {
           key: "get_received_food",
           value: function get_received_food(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_received_food/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_received_food/' + id);
           }
         }, {
           key: "donate_food_location_new",
           value: function donate_food_location_new(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_new', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_new', data);
           }
         }, {
           key: "donate_food_details_new",
           value: function donate_food_details_new(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_food_details_new', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_food_details_new', data);
           }
         }, {
           key: "update_food_details_new",
           value: function update_food_details_new(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_food_details_new', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_food_details_new', data);
           }
         }, {
           key: "test",
           value: function test(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'test', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'test', data);
           }
         }, {
           key: "volunterr_accept_request",
           value: function volunterr_accept_request(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunterr_accept_request', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunterr_accept_request', data);
           }
         }, {
           key: "checkVolunteerAcceptRequest",
           value: function checkVolunteerAcceptRequest(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunterr_accept_request_result', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunterr_accept_request_result', data);
           }
         }, {
           key: "convert_to_pickup_request",
           value: function convert_to_pickup_request(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'convert_to_pickup_request', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'convert_to_pickup_request', data);
           }
         }, {
           key: "convert_to_pickup_request_no_volunteer",
           value: function convert_to_pickup_request_no_volunteer(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'convert_to_pickup_request_no_volunteer', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'convert_to_pickup_request_no_volunteer', data);
           }
         }, {
           key: "donate_later_food",
           value: function donate_later_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_later_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_later_food', data);
           }
         }, {
           key: "donate_later_food_no_volunteer",
           value: function donate_later_food_no_volunteer(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donate_later_food_no_volunteer', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donate_later_food_no_volunteer', data);
           }
         }, {
           key: "reject_food_request_by_donee",
           value: function reject_food_request_by_donee(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'reject_food_request_by_donee', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'reject_food_request_by_donee', data);
           }
         }, {
           key: "donee_accept_food",
           value: function donee_accept_food(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'donee_accept_food', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'donee_accept_food', data);
           }
         }, {
           key: "get_donate_food",
           value: function get_donate_food(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'get_donate_food/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'get_donate_food/' + id);
           }
         }, {
           key: "volunteer_graph_today",
           value: function volunteer_graph_today(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_today/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_today/' + id);
           }
         }, {
           key: "volunteer_graph_weekly",
           value: function volunteer_graph_weekly(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_weekly/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_weekly/' + id);
           }
         }, {
           key: "volunteer_graph_monthly",
           value: function volunteer_graph_monthly(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_monthly/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_monthly/' + id);
           }
         }, {
           key: "volunteer_graph_yearly",
           value: function volunteer_graph_yearly(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_yearly/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_yearly/' + id);
           }
         }, {
           key: "count_today_donation_fullfiled",
           value: function count_today_donation_fullfiled(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_today_donation_fullfiled/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_today_donation_fullfiled/' + id);
           }
         }, {
           key: "count_yearly_donation_fullfiled",
           value: function count_yearly_donation_fullfiled(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_yearly_donation_fullfiled/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_yearly_donation_fullfiled/' + id);
           }
         }, {
           key: "count_monthly_donation_fullfiled",
           value: function count_monthly_donation_fullfiled(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_monthly_donation_fullfiled/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_monthly_donation_fullfiled/' + id);
           }
         }, {
           key: "count_weekly_donation_fullfiled",
           value: function count_weekly_donation_fullfiled(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_weekly_donation_fullfiled/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_weekly_donation_fullfiled/' + id);
           }
         }, {
           key: "volunteer_graph_today_accepted",
           value: function volunteer_graph_today_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_today_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_today_accepted/' + id);
           }
         }, {
           key: "volunteer_graph_weekly_accepted",
           value: function volunteer_graph_weekly_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_weekly_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_weekly_accepted/' + id);
           }
         }, {
           key: "volunteer_graph_monthly_accepted",
           value: function volunteer_graph_monthly_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_monthly_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_monthly_accepted/' + id);
           }
         }, {
           key: "volunteer_graph_yearly_accepted",
           value: function volunteer_graph_yearly_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'volunteer_graph_yearly_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'volunteer_graph_yearly_accepted/' + id);
           }
         }, {
           key: "count_yearly_donation_accepted",
           value: function count_yearly_donation_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_yearly_donation_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_yearly_donation_accepted/' + id);
           }
         }, {
           key: "count_today_donation_accepted",
           value: function count_today_donation_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_today_donation_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_today_donation_accepted/' + id);
           }
         }, {
           key: "count_monthly_donation_accepted",
           value: function count_monthly_donation_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_monthly_donation_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_monthly_donation_accepted/' + id);
           }
         }, {
           key: "count_weekly_donation_accepted",
           value: function count_weekly_donation_accepted(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'count_weekly_donation_accepted/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'count_weekly_donation_accepted/' + id);
           }
         }, {
           key: "show_feedback_by_id",
           value: function show_feedback_by_id(id) {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'show_feedback_by_id/' + id);
+            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'show_feedback_by_id/' + id);
           }
         }, {
           key: "updateLanguage",
           value: function updateLanguage(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_language', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_language', data);
           }
         }, {
           key: "updateDeviceToken",
           value: function updateDeviceToken(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'update_device_token', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'update_device_token', data);
           }
         }, {
           key: "checkDeviceId",
           value: function checkDeviceId(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'check_unique_login', data);
-          }
-        }, {
-          key: "detectSlowNetwork",
-          value: function detectSlowNetwork() {
-            return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'language').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["timeout"])(1000), // 5000 milliseconds (5 seconds) timeout
-            Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
-              alert("You have slow internet connection");
-              return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error);
-            }));
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'check_unique_login', data);
           }
         }, {
           key: "read_notification_by_id",
           value: function read_notification_by_id(data) {
-            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + 'read_notification_by_id', data);
+            return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + 'read_notification_by_id', data);
           }
         }]);
-
-        return FetchService;
       }();
 
       FetchService.ctorParameters = function () {
@@ -1513,23 +1767,37 @@
       /* harmony import */
 
 
-      var cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
-      /*! cordova-plugin-fcm-with-dependecy-updated/ionic/ngx */
-      "lOSq");
+      var _error_msg_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+      /*! ./error-msg.service */
+      "ElZd");
       /* harmony import */
 
 
-      var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
-      /*! @ionic-native/network/ngx */
-      "kwrG");
+      var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+      /*! @ionic-native/device/ngx */
+      "xS7M");
+      /* harmony import */
+
+
+      var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+      /*! @ionic-native/diagnostic/ngx */
+      "mtRb");
+      /* harmony import */
+
+
+      var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+      /*! @ionic-native/firebase-x/ngx */
+      "E9qw");
 
       var AppComponent = /*#__PURE__*/function () {
-        function AppComponent(geolocation, platform, splashScreen, statusBar, router, fetch, storage, modalController, fcm, network) {
-          var _this = this;
-
+        function AppComponent(firebase, geolocation, alertController, device, errorMsg, platform, splashScreen, statusBar, router, fetch, storage, modalController, diagnostic) {
           _classCallCheck(this, AppComponent);
 
+          this.firebase = firebase;
           this.geolocation = geolocation;
+          this.alertController = alertController;
+          this.device = device;
+          this.errorMsg = errorMsg;
           this.platform = platform;
           this.splashScreen = splashScreen;
           this.statusBar = statusBar;
@@ -1537,294 +1805,31 @@
           this.fetch = fetch;
           this.storage = storage;
           this.modalController = modalController;
-          this.fcm = fcm;
-          this.network = network;
+          this.diagnostic = diagnostic;
           this.model = {};
+          this.volunteer_data = []; //directionsService = new google.maps.DirectionsService();
+          // directionsRenderer = new google.maps.DirectionsRenderer({
+          //   suppressMarkers: true,
+          // });
+
+          this.pointarr = [];
           this.selectedIndex = 0;
           this.appPages = [];
-          var self = this;
-          setInterval(function () {
-            self.checkVolunteer();
-            self.checkLoginUser();
-          }, 1000); //run this thang every 2 seconds
-
-          this.model.fromNotification = false;
-          this.pushSetup();
-          document.addEventListener('deviceready', function () {// FCMPlugin.getToken((token: any) => {
-            //   alert(token);
-            //   localStorage.setItem('device_token', JSON.stringify(token));
-            //   });
-            // FCMPlugin.onNotification((data: any) => {
-            // this.model.fromNotification = true;
-            // var self = this;
-            // if (data.wasTapped) 
-            //   {
-            //     var jd = JSON.parse(data.message);
-            //     if(jd.check_val == '1' ){
-            //       self.showNotification(jd.body,jd.my_array,jd.donor_details,jd.request_id);
-            //     }else if(jd.check_val == '2' ){
-            //       self.showFoodDeliverPopupToVolunteer(jd.my_array);
-            //     }else if(jd.check_val == '3' ){
-            //       self.showFoodDeliverPopupToDonor(jd.my_array);
-            //     }
-            //     // Notification was received on device tray and tapped by the user.
-            //   } else {
-            //     //alert("Received in foreground");
-            //      var jd = JSON.parse(data.message);
-            //     //;
-            //     if(jd.check_val == '1' ){
-            //       this.showNotification(data.body,jd.my_array,jd.donor_details,jd.request_id);
-            //     }else if(jd.check_val == '2' ){
-            //       this.showFoodDeliverPopupToVolunteer(jd.my_array);
-            //     }else if(jd.check_val == '3' ){
-            //       this.showFoodDeliverPopupToDonor(jd.my_array);
-            //     }else{
-            //       this.showAlert(data.body);
-            //     }
-            //   }
-            // },(success:any)=>{
-            //   if(!this.model.fromNotification){
-            //           if(JSON.parse(localStorage.getItem('user_registerd')) != null){
-            //             this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-            //             this.router.navigate(['/home']);
-            //             //this.navCtrl.navigateBack(['/home']);
-            //           }else if((localStorage.getItem('user_id')) != undefined && localStorage.getItem('isotpverified') == '1'){
-            //             if(JSON.parse(localStorage.getItem('user_id')) != null){
-            //               this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-            //               this.router.navigate(['/register-as-volunteer']);
-            //             }
-            //             //this.navCtrl.navigateBack(['/register-as-volunteer']);
-            //           }else if(localStorage.getItem('isotpverified') == '0'){
-            //             this.router.navigate(['/otp']);
-            //           }else{
-            //             this.router.navigate(['/language']);
-            //           }
-            //       }
-            // },(error:any)=>{
-            // });
-          }); //   if(!this.model.fromNotification){
-          //     console.log((localStorage.getItem('isotpverified')));
-          //     if(JSON.parse(localStorage.getItem('user_registerd')) != null){
-          //       this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-          //       this.router.navigate(['/home']);
-          //       //this.navCtrl.navigateBack(['/home']);
-          //     }else if((localStorage.getItem('user_id')) != undefined  && localStorage.getItem('isotpverified') == '1'){
-          //       if(JSON.parse(localStorage.getItem('user_id')) != null){
-          //         this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-          //         this.router.navigate(['/register-as-volunteer']);
-          //       }
-          //       //this.navCtrl.navigateBack(['/register-as-volunteer']);
-          //     }else if(localStorage.getItem('isotpverified') == '0'){
-          //       this.router.navigate(['/otp']);
-          //     }else{
-          //       this.router.navigate(['/language']);
-          //     }
-          // }
-
-          this.fetch.isLanguageChanged.subscribe(function (value) {
-            _this.isLanguageChanged = value;
-            var lang_code = JSON.parse(localStorage.getItem('lang'));
-
-            _this.fetch.getKeyText(lang_code).subscribe(function (rs) {
-              _this.storage.setScope(rs);
-
-              var res = _this.storage.getScope();
-
-              var item1 = res.find(function (i) {
-                return i.key_text === 'REGISTER_AS_VOLUNTEER';
-              });
-              _this.model.key_text1 = item1[lang_code];
-              var item2 = res.find(function (i) {
-                return i.key_text === 'SIDEBAR_QUOTE1';
-              });
-              _this.model.key_text2 = item2[lang_code];
-              var item3 = res.find(function (i) {
-                return i.key_text === 'PROFILE';
-              });
-              _this.model.key_text3 = item3[lang_code];
-              var item4 = res.find(function (i) {
-                return i.key_text === 'SIDEBAR_QUOTE2';
-              });
-              _this.model.key_text4 = item4[lang_code];
-              var item5 = res.find(function (i) {
-                return i.key_text === 'SAVED_ADDRESSES';
-              });
-              _this.model.key_text5 = item5[lang_code];
-              var item6 = res.find(function (i) {
-                return i.key_text === 'YOUR_PREVIOUSLY_SAVED_ADDRESSES';
-              });
-              _this.model.key_text6 = item6[lang_code];
-              var item7 = res.find(function (i) {
-                return i.key_text === 'CHOOSE_LANGUAGE';
-              });
-              _this.model.key_text7 = item7[lang_code];
-              var item8 = res.find(function (i) {
-                return i.key_text === 'SIDEBAR_QUOTE3';
-              });
-              _this.model.key_text8 = item8[lang_code];
-              var item9 = res.find(function (i) {
-                return i.key_text === 'HELP';
-              });
-              _this.model.key_text9 = item9[lang_code];
-              var item10 = res.find(function (i) {
-                return i.key_text === 'SIDEBAR_QUOTE4';
-              });
-              _this.model.key_text10 = item10[lang_code];
-              var item11 = res.find(function (i) {
-                return i.key_text === 'ABOUT_US';
-              });
-              _this.model.key_text11 = item11[lang_code];
-              var item12 = res.find(function (i) {
-                return i.key_text === 'SIDEBAR_QUOTE5';
-              });
-              _this.model.key_text12 = item12[lang_code];
-              var item13 = res.find(function (i) {
-                return i.key_text === 'SHOW_IN_BETWEEN';
-              });
-              _this.model.key_text13 = item13[lang_code];
-              var item14 = res.find(function (i) {
-                return i.key_text === 'LOGOUT';
-              });
-              _this.model.key_text14 = item14[lang_code];
-            });
-          });
-          this.initializeApp();
         }
 
-        _createClass(AppComponent, [{
-          key: "pushSetup",
-          value: function pushSetup() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-              var _this2 = this;
-
-              var token, hasPermission;
-              return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-                while (1) switch (_context5.prev = _context5.next) {
-                  case 0:
-                    _context5.next = 2;
-                    return this.platform.ready();
-
-                  case 2:
-                    if (this.platform.is('cordova')) {
-                      _context5.next = 4;
-                      break;
-                    }
-
-                    return _context5.abrupt("return");
-
-                  case 4:
-                    _context5.next = 6;
-                    return this.fcm.getToken();
-
-                  case 6:
-                    token = _context5.sent;
-                    //alert(token);
-                    localStorage.setItem('device_token', JSON.stringify(token));
-                    console.log('Subscribing to token updates');
-                    this.fcm.onTokenRefresh().subscribe(function (newToken) {
-                      //this.token = newToken;
-                      console.log(newToken);
-                      localStorage.setItem('device_token', JSON.stringify(newToken));
-                    });
-                    console.log('Subscribing to new notifications');
-                    this.fcm.onNotification().subscribe(function (payload) {
-                      //alert('in');
-                      //this.pushPayload = payload;
-                      console.log(payload);
-                      _this2.model.fromNotification = true;
-                      var self = _this2;
-
-                      if (payload.wasTapped) {
-                        var jd = JSON.parse(payload.message);
-
-                        if (jd.check_val == '1') {
-                          self.showNotification(jd.body, jd.my_array, jd.donor_details, jd.request_id);
-                        } else if (jd.check_val == '2') {
-                          self.showFoodDeliverPopupToVolunteer(jd.my_array);
-                        } else if (jd.check_val == '3') {
-                          self.showFoodDeliverPopupToDonor(jd.my_array);
-                        } // Notification was received on device tray and tapped by the user.
-
-                      } else {
-                        //alert("Received in foreground");
-                        var jd = JSON.parse(payload.message); //;
-
-                        if (jd.check_val == '1') {
-                          _this2.showNotification(payload.body, jd.my_array, jd.donor_details, jd.request_id);
-                        } else if (jd.check_val == '2') {
-                          _this2.showFoodDeliverPopupToVolunteer(jd.my_array);
-                        } else if (jd.check_val == '3') {
-                          _this2.showFoodDeliverPopupToDonor(jd.my_array);
-                        } else {
-                          _this2.showAlert(payload.body);
-                        }
-                      }
-                    });
-                    _context5.next = 14;
-                    return this.fcm.requestPushPermission();
-
-                  case 14:
-                    hasPermission = _context5.sent;
-                    console.log(hasPermission); //  let pushPayload = await this.fcm.getInitialPushPayload();
-                    //   console.log(pushPayload);
-
-                    this.fcm.getInitialPushPayload().then(function (data) {
-                      if (data) {
-                        if (data.wasTapped) {
-                          // we know the user launched the app by clicking on the notification
-                          // data here contains the data object we defined earlier so you can do whatever you want with the data like navigate to a specific page etc.
-                          var jd = JSON.parse(data.message);
-
-                          if (jd.check_val == '1') {
-                            _this2.showNotification(jd.body, jd.my_array, jd.donor_details, jd.request_id);
-                          } else if (jd.check_val == '2') {
-                            _this2.showFoodDeliverPopupToVolunteer(jd.my_array);
-                          } else if (jd.check_val == '3') {
-                            _this2.showFoodDeliverPopupToDonor(jd.my_array);
-                          }
-                        }
-                      }
-                    }); //alert(this.model.fromNotification);
-
-                    if (!this.model.fromNotification) {
-                      console.log(localStorage.getItem('isotpverified'));
-
-                      if (JSON.parse(localStorage.getItem('user_registerd')) != null) {
-                        this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-                        this.router.navigate(['/home']); //this.navCtrl.navigateBack(['/home']);
-                      } else if (localStorage.getItem('user_id') != undefined && localStorage.getItem('isotpverified') == '1') {
-                        if (JSON.parse(localStorage.getItem('user_id')) != null) {
-                          this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
-                          this.router.navigate(['/register-as-volunteer']);
-                        } //this.navCtrl.navigateBack(['/register-as-volunteer']);
-
-                      } else if (localStorage.getItem('isotpverified') == '0') {
-                        this.router.navigate(['/otp']);
-                      } else {
-                        this.router.navigate(['/language']);
-                      }
-                    }
-
-                  case 18:
-                  case "end":
-                    return _context5.stop();
-                }
-              }, _callee5, this);
-            }));
-          }
-        }, {
+        return _createClass(AppComponent, [{
           key: "initializeApp",
           value: function initializeApp() {
-            var _this3 = this;
+            var _this2 = this;
 
             this.platform.ready().then(function () {
-              _this3.statusBar.styleDefault();
+              _this2.statusBar.styleDefault();
 
-              _this3.statusBar.styleBlackTranslucent();
+              _this2.statusBar.styleBlackTranslucent();
 
-              _this3.splashScreen.hide();
+              _this2.splashScreen.hide();
 
-              var self = _this3;
+              var self = _this2;
               self.options = {
                 enableHighAccuracy: false
               };
@@ -1834,13 +1839,38 @@
                 self.model.lon = resp.coords.longitude;
                 self.showAddress(self.model.lat, self.model.lon);
               });
+              var permissions = cordova.plugins.permissions;
+              console.log(permissions);
+
+              if (!permissions || !permissions.POST_NOTIFICATIONS) {
+                console.warn("Permissions plugin or POST_NOTIFICATIONS not available.");
+                return;
+              } // First check if permission is already granted
+
+
+              permissions.checkPermission(permissions.POST_NOTIFICATIONS, function (status) {
+                if (!status.hasPermission) {
+                  // Now request it
+                  permissions.requestPermission(permissions.POST_NOTIFICATIONS, function (result) {
+                    if (result.hasPermission) {
+                      console.log("Notification permission granted.");
+                    } else {
+                      console.warn("Notification permission denied.");
+                    }
+                  }, function (error) {
+                    console.error("Permission request failed:", error);
+                  });
+                } else {
+                  console.log("Notification permission already granted.");
+                }
+              });
             });
             this.checkVolunteer(); //alert('dsd');
           }
         }, {
           key: "showAddress",
           value: function showAddress(lat, lon) {
-            var _this4 = this;
+            var _this3 = this;
 
             var self = this;
             var latLng = new google.maps.LatLng(lat, lon);
@@ -1849,9 +1879,9 @@
               'latLng': latLng
             }, function (results, status) {
               console.log("all results", results);
-              self.pincode = results[0].address_components[5].short_name;
-              _this4.model.colony_name = results[0].formatted_address;
-              console.log(_this4.model.colony_name);
+              _this3.pincode = results[0].address_components[5].short_name;
+              _this3.model.colony_name = results[0].formatted_address;
+              console.log(_this3.model.colony_name);
               results[0].address_components.forEach(function (val, i) {
                 if (val.types[0] == "locality") {
                   self.model.city = val.long_name;
@@ -1882,13 +1912,14 @@
         }, {
           key: "closeModal",
           value: function closeModal(code) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-              var _this5 = this;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
+              var _this4 = this;
 
               var datap;
-              return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-                while (1) switch (_context6.prev = _context6.next) {
+              return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+                while (1) switch (_context8.prev = _context8.next) {
                   case 0:
+                    console.log('inside close', code);
                     localStorage.setItem('pincode', code.toString());
 
                     if (this.user_id) {
@@ -1901,23 +1932,275 @@
                         console.log(res, "check_pincode");
 
                         if (res.success == true) {
-                          _this5.router.navigate(['/pincode-error-component']);
+                          _this4.router.navigate(['/pincode-error-component']);
 
                           localStorage.setItem('success', 'true');
                         }
                       });
                     }
 
-                  case 2:
+                  case 3:
                   case "end":
-                    return _context6.stop();
+                    return _context8.stop();
                 }
-              }, _callee6, this);
+              }, _callee8, this);
             }));
-          }
+          } // async showPincodeAlert() {
+          //   const modal = await this.modalController.create({
+          //   component: PincodeErrorMessageComponent,
+          //   cssClass: 'custom_current_location_modal notification-modal',
+          //   backdropDismiss : false,
+          //   componentProps: {
+          //   }
+          //   });  
+          //   modal.onDidDismiss().then((dataReturned) => {
+          //   });
+          //   return await modal.present();
+          // } 
+          // async showPincodeAlert(msg) {
+          //   const alert = await this.alertController.create({
+          //     cssClass: "my-custom-class custom_alert_1",
+          //     message: msg,
+          //     buttons: [
+          //       {
+          //         text: this.model.key_text17,
+          //         role: "cancel",
+          //         cssClass: "secondary",
+          //         handler: () => {
+          //           //this.router.navigate(['/home']);
+          //         },
+          //       },
+          //     ],
+          //   });
+          //   await alert.present();
+          // }
+
         }, {
           key: "ngOnInit",
           value: function ngOnInit() {
+            var _this5 = this;
+
+            this.initializeApp();
+            console.log("UPDATED...");
+            this.user_id = JSON.parse(localStorage.getItem('user_id'));
+            this.platform.ready().then(function () {
+              // this.success = JSON.parse(localStorage.getItem('success'));
+              //  if((this.user_id != '')&& ( this.success=='true')){
+              //   this.router.navigate(['/pincode-error-component']);
+              //  }
+              _this5.getDevice();
+
+              var self = _this5;
+              setInterval(function () {
+                self.checkVolunteer();
+                self.checkLoginUser();
+
+                if (localStorage.getItem('user_id') != null) {
+                  self.checkUserUniqueId();
+                }
+              }, 1000); //run this thang every 1 seconds
+
+              _this5.model.fromNotification = false; //  document.addEventListener('deviceready',() => {
+              //   FCMPlugin.getToken((token: any) => {
+              // 	  // alert(token)
+              //     localStorage.setItem('device_token', JSON.stringify(token));
+              //     // while(this.res.success == true){
+              //     //   this.showvolnoti(this.res)
+              //     // }
+              //     });
+              // // if(localStorage.getItem('check_notification') == 'true'){
+              // // }
+              //   });
+
+              document.addEventListener("deviceready", function () {
+                console.log("Device is ready...");
+                var permissions = cordova.plugins.permissions;
+                console.log(permissions);
+
+                if (!permissions || !permissions.POST_NOTIFICATIONS) {
+                  console.warn("Permissions plugin or POST_NOTIFICATIONS not available.");
+                  return;
+                } // First check if permission is already granted
+
+
+                permissions.checkPermission(permissions.POST_NOTIFICATIONS, function (status) {
+                  if (!status.hasPermission) {
+                    // Now request it
+                    permissions.requestPermission(permissions.POST_NOTIFICATIONS, function (result) {
+                      if (result.hasPermission) {
+                        console.log("Notification permission granted.");
+                      } else {
+                        console.warn("Notification permission denied.");
+                      }
+                    }, function (error) {
+                      console.error("Permission request failed:", error);
+                    });
+                  } else {
+                    console.log("Notification permission already granted.");
+                  }
+                }); // FCMPlugin.getToken((token: any) => {
+                //   localStorage.setItem("device_token", JSON.stringify(token));
+                // });
+
+                _this5.firebase.getToken().then(function (token) {
+                  return localStorage.setItem("device_token", JSON.stringify(token));
+                });
+
+                FCMPlugin.onNotification(function (data) {
+                  console.log("Push received:", data);
+                  _this5.model.fromNotification = true;
+                  var self = _this5;
+                  console.log(data);
+
+                  if (data.wasTapped) {
+                    var jd = JSON.parse(data.message);
+
+                    if (jd.check_val == "1") {
+                      self.showNotification(jd.body, jd.my_array, jd.donor_details, jd.request_id);
+                    } else if (jd.check_val == "2") {
+                      self.showFoodDeliverPopupToVolunteer(jd.my_array);
+                    } else if (jd.check_val == "3") {
+                      self.showFoodDeliverPopupToDonor(jd.my_array);
+                    } // Notification was received on device tray and tapped by the user.
+
+                  } else {
+                    var _jd = JSON.parse(data.message); //;
+
+
+                    if (_jd.check_val == "1") {
+                      _this5.showNotification(data.body, _jd.my_array, _jd.donor_details, _jd.request_id);
+                    } else if (_jd.check_val == "2") {
+                      _this5.showFoodDeliverPopupToVolunteer(_jd.my_array);
+                    } else if (_jd.check_val == "3") {
+                      _this5.showFoodDeliverPopupToDonor(_jd.my_array);
+                    } else {
+                      _this5.showAlert(data.body);
+                    }
+                  }
+                }, function (success) {
+                  if (!_this5.model.fromNotification) {
+                    if (JSON.parse(localStorage.getItem("user_registerd")) != null) {
+                      _this5.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem("lang"))); // console.log(this.fetch.isLanguageChanged,'kijioppo');
+
+
+                      _this5.router.navigate(["/home"]); //this.navCtrl.navigateBack(['/home']);
+
+                    } else if (JSON.parse(localStorage.getItem("user_id")) != null && localStorage.getItem("isotpverified") == "1") {
+                      _this5.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem("lang")));
+
+                      _this5.router.navigate(["/register-as-volunteer"]); //this.navCtrl.navigateBack(['/register-as-volunteer']);
+
+                    } else if (localStorage.getItem("isotpverified") == "0") {
+                      _this5.router.navigate(["/otp"]);
+                    } else {
+                      _this5.router.navigate(["/language"]);
+                    }
+                  }
+                }, function (error) {});
+              });
+
+              if (!_this5.model.fromNotification) {
+                console.log(localStorage.getItem('isotpverified'));
+
+                if (JSON.parse(localStorage.getItem('user_registerd')) != null) {
+                  _this5.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
+
+                  _this5.router.navigate(['/home']); //this.navCtrl.navigateBack(['/home']);
+
+                } else if (localStorage.getItem('user_id') != undefined && localStorage.getItem('isotpverified') == '1') {
+                  if (JSON.parse(localStorage.getItem('user_id')) != null) {
+                    _this5.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
+
+                    _this5.router.navigate(['/register-as-volunteer']);
+                  } //this.navCtrl.navigateBack(['/register-as-volunteer']);
+
+                } else if (localStorage.getItem('isotpverified') == '0') {
+                  _this5.router.navigate(['/otp']);
+                } else {
+                  _this5.router.navigate(['/language']);
+                }
+              }
+
+              _this5.fetch.isLanguageChanged.subscribe(function (value) {
+                _this5.isLanguageChanged = value;
+                var lang_code = JSON.parse(localStorage.getItem('lang'));
+
+                _this5.fetch.getKeyText(lang_code).subscribe(function (rs) {
+                  _this5.storage.setScope(rs);
+
+                  var res = _this5.storage.getScope();
+
+                  var item1 = res.find(function (i) {
+                    return i.key_text === 'REGISTER_AS_VOLUNTEER';
+                  });
+                  _this5.model.key_text1 = item1[lang_code];
+                  var item2 = res.find(function (i) {
+                    return i.key_text === 'SIDEBAR_QUOTE1';
+                  });
+                  _this5.model.key_text2 = item2[lang_code];
+                  var item3 = res.find(function (i) {
+                    return i.key_text === 'PROFILE';
+                  });
+                  _this5.model.key_text3 = item3[lang_code];
+                  var item4 = res.find(function (i) {
+                    return i.key_text === 'SIDEBAR_QUOTE2';
+                  });
+                  _this5.model.key_text4 = item4[lang_code];
+                  var item5 = res.find(function (i) {
+                    return i.key_text === 'SAVED_ADDRESSES';
+                  });
+                  _this5.model.key_text5 = item5[lang_code];
+                  var item6 = res.find(function (i) {
+                    return i.key_text === 'YOUR_PREVIOUSLY_SAVED_ADDRESSES';
+                  });
+                  _this5.model.key_text6 = item6[lang_code];
+                  var item7 = res.find(function (i) {
+                    return i.key_text === 'CHOOSE_LANGUAGE';
+                  });
+                  _this5.model.key_text7 = item7[lang_code];
+                  var item8 = res.find(function (i) {
+                    return i.key_text === 'SIDEBAR_QUOTE3';
+                  });
+                  _this5.model.key_text8 = item8[lang_code];
+                  var item9 = res.find(function (i) {
+                    return i.key_text === 'HELP';
+                  });
+                  _this5.model.key_text9 = item9[lang_code];
+                  var item10 = res.find(function (i) {
+                    return i.key_text === 'SIDEBAR_QUOTE4';
+                  });
+                  _this5.model.key_text10 = item10[lang_code];
+                  var item11 = res.find(function (i) {
+                    return i.key_text === 'ABOUT_US';
+                  });
+                  _this5.model.key_text11 = item11[lang_code];
+                  var item12 = res.find(function (i) {
+                    return i.key_text === 'SIDEBAR_QUOTE5';
+                  });
+                  _this5.model.key_text12 = item12[lang_code];
+                  var item13 = res.find(function (i) {
+                    return i.key_text === 'SHOW_IN_BETWEEN';
+                  });
+                  _this5.model.key_text13 = item13[lang_code];
+                  var item14 = res.find(function (i) {
+                    return i.key_text === 'LOGOUT';
+                  });
+                  _this5.model.key_text14 = item14[lang_code];
+                  var item15 = res.find(function (i) {
+                    return i.key_text === 'MULTI_LOGIN_ERROR_TEXT';
+                  });
+                  _this5.model.key_text15 = item15[lang_code];
+                  var item16 = res.find(function (i) {
+                    return i.key_text === 'SORRY_NOT_AVAILABLE_IN_YOUR_AREA';
+                  });
+                  _this5.model.key4 = item16[lang_code];
+                  var item17 = res.find(function (i) {
+                    return i.key_text === 'OKAY';
+                  });
+                  _this5.model.key_text17 = item17[lang_code];
+                });
+              });
+            });
             var self = this;
             var lang_code = JSON.parse(localStorage.getItem('lang'));
             var path = window.location.pathname.split('folder/')[1]; //console.log("app.component"); 
@@ -1927,15 +2210,29 @@
                 return page.title.toLowerCase() === path.toLowerCase();
               });
             }
-          }
+          } // checkwaiting(){
+          //   this.user_id = JSON.parse(localStorage.getItem('user_registerd'));
+          //   if(this.user_id){
+          //     this.fetch.v_check(this.user_id).subscribe(res => {
+          //       if(res.success == true){
+          //         this.showvolnoti(res)
+          //       }
+          //     });
+          //   }
+          // }
+
         }, {
           key: "checkVolunteer",
           value: function checkVolunteer() {
+            var _this6 = this;
+
             this.user_id = JSON.parse(localStorage.getItem('user_registerd'));
 
             if (this.user_id) {
               this.fetch.v_check(this.user_id).subscribe(function (res) {
                 if (res.success == true) {
+                  _this6.res = res;
+
                   if (res.status == 1) {
                     localStorage.setItem('volunteer_approve', '1');
                   } else {
@@ -1946,11 +2243,88 @@
                 }
               });
             }
-          }
+          } // checkposition(vol, pathpoints) {
+          //   var position = new google.maps.LatLng(vol.lat, vol.lng);
+          //   var res = google.maps.geometry.poly.isLocationOnEdge(
+          //     position,
+          //     new google.maps.Polyline({ path: pathpoints }),
+          //     0.0030
+          //   );
+          //   return { res, vol };
+          // }
+          // getLiText(point) {
+          //   let lat = point.lat(),
+          //     lng = point.lng();
+          //   return { lat: lat, lng: lng };
+          // }
+          //  showvolnoti(verify){
+          //     this.fetch.v_edit(verify.data).subscribe(res => {
+          //       console.log("showvolnoti:",res);
+          //       var element = {
+          //            lat: res.data.latitude,
+          //            lng: res.data.longitude
+          //       }
+          //       this.fetch.get_waiting_food().subscribe(res => {
+          //             //  var start = {
+          //             //       lat: res.data.startLat,
+          //             //       lng: res.data.startLng
+          //             //  }
+          //             //  console.log("ye apna wala start:",start);
+          //             //  var end = {
+          //             //       lat: res.data.endLat,
+          //             //       lng: res.data.endLng
+          //             //  }
+          //            //  console.log("ye apna wala end:",end);
+          //       this.directionsService.route(
+          //         {
+          //           origin: "Tower Chowk, Freeganj, Madhav Nagar, Ujjain, Madhya Pradesh 456010, India",
+          //           destination: "5Q4P+PQ3, Sanwer Rd, Nanakheda, Mahakal Vanijya, Ujjain, Madhya Pradesh 456010, India",
+          //           //   waypoints: waypts,
+          //           optimizeWaypoints: true,
+          //           travelMode: google.maps.TravelMode.DRIVING,
+          //         },
+          //         (response, status) => {
+          //           if (status === "OK") {
+          //             this.directionsRenderer.setDirections(response);
+          //             /////////////////////////////
+          //             if (response.routes && response.routes.length > 0) {
+          //               console.log("this is response of path:", response);
+          //               var routes = response.routes;
+          //               for (var j = 0; j < routes.length; j++) {
+          //                 var points = routes[j].overview_path;
+          //                 // var ul = document.getElementById("vertex");
+          //                 for (var i = 0; i < points.length; i++) {
+          //                   // var li = document.createElement('li');
+          //                   // li.innerHTML = this.getLiText(points[i]);
+          //                   var result = this.getLiText(points[i]);
+          //                   console.log("path all latlong:", result);
+          //                   // ul.appendChild(li);
+          //                   //  this.resultarr.push(result.lat,result.lng);
+          //                   this.allpoints = new google.maps.LatLng(
+          //                     result.lat,
+          //                     result.lng
+          //                   );
+          //                   console.log("this.allpoints:",this.allpoints);
+          //                   this.pointarr.push(this.allpoints);
+          //                   console.log(this.pointarr);
+          //                 }
+          //               }
+          //             }
+          //       var check = this.checkposition(element, this.pointarr);
+          //            console.log("check:",check);
+          //             if (check.res = true){
+          //               this.showFoodDeliverPopupToVolunteer("donar is waiting for food");
+          //             }
+          //           }
+          //     });
+          //     })
+          //     })
+          // }
+
         }, {
           key: "checkLoginUser",
           value: function checkLoginUser() {
-            var _this6 = this;
+            var _this7 = this;
 
             if (localStorage.getItem('user_id') != undefined) {
               if (JSON.parse(localStorage.getItem('user_id')) != null) {
@@ -1959,7 +2333,7 @@
                 });
                 this.fetch.profile(data).subscribe(function (res) {
                   if (res['status'] != 1) {
-                    _this6.logout();
+                    _this7.logout();
                   }
                 });
               }
@@ -1975,6 +2349,7 @@
           key: "logout",
           value: function logout() {
             localStorage.clear();
+            this.getDevice();
             this.router.navigate(['/language']);
           }
         }, {
@@ -1985,12 +2360,12 @@
         }, {
           key: "showNotification",
           value: function showNotification(msg, array, donor_details, request_id) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
               var modal;
-              return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-                while (1) switch (_context7.prev = _context7.next) {
+              return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+                while (1) switch (_context9.prev = _context9.next) {
                   case 0:
-                    _context7.next = 2;
+                    _context9.next = 2;
                     return this.modalController.create({
                       component: _modal_push_notification_push_notification_page__WEBPACK_IMPORTED_MODULE_10__["PushNotificationPage"],
                       cssClass: 'custom_current_location_modal notification-modal',
@@ -1999,75 +2374,8 @@
                         "array": array,
                         "donor_details": donor_details,
                         "request_id": request_id,
-                        "message": msg
-                      }
-                    });
-
-                  case 2:
-                    modal = _context7.sent;
-                    modal.onDidDismiss().then(function (dataReturned) {});
-                    _context7.next = 6;
-                    return modal.present();
-
-                  case 6:
-                    return _context7.abrupt("return", _context7.sent);
-
-                  case 7:
-                  case "end":
-                    return _context7.stop();
-                }
-              }, _callee7, this);
-            }));
-          }
-        }, {
-          key: "showFoodDeliverPopupToVolunteer",
-          value: function showFoodDeliverPopupToVolunteer(array) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
-              var modal;
-              return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-                while (1) switch (_context8.prev = _context8.next) {
-                  case 0:
-                    _context8.next = 2;
-                    return this.modalController.create({
-                      component: _modal_deliver_food_volunteer_deliver_food_volunteer_page__WEBPACK_IMPORTED_MODULE_11__["DeliverFoodVolunteerPage"],
-                      cssClass: 'custom_feedback_modal  my_volunteer_completed_modal',
-                      backdropDismiss: false,
-                      componentProps: {
-                        "array": array
-                      }
-                    });
-
-                  case 2:
-                    modal = _context8.sent;
-                    modal.onDidDismiss().then(function (dataReturned) {});
-                    _context8.next = 6;
-                    return modal.present();
-
-                  case 6:
-                    return _context8.abrupt("return", _context8.sent);
-
-                  case 7:
-                  case "end":
-                    return _context8.stop();
-                }
-              }, _callee8, this);
-            }));
-          }
-        }, {
-          key: "showFoodDeliverPopupToDonor",
-          value: function showFoodDeliverPopupToDonor(array) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
-              var modal;
-              return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-                while (1) switch (_context9.prev = _context9.next) {
-                  case 0:
-                    _context9.next = 2;
-                    return this.modalController.create({
-                      component: _modal_pickup_success_modal_pickup_success_modal_page__WEBPACK_IMPORTED_MODULE_12__["PickupSuccessModalPage"],
-                      cssClass: 'custom_filter_modal cancel_allot_food_popup',
-                      backdropDismiss: false,
-                      componentProps: {
-                        "array": array
+                        "message": msg,
+                        "click_action": "FCM_PLUGIN_ACTIVITY"
                       }
                     });
 
@@ -2088,8 +2396,8 @@
             }));
           }
         }, {
-          key: "showAlert",
-          value: function showAlert(msg) {
+          key: "showFoodDeliverPopupToVolunteer",
+          value: function showFoodDeliverPopupToVolunteer(array) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
               var modal;
               return _regeneratorRuntime().wrap(function _callee10$(_context10) {
@@ -2097,11 +2405,11 @@
                   case 0:
                     _context10.next = 2;
                     return this.modalController.create({
-                      component: _modal_simple_push_notification_simple_push_notification_page__WEBPACK_IMPORTED_MODULE_13__["SimplePushNotificationPage"],
-                      cssClass: 'custom_current_location_modal notification-modal',
+                      component: _modal_deliver_food_volunteer_deliver_food_volunteer_page__WEBPACK_IMPORTED_MODULE_11__["DeliverFoodVolunteerPage"],
+                      cssClass: 'custom_feedback_modal  my_volunteer_completed_modal',
                       backdropDismiss: false,
                       componentProps: {
-                        "msg": msg
+                        "array": array
                       }
                     });
 
@@ -2121,14 +2429,131 @@
               }, _callee10, this);
             }));
           }
-        }]);
+        }, {
+          key: "showFoodDeliverPopupToDonor",
+          value: function showFoodDeliverPopupToDonor(array) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
+              var modal;
+              return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+                while (1) switch (_context11.prev = _context11.next) {
+                  case 0:
+                    _context11.next = 2;
+                    return this.modalController.create({
+                      component: _modal_pickup_success_modal_pickup_success_modal_page__WEBPACK_IMPORTED_MODULE_12__["PickupSuccessModalPage"],
+                      cssClass: 'custom_filter_modal cancel_allot_food_popup',
+                      backdropDismiss: false,
+                      componentProps: {
+                        "array": array
+                      }
+                    });
 
-        return AppComponent;
+                  case 2:
+                    modal = _context11.sent;
+                    modal.onDidDismiss().then(function (dataReturned) {});
+                    _context11.next = 6;
+                    return modal.present();
+
+                  case 6:
+                    return _context11.abrupt("return", _context11.sent);
+
+                  case 7:
+                  case "end":
+                    return _context11.stop();
+                }
+              }, _callee11, this);
+            }));
+          }
+        }, {
+          key: "showAlert",
+          value: function showAlert(msg) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+              var modal;
+              return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+                while (1) switch (_context12.prev = _context12.next) {
+                  case 0:
+                    console.log(msg, 'msg');
+                    _context12.next = 3;
+                    return this.modalController.create({
+                      component: _modal_simple_push_notification_simple_push_notification_page__WEBPACK_IMPORTED_MODULE_13__["SimplePushNotificationPage"],
+                      cssClass: 'custom_current_location_modal notification-modal',
+                      backdropDismiss: false,
+                      componentProps: {
+                        "msg": msg
+                      }
+                    });
+
+                  case 3:
+                    modal = _context12.sent;
+                    modal.onDidDismiss().then(function (dataReturned) {});
+                    _context12.next = 7;
+                    return modal.present();
+
+                  case 7:
+                    return _context12.abrupt("return", _context12.sent);
+
+                  case 8:
+                  case "end":
+                    return _context12.stop();
+                }
+              }, _callee12, this);
+            }));
+          } //get Unique_id
+
+        }, {
+          key: "getDevice",
+          value: function getDevice() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee13() {
+              var _this8 = this;
+
+              return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+                while (1) switch (_context13.prev = _context13.next) {
+                  case 0:
+                    this.platform.ready().then(function () {
+                      var uuid = _this8.device.uuid; //  alert("id"+uuid);
+
+                      localStorage.setItem('unique_id', JSON.stringify(uuid));
+                    });
+
+                  case 1:
+                  case "end":
+                    return _context13.stop();
+                }
+              }, _callee13, this);
+            }));
+          }
+        }, {
+          key: "checkUserUniqueId",
+          value: function checkUserUniqueId() {
+            var _this9 = this;
+
+            var user_id = JSON.parse(localStorage.getItem('user_id'));
+            var unique_id = JSON.parse(localStorage.getItem('unique_id'));
+            var data = JSON.stringify({
+              'user_id': user_id,
+              'unique_id': unique_id
+            });
+            this.fetch.checkDeviceId(data).subscribe(function (res) {
+              if (res.success == false) {
+                _this9.errorMsg.showModal(_this9.model.key_text15);
+
+                _this9.logout();
+              }
+            });
+          }
+        }]);
       }();
 
       AppComponent.ctorParameters = function () {
         return [{
+          type: _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_18__["FirebaseX"]
+        }, {
           type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_14__["Geolocation"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
+        }, {
+          type: _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__["Device"]
+        }, {
+          type: _error_msg_service__WEBPACK_IMPORTED_MODULE_15__["ErrorMsgService"]
         }, {
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]
         }, {
@@ -2144,9 +2569,7 @@
         }, {
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"]
         }, {
-          type: cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_15__["FCM"]
-        }, {
-          type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_16__["Network"]
+          type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_17__["Diagnostic"]
         }];
       };
 
@@ -2194,7 +2617,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list id=\"inbox-list\" style=\"margin: 0px 30px;\">\n          <ion-list-header class=\"medium size_18 custom_header\">More</ion-list-header>          \n\n          <!--<ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n              <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n              <ion-label>{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>-->\n        </ion-list>\n\n        <div class=\"custom_menubar\">\n\t\t\t<ion-list class=\"custom_menu\" style=\"margin-top: -40px !important; margin-bottom:12px;\">\n\t\t\t\t<ion-menu-toggle>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/register-volunteer']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_1.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text1}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text2}}</div>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/profile']\" >\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_2.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text3}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text4}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/saved-addresses',user_id]\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_3.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text5}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text6}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/choose-language']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_4.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text7}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text8}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/help']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_5.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text9}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text10}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t<ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/about-us']\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text11}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text12}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>\n\t\t\t\t\t  \n\t\t\t\t\t <ion-item class=\"item-icon-left menu_item\" menu-close  (click)=\"logout()\">\n\t\t\t\t\t\t<div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n\t\t\t\t\t\t<div class=\"menu_content\">\n\t\t\t\t\t\t\t<div class=\"menu_title size_16 medium\">{{model.key_text14}}</div>\n\t\t\t\t\t\t\t<div class=\"menu_sub green regular size_12\">{{model.key_text14}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-item>  \n\t\t\t\t</ion-menu-toggle>\t\t\t\n\t\t\t</ion-list>\n        </div>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+      __webpack_exports__["default"] = "<ion-app>\n    <ion-split-pane contentId=\"main-content\">\n        <ion-menu contentId=\"main-content\" type=\"overlay\">\n            <ion-content>\n                <ion-list id=\"inbox-list\" style=\"margin: 0px 30px;\">\n                    <ion-list-header class=\"medium size_18 custom_header\">More</ion-list-header>\n\n                    <!--<ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n              <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n              <ion-label>{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>-->\n                </ion-list>\n\n                <div class=\"custom_menubar\">\n                    <ion-list class=\"custom_menu\" style=\"margin-top: -40px !important; margin-bottom:12px;\">\n                        <ion-menu-toggle>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/register-volunteer']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_1.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text1}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text2}}</div>\n\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/profile']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_2.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text3}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text4}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/saved-addresses',user_id]\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_3.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text5}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text6}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/choose-language']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_4.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text7}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text8}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/help']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_5.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text9}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text10}}</div>\n                                </div>\n                            </ion-item>\n                            <ion-item class=\"item-icon-left menu_item\" menu-close [routerLink]=\"['/about-us']\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text11}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text12}}</div>\n                                </div>\n                            </ion-item>\n\n                            <ion-item class=\"item-icon-left menu_item\" menu-close (click)=\"logout()\">\n                                <div class=\"menu_img\"><img src=\"assets/images/menu_6.svg\"> </div>\n                                <div class=\"menu_content\">\n                                    <div class=\"menu_title size_16 medium\">{{model.key_text14}}</div>\n                                    <div class=\"menu_sub green regular size_12\">{{model.key_text14}}</div>\n                                </div>\n                            </ion-item>\n                        </ion-menu-toggle>\n                    </ion-list>\n                </div>\n            </ion-content>\n        </ion-menu>\n        <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n    </ion-split-pane>\n</ion-app>";
       /***/
     },
 
@@ -2268,7 +2691,7 @@
 
       var PincodeErrorComponentComponent = /*#__PURE__*/function () {
         function PincodeErrorComponentComponent(platform, loadingController, alertController, fetch, router, storage) {
-          var _this7 = this;
+          var _this10 = this;
 
           _classCallCheck(this, PincodeErrorComponentComponent);
 
@@ -2281,22 +2704,22 @@
           this.model = {};
           this.app_title = 'Khanaa.app';
           this.fetch.isLanguageChanged.subscribe(function (value) {
-            _this7.isLanguageChanged = value;
+            _this10.isLanguageChanged = value;
             var lang_code = JSON.parse(localStorage.getItem('lang'));
 
-            _this7.fetch.getKeyText(lang_code).subscribe(function (rs) {
-              _this7.storage.setScope(rs);
+            _this10.fetch.getKeyText(lang_code).subscribe(function (rs) {
+              _this10.storage.setScope(rs);
 
-              var res = _this7.storage.getScope();
+              var res = _this10.storage.getScope();
 
               var item1 = res.find(function (i) {
                 return i.key_text === 'SORRY_NOT_AVAILABLE_IN_YOUR_AREA';
               });
-              _this7.model.key1 = item1[lang_code];
+              _this10.model.key1 = item1[lang_code];
               var item2 = res.find(function (i) {
                 return i.key_text === 'OKAY';
               });
-              _this7.model.key_text2 = item2[lang_code];
+              _this10.model.key_text2 = item2[lang_code];
             });
           });
           this.platform.backButton.subscribeWithPriority(10, function () {
@@ -2304,13 +2727,11 @@
           });
         }
 
-        _createClass(PincodeErrorComponentComponent, [{
+        return _createClass(PincodeErrorComponentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {// this.presentLoading();
           }
         }]);
-
-        return PincodeErrorComponentComponent;
       }();
 
       PincodeErrorComponentComponent.ctorParameters = function () {
@@ -2487,15 +2908,16 @@
       /* harmony import */
 
 
-      var cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
-      /*! cordova-plugin-fcm-with-dependecy-updated/ionic/ngx */
-      "lOSq");
+      var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+      /*! @ionic-native/device/ngx */
+      "xS7M");
       /* harmony import */
 
 
-      var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
-      /*! @ionic-native/network/ngx */
-      "kwrG");
+      var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+      /*! @ionic-native/firebase-x/ngx */
+      "E9qw"); // import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
+
 
       var AppModule = /*#__PURE__*/_createClass(function AppModule() {
         _classCallCheck(this, AppModule);
@@ -2505,10 +2927,10 @@
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]],
         entryComponents: [],
         imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_12__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"], ng_recaptcha__WEBPACK_IMPORTED_MODULE_13__["RecaptchaModule"]],
-        providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_10__["SocialSharing"], _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_15__["DatePicker"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_8__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_9__["NativeGeocoder"], _ionic_native_browser_tab_ngx__WEBPACK_IMPORTED_MODULE_7__["BrowserTab"], _angular_common__WEBPACK_IMPORTED_MODULE_17__["DatePipe"], _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_16__["Diagnostic"], {
+        providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_19__["FirebaseX"], _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_18__["Device"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_10__["SocialSharing"], _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_15__["DatePicker"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_8__["Geolocation"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_9__["NativeGeocoder"], _ionic_native_browser_tab_ngx__WEBPACK_IMPORTED_MODULE_7__["BrowserTab"], _angular_common__WEBPACK_IMPORTED_MODULE_17__["DatePipe"], _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_16__["Diagnostic"], {
           provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
           useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
-        }, cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_18__["FCM"], _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_19__["Network"]],
+        }],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
       })], AppModule);
       /***/
@@ -2610,7 +3032,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content class=\"modal_content\">\n  <div class=\"ion-padding\">  \n    <img (click)=\"closeModal()\" src=\"assets/images/close_btn.svg\" class=\"close_btn\">\n  \n    <div class=\"modal_inner\">\n      <br>\n      \n      <div class=\"medium size_16 green center\" style=\"max-width: 300px; width: 100%; margin: 0 auto;\">\n        {{msg}}\n      </div>\n      <br>\n      <br>\n      <div class=\"app_button\">\n          <button class=\"app_btn\" (click)=\"closeModal()\">{{ model.key_text1 }}</button>\n      </div>\n    </div>\n\n  </div>\n</ion-content> ";
+      __webpack_exports__["default"] = "<ion-content class=\"modal_content\">\n    <div class=\"ion-padding\">\n        <img (click)=\"closeModal()\" src=\"assets/images/close_btn.svg\" class=\"close_btn\">\n\n        <div class=\"modal_inner\">\n            <br>\n\n            <div class=\"medium size_16 green center\" style=\"max-width: 300px; width: 100%; margin: 0 auto;\">\n                {{ msg }}\n            </div>\n            <br>\n            <br>\n            <div class=\"app_button\">\n                <button class=\"app_btn\" (click)=\"closeModal()\">{{ model.key_text1 }}</button>\n            </div>\n        </div>\n\n    </div>\n</ion-content>";
       /***/
     },
 
@@ -2693,23 +3115,23 @@
           this.model = {};
         }
 
-        _createClass(PushNotificationPage, [{
+        return _createClass(PushNotificationPage, [{
           key: "closeModal",
           value: function closeModal() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
               var onClosedData;
-              return _regeneratorRuntime().wrap(function _callee11$(_context11) {
-                while (1) switch (_context11.prev = _context11.next) {
+              return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+                while (1) switch (_context14.prev = _context14.next) {
                   case 0:
                     onClosedData = "Wrapped Up!";
-                    _context11.next = 3;
+                    _context14.next = 3;
                     return this.modalController.dismiss('');
 
                   case 3:
                   case "end":
-                    return _context11.stop();
+                    return _context14.stop();
                 }
-              }, _callee11, this);
+              }, _callee14, this);
             }));
           }
         }, {
@@ -2755,7 +3177,7 @@
         }, {
           key: "acceptRequest",
           value: function acceptRequest() {
-            var _this8 = this;
+            var _this11 = this;
 
             var app_user_id = localStorage.getItem('user_id');
             var formData = new FormData();
@@ -2765,19 +3187,19 @@
             formData.append("request_id", this.request_id);
             this.fetch.volunterr_accept_request(formData).subscribe(function (res) {
               if (res['success']) {
-                _this8.closeModal();
+                _this11.closeModal();
 
-                _this8.showAlert(res['message']);
+                _this11.showAlert(res['message']);
               }
             });
           }
         }, {
           key: "showAlert",
           value: function showAlert(msg) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
               var alert;
-              return _regeneratorRuntime().wrap(function _callee12$(_context12) {
-                while (1) switch (_context12.prev = _context12.next) {
+              return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+                while (1) switch (_context15.prev = _context15.next) {
                   case 0:
                     if (msg == 'Food accepted') {
                       msg = this.model.key_text5;
@@ -2789,7 +3211,7 @@
                       msg = this.model.key_text6;
                     }
 
-                    _context12.next = 3;
+                    _context15.next = 3;
                     return this.alertController.create({
                       cssClass: 'my-custom-class custom_alert_1',
                       //header: 'Alert',
@@ -2805,27 +3227,27 @@
                     });
 
                   case 3:
-                    alert = _context12.sent;
-                    _context12.next = 6;
+                    alert = _context15.sent;
+                    _context15.next = 6;
                     return alert.present();
 
                   case 6:
                   case "end":
-                    return _context12.stop();
+                    return _context15.stop();
                 }
-              }, _callee12, this);
+              }, _callee15, this);
             }));
           }
         }, {
           key: "RejectRequest",
           value: function RejectRequest() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee13() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee16() {
               var modal;
-              return _regeneratorRuntime().wrap(function _callee13$(_context13) {
-                while (1) switch (_context13.prev = _context13.next) {
+              return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+                while (1) switch (_context16.prev = _context16.next) {
                   case 0:
                     this.closeModal();
-                    _context13.next = 3;
+                    _context16.next = 3;
                     return this.modalController.create({
                       component: _dynamic_msg_dynamic_msg_page__WEBPACK_IMPORTED_MODULE_6__["DynamicMsgPage"],
                       cssClass: 'home_content_modal dynamic_model_css',
@@ -2835,24 +3257,22 @@
                     });
 
                   case 3:
-                    modal = _context13.sent;
+                    modal = _context16.sent;
                     modal.onDidDismiss().then(function (dataReturned) {});
-                    _context13.next = 7;
+                    _context16.next = 7;
                     return modal.present();
 
                   case 7:
-                    return _context13.abrupt("return", _context13.sent);
+                    return _context16.abrupt("return", _context16.sent);
 
                   case 8:
                   case "end":
-                    return _context13.stop();
+                    return _context16.stop();
                 }
-              }, _callee13, this);
+              }, _callee16, this);
             }));
           }
         }]);
-
-        return PushNotificationPage;
       }();
 
       PushNotificationPage.ctorParameters = function () {
@@ -2971,36 +3391,6 @@
     },
 
     /***/
-    "p9Ra":
-    /*!************************************************************************************************************************************!*\
-      !*** ./node_modules/cordova-plugin-fcm-with-dependecy-updated/ionic/ngx/node_modules/@angular/core/fesm2015 lazy namespace object ***!
-      \************************************************************************************************************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function p9Ra(module, exports) {
-      function webpackEmptyAsyncContext(req) {
-        // Here Promise.resolve().then() is used instead of new Promise() to prevent
-        // uncaught exception popping up in devtools
-        return Promise.resolve().then(function () {
-          var e = new Error("Cannot find module '" + req + "'");
-          e.code = 'MODULE_NOT_FOUND';
-          throw e;
-        });
-      }
-
-      webpackEmptyAsyncContext.keys = function () {
-        return [];
-      };
-
-      webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-      module.exports = webpackEmptyAsyncContext;
-      webpackEmptyAsyncContext.id = "p9Ra";
-      /***/
-    },
-
-    /***/
     "qkCY":
     /*!************************************!*\
       !*** ./src/app/storage.service.ts ***!
@@ -3037,7 +3427,7 @@
           _classCallCheck(this, StorageService);
         }
 
-        _createClass(StorageService, [{
+        return _createClass(StorageService, [{
           key: "getScope",
           value: function getScope() {
             //console.log('yes',JSON.parse(localStorage.getItem('scope')));
@@ -3054,8 +3444,6 @@
             localStorage.setItem('scope', JSON.stringify(scope));
           }
         }]);
-
-        return StorageService;
       }();
 
       StorageService.ctorParameters = function () {
@@ -3169,7 +3557,7 @@
           this.details = {};
         }
 
-        _createClass(PickupSuccessModalPage, [{
+        return _createClass(PickupSuccessModalPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.details = JSON.stringify(this.array);
@@ -3199,13 +3587,13 @@
         }, {
           key: "redirectToNext",
           value: function redirectToNext() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee17() {
               var onClosedData, t;
-              return _regeneratorRuntime().wrap(function _callee14$(_context14) {
-                while (1) switch (_context14.prev = _context14.next) {
+              return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+                while (1) switch (_context17.prev = _context17.next) {
                   case 0:
                     onClosedData = "Wrapped Up!";
-                    _context14.next = 3;
+                    _context17.next = 3;
                     return this.modalController.dismiss(onClosedData);
 
                   case 3:
@@ -3214,21 +3602,21 @@
 
                   case 5:
                   case "end":
-                    return _context14.stop();
+                    return _context17.stop();
                 }
-              }, _callee14, this);
+              }, _callee17, this);
             }));
           }
         }, {
           key: "closeModal",
           value: function closeModal() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee18() {
               var onClosedData;
-              return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-                while (1) switch (_context15.prev = _context15.next) {
+              return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+                while (1) switch (_context18.prev = _context18.next) {
                   case 0:
                     onClosedData = "Wrapped Up!";
-                    _context15.next = 3;
+                    _context18.next = 3;
                     return this.modalController.dismiss(onClosedData);
 
                   case 3:
@@ -3236,14 +3624,12 @@
 
                   case 4:
                   case "end":
-                    return _context15.stop();
+                    return _context18.stop();
                 }
-              }, _callee15, this);
+              }, _callee18, this);
             }));
           }
         }]);
-
-        return PickupSuccessModalPage;
       }();
 
       PickupSuccessModalPage.ctorParameters = function () {
@@ -3317,12 +3703,11 @@
       /*! ./pincode-error-component/pincode-error-component.component */
       "XVfp");
 
-      var routes = [// {
-      //   path: '',
-      //   redirectTo: 'language',
-      //   pathMatch: 'full'
-      // },
-      {
+      var routes = [{
+        path: '',
+        redirectTo: 'language',
+        pathMatch: 'full'
+      }, {
         path: 'splash',
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
@@ -3347,9 +3732,9 @@
       }, {
         path: 'mobile-number',
         loadChildren: function loadChildren() {
-          return Promise.all(
+          return __webpack_require__.e(
           /*! import() | mobile-number-mobile-number-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("mobile-number-mobile-number-module")]).then(__webpack_require__.bind(null,
+          "mobile-number-mobile-number-module").then(__webpack_require__.bind(null,
           /*! ./mobile-number/mobile-number.module */
           "WmCV")).then(function (m) {
             return m.MobileNumberPageModule;
@@ -3404,7 +3789,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | register-as-volunteer-register-as-volunteer-module */
-          [__webpack_require__.e("default~modal-terms-conditions-terms-conditions-module~register-as-volunteer-register-as-volunteer-m~dc236ab8"), __webpack_require__.e("common"), __webpack_require__.e("register-as-volunteer-register-as-volunteer-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~modal-terms-conditions-terms-conditions-module~register-as-volunteer-register-as-volunteer-m~dc236ab8"), __webpack_require__.e("register-as-volunteer-register-as-volunteer-module")]).then(__webpack_require__.bind(null,
           /*! ./register-as-volunteer/register-as-volunteer.module */
           "M26G")).then(function (m) {
             return m.RegisterAsVolunteerPageModule;
@@ -3457,9 +3842,9 @@
       }, {
         path: 'saved-addresses-edit/:id',
         loadChildren: function loadChildren() {
-          return Promise.all(
+          return __webpack_require__.e(
           /*! import() | saved-addresses-edit-saved-addresses-edit-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("saved-addresses-edit-saved-addresses-edit-module")]).then(__webpack_require__.bind(null,
+          "saved-addresses-edit-saved-addresses-edit-module").then(__webpack_require__.bind(null,
           /*! ./saved-addresses-edit/saved-addresses-edit.module */
           "krGk")).then(function (m) {
             return m.SavedAddressesEditPageModule;
@@ -3468,9 +3853,9 @@
       }, {
         path: 'saved-addresses-add',
         loadChildren: function loadChildren() {
-          return Promise.all(
+          return __webpack_require__.e(
           /*! import() | saved-addresses-add-saved-addresses-add-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("saved-addresses-add-saved-addresses-add-module")]).then(__webpack_require__.bind(null,
+          "saved-addresses-add-saved-addresses-add-module").then(__webpack_require__.bind(null,
           /*! ./saved-addresses-add/saved-addresses-add.module */
           "2rwE")).then(function (m) {
             return m.SavedAddressesAddPageModule;
@@ -3567,9 +3952,9 @@
       }, {
         path: 'donate-food-members',
         loadChildren: function loadChildren() {
-          return Promise.all(
+          return __webpack_require__.e(
           /*! import() | donate-food-members-donate-food-members-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("donate-food-members-donate-food-members-module")]).then(__webpack_require__.bind(null,
+          "donate-food-members-donate-food-members-module").then(__webpack_require__.bind(null,
           /*! ./donate-food-members/donate-food-members.module */
           "vV63")).then(function (m) {
             return m.DonateFoodMembersPageModule;
@@ -3635,7 +4020,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | get-food-nearest-donors-get-food-nearest-donors-module */
-          [__webpack_require__.e("default~get-food-nearest-donors-get-food-nearest-donors-module~modal-onthe-way-msg-onthe-way-msg-mod~d2e0387c"), __webpack_require__.e("common"), __webpack_require__.e("get-food-nearest-donors-get-food-nearest-donors-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~get-food-nearest-donors-get-food-nearest-donors-module~modal-onthe-way-msg-onthe-way-msg-mod~d2e0387c"), __webpack_require__.e("get-food-nearest-donors-get-food-nearest-donors-module")]).then(__webpack_require__.bind(null,
           /*! ./get-food-nearest-donors/get-food-nearest-donors.module */
           "M/g4")).then(function (m) {
             return m.GetFoodNearestDonorsPageModule;
@@ -4073,9 +4458,9 @@
       }, {
         path: 'error-msg-modal',
         loadChildren: function loadChildren() {
-          return Promise.all(
+          return __webpack_require__.e(
           /*! import() | modal-error-msg-modal-error-msg-modal-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("modal-error-msg-modal-error-msg-modal-module")]).then(__webpack_require__.bind(null,
+          "modal-error-msg-modal-error-msg-modal-module").then(__webpack_require__.bind(null,
           /*! ./modal/error-msg-modal/error-msg-modal.module */
           "Beh4")).then(function (m) {
             return m.ErrorMsgModalPageModule;
@@ -4150,6 +4535,17 @@
       }, {
         path: 'pincode-error-component',
         component: _pincode_error_component_pincode_error_component_component__WEBPACK_IMPORTED_MODULE_3__["PincodeErrorComponentComponent"]
+      }, {
+        path: 'footer',
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | footer-footer-module */
+          "footer-footer-module").then(__webpack_require__.bind(null,
+          /*! ./footer/footer.module */
+          "PpLr")).then(function (m) {
+            return m.FooterPageModule;
+          });
+        }
       }];
 
       var AppRoutingModule = /*#__PURE__*/_createClass(function AppRoutingModule() {
@@ -4181,7 +4577,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJFQUFBO0FBQ0Y7O0FBRUE7RUFDRSxvQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBQUNGOztBQUVBO0VBQ0UsZUFBQTtBQUNGOztBQUVBO0VBQ0UsbUJBQUE7QUFDRjs7QUFFQTs7RUFFRSxrQkFBQTtBQUNGOztBQUVBO0VBQ0UsMkRBQUE7QUFDRjs7QUFFQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUVBLGdCQUFBO0FBQUY7O0FBR0E7RUFDRSxlQUFBO0VBRUEsbUJBQUE7RUFFQSxjQUFBO0VBRUEsZ0JBQUE7QUFIRjs7QUFNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQUhGOztBQU1BO0VBQ0Usc0RBQUE7QUFIRjs7QUFNQTtFQUNFLCtCQUFBO0FBSEY7O0FBTUE7RUFDRSxjQUFBO0FBSEY7O0FBTUE7RUFDRSxnQkFBQTtBQUhGOztBQU1BO0VBQ0Usc0JBQUE7QUFIRjs7QUFNQTtFQUNFLG1CQUFBO0FBSEY7O0FBTUE7RUFDRSxpQkFBQTtFQUNBLG1CQUFBO0FBSEY7O0FBTUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUFIRjs7QUFNQTtFQUNFLCtCQUFBO0FBSEY7O0FBTUE7RUFDRSxlQUFBO0VBQ0EsY0FBQTtBQUhGOztBQU1BO0VBQ0Usa0JBQUE7QUFIRjs7QUFNQTs7RUFFRSxrQkFBQTtFQUNBLG1CQUFBO0FBSEY7O0FBTUE7RUFDRSxrQkFBQTtBQUhGOztBQU1BO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBRUEsb0NBQUE7QUFKRjs7QUFPQTtFQUNFLGlDQUFBO0FBSkYiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLW1lbnUgaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6IHZhcigtLWlvbi1pdGVtLWJhY2tncm91bmQsIHZhcigtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yLCAjZmZmKSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiA4cHg7XG4gIC0tcGFkZGluZy1lbmQ6IDhweDtcbiAgLS1wYWRkaW5nLXRvcDogMjBweDtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3Qge1xuICBwYWRkaW5nOiAyMHB4IDA7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1ub3RlIHtcbiAgbWFyZ2luLWJvdHRvbTogMzBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2luYm94LWxpc3Qge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgdmFyKC0taW9uLWNvbG9yLXN0ZXAtMTUwLCAjZDdkOGRhKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBmb250LXNpemU6IDIycHg7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG5cbiAgbWluLWhlaWdodDogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAxNnB4O1xuXG4gIG1hcmdpbi1ib3R0b206IDE4cHg7XG5cbiAgY29sb3I6ICM3NTc1NzU7XG5cbiAgbWluLWhlaWdodDogMjZweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDEwcHg7XG4gIC0tcGFkZGluZy1lbmQ6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWJhY2tncm91bmQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiKSwgMC4xNCk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBjb2xvcjogIzYxNmU3ZTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWxhYmVsIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwIDAgMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbGluZS1oZWlnaHQ6IDI0cHg7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTZweDtcbiAgLS1wYWRkaW5nLWVuZDogMTZweDtcbiAgLS1taW4taGVpZ2h0OiA1MHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBmb250LXNpemU6IDI0cHg7XG4gIGNvbG9yOiAjNzM4NDlhO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxNnB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxNnB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1ub3RlIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBmb250LXNpemU6IDE2cHg7XG5cbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1tZWRpdW0tc2hhZGUpO1xufVxuXG5pb24taXRlbS5zZWxlY3RlZCB7XG4gIC0tY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn0iXX0= */";
+      __webpack_exports__["default"] = "ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkVBQUE7QUFDRjs7QUFFQTtFQUNFLG9CQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLHNCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxlQUFBO0FBQ0Y7O0FBRUE7RUFDRSxtQkFBQTtBQUNGOztBQUVBOztFQUVFLGtCQUFBO0FBQ0Y7O0FBRUE7RUFDRSwyREFBQTtBQUNGOztBQUVBO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0VBRUEsZ0JBQUE7QUFBRjs7QUFHQTtFQUNFLGVBQUE7RUFFQSxtQkFBQTtFQUVBLGNBQUE7RUFFQSxnQkFBQTtBQUhGOztBQU1BO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0FBSEY7O0FBTUE7RUFDRSxzREFBQTtBQUhGOztBQU1BO0VBQ0UsK0JBQUE7QUFIRjs7QUFNQTtFQUNFLGNBQUE7QUFIRjs7QUFNQTtFQUNFLGdCQUFBO0FBSEY7O0FBTUE7RUFDRSxzQkFBQTtBQUhGOztBQU1BO0VBQ0UsbUJBQUE7QUFIRjs7QUFNQTtFQUNFLGlCQUFBO0VBQ0EsbUJBQUE7QUFIRjs7QUFNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQUhGOztBQU1BO0VBQ0UsK0JBQUE7QUFIRjs7QUFNQTtFQUNFLGVBQUE7RUFDQSxjQUFBO0FBSEY7O0FBTUE7RUFDRSxrQkFBQTtBQUhGOztBQU1BOztFQUVFLGtCQUFBO0VBQ0EsbUJBQUE7QUFIRjs7QUFNQTtFQUNFLGtCQUFBO0FBSEY7O0FBTUE7RUFDRSxxQkFBQTtFQUNBLGVBQUE7RUFFQSxvQ0FBQTtBQUpGOztBQU9BO0VBQ0UsaUNBQUE7QUFKRiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tbWVudSBpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWl0ZW0tYmFja2dyb3VuZCwgdmFyKC0taW9uLWJhY2tncm91bmQtY29sb3IsICNmZmYpKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctc3RhcnQ6IDhweDtcbiAgLS1wYWRkaW5nLWVuZDogOHB4O1xuICAtLXBhZGRpbmctdG9wOiAyMHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiAzMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3Itc3RlcC0xNTAsICNkN2Q4ZGEpO1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMjJweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcblxuICBtaW4taGVpZ2h0OiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNsYWJlbHMtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBmb250LXNpemU6IDE2cHg7XG5cbiAgbWFyZ2luLWJvdHRvbTogMThweDtcblxuICBjb2xvcjogIzc1NzU3NTtcblxuICBtaW4taGVpZ2h0OiAyNnB4O1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTBweDtcbiAgLS1wYWRkaW5nLWVuZDogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbS5zZWxlY3RlZCB7XG4gIC0tYmFja2dyb3VuZDogcmdiYSh2YXIoLS1pb24tY29sb3ItcHJpbWFyeS1yZ2IpLCAwLjE0KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSBpb24taWNvbiB7XG4gIGNvbG9yOiAjNjE2ZTdlO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSBpb24tbGFiZWwge1xuICBmb250LXdlaWdodDogNTAwO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3Qge1xuICBwYWRkaW5nOiAyMHB4IDAgMCAwO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBsaW5lLWhlaWdodDogMjRweDtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAxNnB4O1xuICAtLXBhZGRpbmctZW5kOiAxNnB4O1xuICAtLW1pbi1oZWlnaHQ6IDUwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbS5zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMjRweDtcbiAgY29sb3I6ICM3Mzg0OWE7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdCNsYWJlbHMtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBwYWRkaW5nLWxlZnQ6IDE2cHg7XG4gIHBhZGRpbmctcmlnaHQ6IDE2cHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIG1hcmdpbi1ib3R0b206IDhweDtcbn1cblxuaW9uLW5vdGUge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGZvbnQtc2l6ZTogMTZweDtcblxuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLW1lZGl1bS1zaGFkZSk7XG59XG5cbmlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1jb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufSJdfQ== */";
       /***/
     },
 

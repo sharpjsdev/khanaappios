@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-header {\n  padding-top: 32px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL29uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQUNKIiwiZmlsZSI6Im9uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVye1xuICAgIHBhZGRpbmctdG9wOiAzMnB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-header {\n  padding-top: 32px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXG9uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQUNKIiwiZmlsZSI6Im9uLXRoZS13YXktYWRkcmVzcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVye1xuICAgIHBhZGRpbmctdG9wOiAzMnB4O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -90,8 +90,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fetch_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../fetch.service */ "RPep");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../storage.service */ "qkCY");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "mtRb");
-
 
 
 
@@ -106,7 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let OnTheWayAddressPage = class OnTheWayAddressPage {
-    constructor(geolocation, nativeGeocoder, alertController, http, fetch, platform, location, zone, storage, router, route, diagnostic) {
+    constructor(geolocation, nativeGeocoder, alertController, http, fetch, platform, location, zone, storage, router, route) {
         this.geolocation = geolocation;
         this.nativeGeocoder = nativeGeocoder;
         this.alertController = alertController;
@@ -118,7 +116,6 @@ let OnTheWayAddressPage = class OnTheWayAddressPage {
         this.storage = storage;
         this.router = router;
         this.route = route;
-        this.diagnostic = diagnostic;
         this.autocomplete = {};
         this.req_data = [];
         this.latitude = 0;
@@ -150,13 +147,6 @@ let OnTheWayAddressPage = class OnTheWayAddressPage {
         this.type = this.route.snapshot.params['id'];
     }
     ionViewWillEnter() {
-        this.diagnostic.isLocationAvailable().then(resp => {
-            if (!resp) {
-                this.router.navigate(['/home']);
-            }
-        }).catch((error) => {
-            this.router.navigate(['/home']);
-        });
         var lang_code = JSON.parse(localStorage.getItem('lang'));
         this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
         this.fetch.get_user_locations(this.model.user_id).subscribe(res => {
@@ -376,8 +366,7 @@ OnTheWayAddressPage.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgZone"] },
     { type: _storage_service__WEBPACK_IMPORTED_MODULE_10__["StorageService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
-    { type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_12__["Diagnostic"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }
 ];
 OnTheWayAddressPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({

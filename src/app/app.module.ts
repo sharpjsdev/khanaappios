@@ -16,8 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { DatePipe } from '@angular/common';
-import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
-import { Network } from '@ionic-native/network/ngx';
+// import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
+import { Device } from '@ionic-native/device/ngx';
+import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,8 @@ import { Network } from '@ionic-native/network/ngx';
   ],
   providers: [
     StatusBar,
+    FirebaseX,
+    Device,
     SplashScreen,
     SocialSharing,
     DatePicker,
@@ -40,8 +43,7 @@ import { Network } from '@ionic-native/network/ngx';
   DatePipe,
   Diagnostic,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FCM,
-    Network
+    // FCM
   ],
   bootstrap: [AppComponent]
 })

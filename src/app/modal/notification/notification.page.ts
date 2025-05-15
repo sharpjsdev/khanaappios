@@ -58,12 +58,11 @@ export class NotificationPage implements OnInit {
 			  let item14 = res.find(i => i.key_text === 'ACTIVITY');
 				this.model.key_text14 = item14[lang_code];
 		  	let item15 = res.find(i => i.key_text === 'VOLUNTEER');
-				this.model.key_text15 = item15[lang_code]; 
-        let item16 = res.find(i => i.key_text === 'IMPORTANT_WORD1');
+				this.model.key_text15 = item15[lang_code];  
+		  	let item16 = res.find(i => i.key_text === 'IMPORTANT_WORD1');
 				this.model.key_text16 = item16[lang_code];  
 		  	let item17 = res.find(i => i.key_text === 'YOUR_DONATION_IS_EXPIRED');
 				this.model.key_text17 = item17[lang_code];  
-           
           
       
     //});
@@ -90,7 +89,8 @@ export class NotificationPage implements OnInit {
     // this.fetch.read_notification(this.model.user_id).subscribe(res => {
       
     // });
-  } 
+  }
+
   notification(id,index){
     let data = {
       user_id: this.model.user_id,
@@ -129,6 +129,5 @@ export class NotificationPage implements OnInit {
     this.fetch.read_notification(this.model.user_id).subscribe(res => {
       this.router.navigate(['/home']);
     });
-  }  
-
+  }
 }

@@ -386,7 +386,6 @@ export class OnTheWaySearchPage implements OnInit {
       new google.maps.Polyline({ path: pathpoints }),
       0.0080
     );
-
     return { res, vol };
   }
 

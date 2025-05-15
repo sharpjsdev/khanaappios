@@ -8,8 +8,6 @@ import { FetchService } from '../fetch.service';
 import { StorageService } from '../storage.service';
 import { Platform } from '@ionic/angular';
 import { Location } from "@angular/common";
-import { Diagnostic } from "@ionic-native/diagnostic/ngx";
-
 declare var google: any;
 declare var $: any;
 @Component({
@@ -53,8 +51,7 @@ export class OnTheWayAddressPage implements OnInit {
     private zone: NgZone,
     private storage : StorageService,
     public router : Router,
-    public route : ActivatedRoute,
-    private diagnostic: Diagnostic
+    public route : ActivatedRoute
   ) {
     this.platform.backButton.subscribeWithPriority(10, () => {
       this.location_back();
@@ -66,20 +63,13 @@ export class OnTheWayAddressPage implements OnInit {
       start: '',
       end : ''
     };
-  }
+   }
 
   ngOnInit() {
   this.type = this.route.snapshot.params['id'];
   }
  ionViewWillEnter(){
-  this.diagnostic.isLocationAvailable().then(resp =>{
-      if(!resp){
-        this.router.navigate(['/home']);
-      }
-    }).catch((error: any) => {
-      this.router.navigate(['/home']);
-    });
-    
+
   var lang_code = JSON.parse(localStorage.getItem('lang'));
   this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
 	this.fetch.get_user_locations(this.model.user_id).subscribe(res => {

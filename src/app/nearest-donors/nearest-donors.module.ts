@@ -10,13 +10,13 @@ import { NearestDonorsPage } from './nearest-donors.page';
 import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    NearestDonorsPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [NearestDonorsPage]
+    declarations: [NearestDonorsPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        NearestDonorsPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class NearestDonorsPageModule {}

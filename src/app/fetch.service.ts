@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { map, catchError,timeout } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { BehaviorSubject,throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -441,18 +441,7 @@ export class FetchService {
 	checkDeviceId(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'check_unique_login',data);
 	}
-	detectSlowNetwork(): Observable<any> { 
-		return this.http.get(environment.base_url + 'language').pipe(
-			timeout(1000), // 5000 milliseconds (5 seconds) timeout
-			catchError(error => {
-			  
-			  alert("You have slow internet connection");
-			  return throwError(error);
-			})
-		  );
-	}
 	read_notification_by_id(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'read_notification_by_id',data);
-
 	}
 }

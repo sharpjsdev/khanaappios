@@ -59,7 +59,7 @@ OtpPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("@media only screen and (max-width: 348px) {\n  .input_text_bottom {\n    display: inherit !important;\n  }\n\n  .otp_left {\n    width: 100% !important;\n    text-align: left;\n    margin-top: 15px;\n  }\n\n  .otp_right {\n    width: 100% !important;\n    text-align: left !important;\n    margin-left: 5px;\n    margin-top: 10px !important;\n    margin-left: 30px !important;\n  }\n}\n.otp_left {\n  width: 60%;\n  text-align: left;\n}\n.otp_right {\n  width: 40%;\n  text-align: right;\n  margin-top: 6px;\n  margin-right: 14px;\n}\n.otp_right img {\n  width: 13px;\n  margin-bottom: -3px;\n  margin-right: 4px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL290cC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSTtJQUNJLDJCQUFBO0VBQ047O0VBQ0U7SUFDSSxzQkFBQTtJQUNBLGdCQUFBO0lBQ0EsZ0JBQUE7RUFFTjs7RUFBRTtJQUNJLHNCQUFBO0lBQ0EsMkJBQUE7SUFDQSxnQkFBQTtJQUNBLDJCQUFBO0lBQ0EsNEJBQUE7RUFHTjtBQUNGO0FBRUE7RUFDSSxVQUFBO0VBQ0EsZ0JBQUE7QUFBSjtBQUVBO0VBQ0ksVUFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0FBQ0o7QUFDQTtFQUNJLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0FBRUoiLCJmaWxlIjoib3RwLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogMzQ4cHgpIHtcbiAgICAuaW5wdXRfdGV4dF9ib3R0b20ge1xuICAgICAgICBkaXNwbGF5OiBpbmhlcml0ICFpbXBvcnRhbnQ7XG4gICAgfVxuICAgIC5vdHBfbGVmdCB7XG4gICAgICAgIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG4gICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgIG1hcmdpbi10b3A6IDE1cHg7XG4gICAgfVxuICAgIC5vdHBfcmlnaHQge1xuICAgICAgICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xuICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0ICFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1sZWZ0OiA1cHg7XG4gICAgICAgIG1hcmdpbi10b3A6IDEwcHggIWltcG9ydGFudDtcbiAgICAgICAgbWFyZ2luLWxlZnQ6IDMwcHggIWltcG9ydGFudDtcbiAgICB9XG4gIH1cblxuXG5cbi5vdHBfbGVmdCB7XG4gICAgd2lkdGg6IDYwJTtcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xufVxuLm90cF9yaWdodCB7XG4gICAgd2lkdGg6IDQwJTtcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcbiAgICBtYXJnaW4tdG9wOiA2cHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAxNHB4O1xufVxuLm90cF9yaWdodCBpbWcge1xuICAgIHdpZHRoOiAxM3B4O1xuICAgIG1hcmdpbi1ib3R0b206IC0zcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG59XG5cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("@media only screen and (max-width: 348px) {\n  .input_text_bottom {\n    display: inherit !important;\n  }\n\n  .otp_left {\n    width: 100% !important;\n    text-align: left;\n    margin-top: 15px;\n  }\n\n  .otp_right {\n    width: 100% !important;\n    text-align: left !important;\n    margin-left: 5px;\n    margin-top: 10px !important;\n    margin-left: 30px !important;\n  }\n}\n.otp_left {\n  width: 60%;\n  text-align: left;\n}\n.otp_right {\n  width: 40%;\n  text-align: right;\n  margin-top: 6px;\n  margin-right: 14px;\n}\n.otp_right img {\n  width: 13px;\n  margin-bottom: -3px;\n  margin-right: 4px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXG90cC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSTtJQUNJLDJCQUFBO0VBQ047O0VBQ0U7SUFDSSxzQkFBQTtJQUNBLGdCQUFBO0lBQ0EsZ0JBQUE7RUFFTjs7RUFBRTtJQUNJLHNCQUFBO0lBQ0EsMkJBQUE7SUFDQSxnQkFBQTtJQUNBLDJCQUFBO0lBQ0EsNEJBQUE7RUFHTjtBQUNGO0FBRUE7RUFDSSxVQUFBO0VBQ0EsZ0JBQUE7QUFBSjtBQUVBO0VBQ0ksVUFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0FBQ0o7QUFDQTtFQUNJLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0FBRUoiLCJmaWxlIjoib3RwLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogMzQ4cHgpIHtcbiAgICAuaW5wdXRfdGV4dF9ib3R0b20ge1xuICAgICAgICBkaXNwbGF5OiBpbmhlcml0ICFpbXBvcnRhbnQ7XG4gICAgfVxuICAgIC5vdHBfbGVmdCB7XG4gICAgICAgIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG4gICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgIG1hcmdpbi10b3A6IDE1cHg7XG4gICAgfVxuICAgIC5vdHBfcmlnaHQge1xuICAgICAgICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xuICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0ICFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1sZWZ0OiA1cHg7XG4gICAgICAgIG1hcmdpbi10b3A6IDEwcHggIWltcG9ydGFudDtcbiAgICAgICAgbWFyZ2luLWxlZnQ6IDMwcHggIWltcG9ydGFudDtcbiAgICB9XG4gIH1cblxuXG5cbi5vdHBfbGVmdCB7XG4gICAgd2lkdGg6IDYwJTtcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xufVxuLm90cF9yaWdodCB7XG4gICAgd2lkdGg6IDQwJTtcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcbiAgICBtYXJnaW4tdG9wOiA2cHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAxNHB4O1xufVxuLm90cF9yaWdodCBpbWcge1xuICAgIHdpZHRoOiAxM3B4O1xuICAgIG1hcmdpbi1ib3R0b206IC0zcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG59XG5cbiJdfQ== */");
 
 /***/ }),
 
@@ -216,7 +216,8 @@ let OtpPage = class OtpPage {
         });
     }
     check_otp(value) {
-        if (value == JSON.parse(localStorage.getItem('otp')) || value == 1234) {
+        // value == 1234
+        if (value == JSON.parse(localStorage.getItem('otp'))) {
             localStorage.setItem('isotpverified', '1');
             $('#right_otp').css('display', 'block');
             $('#wrong_otp').css('display', 'none');
@@ -234,7 +235,8 @@ let OtpPage = class OtpPage {
     }
     next() {
         var check_otp = $('#check_otp').val();
-        if (check_otp == JSON.parse(localStorage.getItem('otp')) || check_otp == 1234) {
+        // check_otp == 1234
+        if (check_otp == JSON.parse(localStorage.getItem('otp'))) {
             localStorage.removeItem('otp');
             $('#check_otp').val('');
             this.model.value = '';

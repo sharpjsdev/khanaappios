@@ -85,10 +85,10 @@
 			</ion-col>
 			<ion-col size="6" style="padding: 0;" >
 				 {{x.food_type | foodType}}. {{model.key_text12}} {{x.no_of_person}} {{model.key_text13}}
-			</ion-col>		  
+			</ion-col>
 			<ion-col size="2" style="padding: 0;" >
 				<div class="grey_font right">{{x.updated_at | date:'shortTime'}}</div> 
-			</ion-col>		  
+			</ion-col>
 			<ion-col size="2" class="custom_new_call_btn" style="text-align: right; margin-top: -4px;">			  
 				<a class="size_15 medium" (click)="call(x.mobile_no)"><ion-icon name="call-outline"></ion-icon></a> 			   
 			</ion-col>
@@ -165,25 +165,25 @@
 
 
 
-<ion-slides class="swipe_msg" [options]="slideOpts">
-	<ion-slide *ngFor="let x of model.feedback_data;let i = index">
-		<div class="thanks_msg" *ngIf=" i % 2 === 0 && x.comment != null" >
-			<div style="margin-bottom: 5px;">{{x.username}} {{model.key_text15}}</div>
-			<div class="size_15 regular green">
-				{{x.comment}}<ion-icon style="font-size: 18px;" (click)="share(x.comment)" name="share-social-outline"></ion-icon>
+	<ion-slides class="swipe_msg" [options]="slideOpts">
+		<ion-slide *ngFor="let x of model.feedback_data;let i = index">
+			<div class="thanks_msg" *ngIf=" i % 2 === 0 && x.comment != null" >
+				<div style="margin-bottom: 5px;">{{x.username}} {{model.key_text15}}</div>
+				<div class="size_15 regular green">
+					{{x.comment}}<ion-icon style="font-size: 18px;" (click)="share(x.comment)" name="share-social-outline"></ion-icon>
+				</div>
+				<img src="assets/images/smile.svg"/>
 			</div>
-			<img src="assets/images/smile.svg"/>
-		</div>
-		<div class="thanks_msg second_slide" *ngIf=" i % 2 !== 0 && x.comment != null">
-			<img src="assets/images/smile.svg"/>
-			<div style="margin-bottom: 5px;">{{x.username}} {{model.key_text15}}</div>
-			<div class="size_15 regular green">
-				{{x.comment}}<ion-icon style="font-size: 18px;" (click)="share(x.comment)" name="share-social-outline"></ion-icon>
-			</div>      
-		</div> 
-	</ion-slide>
-	
-</ion-slides>
+			<div class="thanks_msg second_slide" *ngIf=" i % 2 !== 0 && x.comment != null">
+				<img src="assets/images/smile.svg"/>
+				<div style="margin-bottom: 5px;">{{x.username}} {{model.key_text15}}</div>
+				<div class="size_15 regular green">
+					{{x.comment}}<ion-icon style="font-size: 18px;" (click)="share(x.comment)" name="share-social-outline"></ion-icon>
+				</div>      
+			</div> 
+		</ion-slide>
+		
+	</ion-slides>
 
 
 <div class="ion-padding theme_width">
@@ -201,5 +201,4 @@
 
 <center class="current_location_spinner_position" id="activity_normal_spinner"><ion-spinner class="current_location_sppiner"></ion-spinner></center>
 </ion-content> 
-
 <app-footer [currentRoute]="'/activity-normal'"></app-footer>
