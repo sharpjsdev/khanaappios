@@ -25,6 +25,8 @@ export class DisplayAcceptRequestOnMapPage implements OnInit {
   polylines = [];
   id: any;
   id2: any;
+  mapLoaded: boolean = false;
+  disableButton: boolean = false;
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -111,13 +113,17 @@ export class DisplayAcceptRequestOnMapPage implements OnInit {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
   
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.map = new google.maps.Map(this.mapElement?.nativeElement, mapOptions);
       this.model.directionsService = new google.maps.DirectionsService();
          this.model.directionsDisplay = new google.maps.DirectionsRenderer();
       this.model.directionsDisplay.setMap(this.map);
-          //directionsDisplay.setPanel(this.directionsPanel.nativeElement);
+      this.map.addListener('idle', () => {
+        this.mapLoaded = true;
+        this.calculate_route('WALKING');
+      });
+      //directionsDisplay.setPanel(this.directionsPanel.nativeElement);
       
-      this.calculate_route('WALKING');
+      
       
           $("#btn_walk").addClass('active');
           $("#text_walk_time").removeClass('grey');
@@ -248,6 +254,7 @@ export class DisplayAcceptRequestOnMapPage implements OnInit {
     }
 
     rejectRequest(){
+      this.disableButton = true;
       var formData: any = new FormData();
       formData.append("receiver_id", this.model.r_id);
       formData.append("get_food_id", this.model.f_id);
@@ -256,6 +263,7 @@ export class DisplayAcceptRequestOnMapPage implements OnInit {
       this.router.navigate(['/choose-screen-after-reject',this.model.food_id,this.model.r_id,this.model.f_id])
     }
     acceptRequest(){
+      this.disableButton = true;
       var formData: any = new FormData();
       formData.append("receiver_id", this.model.r_id);
       formData.append("food_id", this.model.food_id);

@@ -37,6 +37,7 @@ directions = [];
 polylines = [];
 l1 : any;
 l2 : any ;
+mapLoaded: boolean = false;
   constructor(
 	public modalController: ModalController,
 	private http: HttpClient,
@@ -182,7 +183,10 @@ this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
 			
 					directionsDisplay.setMap(this.map);
 					//directionsDisplay.setPanel(this.directionsPanel.nativeElement);
-			
+					this.map.addListener('idle', () => {
+						console.log("Map LOADED");
+						this.mapLoaded = true;
+					});
 					directionsService.route({
 						origin: r_lat+", "+r_lon,
 						destination: this.model.latitude+", "+this.model.longitude,

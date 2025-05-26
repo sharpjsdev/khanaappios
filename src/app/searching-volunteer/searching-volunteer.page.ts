@@ -60,10 +60,14 @@ model : any = {};
     formData.append("id", this.model.veg);
     formData.append("id2", this.model.nonveg);
     this.fetch.checkVolunteerAcceptRequest(formData).subscribe(res => {
-      if(res['success'] == true){
-        this.router.navigate(['/display-accept-request-on-map',JSON.stringify(res['data']),this.model.veg,this.model.nonveg]);
-        //alert(JSON.stringify(res['data']));
+      console.log(res);
+      if (res && res['success'] == true) {
+        this.router.navigate(['/display-accept-request-on-map', JSON.stringify(res['data']), this.model.veg, this.model.nonveg]);
+      } else {
+        console.error('Response is null or unsuccessful:', res);
       }
+    }, err => {
+      console.error('HTTP Error:', err);
     });
   }
 }

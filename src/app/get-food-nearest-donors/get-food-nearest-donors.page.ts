@@ -165,10 +165,12 @@ mapLoaded: boolean = false;
 		this.model.directionsDisplay.setMap(this.map);
 		this.map.addListener('idle', () => {
 			this.mapLoaded = true;
-		  });
+			this.calculate_route('WALKING');
+		});
+
         //directionsDisplay.setPanel(this.directionsPanel.nativeElement);
 		
-		this.calculate_route('WALKING');
+		
 		
         $("#btn_walk").addClass('active');
         $("#text_walk_time").removeClass('grey');
@@ -188,10 +190,9 @@ mapLoaded: boolean = false;
 	  }
   }
  
-  calculate_route(mode){
-	  
-	  var infowindow = new google.maps.InfoWindow();
-	var renderer = new google.maps.DirectionsRenderer({
+calculate_route(mode){ 
+var infowindow = new google.maps.InfoWindow();
+var renderer = new google.maps.DirectionsRenderer({
   suppressPolylines: true,
   infoWindow: infowindow,
 });

@@ -37,6 +37,7 @@ export class GetFoodNearestDonorsTwoDuplicatePage implements OnInit {
   polylines = [];
   time_c : any;
   distance_c:any;
+  mapLoaded: boolean = false;
   constructor(
     public modalController: ModalController,
     private http: HttpClient,
@@ -203,7 +204,11 @@ export class GetFoodNearestDonorsTwoDuplicatePage implements OnInit {
       this.model.directionsDisplay = new google.maps.DirectionsRenderer;
       this.model.directionsDisplay.setMap(this.map);
           //directionsDisplay.setPanel(this.directionsPanel.nativeElement);
-          this.calculate_route('WALKING');
+      this.map.addListener('idle', () => {
+            this.mapLoaded = true;
+            this.calculate_route('WALKING');
+      });
+        
 		
           
     });

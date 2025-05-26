@@ -1,4 +1,3 @@
-
 <app-captcha></app-captcha>
 <ion-content>
   <div class="custom_map_design">
@@ -12,7 +11,7 @@
       </div> 
     </div>
   </div>
-  <div class="ion-padding res_ion_padding">
+  <div [class.hidden]="!mapLoaded" class="ion-padding res_ion_padding">
     <div class="btn-group" style="margin-top: -12px;">
       <button class="grey regular btn4" id="btn_drive">
         <div class="donor_icon" (click)="calculate_route('DRIVING')">
@@ -50,11 +49,12 @@
  <!--  <div class="map volunteer_location">    
     <img src="assets/images/map_volunteer.svg">
   </div> -->
+  <center [class.hidden]="mapLoaded" class="current_location_spinner_position" id="add_location_spinner"><ion-spinner class="current_location_sppiner"></ion-spinner></center>
   <div #map id="map"></div>
   <div class="" style="margin-left:10px;">
-    <p class="regular medium size_14 green">{{time_c}} <span class="grey size_14">({{distance_c}})</span></p>
+    <p class="regular medium size_14 green">{{time_c}} <span class="grey size_14" *ngIf="distance_c">({{distance_c}})</span></p>
   </div>
-  <div style="margin-left:10px;">
+  <div [class.hidden]="!mapLoaded" style="margin-left:10px;">
     <div class="map-icon">
       <img src="assets/images/location_black.svg">
     </div>
@@ -69,14 +69,14 @@
 </div>
   
   </ion-content> 
-  <ion-footer style="padding-top: 0px!important;">
+  <ion-footer [class.hidden]="!mapLoaded" style="padding-top: 0px!important;">
   <div class="medium size_16">
     <ion-row>
       <ion-col size="6">
-        <button class="app_btn custom_reject_btn new_btn_css"  (click)="rejectRequest()">{{model.key_text1}}</button>
+        <button class="app_btn custom_reject_btn new_btn_css" [ngClass]="disableButton || !mapLoaded ? 'light-shade' : '' " [disabled]="disableButton || !mapLoaded"  (click)="rejectRequest()">{{model.key_text1}}</button>
       </ion-col>
       <ion-col size="6">
-        <button class="app_btn custom_accept_btn new_btn_css"  (click)="acceptRequest()">{{model.key_text5}}</button>
+        <button class="app_btn custom_accept_btn new_btn_css" [ngClass]="disableButton || !mapLoaded ? 'light-shade' : '' " [disabled]="disableButton || !mapLoaded"  (click)="acceptRequest()">{{model.key_text5}}</button>
       </ion-col>
     </ion-row>
      
