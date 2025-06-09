@@ -21,12 +21,11 @@ page_key2:any;
 options : GeolocationOptions;
 pincode;
 user_pincode;
-  constructor(    private geolocation: Geolocation,private errorMsg:ErrorMsgService,private storage:StorageService,private fetch: FetchService,public datepipe: DatePipe,public modalController: ModalController) { }
 
- 
-  ngOnInit() {
+constructor(private geolocation: Geolocation,private errorMsg:ErrorMsgService,private storage:StorageService,private fetch: FetchService,public datepipe: DatePipe,public modalController: ModalController) { }
+
+ngOnInit() {
 	this.model.accept = false;
-
     var self = this;
     self.options = {
     enableHighAccuracy: false,

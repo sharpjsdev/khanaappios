@@ -18,8 +18,9 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { DatePipe } from '@angular/common';
 // import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 import { Device } from '@ionic-native/device/ngx';
-import { FirebaseX } from "@ionic-native/firebase-x/ngx";
-
+import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
+import { Network } from '@ionic-native/network/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -32,8 +33,10 @@ import { FirebaseX } from "@ionic-native/firebase-x/ngx";
   ],
   providers: [
     StatusBar,
-    FirebaseX,
+    FCM,
+    Network,
     Device,
+    FirebaseX,
     SplashScreen,
     SocialSharing,
     DatePicker,

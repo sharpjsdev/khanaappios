@@ -191,7 +191,7 @@ export class TermsConditionsPage implements OnInit {
         this.successFullRegistration();
       }
   }
-  back(){
-    this.modalController.dismiss();
-  }
+  // back(){
+  //   this.modalController.dismiss();
+  // }
 }
