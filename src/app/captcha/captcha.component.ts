@@ -20,18 +20,18 @@ export class CaptchaComponent implements OnInit {
   constructor(
     private fetch: FetchService,
     private router: Router,
-    private NotificationCount:NotificationCountService	  
+    private NotificationCount:NotificationCountService
   ) { }
 
   ngOnInit() {
     this.NotificationCount.data$.subscribe((newData) => {
       this.notificationCount = newData;
     });
-    this.pageName = this.router['routerState'].snapshot.url;
 
+    this.pageName = this.router['routerState'].snapshot.url;
     this.model.user_id = localStorage.getItem('user_id');
     this.fetch.get_notification(this.model.user_id).subscribe(res => {
-			this.notification = res['data'];
+      this.notification = res['data'];
 			this.notifications_admin = res['notifications'];
 			if(this.notification.length != 0 || this.notifications_admin.length !=0){
         $('#black_spot').show();

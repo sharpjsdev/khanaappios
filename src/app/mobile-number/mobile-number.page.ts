@@ -5,6 +5,8 @@ import { StorageService } from '../storage.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ErrorMsgService } from '../error-msg.service';
+
+
 declare var FCMPlugin:any;
 declare var $: any;
 declare var device:any;
@@ -59,11 +61,9 @@ okay:any;
 	//});
 
 	document.addEventListener('deviceready', () => {
-		FCMPlugin.getToken((token: any) => {
-			
+		 FCMPlugin.getToken((token: any) => {
 			localStorage.setItem('device_token', JSON.stringify(token));
-			
-		  });
+		   });
 		 
 	  });
   }

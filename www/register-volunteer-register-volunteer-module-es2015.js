@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".error_border {\n  border: 1px solid red;\n}\n\n.error_msg_shop_name {\n  color: red;\n  display: none;\n}\n\n.error_msg_working_hours {\n  color: red;\n  display: none;\n}\n\n.error_msg_shop_location {\n  color: red;\n  display: none;\n}\n\n.error_terms {\n  color: red;\n  display: none;\n}\n\n.mt3 {\n  margin-top: 3px !important;\n}\n\nion-toggle {\n  --background-checked: #ffc9c1;\n}\n\n.error_msg_from_time {\n  color: red;\n  display: none;\n  text-align: center;\n  position: relative;\n  top: 5px;\n}\n\n.error_msg_to_time {\n  color: red;\n  display: none;\n  text-align: center;\n  position: relative;\n  top: -5px;\n}\n\n#t_time {\n  position: absolute;\n  left: 52px;\n  bottom: -8px;\n}\n\n#t_time1 {\n  position: absolute;\n  left: 52px;\n  bottom: -8px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3JlZ2lzdGVyLXZvbHVudGVlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQkFBQTtBQUNKOztBQUNBO0VBQ0ksVUFBQTtFQUNBLGFBQUE7QUFFSjs7QUFBQTtFQUNJLFVBQUE7RUFDQSxhQUFBO0FBR0o7O0FBREE7RUFDSSxVQUFBO0VBQ0EsYUFBQTtBQUlKOztBQUZBO0VBQ0ksVUFBQTtFQUNBLGFBQUE7QUFLSjs7QUFIQTtFQUNJLDBCQUFBO0FBTUo7O0FBSkE7RUFDSSw2QkFBQTtBQU9KOztBQUxBO0VBQ0ksVUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsUUFBQTtBQVFKOztBQU5BO0VBQ0ksVUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtBQVNKOztBQVBBO0VBQ0ksa0JBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtBQVVKOztBQVJBO0VBQ0ksa0JBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtBQVdKIiwiZmlsZSI6InJlZ2lzdGVyLXZvbHVudGVlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXJyb3JfYm9yZGVye1xuICAgIGJvcmRlcjoxcHggc29saWQgcmVkO1xufVxuLmVycm9yX21zZ19zaG9wX25hbWV7XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4uZXJyb3JfbXNnX3dvcmtpbmdfaG91cnN7XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4uZXJyb3JfbXNnX3Nob3BfbG9jYXRpb257XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4uZXJyb3JfdGVybXN7XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4ubXQze1xuICAgIG1hcmdpbi10b3A6IDNweCAhaW1wb3J0YW50O1xufVxuaW9uLXRvZ2dsZSB7XG4gICAgLS1iYWNrZ3JvdW5kLWNoZWNrZWQ6ICNmZmM5YzE7XG59XG4uZXJyb3JfbXNnX2Zyb21fdGltZXtcbiAgICBjb2xvcjpyZWQ7XG4gICAgZGlzcGxheTogbm9uZTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHRvcDogNXB4O1xufVxuLmVycm9yX21zZ190b190aW1le1xuICAgIGNvbG9yOnJlZDtcbiAgICBkaXNwbGF5OiBub25lO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgdG9wOiAtNXB4O1xufVxuI3RfdGltZXtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDogNTJweDtcbiAgICBib3R0b206IC04cHg7XG59XG4jdF90aW1lMXtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDogNTJweDtcbiAgICBib3R0b206IC04cHg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".error_border {\n  border: 1px solid red;\n}\n\n.error_msg_shop_name {\n  color: red;\n  display: none;\n}\n\n.error_msg_working_hours {\n  color: red;\n  display: none;\n}\n\n.error_msg_shop_location {\n  color: red;\n  display: none;\n}\n\n.error_terms {\n  color: red;\n  display: none;\n}\n\n.mt3 {\n  margin-top: 3px !important;\n}\n\nion-toggle {\n  --background-checked: #ffc9c1;\n}\n\n.error_msg_from_time {\n  color: red;\n  display: none;\n  text-align: center;\n  position: relative;\n  top: 5px;\n}\n\n.error_msg_to_time {\n  color: red;\n  display: none;\n  text-align: center;\n  position: relative;\n  top: -5px;\n}\n\n#t_time {\n  position: absolute;\n  left: 52px;\n  bottom: -8px;\n}\n\n#t_time1 {\n  position: absolute;\n  left: 52px;\n  bottom: -8px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXHJlZ2lzdGVyLXZvbHVudGVlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQkFBQTtBQUNKOztBQUNBO0VBQ0ksVUFBQTtFQUNBLGFBQUE7QUFFSjs7QUFBQTtFQUNJLFVBQUE7RUFDQSxhQUFBO0FBR0o7O0FBREE7RUFDSSxVQUFBO0VBQ0EsYUFBQTtBQUlKOztBQUZBO0VBQ0ksVUFBQTtFQUNBLGFBQUE7QUFLSjs7QUFIQTtFQUNJLDBCQUFBO0FBTUo7O0FBSkE7RUFDSSw2QkFBQTtBQU9KOztBQUxBO0VBQ0ksVUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsUUFBQTtBQVFKOztBQU5BO0VBQ0ksVUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtBQVNKOztBQVBBO0VBQ0ksa0JBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtBQVVKOztBQVJBO0VBQ0ksa0JBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtBQVdKIiwiZmlsZSI6InJlZ2lzdGVyLXZvbHVudGVlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXJyb3JfYm9yZGVye1xuICAgIGJvcmRlcjoxcHggc29saWQgcmVkO1xufVxuLmVycm9yX21zZ19zaG9wX25hbWV7XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4uZXJyb3JfbXNnX3dvcmtpbmdfaG91cnN7XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4uZXJyb3JfbXNnX3Nob3BfbG9jYXRpb257XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4uZXJyb3JfdGVybXN7XG4gICAgY29sb3I6cmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG4ubXQze1xuICAgIG1hcmdpbi10b3A6IDNweCAhaW1wb3J0YW50O1xufVxuaW9uLXRvZ2dsZSB7XG4gICAgLS1iYWNrZ3JvdW5kLWNoZWNrZWQ6ICNmZmM5YzE7XG59XG4uZXJyb3JfbXNnX2Zyb21fdGltZXtcbiAgICBjb2xvcjpyZWQ7XG4gICAgZGlzcGxheTogbm9uZTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHRvcDogNXB4O1xufVxuLmVycm9yX21zZ190b190aW1le1xuICAgIGNvbG9yOnJlZDtcbiAgICBkaXNwbGF5OiBub25lO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgdG9wOiAtNXB4O1xufVxuI3RfdGltZXtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDogNTJweDtcbiAgICBib3R0b206IC04cHg7XG59XG4jdF90aW1lMXtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDogNTJweDtcbiAgICBib3R0b206IC04cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -39,8 +39,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_terms_conditions_terms_conditions_page__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../modal/terms-conditions/terms-conditions.page */ "t9PW");
 /* harmony import */ var _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/date-picker/ngx */ "ya1t");
 /* harmony import */ var _modal_error_msg_modal_error_msg_modal_page__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../modal/error-msg-modal/error-msg-modal.page */ "HQjg");
-/* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "mtRb");
-
 
 
 
@@ -60,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegisterVolunteerPage = class RegisterVolunteerPage {
-    constructor(modalController, platform, location, http, route, router, fetch, storage, alertController, datePicker, diagnostic) {
+    constructor(modalController, platform, location, http, route, router, fetch, storage, alertController, datePicker) {
         this.modalController = modalController;
         this.platform = platform;
         this.location = location;
@@ -71,11 +69,12 @@ let RegisterVolunteerPage = class RegisterVolunteerPage {
         this.storage = storage;
         this.alertController = alertController;
         this.datePicker = datePicker;
-        this.diagnostic = diagnostic;
         this.model = {};
         this.user_ = {};
         this.fromTime = "";
         this.toTime = "";
+        this.from_Time = '';
+        this.to_Time = '';
         this.location_data = [];
         this.volunteer_data = [];
         this.platform.backButton.subscribeWithPriority(10, () => {
@@ -87,13 +86,6 @@ let RegisterVolunteerPage = class RegisterVolunteerPage {
         this.model.search = false;
     }
     ionViewWillEnter() {
-        this.diagnostic.isLocationAvailable().then(resp => {
-            if (!resp) {
-                this.router.navigate(['/home']);
-            }
-        }).catch((error) => {
-            this.router.navigate(['/home']);
-        });
         this.model.is_address = false;
         this.user_.colony_name = '';
         this.user_.city = '';
@@ -482,8 +474,7 @@ RegisterVolunteerPage.ctorParameters = () => [
     { type: _fetch_service__WEBPACK_IMPORTED_MODULE_10__["FetchService"] },
     { type: _storage_service__WEBPACK_IMPORTED_MODULE_11__["StorageService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
-    { type: _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_14__["DatePicker"] },
-    { type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_16__["Diagnostic"] }
+    { type: _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_14__["DatePicker"] }
 ];
 RegisterVolunteerPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({

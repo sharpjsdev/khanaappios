@@ -9,15 +9,14 @@ import { ChooseScreenAfterRejectPageRoutingModule } from './choose-screen-after-
 import { ChooseScreenAfterRejectPage } from './choose-screen-after-reject.page';
 import { CaptchaComponent } from './../captcha/captcha.component';
 import { FooterPageModule } from "../footer/footer.module";
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ChooseScreenAfterRejectPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [ChooseScreenAfterRejectPage,CaptchaComponent]
+    declarations: [ChooseScreenAfterRejectPage, CaptchaComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ChooseScreenAfterRejectPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class ChooseScreenAfterRejectPageModule {}

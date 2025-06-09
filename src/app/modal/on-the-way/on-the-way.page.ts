@@ -158,37 +158,11 @@ export class OnTheWayPage implements OnInit {
      //console.log(place);
 
     })
-    // var options = {
-    //   //language: 'en-GB',
-    //   types: ['(Ujjain)'],
-    //   componentRestrictions: { country: "in" }
-    // }
-
-    // var input = $('.address-search');
-    // var d = new google.maps.places.Autocomplete(input[0],options);
-    // console.log(input[0]);
-    // this.sources.push(d);
-      // let me = this;
-      //   this.service.getPlacePredictions({
-      //   input: this.autocomplete.start,
-      //   types: [this.model.currnet_city_name],
-      //   componentRestrictions: {
-      //     country: 'in'
-      //   }
-      // }, (predictions, status) => {
-      // me.sources = [];
-
-      // me.zone.run(() => {
-      //   if (predictions != null) {
-      //       predictions.forEach((prediction) => {
-      //         me.sources.push(prediction.description);
-      //       });
-      //     }
-      //   });
-      // });
+ 
     
   }
   updateDestinations() {
+    
     
     var center = { lat: this.model.LastLat, lng: this.model.LastLng };
     // Create a bounding box with sides ~10km away from the center point
@@ -217,30 +191,6 @@ export class OnTheWayPage implements OnInit {
         })
 
 
-    // if ( this.autocomplete.end == '') {
-    //  this.destination = [];
-    // return;
-    // }
-
-    
-     
-    //   let me = this;
-    //     this.service.getPlacePredictions({
-    //     input: this.autocomplete.end,
-    //     componentRestrictions: {
-    //       country: 'in'
-    //     }
-    //   }, (predictions, status) => {
-    //   me.destination = [];
-
-    //   me.zone.run(() => {
-    //     if (predictions != null) {
-    //         predictions.forEach((prediction) => {
-    //           me.destination.push(prediction.description);
-    //         });
-    //       }
-    //     });
-    //   });
     
   }
 
@@ -275,18 +225,19 @@ export class OnTheWayPage implements OnInit {
       if(path == 'start'){
         this.model.startLat = results[0].geometry.location.lat();
         this.model.startLng = results[0].geometry.location.lng();
-        console.log(this.model.startLat);
-        console.log(this.model.startLng);
+        console.log("startLat:",this.model.startLat);
+        console.log("startLng:",this.model.startLng);
         this.showRoutes();
       }
       if(path ==  'end'){
         this.model.endLat = results[0].geometry.location.lat();
         this.model.endLng = results[0].geometry.location.lng();
-        console.log(this.model.endLat);
-        console.log(this.model.endLng);
+        console.log("endLat:",this.model.endLat);
+        console.log("endLng:",this.model.endLng);
         this.showRoutes();
       }
     // alert("lat: " + this.latitude + ", long: " + this.longitude);
+
    });
    
  }  
@@ -437,21 +388,5 @@ current_location(){
       $("#my_test2").val('');
     }
   }
-  // getCurrentCity(lat, lon){
-  //   var self = this;
-  //   let latLng = new google.maps.LatLng(lat, lon);
-  //   let geocoder = new google.maps.Geocoder();
-  //   geocoder.geocode({ 'latLng': latLng }, (results, status) => {
-      
-  //     this.model.colony_name = results[0].formatted_address;
-  //     results[0].address_components.forEach(function(val,i){
-        
-  //       if (val.types[0] == "locality"){
-          
-  //         self.model.currnet_city_name = val.long_name;
-  //       }
-    
-  //       });
-  //   });
-  // }
+
 }

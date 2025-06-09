@@ -45,7 +45,7 @@ NotificationCountService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n  <ion-toolbar>\n\t<ion-grid [fixed]=\"true\">\n\t\t<ion-row>\n\t\t\t<ion-col (click)=\"changeCurrentUrl('home')\" [ngClass]=\"(activetab == 'home') ? 'active-col' : ''\">\n\t\t\t\t<img [src]=\"src.home\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'home') ? 'active-tab' : ''\">{{model.key_text5}}</ion-label>\n\t\t\t</ion-col>\n\t\t  <ion-col (click)=\"changeCurrentUrl('activity-normal')\" [ngClass]=\"(activetab == 'activity') ? 'active-col' : ''\">\n\t\t\t<img [src]=\"src.activity\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'activity') ? 'active-tab' : ''\">{{model.key_text6}}</ion-label>\n\t\t  </ion-col>\n\t\t  <ion-col [ngClass]=\"(activetab == 'volunteer') ? 'active-col' : ''\" *ngIf=\"model.is_volunteer== 1\" (click)=\"changeCurrentUrl('volunteer-detail')\">\n\t\t\t<img [src]=\"src.volunteer\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'volunteer') ? 'active-tab' : ''\">{{model.key_text7}}</ion-label>  \n\t\t</ion-col>\n\t\t  \n\t\t</ion-row>\n\t  </ion-grid>\n\t<!-- <ion-buttons slot=\"start\">\n\t\t<ion-button  value=\"activity\" >\n\t\t\t</ion-button>\n\t\t  <ion-button >\n\t\t\t \n\t\t</ion-button>\n\t</ion-buttons> -->\n\t  \n\t\t<!-- <ion-segment color=\"transparent\" value=\"home\">\n\t\t\t<ion-segment-button >\n\t\t\t  \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button>\n\t\t\t      \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button >\n\t\t\t\t \n\t\t\t</ion-segment-button>\n\t\t</ion-segment>       -->\n\t</ion-toolbar>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n  <ion-toolbar>\n\t<ion-grid [fixed]=\"true\">\n\t\t<ion-row>\n\t\t\t<ion-col (click)=\"changeCurrentUrl('home')\" [ngClass]=\"(activetab == 'home') ? 'active-col' : ''\">\n\t\t\t\t<img [src]=\"src.home\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'home') ? 'active-tab' : ''\">{{model.key_text5}}</ion-label>\n\t\t\t</ion-col>\n\t\t  <ion-col (click)=\"changeCurrentUrl('activity-normal')\" [ngClass]=\"(activetab == 'activity') ? 'active-col' : ''\">\n\t\t\t<img [src]=\"src.activity\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'activity') ? 'active-tab' : ''\">{{model.key_text6}}</ion-label>\n\t\t  </ion-col>\n\t\t  <ion-col [ngClass]=\"(activetab == 'volunteer') ? 'active-col' : ''\" *ngIf=\"model.is_volunteer== 1\" (click)=\"changeCurrentUrl('volunteer-detail')\">\n\t\t\t<img [src]=\"src.volunteer\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'volunteer') ? 'active-tab' : ''\">{{model.key_text7}}</ion-label>  \n\t\t</ion-col>\n\t\t</ion-row>\n\t  </ion-grid>\n\t<!-- <ion-buttons slot=\"start\">\n\t\t<ion-button  value=\"activity\" >\n\t\t\t</ion-button>\n\t\t  <ion-button >\n\t\t\t \n\t\t</ion-button>\n\t</ion-buttons> -->\n\t  \n\t\t<!-- <ion-segment color=\"transparent\" value=\"home\">\n\t\t\t<ion-segment-button >\n\t\t\t  \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button>\n\t\t\t      \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button >\n\t\t\t\t \n\t\t\t</ion-segment-button>\n\t\t</ion-segment>       -->\n\t</ion-toolbar>\n</ion-content>\n");
 
 /***/ }),
 
@@ -115,6 +115,35 @@ let FooterPage = class FooterPage {
         let item8 = res.find(i => i.key_text === 'VOLUNTEER_FOOD_REQUEST');
         this.model.key_text8 = item8[lang_code];
     }
+    ngOnChanges() {
+        this.changeCurrentUrl(this.currentRoute);
+        let data = { model: "QuotesModel", lang_code: JSON.parse(localStorage.getItem('lang')) };
+        this.fetch.getTestimonialByLanguage(data).subscribe((resp) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (resp) {
+                var quote = resp.data;
+                this.model.quotes = quote;
+                for (var j = 0; j < quote.length; j++) {
+                    var quote1 = quote[j];
+                }
+            }
+        }));
+        localStorage.removeItem('temp_start_address');
+        localStorage.removeItem('temp_end_address');
+        this.model.is_volunteer = localStorage.getItem('volunteer_approve');
+        this.model.key_text5 = "Home";
+        this.model.key_text6 = "Activity";
+        this.model.key_text7 = "Volunteer";
+        var lang_code = JSON.parse(localStorage.getItem('lang'));
+        let res = this.storage.getScope();
+        let item5 = res.find(i => i.key_text === 'HOME');
+        this.model.key_text5 = item5[lang_code];
+        let item6 = res.find(i => i.key_text === 'ACTIVITY');
+        this.model.key_text6 = item6[lang_code];
+        let item7 = res.find(i => i.key_text === 'VOLUNTEER');
+        this.model.key_text7 = item7[lang_code];
+        let item8 = res.find(i => i.key_text === 'VOLUNTEER_FOOD_REQUEST');
+        this.model.key_text8 = item8[lang_code];
+    }
     changeCurrentUrl(route) {
         if (route == '/home') {
             this.activetab = 'home';
@@ -145,7 +174,8 @@ FooterPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
 ];
 FooterPage.propDecorators = {
-    currentRoute: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }]
+    currentRoute: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }],
+    foo_lang: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }]
 };
 FooterPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -226,7 +256,7 @@ FooterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<app-captcha></app-captcha>\n<ion-content style=\"display: flex;flex-direction: column;height: 100%;\" >\n<div class=\"ion-padding theme_width my_custome_theme_width\" *ngIf=\"search_type==''\">\n  <div class=\"big_content_new noto_medium size_18\">\n  </div>\n  <div class=\"horizontal_center\">\n    <a>\n      <button class=\"app_btn big button\" [ngClass]=\"model.click ? 'btn_disabled_class' : ''\" (click)=\"!model.click && openModalCurrentLocation()\">\n        {{model.key_text1}}\n      </button>\n    </a>\n    <a (click)=\"openOnTheWay()\">\n      <button class=\"app_btn big button\">\n        {{model.key_text2}}\n      </button>  \n    </a>\n  </div>\n</div>\n\n<div *ngIf=\"search_type!=''\">\n<ion-img src=\"../assets/images/loader.gif\" style=\"height: 100px;text-align: center;margin-top: 50%;\"></ion-img>\n<h5 class=\"size_15 regular green center\">{{model.key_text1}}</h5>\n</div>\n</ion-content>\n\n<app-footer [currentRoute]=\"'/screen-food-screen-two'\"></app-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<app-captcha></app-captcha>\n<ion-content style=\"display: flex;flex-direction: column;height: 100%;\" >\n<div class=\"ion-padding theme_width my_custome_theme_width\" *ngIf=\"search_type==''\">\n  <div class=\"big_content_new noto_medium size_18\">\n  </div>\n  <div class=\"horizontal_center\">\n    <a>\n      <button class=\"app_btn big button\" [ngClass]=\"model.click ? 'btn_disabled_class' : ''\" (click)=\"!model.click && openModalCurrentLocation()\">\n        {{model.key_text1}}\n      </button>\n    </a>\n    <a (click)=\"openOnTheWay()\">\n      <button class=\"app_btn big button\">\n        {{model.key_text2}}\n      </button>  \n    </a>\n  </div>\n</div>\n\n<div *ngIf=\"search_type!=''\">\n<ion-img src=\"../assets/images/loader.gif\" style=\"height: 100px;text-align: center;margin-top: 50%;\"></ion-img>\n<h5 class=\"size_15 regular green center\">{{model.key_text1}}</h5>\n</div>\n</ion-content>\n\n<div *ngIf=\"search_type==''\">\n\t<app-footer [currentRoute]=\"'/search-food-screen-two'\"></app-footer>\n</div>\n");
 
 /***/ }),
 
@@ -386,7 +416,7 @@ CaptchaComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-label.active-tab {\n  color: #e8604c !important;\n}\n\nion-col {\n  text-align: center;\n}\n\nion-col.active-col {\n  box-shadow: 0px 0px 3px 1px #a3a2a2;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2Zvb3Rlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtBQUNKOztBQUNBO0VBSUksa0JBQUE7QUFESjs7QUFJRTtFQUNFLG1DQUFBO0VBQ0EsbUJBQUE7QUFESiIsImZpbGUiOiJmb290ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWxhYmVsLmFjdGl2ZS10YWIge1xyXG4gICAgY29sb3I6ICNlODYwNGMgIWltcG9ydGFudDtcclxufVxyXG5pb24tY29sIHtcclxuICAgIC8vIGJhY2tncm91bmQtY29sb3I6ICMxMzVkNTQ7XHJcbiAgICAvLyBib3JkZXI6IHNvbGlkIDFweCAjZmZmO1xyXG4gICAgLy8gY29sb3I6ICNmZmY7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICBpb24tY29sLmFjdGl2ZS1jb2x7XHJcbiAgICBib3gtc2hhZG93OiAwcHggMHB4IDNweCAxcHggI2EzYTJhMjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgfSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-label.active-tab {\n  color: #e8604c !important;\n}\n\nion-col {\n  text-align: center;\n}\n\nion-col.active-col.ios {\n  box-shadow: 0px 0px 3px 1px #a3a2a2;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXGZvb3Rlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtBQUNKOztBQUNBO0VBSUksa0JBQUE7QUFESjs7QUFJRTtFQUNFLG1DQUFBO0VBQ0EsbUJBQUE7QUFESiIsImZpbGUiOiJmb290ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWxhYmVsLmFjdGl2ZS10YWIge1xyXG4gICAgY29sb3I6ICNlODYwNGMgIWltcG9ydGFudDtcclxufVxyXG5pb24tY29sIHtcclxuICAgIC8vIGJhY2tncm91bmQtY29sb3I6ICMxMzVkNTQ7XHJcbiAgICAvLyBib3JkZXI6IHNvbGlkIDFweCAjZmZmO1xyXG4gICAgLy8gY29sb3I6ICNmZmY7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICBpb24tY29sLmFjdGl2ZS1jb2wuaW9ze1xyXG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAzcHggMXB4ICNhM2EyYTI7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gIH0iXX0= */");
 
 /***/ }),
 
@@ -399,7 +429,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-header class=\"ion-no-border ion-padding\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button>\n          <img src=\"assets/images/icon_menu.svg\">\n        </ion-menu-button>\n        <ion-buttons slot=\"end\" *ngIf=\"pageName != '/home' \">\n          <ion-back-button defaultHref=\"home\"></ion-back-button>\n       </ion-buttons>\n      </ion-buttons>\n      <!--<ion-title>home</ion-title>-->\n      <ion-buttons slot=\"end\" routerLink=\"/notification\">\n        <!-- <span  id=\"black_spot\" style=\"display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;\n        top: -3px;right: 3px;text-align: center;\">\n        {{ this.notification.length + this.notifications_admin.length }}</span>  -->\n        <span *ngIf=\"this.notificationCount!== 0\" id=\"black_spot\" style=\"position: absolute;background-color: #000;border-radius: 50%;color: #fff;font-size: 13px;\n        top: -3px;right: 0px;text-align: center;padding: 0px 3px;\">\n        {{ this.notificationCount }}</span> \n          <img src=\"assets/images/icon_notification.svg\">\n      </ion-buttons>\n      \n     \n      \n    </ion-toolbar>\n  </ion-header>");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-header class=\"ion-no-border ion-padding\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button>\n          <img src=\"assets/images/icon_menu.svg\">\n        </ion-menu-button>\n        <ion-buttons slot=\"end\" *ngIf=\"pageName != '/home' \">\n          <ion-back-button defaultHref=\"home\"></ion-back-button>\n       </ion-buttons>\n      </ion-buttons>\n      <!--<ion-title>home</ion-title>-->\n      <ion-buttons slot=\"end\" routerLink=\"/notification\">\n        <!-- <span  id=\"black_spot\" style=\"display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;\n        top: -3px;right: 3px;text-align: center;\">\n        {{ this.notification.length + this.notifications_admin.length }}</span>  -->\n        <span *ngIf=\"this.notificationCount!== 0\" id=\"black_spot\" style=\"position: absolute;background-color: #000;border-radius: 50%;color: #fff;font-size: 13px;\n        top: -3px;right: 0px;text-align: center;padding: 0px 3px;\">\n        {{ this.notificationCount }}</span> \n          <img src=\"assets/images/icon_notification.svg\">\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>");
 
 /***/ }),
 
@@ -437,8 +467,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_search_screen_common_search_screen_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../common-search-screen/common-search-screen.page */ "+UNA");
 /* harmony import */ var _modal_on_the_way_on_the_way_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../modal/on-the-way/on-the-way.page */ "ZFA4");
 /* harmony import */ var _modal_onthe_way_msg_onthe_way_msg_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../modal/onthe-way-msg/onthe-way-msg.page */ "UG66");
-/* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "mtRb");
-
 
 
 
@@ -451,13 +479,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SearchFoodScreenTwoPage = class SearchFoodScreenTwoPage {
-    constructor(router, fetch, storage, alertController, modalController, diagnostic) {
+    constructor(router, fetch, storage, alertController, modalController) {
         this.router = router;
         this.fetch = fetch;
         this.storage = storage;
         this.alertController = alertController;
         this.modalController = modalController;
-        this.diagnostic = diagnostic;
         this.model = {};
         this.notification = [];
         this.data = [];
@@ -470,13 +497,6 @@ let SearchFoodScreenTwoPage = class SearchFoodScreenTwoPage {
     ngOnInit() {
     }
     ionViewWillEnter() {
-        this.diagnostic.isLocationAvailable().then(resp => {
-            if (!resp) {
-                this.router.navigate(['/home']);
-            }
-        }).catch((error) => {
-            this.router.navigate(['/home']);
-        });
         this.model.click = false;
         this.model.postalCode = 0;
         this.model.is_volunteer = 0;
@@ -552,8 +572,8 @@ let SearchFoodScreenTwoPage = class SearchFoodScreenTwoPage {
     openModalCurrentLocation() {
         this.model.click = true;
         this.search_type = 'nearby';
+        var self = this;
         setTimeout(() => {
-            var self = this;
             self.model.click = false;
             localStorage.setItem('set_confirm_location_route', JSON.stringify('get-food-search'));
             // self.searchingModel('nearby');
@@ -610,7 +630,7 @@ let SearchFoodScreenTwoPage = class SearchFoodScreenTwoPage {
                         if (this.ontheway_data.length > 0) {
                             let data = JSON.stringify({ startLat: this.ontheway_data[0].startLat, startLng: this.ontheway_data[0].startLng, endLat: this.ontheway_data[0].endLat, endLng: this.ontheway_data[0].endLng, city: this.ontheway_data[0].city, choice: "receiver", 'app_user_id': this.model.user_id, 'food_type': localStorage.getItem('receiver_food_type'), 'no_of_person': localStorage.getItem('number_of_person') });
                             this.fetch.get_waypoints(data).subscribe(res => {
-                                // this.closeModal();
+                                console.log('yes its working');
                                 this.search_type = 'ontheway';
                                 this.model.search = false;
                                 if (res.data != null && res.data.total_food_for != 0) {
@@ -687,8 +707,7 @@ SearchFoodScreenTwoPage.ctorParameters = () => [
     { type: _fetch_service__WEBPACK_IMPORTED_MODULE_4__["FetchService"] },
     { type: _storage_service__WEBPACK_IMPORTED_MODULE_5__["StorageService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["ModalController"] },
-    { type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_11__["Diagnostic"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["ModalController"] }
 ];
 SearchFoodScreenTwoPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -734,14 +753,14 @@ let SearchFoodScreenTwoPageModule = class SearchFoodScreenTwoPageModule {
 };
 SearchFoodScreenTwoPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [_search_food_screen_two_page__WEBPACK_IMPORTED_MODULE_6__["SearchFoodScreenTwoPage"], _captcha_captcha_component__WEBPACK_IMPORTED_MODULE_7__["CaptchaComponent"]],
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
             _search_food_screen_two_routing_module__WEBPACK_IMPORTED_MODULE_5__["SearchFoodScreenTwoPageRoutingModule"],
             _footer_footer_module__WEBPACK_IMPORTED_MODULE_8__["FooterPageModule"]
-        ],
-        declarations: [_search_food_screen_two_page__WEBPACK_IMPORTED_MODULE_6__["SearchFoodScreenTwoPage"], _captcha_captcha_component__WEBPACK_IMPORTED_MODULE_7__["CaptchaComponent"]]
+        ]
     })
 ], SearchFoodScreenTwoPageModule);
 

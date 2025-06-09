@@ -37,6 +37,7 @@ directions = [];
 polylines = [];
 l1 : any;
 l2 : any ;
+mapLoaded: boolean = false;
   constructor(
 	public modalController: ModalController,
 	private http: HttpClient,
@@ -182,7 +183,10 @@ this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
 			
 					directionsDisplay.setMap(this.map);
 					//directionsDisplay.setPanel(this.directionsPanel.nativeElement);
-			
+					this.map.addListener('idle', () => {
+						console.log("Map LOADED");
+						this.mapLoaded = true;
+					});
 					directionsService.route({
 						origin: r_lat+", "+r_lon,
 						destination: this.model.latitude+", "+this.model.longitude,
@@ -389,10 +393,10 @@ this.model.user_id = JSON.parse(localStorage.getItem('user_id'));
   await alert.present();
 }
 openMap(){
-	let destination = this.l1 + '+' + this.l2;
+	let destination = this.l1 + ',' + this.l2;
 	//window.open('maps://?q=' + destination, '_system');
 	if(this.platform.is('ios')){
-		this.browserTab.openUrl('http://maps.google.com/maps?q=loc:' + destination);
+		window.open('maps://?q=' + destination, '_system');
 	} else {
 		let label = encodeURI('My Label');
 		window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');

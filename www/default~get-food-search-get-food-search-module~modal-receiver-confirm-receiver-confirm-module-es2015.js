@@ -212,7 +212,7 @@ ReceiverConfirmPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("span.custom_new_food_btn button {\n  margin-top: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3JlY2VpdmVyLWNvbmZpcm0ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQUE7QUFDSiIsImZpbGUiOiJyZWNlaXZlci1jb25maXJtLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInNwYW4uY3VzdG9tX25ld19mb29kX2J0biBidXR0b24ge1xuICAgIG1hcmdpbi10b3A6IDE1cHg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("span.custom_new_food_btn button {\n  margin-top: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxyZWNlaXZlci1jb25maXJtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0FBQ0oiLCJmaWxlIjoicmVjZWl2ZXItY29uZmlybS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzcGFuLmN1c3RvbV9uZXdfZm9vZF9idG4gYnV0dG9uIHtcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xufSJdfQ== */");
 
 /***/ })
 

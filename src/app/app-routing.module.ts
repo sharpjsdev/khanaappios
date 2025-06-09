@@ -3,11 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PincodeErrorComponentComponent } from './pincode-error-component/pincode-error-component.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'language',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: 'language',
+    pathMatch: 'full'
+  },
   {
     path: 'splash',
     loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
@@ -309,7 +309,11 @@ const routes: Routes = [
   {
     path: 'pincode-error-component',
     component: PincodeErrorComponentComponent
- }
+ },
+  {
+    path: 'footer',
+    loadChildren: () => import('./footer/footer.module').then( m => m.FooterPageModule)
+  }
   
 
  

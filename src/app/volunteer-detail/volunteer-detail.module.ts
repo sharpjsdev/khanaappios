@@ -11,15 +11,15 @@ import { CaptchaComponent } from './../captcha/captcha.component';
 import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    PipesModule,
-    Ng2GoogleChartsModule,
-    VolunteerDetailPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [VolunteerDetailPage,CaptchaComponent]
+    declarations: [VolunteerDetailPage, CaptchaComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        PipesModule,
+        Ng2GoogleChartsModule,
+        VolunteerDetailPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class VolunteerDetailPageModule {}

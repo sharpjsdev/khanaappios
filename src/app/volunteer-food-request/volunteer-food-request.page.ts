@@ -32,15 +32,39 @@ export class VolunteerFoodRequestPage implements OnInit {
 
   ngOnInit() {
   }
+  async presentAlert() {
+		let confirm1 = await  this.alertController.create({
+			header: 'Location',
+      backdropDismiss: false,
+      message: "For a better experience, turn on device location, which uses Google\'s location service. ✓",
+			buttons: [
+			  {
+				text: 'cancel',
+				role: 'Cancel',
+				handler: () => {
+
+				}
+			  },
+			  {
+				text: 'Ok',
+				handler: () => {
+				  this.diagnostic.switchToLocationSettings();
+				}
+			  }
+			]
+		  });
+		  await confirm1.present();
+	}
 
   ionViewDidEnter(){
-    this.diagnostic.isLocationAvailable().then(resp =>{
-      if(!resp){
-        this.router.navigate(['/home']);
-      }
-    }).catch((error: any) => {
-      this.router.navigate(['/home']);
-    });
+
+    this.diagnostic.isLocationEnabled().then(resp =>{
+			if(!resp){
+				this.presentAlert();
+			}
+		}).catch((error: any) => {
+			this.presentAlert();
+		});
 
     var lang_code = JSON.parse(localStorage.getItem('lang'));
    // this.fetch.getKeyText(lang_code).subscribe(res => {

@@ -4,7 +4,6 @@ import { FetchService } from '../fetch.service';
 import { StorageService } from '../storage.service'; 
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx';
-import { NotificationPage } from '../modal/notification/notification.page';
 import { ModalController } from '@ionic/angular';
 import { RejectGetFoodRequestPage } from '../modal/reject-get-food-request/reject-get-food-request.page';
 import { ErrorMsgService } from '../error-msg.service';
@@ -32,7 +31,8 @@ polylines = [];
 no_of_person: any;
 additional_msg_1 : any = "";
 additional_msg_2 : any = "";
-	disableButton: boolean = false;
+disableButton: boolean = false;
+mapLoaded: boolean = false;
   constructor(
 	public modalController: ModalController,
 	private http: HttpClient,
@@ -95,8 +95,11 @@ additional_msg_2 : any = "";
 			this.model.key_text15 = item15[lang_code];
 		let item16 = res.find(i => i.key_text === 'GET_FOOD_MSG_5');
 			this.model.key_text16 = item16[lang_code];
-		let item17 = res.find(i => i.key_text === 'FOOD_ALREADY_DONATED_TO_OTHER_DONEES');
-			this.model.key_text17 = item17[lang_code];	
+		
+			let item17 = res.find(i => i.key_text === 'FOOD_ALREADY_DONATED_TO_OTHER_DONEES');
+			this.model.key_text17 = item17[lang_code];
+
+			
 	//});
 	var data = this.route.snapshot.params['data'];
 	var data2 = this.route.snapshot.params['data2'];
@@ -160,9 +163,14 @@ additional_msg_2 : any = "";
 		this.model.directionsService = new google.maps.DirectionsService();
        this.model.directionsDisplay = new google.maps.DirectionsRenderer();
 		this.model.directionsDisplay.setMap(this.map);
+		this.map.addListener('idle', () => {
+			this.mapLoaded = true;
+			this.calculate_route('WALKING');
+		});
+
         //directionsDisplay.setPanel(this.directionsPanel.nativeElement);
 		
-		this.calculate_route('WALKING');
+		
 		
         $("#btn_walk").addClass('active');
         $("#text_walk_time").removeClass('grey');
@@ -182,10 +190,9 @@ additional_msg_2 : any = "";
 	  }
   }
  
-  calculate_route(mode){
-	  
-	  var infowindow = new google.maps.InfoWindow();
-	var renderer = new google.maps.DirectionsRenderer({
+calculate_route(mode){ 
+var infowindow = new google.maps.InfoWindow();
+var renderer = new google.maps.DirectionsRenderer({
   suppressPolylines: true,
   infoWindow: infowindow,
 });
@@ -323,13 +330,14 @@ additional_msg_2 : any = "";
 		modal.onDidDismiss().then((dataReturned) => {
 		
 		});
-	
 		return await modal.present();
 	  } 
+
 	rejectRequest(){
 		this.disableButton = true;
 		this.openRejectModel();
 	}
+
 	acceptRequest(){
 		this.disableButton = true;
 		this.model.search = true;

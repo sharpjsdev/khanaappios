@@ -16,13 +16,13 @@
     "fetchSpec": "latest"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#USER",
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova.plugins.diagnostic/-/cordova.plugins.diagnostic-7.1.2.tgz",
   "_shasum": "34a182259a0f1dadeeb1e08d4ca4e1263d785f27",
   "_spec": "cordova.plugins.diagnostic",
-  "_where": "/Users/ewayitsolutions/Desktop/khanna-app-updated",
+  "_where": "D:\\other\\khana",
   "author": {
     "name": "Dave Alden"
   },

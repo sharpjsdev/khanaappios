@@ -22,11 +22,11 @@ options : GeolocationOptions;
 pincode;
 user_pincode;
 
-  constructor( private geolocation: Geolocation,private errorMsg:ErrorMsgService,private storage:StorageService,private fetch: FetchService,public datepipe: DatePipe,public modalController: ModalController) { }
+constructor(private geolocation: Geolocation,private errorMsg:ErrorMsgService,private storage:StorageService,private fetch: FetchService,public datepipe: DatePipe,public modalController: ModalController) { }
 
-  ngOnInit() {
+ngOnInit() {
 	this.model.accept = false;
-	var self = this;
+    var self = this;
     self.options = {
     enableHighAccuracy: false,
     };
@@ -38,47 +38,45 @@ user_pincode;
    
    }); 
   }
-
   showAddress(lat, lon){
-	var self = this;
-	let latLng = new google.maps.LatLng(lat, lon);
-	let geocoder = new google.maps.Geocoder();
-	
-	geocoder.geocode({ 'latLng': latLng }, (results, status) => {
+  var self = this;
+  let latLng = new google.maps.LatLng(lat, lon);
+  let geocoder = new google.maps.Geocoder();
   
-	  // console.log("all results",results);
-	  this.pincode = results[0].address_components[5].short_name;
-	  this.model.colony_name = results[0].formatted_address;
-	  //console.log(this.model.colony_name);
-	  
-	  results[0].address_components.forEach(function(val,i){
-		
-		if (val.types[0] == "locality"){
-		  
-		  self.model.city = val.long_name;
-		}
-		if (val.types[0] == "administrative_area_level_1"){
-		  
-		  self.model.state = val.long_name;
-		} 
-		if (val.types[0] == "country"){
-		  
-		  self.model.country = val.long_name;
-		}
-		if (val.types[0] == "postal_code"){
-		  
-		  self.model.postalCode = val.long_name;
-		}   
-	
-		});
-		setTimeout(()=>{
-		  if(self.model.postalCode){
-		   this.user_pincode=self.model.postalCode;
-		  }
-		},1000)
-	});
-  }
+  geocoder.geocode({ 'latLng': latLng }, (results, status) => {
 
+	// console.log("all results",results);
+	this.pincode = results[0].address_components[5].short_name;
+	this.model.colony_name = results[0].formatted_address;
+	//console.log(this.model.colony_name);
+	
+	results[0].address_components.forEach(function(val,i){
+	  
+	  if (val.types[0] == "locality"){
+		
+		self.model.city = val.long_name;
+	  }
+	  if (val.types[0] == "administrative_area_level_1"){
+		
+		self.model.state = val.long_name;
+	  } 
+	  if (val.types[0] == "country"){
+		
+		self.model.country = val.long_name;
+	  }
+	  if (val.types[0] == "postal_code"){
+		
+		self.model.postalCode = val.long_name;
+	  }   
+  
+	  });
+	  setTimeout(()=>{
+		if(self.model.postalCode){
+		 this.user_pincode=self.model.postalCode;
+		}
+	  },1000)
+  });
+}
   ionViewWillEnter(){
 	this.app_title = 'Khanaa.app';
 	this.page_key1 = 'Enter your Personal Details';
@@ -100,7 +98,6 @@ user_pincode;
 	let maxDate=  new Date((new Date().getFullYear() - 18),new Date().getMonth(), new Date().getDate());
 	let latest_date =this.datepipe.transform(maxDate, 'yyyy-MM-dd');
 	this.model.latest_date = latest_date;
-    
 	var lang_code = JSON.parse(localStorage.getItem('lang'));
 	//this.fetch.getKeyText(lang_code).subscribe(res => {
 	let res = this.storage.getScope();
@@ -128,7 +125,7 @@ user_pincode;
 		this.model.okay = item11[lang_code];
 	let item12 = res.find(i => i.key_text === 'GET_STARTED');
 		this.model.get_start = item12[lang_code];
-	let item13 = res.find(i => i.key_text === 'TERMS_CONDITIONS');
+	let item13 = res.find(i => i.key_text === 'TERMS_CONDITIONS'); 
 		this.model.terms = item13[lang_code];	
 	let item14 = res.find(i => i.key_text === 'NEXT');
 		this.model.next = item14[lang_code];
@@ -183,7 +180,7 @@ user_pincode;
 	var username = $('.input_username').val();
 	var dob = $('.input_dob').val();
 	var food_type = this.model.food_val;
-	var pincode = this.user_pincode;
+    var pincode = this.user_pincode;
 	// console.log("pincode",pincode)
 	if(!pincode){
 		pincode = localStorage.getItem('pincode');

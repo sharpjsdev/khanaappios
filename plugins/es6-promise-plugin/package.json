@@ -2,7 +2,7 @@
   "_args": [
     [
       "es6-promise-plugin@4.2.2",
-      "/Users/ewayitsolutions/Documents/khanna-app"
+      "E:\\khanna-app"
     ]
   ],
   "_development": true,
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/es6-promise-plugin/-/es6-promise-plugin-4.2.2.tgz",
   "_spec": "4.2.2",
-  "_where": "/Users/ewayitsolutions/Documents/khanna-app",
+  "_where": "E:\\khanna-app",
   "author": "",
   "bugs": {
     "url": "https://github.com/vstirbu/PromisesPlugin/issues"

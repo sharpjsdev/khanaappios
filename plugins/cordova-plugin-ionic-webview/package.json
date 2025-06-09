@@ -2,7 +2,7 @@
   "_args": [
     [
       "cordova-plugin-ionic-webview@4.2.1",
-      "/Users/ewayitsolutions/Documents/khanna-app"
+      "E:\\khanna-app"
     ]
   ],
   "_development": true,
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-4.2.1.tgz",
   "_spec": "4.2.1",
-  "_where": "/Users/ewayitsolutions/Documents/khanna-app",
+  "_where": "E:\\khanna-app",
   "author": {
     "name": "Ionic Team"
   },

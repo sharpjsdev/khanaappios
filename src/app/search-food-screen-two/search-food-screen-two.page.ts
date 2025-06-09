@@ -9,8 +9,6 @@ import { AlertController , ModalController } from '@ionic/angular';
 import { CommonSearchScreenPage } from '../common-search-screen/common-search-screen.page';
 import { OnTheWayPage } from '../modal/on-the-way/on-the-way.page';
 import { OntheWayMsgPage } from '../modal/onthe-way-msg/onthe-way-msg.page';
-import { Diagnostic } from "@ionic-native/diagnostic/ngx";
-
 declare var google: any;
 @Component({
   selector: 'app-search-food-screen-two',
@@ -39,22 +37,13 @@ export class SearchFoodScreenTwoPage implements OnInit {
     private fetch: FetchService,
     private storage: StorageService,
     public alertController: AlertController,
-    public modalController: ModalController,
-    private diagnostic: Diagnostic
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
     
   }
   ionViewWillEnter(){
-    this.diagnostic.isLocationAvailable().then(resp =>{
-      if(!resp){
-        this.router.navigate(['/home']);
-      }
-    }).catch((error: any) => {
-      this.router.navigate(['/home']);
-    });
-        
     this.model.click = false;
     this.model.postalCode = 0;
     this.model.is_volunteer = 0;
@@ -136,8 +125,9 @@ export class SearchFoodScreenTwoPage implements OnInit {
     openModalCurrentLocation() {
       this.model.click = true;
       this.search_type = 'nearby';
-      setTimeout(() => {
       var self = this;
+      setTimeout(() => {
+      
       self.model.click = false;
         localStorage.setItem('set_confirm_location_route', JSON.stringify('get-food-search'));
           // self.searchingModel('nearby');
@@ -185,7 +175,7 @@ export class SearchFoodScreenTwoPage implements OnInit {
             if (dataReturned !== null && dataReturned.data.length != 0) {
 		// this.searchingModel('ontheway');
               this.search_type = 'ontheway';
-	      this.dataReturned = dataReturned.data;
+              this.dataReturned = dataReturned.data;
               //alert('Modal Sent Data :'+ dataReturned);
           console.log(this.dataReturned);
           if(this.dataReturned.length>0){
@@ -195,7 +185,7 @@ export class SearchFoodScreenTwoPage implements OnInit {
              if(this.ontheway_data.length>0){
               	let data = JSON.stringify({startLat:this.ontheway_data[0].startLat,startLng:this.ontheway_data[0].startLng,endLat:this.ontheway_data[0].endLat,endLng:this.ontheway_data[0].endLng,city:this.ontheway_data[0].city,choice:"receiver",'app_user_id' : this.model.user_id,'food_type' : localStorage.getItem('receiver_food_type'), 'no_of_person' : localStorage.getItem('number_of_person')});
                  		this.fetch.get_waypoints(data).subscribe(res => {
-                    // this.closeModal();
+                    console.log('yes its working');
                     this.search_type = 'ontheway';
               			this.model.search = false;
               			if(res.data != null && res.data.total_food_for != 0){

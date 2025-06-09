@@ -7,15 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { AssignFoodPageRoutingModule } from './assign-food-routing.module';
 
 import { AssignFoodPage } from './assign-food.page';
-import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AssignFoodPageRoutingModule,
-    FooterPageModule
+    AssignFoodPageRoutingModule
   ],
   declarations: [AssignFoodPage]
 })

@@ -2,7 +2,7 @@
   "_args": [
     [
       "cordova-plugin-ionic-keyboard@2.2.0",
-      "/Users/ewayitsolutions/Documents/khanna-app"
+      "E:\\khanna-app"
     ]
   ],
   "_development": true,
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-keyboard/-/cordova-plugin-ionic-keyboard-2.2.0.tgz",
   "_spec": "2.2.0",
-  "_where": "/Users/ewayitsolutions/Documents/khanna-app",
+  "_where": "E:\\khanna-app",
   "author": {
     "name": "Apache Software Foundation"
   },

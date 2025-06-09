@@ -45,7 +45,7 @@ NotificationCountService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n  <ion-toolbar>\n\t<ion-grid [fixed]=\"true\">\n\t\t<ion-row>\n\t\t\t<ion-col (click)=\"changeCurrentUrl('home')\" [ngClass]=\"(activetab == 'home') ? 'active-col' : ''\">\n\t\t\t\t<img [src]=\"src.home\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'home') ? 'active-tab' : ''\">{{model.key_text5}}</ion-label>\n\t\t\t</ion-col>\n\t\t  <ion-col (click)=\"changeCurrentUrl('activity-normal')\" [ngClass]=\"(activetab == 'activity') ? 'active-col' : ''\">\n\t\t\t<img [src]=\"src.activity\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'activity') ? 'active-tab' : ''\">{{model.key_text6}}</ion-label>\n\t\t  </ion-col>\n\t\t  <ion-col [ngClass]=\"(activetab == 'volunteer') ? 'active-col' : ''\" *ngIf=\"model.is_volunteer== 1\" (click)=\"changeCurrentUrl('volunteer-detail')\">\n\t\t\t<img [src]=\"src.volunteer\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'volunteer') ? 'active-tab' : ''\">{{model.key_text7}}</ion-label>  \n\t\t</ion-col>\n\t\t  \n\t\t</ion-row>\n\t  </ion-grid>\n\t<!-- <ion-buttons slot=\"start\">\n\t\t<ion-button  value=\"activity\" >\n\t\t\t</ion-button>\n\t\t  <ion-button >\n\t\t\t \n\t\t</ion-button>\n\t</ion-buttons> -->\n\t  \n\t\t<!-- <ion-segment color=\"transparent\" value=\"home\">\n\t\t\t<ion-segment-button >\n\t\t\t  \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button>\n\t\t\t      \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button >\n\t\t\t\t \n\t\t\t</ion-segment-button>\n\t\t</ion-segment>       -->\n\t</ion-toolbar>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n  <ion-toolbar>\n\t<ion-grid [fixed]=\"true\">\n\t\t<ion-row>\n\t\t\t<ion-col (click)=\"changeCurrentUrl('home')\" [ngClass]=\"(activetab == 'home') ? 'active-col' : ''\">\n\t\t\t\t<img [src]=\"src.home\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'home') ? 'active-tab' : ''\">{{model.key_text5}}</ion-label>\n\t\t\t</ion-col>\n\t\t  <ion-col (click)=\"changeCurrentUrl('activity-normal')\" [ngClass]=\"(activetab == 'activity') ? 'active-col' : ''\">\n\t\t\t<img [src]=\"src.activity\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'activity') ? 'active-tab' : ''\">{{model.key_text6}}</ion-label>\n\t\t  </ion-col>\n\t\t  <ion-col [ngClass]=\"(activetab == 'volunteer') ? 'active-col' : ''\" *ngIf=\"model.is_volunteer== 1\" (click)=\"changeCurrentUrl('volunteer-detail')\">\n\t\t\t<img [src]=\"src.volunteer\"><br>\n\t\t\t<ion-label class=\"size_12 medium\" [ngClass]=\"(activetab == 'volunteer') ? 'active-tab' : ''\">{{model.key_text7}}</ion-label>  \n\t\t</ion-col>\n\t\t</ion-row>\n\t  </ion-grid>\n\t<!-- <ion-buttons slot=\"start\">\n\t\t<ion-button  value=\"activity\" >\n\t\t\t</ion-button>\n\t\t  <ion-button >\n\t\t\t \n\t\t</ion-button>\n\t</ion-buttons> -->\n\t  \n\t\t<!-- <ion-segment color=\"transparent\" value=\"home\">\n\t\t\t<ion-segment-button >\n\t\t\t  \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button>\n\t\t\t      \n\t\t\t</ion-segment-button>\n\t\t\t<ion-segment-button >\n\t\t\t\t \n\t\t\t</ion-segment-button>\n\t\t</ion-segment>       -->\n\t</ion-toolbar>\n</ion-content>\n");
 
 /***/ }),
 
@@ -152,6 +152,35 @@ let FooterPage = class FooterPage {
         let item8 = res.find(i => i.key_text === 'VOLUNTEER_FOOD_REQUEST');
         this.model.key_text8 = item8[lang_code];
     }
+    ngOnChanges() {
+        this.changeCurrentUrl(this.currentRoute);
+        let data = { model: "QuotesModel", lang_code: JSON.parse(localStorage.getItem('lang')) };
+        this.fetch.getTestimonialByLanguage(data).subscribe((resp) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (resp) {
+                var quote = resp.data;
+                this.model.quotes = quote;
+                for (var j = 0; j < quote.length; j++) {
+                    var quote1 = quote[j];
+                }
+            }
+        }));
+        localStorage.removeItem('temp_start_address');
+        localStorage.removeItem('temp_end_address');
+        this.model.is_volunteer = localStorage.getItem('volunteer_approve');
+        this.model.key_text5 = "Home";
+        this.model.key_text6 = "Activity";
+        this.model.key_text7 = "Volunteer";
+        var lang_code = JSON.parse(localStorage.getItem('lang'));
+        let res = this.storage.getScope();
+        let item5 = res.find(i => i.key_text === 'HOME');
+        this.model.key_text5 = item5[lang_code];
+        let item6 = res.find(i => i.key_text === 'ACTIVITY');
+        this.model.key_text6 = item6[lang_code];
+        let item7 = res.find(i => i.key_text === 'VOLUNTEER');
+        this.model.key_text7 = item7[lang_code];
+        let item8 = res.find(i => i.key_text === 'VOLUNTEER_FOOD_REQUEST');
+        this.model.key_text8 = item8[lang_code];
+    }
     changeCurrentUrl(route) {
         if (route == '/home') {
             this.activetab = 'home';
@@ -182,7 +211,8 @@ FooterPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
 ];
 FooterPage.propDecorators = {
-    currentRoute: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }]
+    currentRoute: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }],
+    foo_lang: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }]
 };
 FooterPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -263,7 +293,7 @@ FooterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-captcha></app-captcha>\n  \n<ion-content style=\"display: flex;flex-direction: column;height: 100%;\" >\n<div class=\"ion-padding theme_width my_custome_theme_width\" style=\"padding-top: -25px;\">\n  <div class=\"big_content noto_medium size_18\">\n    \" {{model.key_text1}}<br>\n    {{model.key_text2}} \"\n  </div>\n  <div class=\"horizontal_center\">\n    \n    <a (click)=\"get_food_search()\">\n      <button class=\"app_btn big button\">\n        {{model.key_text3}}\n      </button>\n    </a>\n    <a (click)=\"go_donate()\">\n      <button class=\"app_btn big button\">\n        {{model.key_text4}}\n      </button>  \n    </a>\n    <a (click)=\"go_to_volunteer()\" *ngIf=\"model.is_volunteer== 1\">\n      <button class=\"app_btn big button\">\n        {{model.key_text8}}\n      </button>  \n    </a>\n  </div>\n</div>\n</ion-content>\n<app-footer [currentRoute]=\"'/home'\"></app-footer>\n\n\n  \n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-captcha></app-captcha>\n  <div class=\"big_content noto_medium size_18\" style=\"margin-bottom: 35px;\" >\n    <ion-slides [options]=\"slideOpts\"  >\n      <ion-slide  *ngFor=\"let slide of slides\">\n        <div *ngIf=\" slide.description != null\" >\n          <div style=\"font-size:18px !important;\" >\"{{slide.description}}\"<br>\n            <div class=\"grey\" style=\"text-align: center;\">-{{slide.quotes_by}}</div>\n          </div>  \n        </div>   \n      </ion-slide>    \n    </ion-slides>\n  </div>\n<ion-content style=\"display: flex;flex-direction: column;height: 100%;\" >\n<div class=\"ion-padding theme_width my_custome_theme_width\" style=\"padding-top: -25px;\">\n  \n  <div class=\"horizontal_center\">\n    \n    <a (click)=\"get_food_search()\">\n      <button class=\"app_btn big button\">\n        {{model.key_text3}}\n      </button>\n    </a>\n    <a (click)=\"go_donate()\">\n      <button class=\"app_btn big button\">\n        {{model.key_text4}}\n      </button>  \n    </a>\n    <a (click)=\"go_to_volunteer()\" *ngIf=\"model.is_volunteer== 1\">\n      <button class=\"app_btn big button\">\n        {{model.key_text8}}\n      </button>  \n    </a>\n  </div>\n  <app-footer [currentRoute]=\"'/home'\" [foo_lang]=\"foo_lang\" ></app-footer>\n</div>\n\n</ion-content>");
 
 /***/ }),
 
@@ -299,6 +329,7 @@ let HomePageModule = class HomePageModule {
 };
 HomePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [_home_page__WEBPACK_IMPORTED_MODULE_6__["HomePage"], _captcha_captcha_component__WEBPACK_IMPORTED_MODULE_7__["CaptchaComponent"]],
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
@@ -306,7 +337,6 @@ HomePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _home_routing_module__WEBPACK_IMPORTED_MODULE_5__["HomePageRoutingModule"],
             _footer_footer_module__WEBPACK_IMPORTED_MODULE_8__["FooterPageModule"]
         ],
-        declarations: [_home_page__WEBPACK_IMPORTED_MODULE_6__["HomePage"], _captcha_captcha_component__WEBPACK_IMPORTED_MODULE_7__["CaptchaComponent"]]
     })
 ], HomePageModule);
 
@@ -433,7 +463,7 @@ CaptchaComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJob21lLnBhZ2Uuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --offset-top: unset !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXGhvbWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksOEJBQUE7QUFDSiIsImZpbGUiOiJob21lLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcclxuICAgIC0tb2Zmc2V0LXRvcDogdW5zZXQgIWltcG9ydGFudDtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -446,7 +476,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-label.active-tab {\n  color: #e8604c !important;\n}\n\nion-col {\n  text-align: center;\n}\n\nion-col.active-col {\n  box-shadow: 0px 0px 3px 1px #a3a2a2;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2Zvb3Rlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtBQUNKOztBQUNBO0VBSUksa0JBQUE7QUFESjs7QUFJRTtFQUNFLG1DQUFBO0VBQ0EsbUJBQUE7QUFESiIsImZpbGUiOiJmb290ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWxhYmVsLmFjdGl2ZS10YWIge1xyXG4gICAgY29sb3I6ICNlODYwNGMgIWltcG9ydGFudDtcclxufVxyXG5pb24tY29sIHtcclxuICAgIC8vIGJhY2tncm91bmQtY29sb3I6ICMxMzVkNTQ7XHJcbiAgICAvLyBib3JkZXI6IHNvbGlkIDFweCAjZmZmO1xyXG4gICAgLy8gY29sb3I6ICNmZmY7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICBpb24tY29sLmFjdGl2ZS1jb2x7XHJcbiAgICBib3gtc2hhZG93OiAwcHggMHB4IDNweCAxcHggI2EzYTJhMjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgfSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-label.active-tab {\n  color: #e8604c !important;\n}\n\nion-col {\n  text-align: center;\n}\n\nion-col.active-col.ios {\n  box-shadow: 0px 0px 3px 1px #a3a2a2;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXGZvb3Rlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtBQUNKOztBQUNBO0VBSUksa0JBQUE7QUFESjs7QUFJRTtFQUNFLG1DQUFBO0VBQ0EsbUJBQUE7QUFESiIsImZpbGUiOiJmb290ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWxhYmVsLmFjdGl2ZS10YWIge1xyXG4gICAgY29sb3I6ICNlODYwNGMgIWltcG9ydGFudDtcclxufVxyXG5pb24tY29sIHtcclxuICAgIC8vIGJhY2tncm91bmQtY29sb3I6ICMxMzVkNTQ7XHJcbiAgICAvLyBib3JkZXI6IHNvbGlkIDFweCAjZmZmO1xyXG4gICAgLy8gY29sb3I6ICNmZmY7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICBpb24tY29sLmFjdGl2ZS1jb2wuaW9ze1xyXG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAzcHggMXB4ICNhM2EyYTI7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gIH0iXX0= */");
 
 /***/ }),
 
@@ -526,7 +556,7 @@ HomeContentPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-header class=\"ion-no-border ion-padding\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button>\n          <img src=\"assets/images/icon_menu.svg\">\n        </ion-menu-button>\n        <ion-buttons slot=\"end\" *ngIf=\"pageName != '/home' \">\n          <ion-back-button defaultHref=\"home\"></ion-back-button>\n       </ion-buttons>\n      </ion-buttons>\n      <!--<ion-title>home</ion-title>-->\n      <ion-buttons slot=\"end\" routerLink=\"/notification\">\n        <!-- <span  id=\"black_spot\" style=\"display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;\n        top: -3px;right: 3px;text-align: center;\">\n        {{ this.notification.length + this.notifications_admin.length }}</span>  -->\n        <span *ngIf=\"this.notificationCount!== 0\" id=\"black_spot\" style=\"position: absolute;background-color: #000;border-radius: 50%;color: #fff;font-size: 13px;\n        top: -3px;right: 0px;text-align: center;padding: 0px 3px;\">\n        {{ this.notificationCount }}</span> \n          <img src=\"assets/images/icon_notification.svg\">\n      </ion-buttons>\n      \n     \n      \n    </ion-toolbar>\n  </ion-header>");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-header class=\"ion-no-border ion-padding\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button>\n          <img src=\"assets/images/icon_menu.svg\">\n        </ion-menu-button>\n        <ion-buttons slot=\"end\" *ngIf=\"pageName != '/home' \">\n          <ion-back-button defaultHref=\"home\"></ion-back-button>\n       </ion-buttons>\n      </ion-buttons>\n      <!--<ion-title>home</ion-title>-->\n      <ion-buttons slot=\"end\" routerLink=\"/notification\">\n        <!-- <span  id=\"black_spot\" style=\"display:none;position: absolute;height: 10px;width: 10px;background-color: #000;border-radius: 50%;color: #fff;\n        top: -3px;right: 3px;text-align: center;\">\n        {{ this.notification.length + this.notifications_admin.length }}</span>  -->\n        <span *ngIf=\"this.notificationCount!== 0\" id=\"black_spot\" style=\"position: absolute;background-color: #000;border-radius: 50%;color: #fff;font-size: 13px;\n        top: -3px;right: 0px;text-align: center;padding: 0px 3px;\">\n        {{ this.notificationCount }}</span> \n          <img src=\"assets/images/icon_notification.svg\">\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>");
 
 /***/ }),
 
@@ -576,9 +606,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var _fetch_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../fetch.service */ "RPep");
 /* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "mtRb");
-/* harmony import */ var _ionic_native_browser_tab_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/browser-tab/ngx */ "ORb9");
-/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "Bfh1");
-
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "Bfh1");
 
 
 
@@ -592,7 +620,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePage = class HomePage {
-    constructor(modalController, router, storage, platform, geolocation, fetch, diagnostic, alertCtrl, browserTab) {
+    constructor(modalController, router, storage, platform, geolocation, fetch, diagnostic, alertCtrl) {
         this.modalController = modalController;
         this.router = router;
         this.storage = storage;
@@ -601,16 +629,23 @@ let HomePage = class HomePage {
         this.fetch = fetch;
         this.diagnostic = diagnostic;
         this.alertCtrl = alertCtrl;
-        this.browserTab = browserTab;
         this.model = {};
+        this.slides = [];
+        this.slideOpts = {
+            //zoom: false,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                stopOnLastSlide: false
+            }
+        };
         this.platform.backButton.subscribeWithPriority(10, () => {
             this.router.navigate(['/home']);
             //navigator['app'].exitApp();
         });
     }
     ngOnInit() {
-        this.fetch.detectSlowNetwork().subscribe(res => {
-        });
+        this.foo_lang = JSON.parse(localStorage.getItem('lang'));
         let platform = '';
         document.addEventListener('deviceready', () => {
             platform = device.platform;
@@ -622,16 +657,17 @@ let HomePage = class HomePage {
         this.fetch.updateDeviceToken(profile_data).subscribe((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
         }));
     }
-    presentAlertAuth() {
+    presentAlert() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             let confirm1 = yield this.alertCtrl.create({
                 header: 'Location',
                 backdropDismiss: false,
-                message: "Please enable location services on your device to enhance your experience. Your device's location services are currently turned off, which may limit access to certain features. To enable them, Go to Settings > Privacy > Location Services.",
+                message: "For a better experience, turn on device location, which uses Google\'s location service. ✓",
                 buttons: [
                     {
                         text: 'Ok',
                         handler: () => {
+                            this.diagnostic.switchToLocationSettings();
                         }
                     }
                 ]
@@ -640,6 +676,14 @@ let HomePage = class HomePage {
         });
     }
     ionViewWillEnter() {
+        this.foo_lang = JSON.parse(localStorage.getItem('lang'));
+        this.diagnostic.isLocationEnabled().then(resp => {
+            if (!resp) {
+                this.presentAlert();
+            }
+        }).catch((error) => {
+            this.presentAlert();
+        });
         localStorage.removeItem('receiver_food_type');
         localStorage.removeItem('number_of_person');
         localStorage.removeItem('set_confirm_location_route');
@@ -667,17 +711,23 @@ let HomePage = class HomePage {
         });
     }
     ionViewDidEnter() {
-        this.diagnostic.isLocationAvailable().then(resp => {
-            if (!resp) {
-                this.presentAlertAuth();
+        this.foo_lang = JSON.parse(localStorage.getItem('lang'));
+        this.slides = [];
+        let data = { model: "QuotesModel", lang_code: JSON.parse(localStorage.getItem('lang')) };
+        this.fetch.getTestimonialByLanguage(data).subscribe((resp) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (resp) {
+                var quote = resp.data;
+                this.model.quotes = quote;
+                for (var j = 0; j < quote.length; j++) {
+                    var quote1 = quote[j];
+                    this.slides.push(quote1);
+                }
             }
-        }).catch((error) => {
-            this.presentAlertAuth();
-        });
+        }));
         localStorage.removeItem('temp_start_address');
         localStorage.removeItem('temp_end_address');
         this.model.is_volunteer = localStorage.getItem('volunteer_approve');
-        this.model.key_text1 = "Those who are happiest are those";
+        //this.model.key_text1 = quote1;
         this.model.key_text2 = "who do the most for others.";
         this.model.key_text3 = "Get Food";
         this.model.key_text4 = "Donate Food";
@@ -685,10 +735,12 @@ let HomePage = class HomePage {
         this.model.key_text6 = "Activity";
         this.model.key_text7 = "Volunteer";
         this.model.key_text8 = "Volunteer Food Request";
+        this.model.key_text9 = this.model.username;
         var lang_code = JSON.parse(localStorage.getItem('lang'));
         console.log(lang_code);
         //this.fetch.getKeyText(lang_code).subscribe(res => {
         let res = this.storage.getScope();
+        console.log("getscope wala:", res);
         //alert(JSON.stringify(res));
         let item1 = res.find(i => i.key_text === 'THOSE_WHO_ARE_HAPPIEST_ARE_THOSE');
         this.model.key_text1 = item1[lang_code];
@@ -706,7 +758,6 @@ let HomePage = class HomePage {
         this.model.key_text7 = item7[lang_code];
         let item8 = res.find(i => i.key_text === 'VOLUNTEER_FOOD_REQUEST');
         this.model.key_text8 = item8[lang_code];
-        //});
     }
     openModalHome() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -740,7 +791,6 @@ let HomePage = class HomePage {
         this.router.navigate(['/get-food-search']);
     }
     go_to_volunteer() {
-        // this.browserTab.openUrl('http://maps.google.com/maps?q=loc:23.179300+75.784912');
         this.router.navigate(['/volunteer-food-request']);
     }
 };
@@ -749,11 +799,10 @@ HomePage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] },
     { type: _storage_service__WEBPACK_IMPORTED_MODULE_6__["StorageService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
-    { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_11__["Geolocation"] },
+    { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"] },
     { type: _fetch_service__WEBPACK_IMPORTED_MODULE_8__["FetchService"] },
     { type: _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_9__["Diagnostic"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
-    { type: _ionic_native_browser_tab_ngx__WEBPACK_IMPORTED_MODULE_10__["BrowserTab"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] }
 ];
 HomePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({

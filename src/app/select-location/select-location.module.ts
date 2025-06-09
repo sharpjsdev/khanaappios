@@ -10,13 +10,13 @@ import { SelectLocationPage } from './select-location.page';
 import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SelectLocationPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [SelectLocationPage]
+    declarations: [SelectLocationPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        SelectLocationPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class SelectLocationPageModule {}

@@ -1,8 +1,5 @@
 <ion-header>
   <div class="regular size_18 white center">
-    <ion-buttons class="back_button_menu_bar" slot="end">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
   </div>
     <ion-searchbar [(ngModel)]="autocomplete.start" placeholder="{{model.key_text4}}" [showCancelButton]="true"   (ionChange)="updateSources()" (ionCancel)="dismissSource()" (click)="goToAddressSelection(1)"></ion-searchbar>
     

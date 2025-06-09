@@ -54,16 +54,33 @@ export class GetFoodSearchPage implements OnInit {
 	
   }
 
+  async presentAlert() {
+	let confirm1 = await  this.alertController.create({
+		header: 'Location',
+		backdropDismiss: false,
+		message: "For a better experience, turn on device location, which uses Google\'s location service. ✓",
+		buttons: [
+		  {
+			text: 'Ok',
+			handler: () => {
+			  this.diagnostic.switchToLocationSettings();
+			}
+		  }
+		]
+	  });
+	  await confirm1.present();
+	}
+
   ionViewWillEnter(){
-  	this.diagnostic.isLocationAvailable().then(resp =>{
-  		if(!resp){
-  			this.router.navigate(['/home']);
-  		}
-  	}).catch((error: any) => {
-  		this.router.navigate(['/home']);
-  	});
-    
-	this.model.search = false;
+	this.diagnostic.isLocationEnabled().then(resp =>{
+		if(!resp){
+			this.presentAlert();
+		}
+	}).catch((error: any) => {
+		this.presentAlert();
+	});
+
+	  this.model.search = false;
 	this.model.is_volunteer = 0;
 	if(localStorage.getItem('volunteer_approve') != null){
 		this.model.is_volunteer = localStorage.getItem('volunteer_approve');
@@ -309,5 +326,4 @@ export class GetFoodSearchPage implements OnInit {
 
     return await modal.present();
   }
-
 } 

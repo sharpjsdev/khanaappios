@@ -13,8 +13,6 @@ import { AlertController } from '@ionic/angular';
 import { TermsConditionsPage } from '../modal/terms-conditions/terms-conditions.page';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ErrorMsgModalPage } from '../modal/error-msg-modal/error-msg-modal.page';
-import { Diagnostic } from "@ionic-native/diagnostic/ngx";
-
 declare var $:any;
 
 @Component({ 
@@ -28,8 +26,8 @@ export class RegisterVolunteerPage implements OnInit {
   user_:any={};
   fromTime:string = "";
   toTime:string = "";
-  from_Time:any;
-  to_Time:any;
+  from_Time:any = '';
+  to_Time:any = '';
 
 	location_data:any=[];
 	volunteer_data:any=[];
@@ -44,8 +42,7 @@ export class RegisterVolunteerPage implements OnInit {
 	private fetch: FetchService,
 	private storage: StorageService,
 	public alertController: AlertController,
-	private datePicker: DatePicker,
-	private diagnostic: Diagnostic
+	private datePicker: DatePicker
   ) {
 	this.platform.backButton.subscribeWithPriority(10, () => {
 		this.location.back();
@@ -56,16 +53,9 @@ export class RegisterVolunteerPage implements OnInit {
 	this.model.accept = false;
 	   this.model.search = false;
   }
+ 
 
   ionViewWillEnter(){
-  	this.diagnostic.isLocationAvailable().then(resp =>{
-      if(!resp){
-        this.router.navigate(['/home']);
-      }
-    }).catch((error: any) => {
-      this.router.navigate(['/home']);
-    });
-  		
 	this.model.is_address = false;
 	this.user_.colony_name = '';
 	this.user_.city = '';
@@ -299,7 +289,7 @@ export class RegisterVolunteerPage implements OnInit {
 		buttons: ['Okay']
 	});
 	await alert.present();
-}
+ }
   from(event){
 
 	this.from_Time = new Date(event.target.value);

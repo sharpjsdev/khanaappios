@@ -10,13 +10,13 @@ import { GetFoodSearchWithAddressPage } from './get-food-search-with-address.pag
 import { FooterPageModule } from "../footer/footer.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    GetFoodSearchWithAddressPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [GetFoodSearchWithAddressPage]
+    declarations: [GetFoodSearchWithAddressPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        GetFoodSearchWithAddressPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class GetFoodSearchWithAddressPageModule {}

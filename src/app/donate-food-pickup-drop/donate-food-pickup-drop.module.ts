@@ -9,15 +9,14 @@ import { DonateFoodPickupDropPageRoutingModule } from './donate-food-pickup-drop
 import { DonateFoodPickupDropPage } from './donate-food-pickup-drop.page';
 import { CaptchaComponent } from '../captcha/captcha.component';
 import { FooterPageModule } from "../footer/footer.module";
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DonateFoodPickupDropPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [DonateFoodPickupDropPage,CaptchaComponent]
+    declarations: [DonateFoodPickupDropPage, CaptchaComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        DonateFoodPickupDropPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class DonateFoodPickupDropPageModule {}

@@ -2,7 +2,7 @@
   "_args": [
     [
       "cordova-plugin-androidx-adapter@1.1.3",
-      "/Users/ewayitsolutions/Documents/khanna-app"
+      "E:\\khanna-app"
     ]
   ],
   "_development": true,
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-androidx-adapter/-/cordova-plugin-androidx-adapter-1.1.3.tgz",
   "_spec": "1.1.3",
-  "_where": "/Users/ewayitsolutions/Documents/khanna-app",
+  "_where": "E:\\khanna-app",
   "author": {
     "name": "Dave Alden"
   },

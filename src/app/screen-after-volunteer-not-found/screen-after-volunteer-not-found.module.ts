@@ -9,15 +9,14 @@ import { ScreenAfterVolunteerNotFoundPageRoutingModule } from './screen-after-vo
 import { ScreenAfterVolunteerNotFoundPage } from './screen-after-volunteer-not-found.page';
 import { CaptchaComponent } from '../captcha/captcha.component';
 import { FooterPageModule } from "../footer/footer.module";
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ScreenAfterVolunteerNotFoundPageRoutingModule,
-    FooterPageModule
-  ],
-  declarations: [ScreenAfterVolunteerNotFoundPage,CaptchaComponent]
+    declarations: [ScreenAfterVolunteerNotFoundPage, CaptchaComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ScreenAfterVolunteerNotFoundPageRoutingModule,
+        FooterPageModule
+    ]
 })
 export class ScreenAfterVolunteerNotFoundPageModule {}

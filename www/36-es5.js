@@ -1,15 +1,15 @@
 (function () {
-  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 
-  function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
 
-  function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[36], {
     /***/
@@ -75,7 +75,7 @@
           this.translucent = false;
         }
 
-        _createClass(TabBar, [{
+        return _createClass(TabBar, [{
           key: "selectedTabChanged",
           value: function selectedTabChanged() {
             if (this.selectedTab !== undefined) {
@@ -123,8 +123,6 @@
         }, {
           key: "render",
           value: function render() {
-            var _Object;
-
             var color = this.color,
                 translucent = this.translucent,
                 keyboardVisible = this.keyboardVisible;
@@ -132,7 +130,7 @@
             return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
               role: "tablist",
               "aria-hidden": keyboardVisible ? 'true' : null,
-              "class": Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color, (_Object = {}, _defineProperty(_Object, mode, true), _defineProperty(_Object, 'tab-bar-translucent', translucent), _defineProperty(_Object, 'tab-bar-hidden', keyboardVisible), _Object))
+              "class": Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color, _defineProperty(_defineProperty(_defineProperty({}, mode, true), 'tab-bar-translucent', translucent), 'tab-bar-hidden', keyboardVisible))
             }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
           }
         }, {
@@ -148,8 +146,6 @@
             };
           }
         }]);
-
-        return TabBar;
       }();
 
       TabBar.style = {
@@ -189,7 +185,7 @@
           };
         }
 
-        _createClass(TabButton, [{
+        return _createClass(TabButton, [{
           key: "onTabBarChanged",
           value: function onTabBarChanged(ev) {
             var dispatchedFrom = ev.target;
@@ -275,7 +271,7 @@
               tabindex: tabIndex,
               "aria-selected": selected ? 'true' : null,
               id: tab !== undefined ? "tab-button-".concat(tab) : null,
-              "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'tab-selected', selected), _defineProperty(_class, 'tab-disabled', disabled), _defineProperty(_class, 'tab-has-label', hasLabel), _defineProperty(_class, 'tab-has-icon', hasIcon), _defineProperty(_class, 'tab-has-label-only', hasLabel && !hasIcon), _defineProperty(_class, 'tab-has-icon-only', hasIcon && !hasLabel), _defineProperty(_class, "tab-layout-".concat(layout), true), _defineProperty(_class, 'ion-activatable', true), _defineProperty(_class, 'ion-selectable', true), _defineProperty(_class, 'ion-focusable', true), _class)
+              "class": (_class = {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_class, mode, true), 'tab-selected', selected), 'tab-disabled', disabled), 'tab-has-label', hasLabel), 'tab-has-icon', hasIcon), 'tab-has-label-only', hasLabel && !hasIcon), 'tab-has-icon-only', hasIcon && !hasLabel), "tab-layout-".concat(layout), true), 'ion-activatable', true), 'ion-selectable', true), _defineProperty(_class, 'ion-focusable', true))
             }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("a", Object.assign({}, attrs, {
               tabIndex: -1,
               "class": "button-native",
@@ -292,8 +288,6 @@
             return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
           }
         }]);
-
-        return TabButton;
       }();
 
       TabButton.style = {

@@ -37,6 +37,7 @@ export class GetFoodNearestDonorsTwoDuplicatePage implements OnInit {
   polylines = [];
   time_c : any;
   distance_c:any;
+  mapLoaded: boolean = false;
   constructor(
     public modalController: ModalController,
     private http: HttpClient,
@@ -203,7 +204,11 @@ export class GetFoodNearestDonorsTwoDuplicatePage implements OnInit {
       this.model.directionsDisplay = new google.maps.DirectionsRenderer;
       this.model.directionsDisplay.setMap(this.map);
           //directionsDisplay.setPanel(this.directionsPanel.nativeElement);
-          this.calculate_route('WALKING');
+      this.map.addListener('idle', () => {
+            this.mapLoaded = true;
+            this.calculate_route('WALKING');
+      });
+        
 		
           
     });
@@ -444,10 +449,10 @@ export class GetFoodNearestDonorsTwoDuplicatePage implements OnInit {
     await alert.present();
   }
   openMap(){
-    let destination = this.model.latitude + '+' + this.model.longitude;
+    let destination = this.model.latitude + ',' + this.model.longitude;
     //window.open('maps://?q=' + destination, '_system');
     if(this.platform.is('ios')){
-      this.browserTab.openUrl('http://maps.google.com/maps?q=loc:' + destination);
+      window.open('maps://?q=' + destination, '_system');
     } else {
       let label = encodeURI('My Label');
       window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');

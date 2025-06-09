@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -15,9 +14,12 @@ import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ion
 import { JsonpClientBackend } from '@angular/common/http';
 import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 import { Network } from '@ionic-native/network/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 
 declare var google: any;
 declare var FCMPlugin: any;
+declare var cordova: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -42,6 +44,7 @@ isLanguageChanged: boolean;
     private storage : StorageService,
     private modalController : ModalController,
     private fcm : FCM,
+    private firebaseX: FirebaseX,
     private network: Network
   ) {
     
@@ -187,6 +190,8 @@ isLanguageChanged: boolean;
   
   
     this.initializeApp();
+
+   
     
   }
   private async pushSetup() {
@@ -197,6 +202,36 @@ isLanguageChanged: boolean;
     if (!this.platform.is('cordova')) {
       return;
     }
+
+    const permissions = cordova.plugins.permissions;
+      console.log(permissions);
+
+      if (!permissions || !permissions.POST_NOTIFICATIONS) {
+        console.warn("Permissions plugin or POST_NOTIFICATIONS not available.");
+        return;
+      }
+    
+      // First check if permission is already granted
+      permissions.checkPermission(permissions.POST_NOTIFICATIONS, (status) => {
+        if (!status.hasPermission) {
+          // Now request it
+          permissions.requestPermission(
+            permissions.POST_NOTIFICATIONS,
+            (result) => {
+              if (result.hasPermission) {
+                console.log("Notification permission granted.");
+              } else {
+                console.warn("Notification permission denied.");
+              }
+            },
+            (error) => {
+              console.error("Permission request failed:", error);
+            }
+          );
+        } else {
+          console.log("Notification permission already granted.");
+        }
+      });
    
     let token = await this.fcm.getToken();
     //alert(token);
@@ -219,9 +254,11 @@ isLanguageChanged: boolean;
         if (payload.wasTapped) 
           {
             var jd = JSON.parse(payload.message);
-            
+            console.log("Wastapped running...");
+            console.log(jd);
+            console.log(payload);
             if(jd.check_val == '1' ){
-              self.showNotification(jd.body,jd.my_array,jd.donor_details,jd.request_id);
+              self.showNotification(payload.body,jd.my_array,jd.donor_details,jd.request_id);
             }else if(jd.check_val == '2' ){
               self.showFoodDeliverPopupToVolunteer(jd.my_array);
             }else if(jd.check_val == '3' ){
@@ -232,6 +269,47 @@ isLanguageChanged: boolean;
 
           } else {
             //alert("Received in foreground");
+             var jd = JSON.parse(payload.message);
+            //;
+            
+            if(jd.check_val == '1' ){
+              this.showNotification(payload.body,jd.my_array,jd.donor_details,jd.request_id);
+            }else if(jd.check_val == '2' ){
+              this.showFoodDeliverPopupToVolunteer(jd.my_array);
+            }else if(jd.check_val == '3' ){
+              this.showFoodDeliverPopupToDonor(jd.my_array);
+            }else{
+              this.showAlert(payload.body);
+            }
+            
+            
+          }
+    });
+
+    this.firebaseX.onMessageReceived().subscribe(async (payload) => {
+      //alert('in');
+      //this.pushPayload = payload;
+      console.log( payload);
+      this.model.fromNotification = true;
+        var self = this;
+        if (payload.tap) 
+          {
+            console.log(jd);
+            console.log(jd.check_val);
+            var jd = JSON.parse(payload.message);
+            console.log("Tapped running...");
+            if(jd.check_val == '1' ){
+              self.showNotification(payload.body,jd.my_array,jd.donor_details,jd.request_id);
+            }else if(jd.check_val == '2' ){
+              self.showFoodDeliverPopupToVolunteer(jd.my_array);
+            }else if(jd.check_val == '3' ){
+              self.showFoodDeliverPopupToDonor(jd.my_array);
+            }
+            // Notification was received on device tray and tapped by the user.
+             
+
+          } else {
+           
              var jd = JSON.parse(payload.message);
             //;
             
@@ -263,11 +341,12 @@ isLanguageChanged: boolean;
              // we know the user launched the app by clicking on the notification
 
              // data here contains the data object we defined earlier so you can do whatever you want with the data like navigate to a specific page etc.
-             
+             console.log("Initital Push Payload");
+            
              var jd = JSON.parse(data.message);
             
             if(jd.check_val == '1' ){
-              this.showNotification(jd.body,jd.my_array,jd.donor_details,jd.request_id);
+              this.showNotification(data.body,jd.my_array,jd.donor_details,jd.request_id);
             }else if(jd.check_val == '2' ){
               this.showFoodDeliverPopupToVolunteer(jd.my_array);
             }else if(jd.check_val == '3' ){
@@ -303,9 +382,10 @@ isLanguageChanged: boolean;
   } 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      
+    this.statusBar.styleDefault();
 	  this.statusBar.styleBlackTranslucent();
-      this.splashScreen.hide();
+    this.splashScreen.hide();
 
       var self = this;
       self.options = {
@@ -357,8 +437,6 @@ isLanguageChanged: boolean;
           
           self.model.postalCode = val.long_name;
 
-          
-         
           console.log(self.model.postalCode+"postalCode");
         }   
     
