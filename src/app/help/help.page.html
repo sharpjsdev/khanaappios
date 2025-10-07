@@ -13,10 +13,24 @@
 			<div class="video_title size_16 medium green">{{x.title}}</div>
 			<div class="video">
 			<!-- <img src="assets/images/dummy_video.svg"> -->
-				<iframe [src]="x.video_url | safe"></iframe>
+			<iframe
+				[src]="x.video_url | safe"
+				width="100%"
+				height="250"
+				frameborder="0"
+				allowfullscreen>
+				</iframe>
 			</div>
 		</div>
 	</div>
 	<br>
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button (click)="toggleChat()">
+		  <ion-icon name="chatbubbles"></ion-icon>
+		</ion-fab-button>
+	  </ion-fab>
+	  <div *ngIf="showChat" class="chatboard">
+		<app-faq-chat (dismiss)="showChat=false"></app-faq-chat>
+	  </div>
 <center class="current_location_spinner_position" id="help_spinner"><ion-spinner class="current_location_sppiner"></ion-spinner></center>
 </ion-content>

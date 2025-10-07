@@ -159,6 +159,9 @@ export class FetchService {
 	volunteer_request(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'request-food',data);
 	}
+	reapplyAsVolunteer(data): Observable<any> { 
+		return this.http.post(environment.base_url + 'reapply-as-volunteer',data);
+	}
 	get_request(id): Observable<any> { 
 		return this.http.get(environment.base_url + 'get_request/'+id);
 	}
@@ -217,7 +220,8 @@ export class FetchService {
 		return this.http.get(environment.base_url + 'top_donors/'+city);
 	}
 	show_feedback(id): Observable<any> { 
-		return this.http.get(environment.base_url + 'show_feedback/'+id);
+		// return this.http.get(environment.base_url + 'show_feedback/'+id);
+		return this.http.get(environment.base_url + 'get_show_feedback/'+id);
 	}
 	weekly_donation_graph(id): Observable<any> { 
 		return this.http.get(environment.base_url + 'donation_graph_weekly/'+id);
@@ -453,6 +457,20 @@ export class FetchService {
 	}
 	read_notification_by_id(data): Observable<any> { 
 		return this.http.post(environment.base_url + 'read_notification_by_id',data);
+	}
 
+	// Chatbot Apis
+	
+	getQuesCategories(): Observable<any> { 
+		return this.http.get(environment.base_url + 'get-question-category');
+	}
+	getQuesSubCategories(id): Observable<any> { 
+		return this.http.get(environment.base_url + 'get-question-sub-category?id='+id);
+	}
+	getQuestions(id): Observable<any> { 
+		return this.http.get(environment.base_url + 'get-question?category_id='+id);
+	}
+	getAnswer(id): Observable<any> { 
+		return this.http.get(environment.base_url + 'get-answer?question_id='+id);
 	}
 }

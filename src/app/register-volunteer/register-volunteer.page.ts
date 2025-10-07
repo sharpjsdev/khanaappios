@@ -28,12 +28,14 @@ export class RegisterVolunteerPage implements OnInit {
   user_:any={};
   fromTime:string = "";
   toTime:string = "";
-  from_Time:any;
-  to_Time:any;
-
+  from_Time:any = '';
+  to_Time:any = '';
+  volunteer_status:any;
 	location_data:any=[];
 	volunteer_data:any=[];
 	alert_text: any;
+	reject_remark:any;
+	loader:boolean = true;
   constructor(
 	public modalController: ModalController,
 	private platform: Platform,
@@ -42,6 +44,7 @@ export class RegisterVolunteerPage implements OnInit {
 	private route: ActivatedRoute,
 	private router: Router,
 	private fetch: FetchService,
+	private errorMsg:ErrorMsgService,
 	private storage: StorageService,
 	public alertController: AlertController,
 	private datePicker: DatePicker,
@@ -110,6 +113,25 @@ export class RegisterVolunteerPage implements OnInit {
 			this.model.key_text16 = item16[lang_code];
 		let item17 = res.find(i => i.key_text === 'PLEASE_SELECT_A_LOCATION');
 			this.model.key_text17 = item17[lang_code]; 	
+			let item18 = res.find(i => i.key_text === 'VOLUNTEER_APPROVAL');
+			this.model.key_text18 = item18[lang_code]; 
+			
+			
+			let item19 = res.find(i => i.key_text === 'VOLUNTEER_REG_REJECT_MSG');
+			this.model.key_text19 = item19[lang_code];
+			let item20 = res.find(i => i.key_text === 'VOLUNTEER_VERIFICATION_PENDING_MSG');
+			this.model.key_text20 = item20[lang_code];
+			let item21 = res.find(i => i.key_text === 'REMARK');
+			this.model.key_text21 = item21[lang_code];
+			let item22 = res.find(i => i.key_text === 'APPLY_AGAIN');
+			this.model.key_text22 = item22[lang_code];
+			let item23 = res.find(i => i.key_text === 'VOLUNTEER_REG_SUCCESS_MSG');
+			this.model.key_text23 = item23[lang_code];
+			let item24 = res.find(i => i.key_text === 'VOLUNTEER_REAPPLY_SUCCESS_MSG');
+			this.model.key_text24 = item24[lang_code];
+			
+			
+			 	
 	//});
 	//console.log(this.location_data);
 	$("#v_update").css("display","none");
@@ -124,7 +146,11 @@ export class RegisterVolunteerPage implements OnInit {
 			this.fetch.v_edit(this.model.volunteer_id).subscribe(res => {
 				console.log(res.data);
 				this.volunteer_data = res.data;
-				this.model.is_address = true;
+				console.log(this.volunteer_data);
+				this.volunteer_status = res?.data?.status;
+				this.reject_remark = res?.data?.remark;
+				console.log(this.volunteer_status);
+				this.model.is_addresolunteers = true;
 				this.model.volunteer_id = res.data.id;
 				var time_split = res.data.working_hour.split("-");
 				if(res.data.working_hour){
@@ -292,14 +318,14 @@ export class RegisterVolunteerPage implements OnInit {
 		await alert.present();
   }
 
-  async msgAlert(msg) {
-	const alert = await this.alertController.create({
-		cssClass: 'my-custom-class',
-		message: msg,
-		buttons: ['Okay']
-	});
-	await alert.present();
-}
+  //async msgAlert(msg) {
+	//const alert = await this.alertController.create({
+		//cssClass: 'my-custom-class',
+		//message: msg,
+	//	buttons: ['Okay']
+	//});
+//	await alert.present();
+//}
   from(event){
 
 	this.from_Time = new Date(event.target.value);
@@ -423,6 +449,7 @@ export class RegisterVolunteerPage implements OnInit {
 			this.fetch.register_volunteer(data).subscribe(res => {
 					this.model.search = false;
 					this.openTermsAndConditions();
+					this.msgAlert(this.model.key_text23);
 					localStorage.setItem('volunteer_id', res.volunteer_id);  
 			});
 		}else{
@@ -458,4 +485,37 @@ export class RegisterVolunteerPage implements OnInit {
   
   }
 
+  async msgAlert(msg:any) {
+	
+    this.closeModal();
+    const modal = await this.modalController.create({
+      component: DynamicMsgPage,
+      cssClass: 'home_content_modal dynamic_model_volunteer_css',
+      componentProps: {
+		  "msg" : msg
+      }
+    }); 
+
+    modal.onDidDismiss().then((dataReturned) => {
+		this.ionViewWillEnter();
+    });
+
+    return await modal.present();
+  } 
+  async closeModal(){
+    await this.modalController.dismiss();
+  }
+  reApply(){
+	console.log("Reapply call...");
+
+	let data = {'id' : this.model.volunteer_id,'app_user_id' : JSON.parse(localStorage.getItem('user_id'))};
+			this.fetch.reapplyAsVolunteer(data).subscribe(res => {
+				if(res.success){
+					this.msgAlert(this.model.key_text24);
+					
+				}else{
+					this.errorMsg.showModal("Enter unique username.");
+				}
+			});
+  }
 }

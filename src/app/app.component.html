@@ -1,77 +1,86 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list" style="margin: 0px 30px;">
-          <ion-list-header class="medium size_18 custom_header">More</ion-list-header>          
-
-          <!--<ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+    <ion-split-pane contentId="main-content">
+        <ion-menu contentId="main-content" type="overlay">
+            <ion-content>
+                <div class="logo-section">
+                    <ion-img class="logo-img" src="assets/images/icon.png"></ion-img><ion-text class="logo-text">
+                        Khanaa.app
+                    </ion-text>
+                </div>
+                    <!--<ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>-->
-        </ion-list>
+                
 
-        <div class="custom_menubar">
-			<ion-list class="custom_menu" style="margin-top: -40px !important; margin-bottom:12px;">
-				<ion-menu-toggle>
-					<ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/register-volunteer']">
-						<div class="menu_img"><img src="assets/images/menu_1.svg"> </div>
-						<div class="menu_content">
-							<div class="menu_title size_16 medium">{{model.key_text1}}</div>
-							<div class="menu_sub green regular size_12">{{model.key_text2}}</div>
-							
-						</div>
-					</ion-item>
-					<ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/profile']" >
-						<div class="menu_img"><img src="assets/images/menu_2.svg"> </div>
-						<div class="menu_content">
-							<div class="menu_title size_16 medium">{{model.key_text3}}</div>
-							<div class="menu_sub green regular size_12">{{model.key_text4}}</div>
-						</div>
-					</ion-item>
-					<ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/saved-addresses',user_id]">
-						<div class="menu_img"><img src="assets/images/menu_3.svg"> </div>
-						<div class="menu_content">
-							<div class="menu_title size_16 medium">{{model.key_text5}}</div>
-							<div class="menu_sub green regular size_12">{{model.key_text6}}</div>
-						</div>
-					</ion-item>
-					<ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/choose-language']">
-						<div class="menu_img"><img src="assets/images/menu_4.svg"> </div>
-						<div class="menu_content">
-							<div class="menu_title size_16 medium">{{model.key_text7}}</div>
-							<div class="menu_sub green regular size_12">{{model.key_text8}}</div>
-						</div>
-					</ion-item>
-					<ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/help']">
-						<div class="menu_img"><img src="assets/images/menu_5.svg"> </div>
-						<div class="menu_content">
-							<div class="menu_title size_16 medium">{{model.key_text9}}</div>
-							<div class="menu_sub green regular size_12">{{model.key_text10}}</div>
-						</div>
-					</ion-item>
-					<ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/about-us']">
-						<div class="menu_img"><img src="assets/images/menu_6.svg"> </div>
-						<div class="menu_content">
-							<div class="menu_title size_16 medium">{{model.key_text11}}</div>
-							<div class="menu_sub green regular size_12">{{model.key_text12}}</div>
-						</div>
-					</ion-item>
-					  
-					 <ion-item class="item-icon-left menu_item" menu-close  (click)="logout()">
-						<div class="menu_img"><img src="assets/images/menu_6.svg"> </div>
-						<div class="menu_content">
-							<div class="menu_title size_16 medium">{{model.key_text14}}</div>
-							<div class="menu_sub green regular size_12">{{model.key_text14}}</div>
-						</div>
-					</ion-item>  
-				</ion-menu-toggle>			
-			</ion-list>
-        </div>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+                <div class="custom_menubar">
+                    <ion-list class="custom_menu" style="margin-top: -40px !important; margin-bottom:12px;">
+                        <ion-menu-toggle>
+                            
+                            <ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/profile']">
+                                <div class="menu_img"><img src="assets/images/menu_2.svg"> </div>
+                                <div class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text3}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_text4}}</div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/saved-addresses',user_id]">
+                                <div class="menu_img"><img src="assets/images/menu_3.svg"> </div>
+                                <div class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text5}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_text6}}</div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/choose-language']">
+                                <div class="menu_img"><img src="assets/images/menu_4.svg"> </div>
+                                <div class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text7}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_text8}}</div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/help']">
+                                <div class="menu_img"><img src="assets/images/menu_5.svg"> </div>
+                                <div class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text9}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_text10}}</div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-icon-left menu_item" menu-close [routerLink]="['/about-us']">
+                                <div class="menu_img"><img src="assets/images/menu_6.svg"> </div>
+                                <div class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text11}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_text12}}</div>
+                                </div>
+                            </ion-item>
+
+                            <ion-item class="item-icon-left menu_item" menu-close (click)="logout()">
+                                <div class="menu_img"><img src="assets/images/menu_6.svg"> </div>
+                                <div class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text14}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_text14}}</div>
+                                </div>
+                            </ion-item>
+                            <ion-item *ngIf="volunteer_status === -1" class="item-icon-left menu_item" menu-close [routerLink]="['/register-volunteer']">
+                                <div class="menu_img"><img src="assets/images/menu_1.svg"> </div>
+                                <div  class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text1}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_text2}}</div>
+                                </div>
+                            </ion-item>
+                            <ion-item *ngIf="volunteer_status !== -1" class="item-icon-left menu_item" menu-close [routerLink]="['/register-volunteer']">
+                                <div class="menu_img"><img src="assets/images/menu_1.svg"> </div>
+                                <div  class="menu_content">
+                                    <div class="menu_title size_16 medium">{{model.key_text01}}</div>
+                                    <div class="menu_sub green regular size_12">{{model.key_pro_text}}</div>
+                                </div>
+                            </ion-item>
+                        </ion-menu-toggle>
+                    </ion-list>
+                </div>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
 </ion-app>

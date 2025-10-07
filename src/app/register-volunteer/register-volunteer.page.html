@@ -14,13 +14,15 @@
 						{{model.key_text1}}
 					
 			</div>
-			<div class="big_header_bottom regular size_18">
+			<div *ngIf="!loader && ((volunteer_data && volunteer_status == 1) || (!volunteer_data?.id))" class="big_header_bottom regular size_18">
 				{{ model.key_text8 }} {{ volunteer_data.username }}, {{model.key_text2}} 
 			</div>
 		</div>
 	</div>
-  
-	<div class="ion-padding">
+	<div *ngIf="loader">
+		<ion-img src="../assets/images/loader.gif" style="height: 100px;text-align: center;margin-top: 50%;"></ion-img>
+	</div>
+	<div class="ion-padding" *ngIf="!loader && ((volunteer_data && volunteer_status == 1) || (!volunteer_data?.id)) ">
 		<div class="register_volunteer app_input_text center_input">
 		  	<img src="assets/images/shop.png">
 		  <input type="text" (keyup)="nameChange($event)" placeholder="{{model.key_text9}}" id="shop_name" value="{{volunteer_data.shop_stall_name}}">
@@ -75,15 +77,31 @@
 			</div>
 		</div> 
 	</div>
+	<div class="ion-padding pt25" *ngIf="!loader && volunteer_data && volunteer_status == 0">
+		<div class="medium size_16 green center" >{{ model.key_text20 }}</div>
+	</div>
+	<div class="ion-padding pt25" *ngIf="!loader && volunteer_data && volunteer_status == 2">
+		<div class="medium size_16 green center" >{{ model.key_text19 }}</div>
+
+		<div class="medium size_16 center mt-12" *ngIf="reject_remark">
+			{{ model.key_text21 }} : 
+			<span class="red mt-12">{{ reject_remark }}</span>
+			<ion-toolbar class="mt-12">    
+				<div class="app_button">      
+					<button type="btn" (click)="reApply()" class="app_btn">{{model.key_text22}}</button>    
+				</div>
+			  </ion-toolbar>
+		</div>
+	</div>
   </ion-content> 
   
-  <ion-footer> 
+  <ion-footer *ngIf="!loader && ((volunteer_data && volunteer_status == 1) || (!volunteer_data?.id))"> 
     <ion-toolbar>     
-      <div class="app_button">
-        <span (click)="register()" *ngIf="!model.search" id="v_register">
+      <div class="app_button" >
+        <span (click)="register()" *ngIf="!model.search && (!volunteer_data?.id)" id="v_register">
           <button class="app_btn">{{model.key_text6}}</button>
         </span> 
-		<span (click)="register()" *ngIf="!model.search" id="v_update">
+		<span (click)="register()" *ngIf="!model.search && volunteer_status == 1" id="v_update" >
           <button class="app_btn">{{model.key_text7}}</button>
         </span><button class="app_btn" style="padding:10px" *ngIf="model.search"><ion-spinner class="current_location_sppiner"></ion-spinner></button>
 		

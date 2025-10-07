@@ -5,6 +5,7 @@ import { StorageService } from '../storage.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { Location } from "@angular/common";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 declare var $: any;
 
 @Component({
@@ -14,16 +15,19 @@ declare var $: any;
 })
 export class HelpPage implements OnInit {
 model:any={};
-  constructor(private storage:StorageService, private http: HttpClient,private route: ActivatedRoute,private router: Router,private fetch: FetchService,private platform: Platform,private location: Location) {
+showChat: boolean = false;
+
+  constructor(private sanitizer: DomSanitizer,private storage:StorageService, private http: HttpClient,private route: ActivatedRoute,private router: Router,private fetch: FetchService,private platform: Platform,private location: Location) {
 	this.platform.backButton.subscribeWithPriority(10, () => {
 		this.location.back();
 	});
-	  }
-
-  ngOnInit() {
-	
   }
-
+  transform(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  ngOnInit() {
+			
+  }
   ionViewWillEnter(){
 	this.model.key_page_name = 'Help';
 	var lang_code = JSON.parse(localStorage.getItem('lang'));
@@ -36,7 +40,32 @@ model:any={};
 		$('#help_spinner').css('display', 'none');
 		$('#help_list').css('display', 'block');
 		this.model.data = res;
+		this.model.data = this.model.data.map(video => ({
+			...video,
+			video_url: this.convertYoutubeUrl(video.video_url)
+		  }));
 	});
   }
 
+  toggleChat() {
+    this.showChat = !this.showChat;
+  }
+  private convertYoutubeUrl(url: string): string {
+    if (!url) return '';
+
+    // Standard YouTube link
+    if (url.includes('watch?v=')) {
+      const videoId = url.split('watch?v=')[1].split('&')[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    // Short youtu.be link
+    if (url.includes('youtu.be/')) {
+      const videoId = url.split('youtu.be/')[1].split('?')[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    // Already embed or unknown
+    return url;
+  }
 }

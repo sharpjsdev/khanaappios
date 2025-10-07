@@ -1,0 +1,96 @@
+<ion-card class="chat-wrapper">
+  <div class="chat-header">
+    <div class="title-chat">{{ model.chat_with_us }}</div>
+    <button class="btn btn-icon" (click)="closeChat()" aria-label="Close">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </div>
+
+  <div class="chat-body">
+    <!-- Chat history -->
+    <div class="history" #history>
+      <ng-container *ngFor="let msg of messages; let i = index">
+        <!-- text messages -->
+        <div *ngIf="msg.type === 'text'" class="message" [ngClass]="msg.from" [attr.data-index]="i">
+          <div class="bubble">
+            <div class="text" [innerHTML]="msg.text"></div>
+            <div class="time" *ngIf="msg.time">{{ msg.time }}</div>
+          </div>
+        </div>
+
+        <!-- options messages -->
+        <div *ngIf="msg.type === 'options'" class="message bot" [attr.data-index]="i">
+          <div class="bubble options-bubble" >
+            <div class="options">
+              <ion-card class="qbtn" button detail="false"
+                        *ngFor="let item of msg.items"
+                        (click)="!msg.disabled && (msg.scope === 'category' ? selectCategory(item) : (msg.scope === 'subcategory' ? selectSubcategory(item) : selectQuestion(item)))">
+                <ion-card-content>
+                  {{ getNameByLang(item) }}
+                </ion-card-content>
+              </ion-card>
+            </div>
+            <div class="actions-row" *ngIf="msg.scope !== 'category'">
+              <button class="btn btn-light" (click)="prevNavigate(msg, i)">{{ msg.scope === 'question' ? model.prev_btn : model.prev_cat_btn }}</button>
+              <button class="btn btn-medium" (click)="clearChat()">{{ model.clear_chat_btn }}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- answer with exit and prev question list button in same card, row layout -->
+        <div *ngIf="msg.type === 'answer'" class="message bot" [attr.data-index]="i">
+          <div class="bubble">
+            <div class="text" [innerHTML]="msg.text"></div>
+            <div class="time" *ngIf="msg.time">{{ msg.time }}</div>
+            <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 12px;">
+              <button *ngIf="hasMultiplePrevQuestions(i)" class="btn btn-light" style="flex:1;" (click)="prevNavigate(msg, i)">{{ model.ques_list }}</button>
+              <button class="btn btn-medium" style="flex:1;" (click)="closeChat()">{{ model.exit_chat_btn }}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- support form -->
+        <div *ngIf="msg.type === 'form'" class="message bot" [attr.data-index]="i">
+          <div class="bubble options-bubble">
+            <div class="form-title">Enter your Details</div>
+            <form (ngSubmit)="submitSupportForm()">
+              <div class="form-field">
+                <label>Name<span class="req">*</span></label>
+                <input type="text" [(ngModel)]="supportForm.name" name="name" placeholder="Name" required>
+              </div>
+              <div class="form-field">
+                <label>Email<span class="req">*</span></label>
+                <input type="email" [(ngModel)]="supportForm.email" name="email" placeholder="Email" required>
+              </div>
+              <div class="form-field">
+                <label>Mobile<span class="req">*</span></label>
+                <input type="tel" [(ngModel)]="supportForm.mobile" name="mobile" placeholder="Mobile" required>
+              </div>
+              <button type="submit" class="btn btn-danger">Start Chat</button>
+            </form>
+          </div>
+        </div>
+
+      </ng-container>
+
+      <!-- typing indicator -->
+      <div *ngIf="isTyping" class="message bot">
+        <div class="bubble typing">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="chat-footer">
+    <ion-item lines="none">
+      <ion-input type="text" placeholder="Send a message..." [(ngModel)]="outgoingText"
+                 (keyup.enter)="sendCustomMessage()"></ion-input>
+      <button slot="end" class="btn btn-send" (click)="sendCustomMessage()" aria-label="Send">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-item>
+  </div> -->
+</ion-card>

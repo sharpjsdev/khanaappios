@@ -154,6 +154,10 @@ isLanguageChanged: boolean;
       let res = this.storage.getScope();
       let item1 = res.find(i => i.key_text === 'REGISTER_AS_VOLUNTEER');
 				this.model.key_text1 = item1[lang_code];
+      let item01 = res.find(i => i.key_text === 'VOLUNTEER_PROFILE');
+			this.model.key_text01 = item01[lang_code];
+      let item_v_txt = res.find(i => i.key_text === 'VOLUNTEER_PROFILE_TXT');
+			this.model.key_pro_text = item_v_txt[lang_code];
 			let item2 = res.find(i => i.key_text === 'SIDEBAR_QUOTE1');
 				this.model.key_text2 = item2[lang_code];
 			let item3 = res.find(i => i.key_text === 'PROFILE');
@@ -415,13 +419,21 @@ isLanguageChanged: boolean;
       this.fetch.v_check(this.user_id).subscribe(res => {
         if(res.success == true){
           if(res.status == 1){
+            this.volunteer_status = 1;
             localStorage.setItem('volunteer_approve','1');
+            console.log(this.volunteer_status);
+          }else if(res.status == 2){
+            this.volunteer_status = 2;
+            console.log(this.volunteer_status);
           }
           else{
+            this.volunteer_status = 0;
+            console.log(this.volunteer_status);
             localStorage.setItem('volunteer_approve','0');
           }
         }else{
-          localStorage.setItem('volunteer_approve','0');
+          localStorage.setItem('volunteer_approve','-1');
+          this.volunteer_status = -1;
         }
       });
     }
@@ -446,7 +458,9 @@ isLanguageChanged: boolean;
   }
   logout(){
     localStorage.clear();
-    this.router.navigate(['/language']);
+    localStorage.setItem('lang', JSON.stringify("en"));
+    this.fetch.isLanguageChanged.next(JSON.parse(localStorage.getItem('lang')));
+		this.router.navigate(['/mobile-number']);
   }
   side_bar_route(route){
 	this.router.navigate(['/'+route]);  

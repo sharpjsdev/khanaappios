@@ -9,6 +9,8 @@ import { HelpPageRoutingModule } from './help-routing.module';
 import { HelpPage } from './help.page';
 
 import { PipesModule } from '../pipes/pipes.module';
+import { FaqChatComponent } from '../faq-chat/faq-chat.component';
+
 
 @NgModule({
   imports: [
@@ -18,6 +20,6 @@ import { PipesModule } from '../pipes/pipes.module';
     HelpPageRoutingModule,
 	PipesModule
   ],
-  declarations: [HelpPage]
+  declarations: [HelpPage,FaqChatComponent]
 })
 export class HelpPageModule {}

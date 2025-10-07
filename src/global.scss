@@ -351,6 +351,11 @@ input {
     padding: 0px 0px 71px 0px;
     //padding: 0px 0px 80px 0px;
 }
+
+.quote_msg {
+    padding: 5px;
+    text-align: center;
+}
 .my_custome_theme_width{
     display: flex;
     flex-direction: column;
@@ -601,6 +606,9 @@ hr.donor_single_line {
 }
 
 .dynamic_model_css .modal-wrapper {
+    height: 55% !important;
+}
+.dynamic_model_volunteer_css .modal-wrapper {
     height: 55% !important;
 }
 // .empty_message_height .modal-wrapper{
@@ -1466,4 +1474,13 @@ app-footer{
 app-footer ion-label {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+.hidden {
+    display: none !important;
+  }
+.back_button{
+    color: #fff;
+}
+.pt25{
+    padding-top: 25%;
 }

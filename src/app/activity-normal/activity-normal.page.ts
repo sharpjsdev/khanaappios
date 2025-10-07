@@ -3,11 +3,12 @@ import { FetchService } from '../fetch.service';
 import { StorageService } from '../storage.service';
 import { CancelAllotedfoodPage } from '../modal/cancel-allotedfood/cancel-allotedfood.page';
 import * as HighCharts from 'highcharts';
-import { ModalController,AlertController } from '@ionic/angular';
+import { ModalController,AlertController, Platform } from '@ionic/angular';
 import { BrowserTab } from '@ionic-native/browser-tab/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { environment } from '../../environments/environment';
 import { Geolocation,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 declare var $:any;
 declare let window: any;
 @Component({
@@ -27,6 +28,7 @@ request_food : any = [];
 alloted_request_food : any = [];
 foodweeklydata:any;
 graphstate='week';
+tabValue='donor';
 
 reasons : any = [];
   dataReturned: any;
@@ -37,6 +39,8 @@ reasons : any = [];
 	public modalController: ModalController,
 	public alertController: AlertController,
 	public browserTab: BrowserTab,
+	private socialSharing: SocialSharing,
+	private platform: Platform,
 	private callNumber: CallNumber
   ) { }
 slideOpts = {
@@ -106,7 +110,7 @@ slideOpts = {
 		$('#add_location_spinner').hide();
 	});
 	
-	
+	this.getFeedback();
 	
   }
   format = function date2str(x, y) {
@@ -230,6 +234,9 @@ slideOpts = {
   }
   handleTab(id){
 	  if(id == 1){
+		console.log("Receiver Active");
+		this.tabValue = 'Receiver';
+		this.getFeedback();
 	$('#add_location_spinner').show();
 
 		this.model.receivertab = 1;
@@ -248,6 +255,8 @@ slideOpts = {
 		});
 	  }
 	  else{
+		console.log("Donor Active");
+		this.getFeedback();
 		this.model.receivertab = 0;
 	this.model.donartab = 1;
 		$('.rec').removeClass('btn1 active');
@@ -257,12 +266,16 @@ slideOpts = {
 		
 	  }
   }
-  share(message){
-	const m = message+'\n\n';
-	document.addEventListener("deviceready", function() {
-		window.plugins.socialsharing.share(m,'Khana app','','https://play.google.com/store/apps/details?id=com.food.forAll');
-	}, false);	
-}
+  share(msg: string) {
+	this.platform.ready().then(() => {
+	  const message = msg;
+	  const subject = 'Khana app';
+	  const url = 'https://play.google.com/store/apps/details?id=com.food.forAll';
+	  this.socialSharing.share(message, subject, undefined, url)
+		.then(() => console.log('Share successful'))
+		.catch(err => console.error('Share failed:', err));
+	});
+  }
   call(number){
 	
 	let data = JSON.stringify({'caller_id':this.model.user_id,'callee_mobile_no':number  });
@@ -1253,5 +1266,16 @@ var Average ={
 	});   
   }
    
+  getFeedback(){
+	this.fetch.show_feedback(this.model.user_id).subscribe(res => {
+		if(this.tabValue = 'donor'){
+			this.model.feedback_data = res.donee_feedback;
+			console.log(res.donee_feedback);
+		}else{
+			this.model.feedback_data = res.donor_feedback;
+			console.log(res.donee_feedback);
+		}
+	});
+  }
 
 }
