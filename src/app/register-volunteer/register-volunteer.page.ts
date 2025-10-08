@@ -62,6 +62,9 @@ export class RegisterVolunteerPage implements OnInit {
   }
 
   ionViewWillEnter(){
+  	setTimeout(() => {
+		this.loader = false;
+	}, 1500);
   	this.diagnostic.isLocationAvailable().then(resp =>{
       if(!resp){
         this.router.navigate(['/home']);
@@ -134,7 +137,7 @@ export class RegisterVolunteerPage implements OnInit {
 			
 			 	
 	//});
-	//console.log(this.location_data);
+
 	$("#v_update").css("display","none");
 	this.model.volunteer_id = '';
 	var user_id = JSON.parse(localStorage.getItem('user_registerd'));
@@ -145,12 +148,12 @@ export class RegisterVolunteerPage implements OnInit {
 			$("#v_update").css("display","block");
 			this.model.volunteer_id = res.data;
 			this.fetch.v_edit(this.model.volunteer_id).subscribe(res => {
-				console.log(res.data);
+			
 				this.volunteer_data = res.data;
-				console.log(this.volunteer_data);
+			
 				this.volunteer_status = res?.data?.status;
 				this.reject_remark = res?.data?.remark;
-				console.log(this.volunteer_status);
+			
 				this.model.is_addresolunteers = true;
 				this.model.volunteer_id = res.data.id;
 				var time_split = res.data.working_hour.split("-");
@@ -167,7 +170,7 @@ export class RegisterVolunteerPage implements OnInit {
 				$("#v_register").css("display","none");
 				$("#v_update").css("display","block");
 				this.fetch.v_edit(this.model.volunteer_id).subscribe(res => {
-					console.log(res);
+					
 					if(res.success == true){
 						this.model.app_status = res.data.app_status == 1 ? true : false;
 						this.volunteer_data = res.data;
@@ -336,7 +339,7 @@ export class RegisterVolunteerPage implements OnInit {
 
     this.from_Time = this.formatAMPM(this.from_Time);
     $("#t_time").hide();
-    console.log(this.from_Time);
+   
 
   } 
   to(event){
@@ -348,7 +351,7 @@ export class RegisterVolunteerPage implements OnInit {
 	$('#tt').removeClass('error_border');
     this.to_Time = this.formatAMPM(this.to_Time);
 	$("#t_time1").hide();
-    console.log(this.to_Time);
+   
 
   }
   
@@ -507,7 +510,7 @@ export class RegisterVolunteerPage implements OnInit {
     await this.modalController.dismiss();
   }
   reApply(){
-	console.log("Reapply call...");
+
 
 	let data = {'id' : this.model.volunteer_id,'app_user_id' : JSON.parse(localStorage.getItem('user_id'))};
 			this.fetch.reapplyAsVolunteer(data).subscribe(res => {
