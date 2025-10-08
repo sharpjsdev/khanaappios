@@ -32,6 +32,7 @@ isLanguageChanged: boolean;
 
   public selectedIndex = 0;
   public appPages = [];
+  volunteer_status: number = -1;
   constructor(
     private geolocation: Geolocation,
     private platform: Platform,

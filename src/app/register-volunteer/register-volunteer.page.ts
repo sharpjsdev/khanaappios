@@ -14,7 +14,8 @@ import { TermsConditionsPage } from '../modal/terms-conditions/terms-conditions.
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { ErrorMsgModalPage } from '../modal/error-msg-modal/error-msg-modal.page';
 import { Diagnostic } from "@ionic-native/diagnostic/ngx";
-
+import { DynamicMsgPage } from '../modal/dynamic-msg/dynamic-msg.page';
+import { ErrorMsgService } from '../error-msg.service';
 declare var $:any;
 
 @Component({ 
