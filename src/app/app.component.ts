@@ -272,7 +272,7 @@ isLanguageChanged: boolean;
              var jd = JSON.parse(data.message);
             
             if(jd.check_val == '1' ){
-              this.showNotification(jd.body,jd.my_array,jd.donor_details,jd.request_id);
+              this.showNotification(data.body,jd.my_array,jd.donor_details,jd.request_id);
             }else if(jd.check_val == '2' ){
               this.showFoodDeliverPopupToVolunteer(jd.my_array);
             }else if(jd.check_val == '3' ){

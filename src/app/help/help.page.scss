@@ -9,9 +9,9 @@
 	margin-top:250px;
 }
 .chatboard {
-	position: fixed;
-    bottom: 70px;
-    right: 20px;
+	  position: fixed;
+    bottom: 110px;
+    right: 10px;
     width: 340px;
     background: white;
     border-radius: 10px;
@@ -23,6 +23,9 @@
   }
   ion-fab{
     --background: #419B95 !important;
+    position: fixed;
+    right: 30px;
+    bottom: 35px;
   }
   .video{
     padding: 10px;

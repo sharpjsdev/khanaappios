@@ -62,8 +62,9 @@ export class NotificationPage implements OnInit {
         let item16 = res.find(i => i.key_text === 'IMPORTANT_WORD1');
 				this.model.key_text16 = item16[lang_code];  
 		  	let item17 = res.find(i => i.key_text === 'YOUR_DONATION_IS_EXPIRED');
-				this.model.key_text17 = item17[lang_code];  
-           
+				this.model.key_text17 = item17[lang_code];
+        let item18 = res.find(i => i.key_text === 'VOLUNTEER_PENDING_MSG');
+        this.model.key_text18 = item18[lang_code];    
           
       
     //});
